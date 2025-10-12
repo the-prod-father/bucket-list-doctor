@@ -39,8 +39,11 @@ export default function AnimatedBrainHero() {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const container = canvas.parentElement;
+      if (container) {
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+      }
     };
 
     resizeCanvas();
@@ -169,84 +172,48 @@ export default function AnimatedBrainHero() {
         style={{ background: 'radial-gradient(circle at center, #1a1a2e 0%, #16213e 50%, #0f1419 100%)' }}
       />
 
-      {/* Brain SVG Overlay */}
+      {/* Sexy 2D Brain Image with Animations */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <svg
-          width="400"
-          height="400"
-          viewBox="0 0 400 400"
-          className="opacity-20 animate-pulse"
-        >
-          <defs>
-            <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#4A90E2" />
-              <stop offset="25%" stopColor="#50E3C2" />
-              <stop offset="50%" stopColor="#B968E0" />
-              <stop offset="75%" stopColor="#FF6B9D" />
-              <stop offset="100%" stopColor="#FFD93D" />
-            </linearGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-              <feMerge> 
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-          
-          {/* Brain silhouette */}
-          <path
-            d="M200 50 C150 60, 120 90, 120 140 C120 160, 130 180, 150 190 C140 210, 130 230, 140 250 C150 270, 170 280, 200 280 C230 280, 250 270, 260 250 C270 230, 260 210, 250 190 C270 180, 280 160, 280 140 C280 90, 250 60, 200 50 Z"
-            fill="url(#brainGradient)"
-            filter="url(#glow)"
+        <div className="relative">
+          {/* Main Brain Image */}
+          <img
+            src="/images/hero/2d-brain-hero.png"
+            alt="Neuroscience Brain"
+            className="w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] object-contain opacity-90 animate-pulse"
+            style={{
+              filter: 'drop-shadow(0 0 20px rgba(75, 144, 226, 0.3)) drop-shadow(0 0 40px rgba(185, 104, 224, 0.2))',
+              animation: 'brainFloat 6s ease-in-out infinite'
+            }}
           />
           
-          {/* Neural pathways */}
-          <path
-            d="M160 100 Q180 120, 200 100 Q220 120, 240 100"
-            stroke="#4A90E2"
-            strokeWidth="2"
-            fill="none"
-            opacity="0.6"
-          >
-            <animate
-              attributeName="opacity"
-              values="0.3;0.8;0.3"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-          </path>
+          {/* Animated Glow Rings */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="absolute w-96 h-96 sm:w-[480px] sm:h-[480px] md:w-[600px] md:h-[600px] rounded-full border-2 border-purple-400/30 animate-spin-slow"></div>
+            <div className="absolute w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] rounded-full border border-blue-400/40 animate-spin-reverse"></div>
+          </div>
           
-          <path
-            d="M150 150 Q170 170, 190 150 Q210 170, 230 150"
-            stroke="#50E3C2"
-            strokeWidth="2"
-            fill="none"
-            opacity="0.6"
-          >
-            <animate
-              attributeName="opacity"
-              values="0.8;0.3;0.8"
-              dur="2.5s"
-              repeatCount="indefinite"
-            />
-          </path>
+          {/* Floating Neural Particles */}
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-float"
+                style={{
+                  left: `${20 + (i * 7)}%`,
+                  top: `${30 + (i * 4)}%`,
+                  animationDelay: `${i * 0.5}s`,
+                  animationDuration: `${3 + (i % 3)}s`
+                }}
+              />
+            ))}
+          </div>
           
-          <path
-            d="M170 200 Q190 220, 210 200 Q230 220, 250 200"
-            stroke="#B968E0"
-            strokeWidth="2"
-            fill="none"
-            opacity="0.6"
-          >
-            <animate
-              attributeName="opacity"
-              values="0.4;0.9;0.4"
-              dur="1.8s"
-              repeatCount="indefinite"
-            />
-          </path>
-        </svg>
+          {/* Pulsing Energy Waves */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="absolute w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 animate-ping"></div>
+            <div className="absolute w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-pink-500/20 to-yellow-500/20 animate-ping" style={{ animationDelay: '1s' }}></div>
+          </div>
+        </div>
       </div>
 
       {/* Content Overlay */}
@@ -270,7 +237,7 @@ export default function AnimatedBrainHero() {
         
         <div className={`transform transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <a
-            href="https://www.amazon.com/dp/B0DJHB1QSN"
+            href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-gray-900 font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-2xl text-lg md:text-xl"

@@ -1,3 +1,14 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Bucket List Tips & Ideas | Practical Strategies',
+  description: 'Get practical strategies and inspiration for creating and pursuing your bucket list. Learn how to set achievable goals that transform your brain and life.',
+  openGraph: {
+    title: 'Bucket List Tips & Ideas',
+    description: 'Practical strategies for creating bucket list experiences that enhance brain health.',
+  },
+};
+
 export default function TipsIdeasPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20">

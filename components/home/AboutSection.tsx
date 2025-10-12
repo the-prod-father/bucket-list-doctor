@@ -6,13 +6,18 @@ export default function AboutSection() {
     <section className="py-20 bg-brand-cream">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image Placeholder */}
+          {/* Dr. DeSarbo Profile Image */}
           <div className="flex justify-center order-2 lg:order-1">
-            <div className="w-96 h-96 bg-gradient-to-br from-brand-blue to-brand-purple rounded-full shadow-2xl flex items-center justify-center">
-              <div className="text-center text-white">
-                <FaUserMd className="w-32 h-32 mx-auto mb-4 opacity-70" />
-                <p className="text-sm opacity-70">Dr. D Photo Placeholder</p>
-              </div>
+            <div className="relative">
+              <img
+                src="/images/profile/profile-pic-dr-d.png"
+                alt="Dr. Jeffrey DeSarbo"
+                className="w-96 h-96 rounded-full object-cover shadow-2xl border-4 border-white"
+                style={{ objectPosition: 'center 35%' }}
+              />
+              {/* Animated glow ring */}
+              <div className="absolute inset-0 rounded-full border-4 border-brand-blue/30 animate-pulse"></div>
+              <div className="absolute inset-2 rounded-full border-2 border-brand-purple/40 animate-pulse" style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
 
@@ -23,7 +28,7 @@ export default function AboutSection() {
             </h2>
 
             <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-              Dr. Jeffrey DeSarbo is a neuroscience enthusiast, adventurer, and advocate for purposeful living. With a background in medicine and a passion for understanding how our brains work, he's dedicated his career to helping people unlock their full potential through intentional goal-setting.
+              Dr. Jeffrey DeSarbo is a neuroscience enthusiast, adventurer, and advocate for purposeful living. With a background in medicine and a passion for understanding how our brains work, he&apos;s dedicated his career to helping people unlock their full potential through intentional goal-setting.
             </p>
 
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">

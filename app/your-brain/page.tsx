@@ -1,3 +1,15 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Your Brain on a Bucket List | Neuroscience Benefits',
+  description: 'Discover the 5 ways bucket lists benefit your brain: neuroplasticity activation, dopamine release, enhanced problem-solving, stress resilience, and creating meaning.',
+  keywords: ['neuroplasticity', 'dopamine', 'problem-solving', 'resilience', 'brain health', 'bucket list science'],
+  openGraph: {
+    title: 'Your Brain on a Bucket List | The Science Behind Adventure',
+    description: 'Learn the neuroscience behind why bucket lists are powerful for brain health and cognitive enhancement.',
+  },
+};
+
 export default function YourBrainPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-20">
@@ -12,7 +24,7 @@ export default function YourBrainPage() {
 
         <h3 className="text-2xl font-bold text-gray-900 mb-3">1. Neuroplasticity Activation</h3>
         <p className="text-lg text-gray-600 leading-relaxed mb-6">
-          When you create and pursue bucket list goals, you activate your brain's neuroplasticity—its ability to form new neural connections. This process strengthens cognitive function and builds mental resilience.
+          When you create and pursue bucket list goals, you activate your brain&apos;s neuroplasticity—its ability to form new neural connections. This process strengthens cognitive function and builds mental resilience.
         </p>
 
         <h3 className="text-2xl font-bold text-gray-900 mb-3">2. Dopamine Release</h3>

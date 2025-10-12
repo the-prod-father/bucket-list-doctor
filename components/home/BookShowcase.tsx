@@ -5,14 +5,13 @@ export default function BookShowcase() {
     <section className="py-20 bg-gradient-to-br from-brand-navy to-brand-navy-dark text-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Book Image Placeholder */}
+          {/* Book Cover Image */}
           <div className="flex justify-center">
-            <div className="w-80 h-96 bg-gradient-to-br from-brand-purple via-brand-blue to-brand-teal rounded-lg shadow-2xl flex items-center justify-center">
-              <div className="text-center">
-                <FaBook className="w-32 h-32 mx-auto mb-4 opacity-50" />
-                <p className="text-sm opacity-70">Book Cover Placeholder</p>
-              </div>
-            </div>
+            <img
+              src="/images/benefits/bucketlistdoctor-book-cover.png"
+              alt="The Neuroscience of a Bucket List Book Cover"
+              className="w-80 h-auto rounded-lg shadow-2xl"
+            />
           </div>
 
           {/* Book Description */}
@@ -21,7 +20,7 @@ export default function BookShowcase() {
               The Neuroscience of a Bucket List
             </h2>
             <p className="text-xl text-white/90 mb-6 leading-relaxed">
-              Discover how your bucket list isn't just a wish list—it's a powerful tool for brain health, cognitive enhancement, and purposeful living.
+              Discover how your bucket list isn&apos;t just a wish list—it&apos;s a powerful tool for brain health, cognitive enhancement, and purposeful living.
             </p>
 
             <ul className="space-y-4 mb-8">

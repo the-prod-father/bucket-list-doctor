@@ -1,21 +1,50 @@
 'use client';
 
 import { useState } from 'react';
+import { addNewsletterSubscriber } from '@/lib/supabase';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
+    setMessage('');
 
-    // TODO: Integrate with email service (Mailchimp/ConvertKit)
-    // For now, just simulate success
-    setTimeout(() => {
-      setStatus('success');
-      setEmail('');
-    }, 1000);
+    try {
+      const result = await addNewsletterSubscriber(email);
+      
+      if (result.success) {
+        setStatus('success');
+        setMessage(result.message);
+        setEmail('');
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setStatus('idle');
+          setMessage('');
+        }, 5000);
+      } else {
+        setStatus('error');
+        setMessage(result.message);
+        
+        // Reset error message after 5 seconds
+        setTimeout(() => {
+          setStatus('idle');
+          setMessage('');
+        }, 5000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setMessage('An unexpected error occurred. Please try again.');
+      
+      setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 5000);
+    }
   };
 
   return (
@@ -45,8 +74,12 @@ export default function NewsletterSignup() {
           </button>
         </form>
 
-        {status === 'success' && (
-          <p className="mt-4 text-green-400">Thanks for subscribing!</p>
+        {status === 'success' && message && (
+          <p className="mt-4 text-green-400 font-medium">{message}</p>
+        )}
+        
+        {status === 'error' && message && (
+          <p className="mt-4 text-red-400 font-medium">{message}</p>
         )}
       </div>
     </div>

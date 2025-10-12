@@ -6,9 +6,19 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -28,5 +38,66 @@
   
   .animate-pause {
     animation-play-state: paused;
+  }
+
+  /* Brain Animations */
+  @keyframes brainFloat {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-10px) rotate(1deg) scale(1.02);
+    }
+    50% {
+      transform: translateY(-5px) rotate(0deg) scale(1.05);
+    }
+    75% {
+      transform: translateY(-15px) rotate(-1deg) scale(1.02);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-20px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .animate-brainFloat {
+    animation: brainFloat 6s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  .animate-spin-reverse {
+    animation: spin-reverse 15s linear infinite;
   }
 }
