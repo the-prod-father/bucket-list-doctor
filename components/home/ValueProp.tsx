@@ -159,7 +159,7 @@ export default function ValueProp() {
             {extendedBenefits.map((benefit, index) => (
               <div
                 key={`${benefit.title}-${index}`}
-                className="flex-shrink-0 w-[75vw] sm:w-60 md:w-64"
+                className="flex-shrink-0 w-[65vw] sm:w-52 md:w-56"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
