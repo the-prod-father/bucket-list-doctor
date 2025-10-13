@@ -159,12 +159,12 @@ export default function ValueProp() {
             {extendedBenefits.map((benefit, index) => (
               <div
                 key={`${benefit.title}-${index}`}
-                className="flex-shrink-0 w-[85vw] sm:w-72 md:w-80"
+                className="flex-shrink-0 w-[75vw] sm:w-60 md:w-64"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <div
-                  className={`group relative p-5 sm:p-7 md:p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[28rem] sm:h-[28rem] md:h-[30rem] border-2 border-transparent hover:border-gray-200`}
+                  className={`group relative p-4 sm:p-5 md:p-6 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[22rem] sm:h-[24rem] md:h-[26rem] border-2 border-transparent hover:border-gray-200`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
@@ -179,8 +179,8 @@ export default function ValueProp() {
                   {/* Content */}
                   <div className="relative z-10 h-full flex flex-col">
                     {/* Brain Image */}
-                    <div className="mb-4 sm:mb-5 md:mb-6">
-                      <div className="relative w-full h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
+                    <div className="mb-3 sm:mb-4 md:mb-5">
+                      <div className="relative w-full h-24 sm:h-28 md:h-32 rounded-xl overflow-hidden">
                         <img
                           src={benefit.hoverImage}
                           alt={benefit.title}
