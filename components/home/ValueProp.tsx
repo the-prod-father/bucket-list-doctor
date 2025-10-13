@@ -103,7 +103,7 @@ export default function ValueProp() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Backed by neuroscience research, bucket lists aren't just for adventure—they're essential for brain health and cognitive longevity.
+            Backed by neuroscience research, bucket lists aren&apos;t just for adventure—they&apos;re essential for brain health and cognitive longevity.
           </p>
         </div>
 
