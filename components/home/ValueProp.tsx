@@ -150,7 +150,7 @@ export default function ValueProp() {
             }}
           >
             <div
-              className={`flex gap-4 sm:gap-6 ${isPaused ? '' : 'animate-scroll'}`}
+              className={`flex gap-3 sm:gap-4 md:gap-6 ${isPaused ? '' : 'animate-scroll'}`}
               style={{
                 width: `${extendedBenefits.length * 33.33}%`,
                 animationDuration: '60s',
@@ -159,12 +159,12 @@ export default function ValueProp() {
             {extendedBenefits.map((benefit, index) => (
               <div
                 key={`${benefit.title}-${index}`}
-                className="flex-shrink-0 w-64 sm:w-72 md:w-80"
+                className="flex-shrink-0 w-[85vw] sm:w-72 md:w-80"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <div
-                  className={`group relative p-6 sm:p-7 md:p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[26rem] sm:h-[28rem] md:h-[30rem] border-2 border-transparent hover:border-gray-200`}
+                  className={`group relative p-5 sm:p-7 md:p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[28rem] sm:h-[28rem] md:h-[30rem] border-2 border-transparent hover:border-gray-200`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
@@ -208,8 +208,8 @@ export default function ValueProp() {
           </div>
 
           {/* Fade edges for seamless scrolling effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-24 md:w-32 bg-gradient-to-r from-purple-50 via-pink-50 to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-24 md:w-32 bg-gradient-to-l from-cyan-50 via-blue-50 to-transparent pointer-events-none z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 md:w-32 bg-gradient-to-r from-purple-50 via-pink-50 to-transparent pointer-events-none z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 md:w-32 bg-gradient-to-l from-cyan-50 via-blue-50 to-transparent pointer-events-none z-10" />
 
           {/* Scroll indicator hint */}
           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-10">
