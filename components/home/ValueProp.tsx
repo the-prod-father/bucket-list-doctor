@@ -121,50 +121,6 @@ export default function ValueProp() {
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-20 animate-pulse" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-yellow-200 to-orange-200 rounded-full opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
-
-        {/* Floating brain images */}
-        <img
-          src="/images/brain-benefits/neuroplasticity.png"
-          alt=""
-          className="absolute top-20 left-[5%] w-24 h-24 md:w-32 md:h-32 opacity-10 animate-float"
-          style={{ animationDelay: '0s', animationDuration: '8s' }}
-        />
-        <img
-          src="/images/brain-benefits/dopamine.png"
-          alt=""
-          className="absolute top-40 right-[8%] w-20 h-20 md:w-28 md:h-28 opacity-15 animate-float"
-          style={{ animationDelay: '1.5s', animationDuration: '10s' }}
-        />
-        <img
-          src="/images/hero/2d-brain-hero.png"
-          alt=""
-          className="absolute bottom-32 left-[10%] w-28 h-28 md:w-36 md:h-36 opacity-8 animate-float"
-          style={{ animationDelay: '3s', animationDuration: '12s' }}
-        />
-        <img
-          src="/images/brain-benefits/problem-solving.png"
-          alt=""
-          className="absolute bottom-20 right-[5%] w-24 h-24 md:w-32 md:h-32 opacity-12 animate-float"
-          style={{ animationDelay: '2s', animationDuration: '9s' }}
-        />
-        <img
-          src="/images/cards/brain-network.png"
-          alt=""
-          className="absolute top-1/3 left-[3%] w-32 h-32 md:w-40 md:h-40 opacity-10 animate-float"
-          style={{ animationDelay: '4s', animationDuration: '11s' }}
-        />
-        <img
-          src="/images/brain-benefits/resilience.png"
-          alt=""
-          className="absolute top-1/2 right-[12%] w-20 h-20 md:w-28 md:h-28 opacity-12 animate-float"
-          style={{ animationDelay: '5s', animationDuration: '13s' }}
-        />
-        <img
-          src="/images/brain-benefits/meaning.png"
-          alt=""
-          className="absolute bottom-40 right-[20%] w-24 h-24 md:w-32 md:h-32 opacity-10 animate-float"
-          style={{ animationDelay: '2.5s', animationDuration: '10s' }}
-        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -208,7 +164,7 @@ export default function ValueProp() {
                 onMouseLeave={handleMouseLeave}
               >
                 <div
-                  className={`group relative p-6 sm:p-7 md:p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[28rem] sm:h-[30rem] md:h-[32rem] border-2 border-transparent hover:border-gray-200`}
+                  className={`group relative p-6 sm:p-7 md:p-8 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[26rem] sm:h-[28rem] md:h-[30rem] border-2 border-transparent hover:border-gray-200`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
@@ -222,8 +178,8 @@ export default function ValueProp() {
 
                   {/* Content */}
                   <div className="relative z-10 h-full flex flex-col">
-                    {/* Brain Image with Icon Overlay */}
-                    <div className="mb-4 sm:mb-5 md:mb-6 relative">
+                    {/* Brain Image */}
+                    <div className="mb-4 sm:mb-5 md:mb-6">
                       <div className="relative w-full h-32 sm:h-36 md:h-40 rounded-xl overflow-hidden">
                         <img
                           src={benefit.hoverImage}
@@ -232,16 +188,10 @@ export default function ValueProp() {
                         />
                         <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
                       </div>
-                      {/* Icon badge overlaying the image */}
-                      <div className={`absolute -bottom-4 left-4 inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${benefit.gradient} shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}>
-                        <div className="text-white">
-                          {benefit.icon}
-                        </div>
-                      </div>
                     </div>
 
                     {/* Title */}
-                    <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 mt-2 transition-all duration-300 bg-gradient-to-r ${benefit.gradient} bg-clip-text text-transparent group-hover:scale-105`}>
+                    <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 transition-all duration-300 bg-gradient-to-r ${benefit.gradient} bg-clip-text text-transparent group-hover:scale-105`}>
                       {benefit.title}
                     </h3>
 
