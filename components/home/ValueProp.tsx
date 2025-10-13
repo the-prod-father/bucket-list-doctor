@@ -6,7 +6,6 @@ import { FaBrain, FaHeart, FaLightbulb, FaRocket, FaCheckCircle } from 'react-ic
 export default function ValueProp() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -58,9 +57,6 @@ export default function ValueProp() {
     },
   ];
 
-  // Create multiple sets for seamless infinite scroll
-  const extendedBenefits = [...benefits, ...benefits, ...benefits];
-
   // Intersection Observer for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,39 +75,6 @@ export default function ValueProp() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-scroll pause on hover
-  const handleMouseEnter = () => {
-    setIsPaused(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsPaused(false);
-  };
-
-  // Pause auto-scroll when user manually scrolls
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    let scrollTimeout: NodeJS.Timeout;
-
-    const handleScroll = () => {
-      setIsPaused(true);
-
-      // Resume auto-scroll after user stops scrolling for 3 seconds
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        setIsPaused(false);
-      }, 3000);
-    };
-
-    container.addEventListener('scroll', handleScroll);
-
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    };
-  }, []);
 
   return (
     <section ref={sectionRef} className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-purple-50 via-pink-50 via-blue-50 to-cyan-50 relative overflow-hidden">
@@ -136,12 +99,12 @@ export default function ValueProp() {
           </p>
         </div>
 
-        {/* Auto-Scrolling Carousel with Manual Scroll */}
+        {/* Responsive Card Layout */}
         <div className="relative py-8">
-          {/* Scrollable Container */}
+          {/* Mobile: Horizontal Scroll | Desktop: Grid */}
           <div
             ref={scrollContainerRef}
-            className="overflow-x-auto overflow-y-hidden scrollbar-hide"
+            className="overflow-x-auto md:overflow-x-visible overflow-y-hidden scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -149,22 +112,14 @@ export default function ValueProp() {
               scrollBehavior: 'smooth',
             }}
           >
-            <div
-              className={`flex gap-3 sm:gap-4 md:gap-6 ${isPaused ? '' : 'animate-scroll'}`}
-              style={{
-                width: `${extendedBenefits.length * 33.33}%`,
-                animationDuration: '60s',
-              }}
-            >
-            {extendedBenefits.map((benefit, index) => (
+            <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+            {benefits.map((benefit, index) => (
               <div
                 key={`${benefit.title}-${index}`}
-                className="flex-shrink-0 w-[65vw] sm:w-52 md:w-56"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                className="flex-shrink-0 w-[65vw] sm:w-52 md:w-auto"
               >
                 <div
-                  className={`group relative p-4 sm:p-5 md:p-6 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[22rem] sm:h-[24rem] md:h-[26rem] border-2 border-transparent hover:border-gray-200`}
+                  className={`group relative p-4 sm:p-5 md:p-6 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[26rem] sm:h-[28rem] md:h-[30rem] border-2 border-transparent hover:border-gray-200`}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
@@ -180,13 +135,13 @@ export default function ValueProp() {
                   <div className="relative z-10 h-full flex flex-col">
                     {/* Brain Image */}
                     <div className="mb-3 sm:mb-4 md:mb-5">
-                      <div className="relative w-full h-24 sm:h-28 md:h-32 rounded-xl overflow-hidden">
+                      <div className="relative w-full h-36 sm:h-40 md:h-44 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                         <img
                           src={benefit.hoverImage}
                           alt={benefit.title}
-                          className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                          className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105"
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
                       </div>
                     </div>
 
@@ -207,21 +162,20 @@ export default function ValueProp() {
             </div>
           </div>
 
-          {/* Fade edges for seamless scrolling effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 md:w-32 bg-gradient-to-r from-purple-50 via-pink-50 to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 md:w-32 bg-gradient-to-l from-cyan-50 via-blue-50 to-transparent pointer-events-none z-10" />
+          {/* Fade edges for mobile scrolling */}
+          <div className="md:hidden absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-purple-50 via-pink-50 to-transparent pointer-events-none z-10" />
+          <div className="md:hidden absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-cyan-50 via-blue-50 to-transparent pointer-events-none z-10" />
 
-          {/* Scroll indicator hint */}
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-10">
+          {/* Scroll indicator hint - mobile only */}
+          <div className="md:hidden absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-10">
             <div className="text-xs text-gray-500 font-medium">
-              Scroll or hover to explore →
+              Scroll to explore →
             </div>
             <div className="flex gap-1.5">
               {benefits.map((_, idx) => (
                 <div
                   key={idx}
-                  className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-40 animate-pulse"
-                  style={{ animationDelay: `${idx * 0.2}s` }}
+                  className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-40"
                 />
               ))}
             </div>
