@@ -28,9 +28,9 @@ export default function BooksPage() {
           />
         </div>
 
-        <div className="flex gap-4 mt-8">
+        <div className="flex flex-wrap gap-4 mt-8">
           <a
-            href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD"
+            href="https://a.co/d/559YKwr"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-lg transition-all"
@@ -38,12 +38,20 @@ export default function BooksPage() {
             Buy on Amazon
           </a>
           <a
-            href="https://www.bookbaby.com"
+            href="https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list?srsltid=AfmBOoqGi5v7J9qv2KD7hLrNoibKl46uxPP9ZqZ0HXKSx-aYiw6t957p"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand-navy hover:bg-brand-navy-light text-white font-bold py-3 px-8 rounded-lg transition-all"
           >
             Book Baby
+          </a>
+          <a
+            href="https://www.barnesandnoble.com/s/desarbo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-brand-purple hover:bg-purple-600 text-white font-bold py-3 px-8 rounded-lg transition-all"
+          >
+            Barnes & Noble
           </a>
         </div>
       </div>

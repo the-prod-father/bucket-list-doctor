@@ -21,7 +21,7 @@ export default function AboutPage() {
               src="/images/profile/profile-pic-dr-d.png"
               alt="Dr. Jeffrey DeSarbo"
               className="w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-4 border-white"
-              style={{ objectPosition: 'center 35%' }}
+              style={{ objectPosition: 'center 18%' }}
             />
             {/* Animated glow ring */}
             <div className="absolute inset-0 rounded-full border-4 border-brand-blue/30 animate-pulse"></div>
@@ -57,7 +57,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <a
-                href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD"
+                href="https://a.co/d/559YKwr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg transition-all"

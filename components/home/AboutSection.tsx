@@ -13,7 +13,7 @@ export default function AboutSection() {
                 src="/images/profile/profile-pic-dr-d.png"
                 alt="Dr. Jeffrey DeSarbo"
                 className="w-96 h-96 rounded-full object-cover shadow-2xl border-4 border-white"
-                style={{ objectPosition: 'center 35%' }}
+                style={{ objectPosition: 'center 18%' }}
               />
               {/* Animated glow ring */}
               <div className="absolute inset-0 rounded-full border-4 border-brand-blue/30 animate-pulse"></div>

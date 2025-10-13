@@ -26,7 +26,7 @@ export default function BucketListNavigation() {
       image: '/images/benefits/bucketlistdoctor-book-cover.png',
       gradient: 'from-purple-500 via-pink-500 to-red-500',
       bgGradient: 'from-purple-100 via-pink-50 to-red-100',
-      link: 'https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD',
+      link: 'https://a.co/d/559YKwr',
     },
     {
       id: 'tips',

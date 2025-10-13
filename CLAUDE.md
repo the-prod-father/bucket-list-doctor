@@ -183,6 +183,7 @@ The `CrossSiteNavigation` component handles these connections.
 ## Book Information
 
 **"The Neuroscience of a Bucket List"**
-- Amazon: https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD
-- BookBaby: https://www.bookbaby.com
+- Amazon: https://a.co/d/559YKwr
+- BookBaby: https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list?srsltid=AfmBOoqGi5v7J9qv2KD7hLrNoibKl46uxPP9ZqZ0HXKSx-aYiw6t957p
+- Barnes & Noble: https://www.barnesandnoble.com/s/desarbo
 - Audiobook in production using 11Labs voice cloning

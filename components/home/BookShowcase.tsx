@@ -44,7 +44,7 @@ export default function BookShowcase() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://www.amazon.com/dp/B0DJHB1QSN"
+                href="https://a.co/d/559YKwr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105"
@@ -53,13 +53,22 @@ export default function BookShowcase() {
                 Buy on Amazon
               </a>
               <a
-                href="https://www.bookbaby.com"
+                href="https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list?srsltid=AfmBOoqGi5v7J9qv2KD7hLrNoibKl46uxPP9ZqZ0HXKSx-aYiw6t957p"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-lg border-2 border-white/30 transition-all"
               >
                 <FaBook className="w-5 h-5" />
                 Book Baby
+              </a>
+              <a
+                href="https://www.barnesandnoble.com/s/desarbo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-lg border-2 border-white/30 transition-all"
+              >
+                <FaBook className="w-5 h-5" />
+                Barnes & Noble
               </a>
             </div>
           </div>

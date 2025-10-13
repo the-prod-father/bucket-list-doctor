@@ -75,6 +75,7 @@ export default function CrossSiteNavigation() {
                         src={site.logo}
                         alt={`${site.name} logo`}
                         className="w-full h-full object-cover"
+                        style={{ objectPosition: 'center 18%' }}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-white text-3xl font-bold">

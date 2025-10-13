@@ -7,53 +7,47 @@ export default function ValueProp() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const benefits = [
     {
-      icon: <FaBrain className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-purple-600" />,
+      icon: <FaBrain className="w-12 h-12 text-purple-600" />,
       title: 'Activates Neuroplasticity',
       description: 'Creating and pursuing goals literally rewires your brain, forming new neural pathways and strengthening cognitive function.',
       hoverImage: '/images/brain-benefits/neuroplasticity.png',
       gradient: 'from-purple-500 via-pink-500 to-red-500',
-      bgGradient: 'from-purple-100 via-pink-50 to-red-100',
-      glow: 'shadow-purple-200',
+      glowColor: 'rgba(168, 85, 247, 0.4)',
     },
     {
-      icon: <FaHeart className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-pink-600" />,
+      icon: <FaHeart className="w-12 h-12 text-pink-600" />,
       title: 'Releases Dopamine',
       description: 'Anticipating and achieving bucket list goals triggers dopamine release, creating positive reinforcement loops that motivate further growth.',
       hoverImage: '/images/brain-benefits/dopamine.png',
       gradient: 'from-pink-500 via-rose-500 to-orange-500',
-      bgGradient: 'from-pink-100 via-rose-50 to-orange-100',
-      glow: 'shadow-pink-200',
+      glowColor: 'rgba(236, 72, 153, 0.4)',
     },
     {
-      icon: <FaLightbulb className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-yellow-600" />,
+      icon: <FaLightbulb className="w-12 h-12 text-yellow-600" />,
       title: 'Enhances Problem-Solving',
       description: 'Planning adventures and experiences forces your brain to think creatively, improving executive function and decision-making skills.',
       hoverImage: '/images/brain-benefits/problem-solving.png',
       gradient: 'from-yellow-400 via-orange-500 to-red-500',
-      bgGradient: 'from-yellow-100 via-orange-50 to-red-100',
-      glow: 'shadow-yellow-200',
+      glowColor: 'rgba(251, 191, 36, 0.4)',
     },
     {
-      icon: <FaRocket className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-blue-600" />,
+      icon: <FaRocket className="w-12 h-12 text-blue-600" />,
       title: 'Builds Resilience',
       description: 'Overcoming challenges on your bucket list journey strengthens mental resilience and increases stress tolerance.',
       hoverImage: '/images/brain-benefits/resilience.png',
       gradient: 'from-blue-500 via-cyan-500 to-teal-500',
-      bgGradient: 'from-blue-100 via-cyan-50 to-teal-100',
-      glow: 'shadow-blue-200',
+      glowColor: 'rgba(59, 130, 246, 0.4)',
     },
     {
-      icon: <FaCheckCircle className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-green-600" />,
+      icon: <FaCheckCircle className="w-12 h-12 text-green-600" />,
       title: 'Creates Meaning',
       description: 'Purposeful goal-setting activates brain regions associated with meaning and life satisfaction, combating anxiety and depression.',
       hoverImage: '/images/brain-benefits/meaning.png',
       gradient: 'from-green-500 via-emerald-500 to-cyan-500',
-      bgGradient: 'from-green-100 via-emerald-50 to-cyan-100',
-      glow: 'shadow-green-200',
+      glowColor: 'rgba(34, 197, 94, 0.4)',
     },
   ];
 
@@ -75,113 +69,209 @@ export default function ValueProp() {
     return () => observer.disconnect();
   }, []);
 
-
   return (
-    <section ref={sectionRef} className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-purple-50 via-pink-50 via-blue-50 to-cyan-50 relative overflow-hidden">
-      {/* Animated background elements */}
+    <section ref={sectionRef} className="py-20 md:py-28 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+      {/* Animated background grid pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `
+          linear-gradient(to right, #000 1px, transparent 1px),
+          linear-gradient(to bottom, #000 1px, transparent 1px)
+        `,
+        backgroundSize: '40px 40px'
+      }} />
+
+      {/* Floating gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient orbs */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-20 animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-yellow-200 to-orange-200 rounded-full opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-purple-300/20 to-pink-300/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-blue-300/20 to-cyan-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header with animation */}
-        <div className={`text-center mb-12 sm:mb-16 md:mb-20 transform transition-all duration-1000 ${
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header with enhanced animation */}
+        <div className={`text-center mb-16 md:mb-20 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-4">
-            5 Ways a Bucket List Benefits Your Brain
+          <div className="inline-block mb-4">
+            <span className="text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Science-Backed Benefits
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            5 Ways a Bucket List <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+              Benefits Your Brain
+            </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
-            Backed by neuroscience research, bucket lists aren&apos;t just for adventure—they&apos;re essential for brain health and cognitive longevity.
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Backed by neuroscience research, bucket lists aren't just for adventure—they're essential for brain health and cognitive longevity.
           </p>
         </div>
 
-        {/* Responsive Card Layout */}
-        <div className="relative py-8">
-          {/* Mobile: Horizontal Scroll | Desktop: Grid */}
-          <div
-            ref={scrollContainerRef}
-            className="overflow-x-auto md:overflow-x-visible overflow-y-hidden scrollbar-hide"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
-              scrollBehavior: 'smooth',
-            }}
-          >
-            <div className="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
-            {benefits.map((benefit, index) => (
-              <div
-                key={`${benefit.title}-${index}`}
-                className="flex-shrink-0 w-[65vw] sm:w-52 md:w-auto"
-              >
+        {/* Cards Container */}
+        <div className="relative">
+          {/* Mobile: Horizontal Scroll with snap points */}
+          <div className="md:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8">
+            <div className="flex gap-6 px-4">
+              {benefits.map((benefit, index) => (
                 <div
-                  className={`group relative p-4 sm:p-5 md:p-6 rounded-2xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden h-[26rem] sm:h-[28rem] md:h-[30rem] border-2 border-transparent hover:border-gray-200`}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
+                  key={`mobile-${benefit.title}-${index}`}
+                  className={`flex-shrink-0 w-[85vw] snap-center transform transition-all duration-700 ${
+                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  {/* Gradient accent bar on left */}
-                  <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${benefit.gradient} transform transition-all duration-500 ${hoveredCard === index ? 'scale-y-100' : 'scale-y-0'}`} />
-
-                  {/* Subtle gradient background on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} transition-opacity duration-500 ${
-                    hoveredCard === index ? 'opacity-5' : 'opacity-0'
-                  }`} />
-
-                  {/* Content */}
-                  <div className="relative z-10 h-full flex flex-col">
-                    {/* Brain Image */}
-                    <div className="mb-3 sm:mb-4 md:mb-5">
-                      <div className="relative w-full h-36 sm:h-40 md:h-44 rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-                        <img
-                          src={benefit.hoverImage}
-                          alt={benefit.title}
-                          className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105"
-                        />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 transition-all duration-300 bg-gradient-to-r ${benefit.gradient} bg-clip-text text-transparent group-hover:scale-105`}>
-                      {benefit.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-sm sm:text-base text-gray-600 group-hover:text-gray-800 transition-colors duration-300 leading-relaxed flex-1">
-                      {benefit.description}
-                    </p>
-                  </div>
-
+                  <BenefitCard benefit={benefit} index={index} hoveredCard={hoveredCard} setHoveredCard={setHoveredCard} />
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
-          </div>
 
-          {/* Fade edges for mobile scrolling */}
-          <div className="md:hidden absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-purple-50 via-pink-50 to-transparent pointer-events-none z-10" />
-          <div className="md:hidden absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-cyan-50 via-blue-50 to-transparent pointer-events-none z-10" />
-
-          {/* Scroll indicator hint - mobile only */}
-          <div className="md:hidden absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-center gap-3 pointer-events-none z-10">
-            <div className="text-xs text-gray-500 font-medium">
-              Scroll to explore →
-            </div>
-            <div className="flex gap-1.5">
+            {/* Scroll indicator dots */}
+            <div className="flex justify-center gap-2 mt-6">
               {benefits.map((_, idx) => (
                 <div
-                  key={idx}
-                  className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-40"
+                  key={`dot-${idx}`}
+                  className="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300"
                 />
               ))}
             </div>
           </div>
+
+          {/* Tablet & Desktop: Responsive Grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
+            {benefits.map((benefit, index) => (
+              <div
+                key={`desktop-${benefit.title}-${index}`}
+                className={`transform transition-all duration-700 ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <BenefitCard benefit={benefit} index={index} hoveredCard={hoveredCard} setHoveredCard={setHoveredCard} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+// Extracted BenefitCard component for better organization
+function BenefitCard({
+  benefit,
+  index,
+  hoveredCard,
+  setHoveredCard
+}: {
+  benefit: any;
+  index: number;
+  hoveredCard: number | null;
+  setHoveredCard: (index: number | null) => void;
+}) {
+  const isHovered = hoveredCard === index;
+
+  return (
+    <div
+      className="group relative h-full"
+      onMouseEnter={() => setHoveredCard(index)}
+      onMouseLeave={() => setHoveredCard(null)}
+    >
+      {/* Glow effect on hover */}
+      <div
+        className={`absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 bg-gradient-to-r ${benefit.gradient}`}
+        style={{ zIndex: -1 }}
+      />
+
+      {/* Main card */}
+      <div className={`
+        relative h-full bg-white rounded-2xl overflow-hidden
+        transition-all duration-500 ease-out
+        ${isHovered ? 'shadow-2xl -translate-y-2' : 'shadow-lg hover:shadow-xl'}
+        border border-gray-100 group-hover:border-transparent
+      `}>
+        {/* Animated gradient border */}
+        <div className={`
+          absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+          bg-gradient-to-r ${benefit.gradient} p-[2px]
+        `}>
+          <div className="h-full w-full bg-white rounded-2xl" />
+        </div>
+
+        {/* Content wrapper */}
+        <div className="relative z-10 p-6 lg:p-8 h-full flex flex-col">
+          {/* Image section */}
+          <div className="mb-6 relative">
+            <div className={`
+              relative w-full aspect-square rounded-xl overflow-hidden
+              bg-gradient-to-br from-gray-50 to-gray-100
+              transition-all duration-500
+              ${isHovered ? 'scale-105' : 'scale-100'}
+            `}>
+              <img
+                src={benefit.hoverImage}
+                alt={benefit.title}
+                className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110"
+              />
+              {/* Gradient overlay */}
+              <div className={`
+                absolute inset-0 bg-gradient-to-br ${benefit.gradient}
+                transition-opacity duration-500
+                ${isHovered ? 'opacity-10' : 'opacity-0'}
+              `} />
+
+              {/* Animated particles on hover */}
+              {isHovered && (
+                <>
+                  <div className="absolute top-4 left-4 w-2 h-2 bg-white rounded-full animate-ping" />
+                  <div className="absolute top-6 right-8 w-1.5 h-1.5 bg-white rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
+                  <div className="absolute bottom-8 left-6 w-1.5 h-1.5 bg-white rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+                </>
+              )}
+            </div>
+
+          </div>
+
+          {/* Title */}
+          <h3 className={`
+            text-xl lg:text-2xl font-bold mb-3
+            transition-all duration-300
+            bg-gradient-to-r ${benefit.gradient} bg-clip-text
+            ${isHovered ? 'text-transparent' : 'text-gray-900'}
+          `}>
+            {benefit.title}
+          </h3>
+
+          {/* Description */}
+          <p className={`
+            text-sm lg:text-base leading-relaxed flex-1
+            transition-colors duration-300
+            ${isHovered ? 'text-gray-700' : 'text-gray-600'}
+          `}>
+            {benefit.description}
+          </p>
+
+          {/* Hover indicator */}
+          <div className={`
+            mt-6 flex items-center gap-2 text-sm font-semibold
+            transition-all duration-300
+            ${isHovered ? 'opacity-100 translate-x-2' : 'opacity-0 translate-x-0'}
+          `}>
+            <span className={`bg-gradient-to-r ${benefit.gradient} bg-clip-text text-transparent`}>
+              Learn More
+            </span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Bottom accent bar */}
+        <div className={`
+          absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${benefit.gradient}
+          transition-all duration-500 origin-left
+          ${isHovered ? 'scale-x-100' : 'scale-x-0'}
+        `} />
+      </div>
+    </div>
   );
 }
