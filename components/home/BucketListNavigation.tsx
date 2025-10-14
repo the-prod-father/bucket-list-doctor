@@ -93,18 +93,21 @@ export default function BucketListNavigation() {
         {/* Bucket List Navigation Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {bucketListSections.map((section, index) => (
-            <div
+            <a
               key={section.id}
-              className={`group relative transform transition-all duration-700 ${
+              href={section.link}
+              target={section.link.startsWith('http') ? '_blank' : '_self'}
+              rel={section.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className={`group relative transform transition-all duration-700 block ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br ${section.bgGradient} shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-48 sm:h-56 md:h-64`}>
+              <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br ${section.bgGradient} shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-48 sm:h-56 md:h-64 cursor-pointer`}>
                 {/* Background Image */}
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 pointer-events-none">
                   <img
                     src={section.image}
                     alt={section.title}
@@ -114,7 +117,7 @@ export default function BucketListNavigation() {
                 </div>
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-between">
+                <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-between pointer-events-none z-10">
                   <div className="flex-1">
                     <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-2 group-hover:text-white/90 transition-colors duration-300 leading-tight">
                       {section.title}
@@ -123,21 +126,16 @@ export default function BucketListNavigation() {
                       {section.description}
                     </p>
                   </div>
-                  
+
                   <div className="mt-4">
-                    <a
-                      href={section.link}
-                      target={section.link.startsWith('http') ? '_blank' : '_self'}
-                      rel={section.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="inline-block bg-black hover:bg-gray-800 text-white font-bold py-2 px-3 sm:py-3 sm:px-4 rounded-lg transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm"
-                    >
+                    <span className="inline-block bg-black group-hover:bg-gray-800 text-white font-bold py-2 px-3 sm:py-3 sm:px-4 rounded-lg transition-all duration-300 transform group-hover:scale-105 text-xs sm:text-sm">
                       {section.buttonText}
-                    </a>
+                    </span>
                   </div>
                 </div>
 
                 {/* Hover Effect Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none`} />
 
                 {/* Floating particles effect */}
                 <div className="absolute inset-0 pointer-events-none">
@@ -147,7 +145,7 @@ export default function BucketListNavigation() {
                   <div className="absolute bottom-2 right-2 w-1 h-1 bg-white/35 rounded-full animate-bounce" style={{ animationDelay: '1.5s' }} />
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
