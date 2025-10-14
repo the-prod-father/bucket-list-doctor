@@ -30,7 +30,7 @@ export default function BlogPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">The Decisional Entropy Illusion Theory</h3>
               <p className="text-gray-600 mb-3">Exploring the neuroscience of regret and the absolute futility of dwelling on past decisions.</p>
               <a
-                href="https://medium.com/@jeffrey.desarbo"
+                href="https://medium.com/@drdesarbo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-purple hover:text-brand-blue font-semibold inline-flex items-center"
@@ -42,7 +42,7 @@ export default function BlogPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">Why Mondays Suck</h3>
               <p className="text-gray-600 mb-3">A neuropsychiatrist&apos;s take on the Monday blues and what your brain is really telling you.</p>
               <a
-                href="https://medium.com/@jeffrey.desarbo"
+                href="https://medium.com/@drdesarbo"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-purple hover:text-brand-blue font-semibold inline-flex items-center"
@@ -53,7 +53,7 @@ export default function BlogPage() {
           </div>
           <div className="mt-6">
             <a
-              href="https://medium.com/@jeffrey.desarbo"
+              href="https://medium.com/@drdesarbo"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-lg transition-all"

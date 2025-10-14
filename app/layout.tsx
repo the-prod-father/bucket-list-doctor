@@ -25,6 +25,20 @@ export const metadata: Metadata = {
     description: 'Discover how bucket lists transform your brain and life',
     type: 'website',
     url: 'https://bucketlistdoctor.com',
+    images: [
+      {
+        url: '/images/benefits/bucketlistdoctor-book-cover.png',
+        width: 1200,
+        height: 1600,
+        alt: 'The Neuroscience of a Bucket List book cover by Dr. Jeffrey DeSarbo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bucket List Doctor | The Neuroscience of a Bucket List',
+    description: 'Discover how bucket lists transform your brain and life',
+    images: ['/images/benefits/bucketlistdoctor-book-cover.png'],
   },
 };
 
