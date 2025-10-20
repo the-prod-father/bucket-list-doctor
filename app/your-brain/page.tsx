@@ -107,35 +107,6 @@ export default function YourBrainPage() {
           ))}
         </div>
 
-        {/* Scientific Foundation */}
-        <div className="mt-16 bg-gradient-to-r from-brand-navy to-brand-purple text-white rounded-2xl p-8 md:p-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            The Science is Clear
-          </h2>
-          <p className="text-lg md:text-xl leading-relaxed mb-8">
-            Research in neuroscience demonstrates that intentional goal-setting and novel experiences fundamentally reshape brain structure and function. By pursuing bucket list experiences, you&apos;re engaging in a form of active neuroplasticity that enhances cognitive reserve, emotional regulation, and overall life satisfaction.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white/10 backdrop-blur rounded-lg p-6">
-              <div className="text-4xl font-bold text-brand-yellow mb-2">↑ 40%</div>
-              <p className="text-sm">Increase in neural pathway formation with novel experiences</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur rounded-lg p-6">
-              <div className="text-4xl font-bold text-brand-teal mb-2">2-3x</div>
-              <p className="text-sm">Greater dopamine release when anticipating goals vs. achieving them</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur rounded-lg p-6">
-              <div className="text-4xl font-bold text-brand-pink mb-2">50%</div>
-              <p className="text-sm">Reduction in stress hormones with purpose-driven activities</p>
-            </div>
-          </div>
-          <a
-            href="/books"
-            className="inline-block bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-4 px-10 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
-          >
-            Learn More in the Book
-          </a>
-        </div>
       </div>
     </div>
   );
