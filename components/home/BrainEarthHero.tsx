@@ -44,6 +44,7 @@ export default function BrainEarthHero() {
         document.head.removeChild(script);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const createWorldMapTexture = (): HTMLCanvasElement => {

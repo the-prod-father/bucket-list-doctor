@@ -50,7 +50,7 @@ test.describe('Homepage', () => {
 
   test('should display cross-site navigation', async ({ page }) => {
     // Check for links to other sites
-    const crossSiteLinks = page.locator('a[href*="doctordesarbo.com"], a[href*="ed180.com"]');
+    const crossSiteLinks = page.locator('a[href*="doctordesarbo.com"], a[href*="ed-180.com"]');
     await expect(crossSiteLinks.first()).toBeVisible();
   });
 

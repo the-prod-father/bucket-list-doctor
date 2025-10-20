@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { FaBrain, FaHeart, FaLightbulb, FaRocket, FaCheckCircle } from 'react-icons/fa';
 
 export default function ValueProp() {
@@ -207,10 +208,11 @@ function BenefitCard({
               transition-all duration-500
               ${isHovered ? 'scale-105' : 'scale-100'}
             `}>
-              <img
+              <Image
                 src={benefit.hoverImage}
                 alt={benefit.title}
-                className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110"
+                fill
+                className="object-contain p-4 transition-transform duration-700 group-hover:scale-110"
               />
               {/* Gradient overlay */}
               <div className={`

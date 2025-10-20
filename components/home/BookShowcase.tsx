@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FaAmazon, FaBook } from 'react-icons/fa';
 
 export default function BookShowcase() {
@@ -7,9 +8,11 @@ export default function BookShowcase() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Book Cover Image */}
           <div className="flex justify-center">
-            <img
+            <Image
               src="/images/benefits/bucketlistdoctor-book-cover.png"
               alt="The Neuroscience of a Bucket List Book Cover"
+              width={320}
+              height={480}
               className="w-80 h-auto rounded-lg shadow-2xl"
             />
           </div>
@@ -26,19 +29,19 @@ export default function BookShowcase() {
             <ul className="space-y-4 mb-8">
               <li className="flex items-start">
                 <span className="text-brand-yellow mr-3 text-xl">✓</span>
-                <span>Learn the neuroscience behind goal-setting and motivation</span>
+                <span>Learn the neuroscience behind goal-setting and motivation.</span>
               </li>
               <li className="flex items-start">
                 <span className="text-brand-yellow mr-3 text-xl">✓</span>
-                <span>Understand how bucket lists activate neuroplasticity</span>
+                <span>Understand how bucket lists activate neuroplasticity.</span>
               </li>
               <li className="flex items-start">
                 <span className="text-brand-yellow mr-3 text-xl">✓</span>
-                <span>Get practical strategies to maximize brain benefits</span>
+                <span>Get practical strategies to maximize brain benefits.</span>
               </li>
               <li className="flex items-start">
                 <span className="text-brand-yellow mr-3 text-xl">✓</span>
-                <span>Explore the connection between adventure and cognitive health</span>
+                <span>Explore the connection between adventure and cognitive health.</span>
               </li>
             </ul>
 
@@ -59,7 +62,7 @@ export default function BookShowcase() {
                 className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-lg border-2 border-white/30 transition-all"
               >
                 <FaBook className="w-5 h-5" />
-                Book Baby
+                BookBaby
               </a>
               <a
                 href="https://www.barnesandnoble.com/s/desarbo"

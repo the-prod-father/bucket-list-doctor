@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FaUserMd, FaGraduationCap, FaMountain } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaUserMd, FaMountain, FaStethoscope, FaMicrophone } from 'react-icons/fa';
 
 export default function AboutSection() {
   return (
@@ -9,9 +10,11 @@ export default function AboutSection() {
           {/* Dr. DeSarbo Profile Image */}
           <div className="flex justify-center order-2 lg:order-1">
             <div className="relative">
-              <img
+              <Image
                 src="/images/profile/profile-pic-dr-d.png"
                 alt="Dr. Jeffrey DeSarbo"
+                width={384}
+                height={384}
                 className="w-96 h-96 rounded-full object-cover shadow-2xl border-4 border-white"
                 style={{ objectPosition: 'center 18%' }}
               />
@@ -35,10 +38,10 @@ export default function AboutSection() {
               Having traveled to all seven continents and completed hundreds of bucket list experiences, Dr. D combines personal adventure with scientific research to demonstrate how bucket lists literally rewire our brains for success, happiness, and resilience.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               <div className="text-center">
                 <div className="flex justify-center mb-2">
-                  <FaGraduationCap className="w-10 h-10 text-brand-blue" />
+                  <FaStethoscope className="w-10 h-10 text-brand-blue" />
                 </div>
                 <h4 className="font-bold text-gray-900">Medical Doctor</h4>
                 <p className="text-sm text-gray-600">Board Certified</p>
@@ -56,6 +59,13 @@ export default function AboutSection() {
                 </div>
                 <h4 className="font-bold text-gray-900">Author</h4>
                 <p className="text-sm text-gray-600">Published Researcher</p>
+              </div>
+              <div className="text-center">
+                <div className="flex justify-center mb-2">
+                  <FaMicrophone className="w-10 h-10 text-brand-pink" />
+                </div>
+                <h4 className="font-bold text-gray-900">Speaker</h4>
+                <p className="text-sm text-gray-600">Media Appearances</p>
               </div>
             </div>
 

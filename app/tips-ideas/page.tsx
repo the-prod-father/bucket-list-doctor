@@ -29,10 +29,11 @@ export default function TipsIdeasPage() {
           {/* Getting Started */}
           <div className="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="relative h-64 overflow-hidden bg-gradient-to-br from-brand-blue to-brand-purple">
-              <img
+              <Image
                 src="/images/cards/brain-network.png"
                 alt="Brain Network"
-                className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-300"
+                fill
+                className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <h3 className="absolute bottom-6 left-6 text-3xl font-bold text-white">
@@ -64,10 +65,11 @@ export default function TipsIdeasPage() {
           {/* Adventure Ideas */}
           <div className="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="relative h-64 overflow-hidden">
-              <img
+              <Image
                 src="/images/benefits/bucketlist-sailing.jpeg"
                 alt="Bucket List Sailing Adventure"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <h3 className="absolute bottom-6 left-6 text-3xl font-bold text-white">
@@ -99,10 +101,11 @@ export default function TipsIdeasPage() {
           {/* Brain Benefits */}
           <div className="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="relative h-64 overflow-hidden bg-gradient-to-br from-brand-purple to-brand-pink">
-              <img
+              <Image
                 src="/images/brain-benefits/neuroplasticity.png"
                 alt="Neuroplasticity"
-                className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-300"
+                fill
+                className="object-cover opacity-90 group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <h3 className="absolute bottom-6 left-6 text-3xl font-bold text-white">
@@ -134,10 +137,11 @@ export default function TipsIdeasPage() {
           {/* Making It Happen */}
           <div className="group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
             <div className="relative h-64 overflow-hidden">
-              <img
+              <Image
                 src="/images/benefits/bucketlist-antartica.jpeg"
                 alt="Antarctica Adventure"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               <h3 className="absolute bottom-6 left-6 text-3xl font-bold text-white">

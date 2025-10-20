@@ -48,7 +48,7 @@ app/
 ├── layout.tsx              # Root layout with Navigation + Footer
 ├── page.tsx                # Homepage composition of all sections
 ├── about/page.tsx          # About Dr. DeSarbo page
-├── blog/page.tsx           # Blog/Medium integration
+├── blog/page.tsx           # Videos & Media page with YouTube integration
 ├── books/page.tsx          # Book showcase page
 ├── tips-ideas/page.tsx     # Tips and ideas content
 └── your-brain/page.tsx     # Neuroscience content
@@ -144,7 +144,7 @@ See `SUPABASE_SETUP.md` for detailed setup instructions.
 
 ### Content Strategy
 - This is part of a 4-site portfolio for Dr. DeSarbo
-- Cross-site navigation connects to: doctordesarbo.com, ed180.com, and a science publishing site
+- Cross-site navigation connects to: doctordesarbo.com, ed-180.com, and a science publishing site
 - Content focuses on neuroscience, adventure, and bucket list psychology
 - Maintain professional yet accessible tone
 
@@ -161,7 +161,7 @@ See `SUPABASE_SETUP.md` for detailed setup instructions.
 Dr. DeSarbo maintains 4 websites with thumbnail navigation between them:
 - **bucketlistdoctor.com** (this site) - Use existing logo
 - **doctordesarbo.com** - Use profile image (cropped in half)
-- **ed180.com** - Use logo with yellow glow
+- **ed-180.com** - Use logo with yellow glow
 - Science publishing site - Book listings
 
 The `CrossSiteNavigation` component handles these connections.
@@ -178,7 +178,7 @@ The `CrossSiteNavigation` component handles these connections.
 - Facebook: https://facebook.com/bucketlistdoctor
 - Instagram: https://instagram.com/bucketlistdoctor
 - LinkedIn: https://linkedin.com/in/drdesarbo
-- Medium: Dr. Jeffrey DeSarbo (2 articles published)
+- YouTube: @bucketlistdoctor (videos on neuroscience and bucket lists)
 
 ## Book Information
 

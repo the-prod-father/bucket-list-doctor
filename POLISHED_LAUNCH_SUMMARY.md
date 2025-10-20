@@ -70,7 +70,7 @@
 ✅ 5 brain benefits section with rolling carousel  
 ✅ Book showcase with Amazon and Book Baby links  
 ✅ About section with Dr. D's profile  
-✅ Medium blog integration
+✅ YouTube videos integration
 
 ### Technical Excellence
 ✅ SEO optimized with meta tags and Open Graph  
@@ -138,7 +138,7 @@ npm start
 - ✅ All book links go to Amazon
 - ✅ All social media links are correct
 - ✅ Cross-site navigation shows Ed180, DoctorDesarbo, and Science Publishing
-- ✅ Medium blog articles featured
+- ✅ YouTube videos articles featured
 
 ### What Needs Your Input
 1. **SuperBase Setup** - Follow SUPABASE_SETUP.md when ready (15-20 minutes)

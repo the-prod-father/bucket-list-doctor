@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function BucketListNavigation() {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,9 +11,9 @@ export default function BucketListNavigation() {
   const bucketListSections = [
     {
       id: 'blog',
-      title: 'Dr. Desarbo Bucket List Blog',
-      description: 'Insights, tips, and personal stories',
-      buttonText: 'Explore Articles',
+      title: 'Videos & Media',
+      description: 'Watch Dr. D discuss neuroscience and bucket lists',
+      buttonText: 'Watch Videos',
       image: '/images/cards/dr-d-writing.png',
       gradient: 'from-amber-500 via-orange-500 to-red-500',
       bgGradient: 'from-amber-100 via-orange-50 to-red-100',
@@ -108,10 +109,11 @@ export default function BucketListNavigation() {
               <div className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br ${section.bgGradient} shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-48 sm:h-56 md:h-64 cursor-pointer`}>
                 {/* Background Image */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <img
+                  <Image
                     src={section.image}
                     alt={section.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-500"
+                    fill
+                    className="object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-500"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-40 group-hover:opacity-60 transition-opacity duration-500`} />
                 </div>

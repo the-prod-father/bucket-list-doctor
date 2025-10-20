@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About Dr. Jeffrey DeSarbo | Bucket List Doctor',
@@ -17,9 +18,11 @@ export default function AboutPage() {
         {/* Profile Image */}
         <div className="lg:col-span-1 flex justify-center lg:justify-start">
           <div className="relative">
-            <img
+            <Image
               src="/images/profile/profile-pic-dr-d.png"
               alt="Dr. Jeffrey DeSarbo"
+              width={384}
+              height={384}
               className="w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-4 border-white"
               style={{ objectPosition: 'center 18%' }}
             />
@@ -31,7 +34,7 @@ export default function AboutPage() {
 
         {/* About Content */}
         <div className="lg:col-span-2">
-          <h1 className="text-5xl font-bold text-gray-900 mb-8">About Dr. Jeffrey DeSarbo</h1>
+          <h1 className="text-5xl font-bold text-gray-900 mb-8">About Jeffrey DeSarbo, D.O.</h1>
           <div className="prose prose-lg">
             <p className="text-xl text-gray-700 leading-relaxed mb-6">
               Dr. Jeffrey DeSarbo is a physician, neuroscience enthusiast, and adventurer dedicated to exploring the intersection of brain health and purposeful living.
@@ -47,9 +50,11 @@ export default function AboutPage() {
             <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border-l-4 border-brand-purple">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Author of &ldquo;The Neuroscience of a Bucket List&rdquo;</h3>
               <div className="flex items-center gap-4 mb-4">
-                <img
+                <Image
                   src="/images/benefits/bucketlistdoctor-book-cover.png"
                   alt="The Neuroscience of a Bucket List Book Cover"
+                  width={128}
+                  height={192}
                   className="w-32 h-auto rounded shadow-lg"
                 />
                 <p className="text-gray-700">

@@ -18,7 +18,7 @@ Dr. D is a physician and neuroscience enthusiast who has traveled to all 7 conti
 ## Website Portfolio (4 Sites Total)
 1. **bucketlistdoctor.com** - Main focus, 90% complete
 2. **doctordesarbo.com** - Professional site with rotating brain animations
-3. **ed180.com** - Simple cleanup only, minimal changes
+3. **ed-180.com** - Simple cleanup only, minimal changes
 4. **Science publishing site** - Minimal changes, book listings only
 
 ## Cross-Linking Strategy
@@ -38,7 +38,7 @@ Dr. D is a physician and neuroscience enthusiast who has traveled to all 7 conti
 - Facebook: https://facebook.com/bucketlistdoctor
 - Instagram: https://instagram.com/bucketlistdoctor
 - LinkedIn: https://linkedin.com/in/drdesarbo
-- Medium: Dr. Jeffrey DeSarbo profile (2 articles published)
+- YouTube: @bucketlistdoctor (neuroscience and bucket list videos)
 
 ## Content Priorities
 ### Keep (Existing Content)
@@ -53,7 +53,7 @@ Dr. D is a physician and neuroscience enthusiast who has traveled to all 7 conti
 
 ### Add
 - Cross-site thumbnail navigation
-- Medium.com link on Doctor Desarbo site
+- YouTube channel link for video content
 - Email collection system (SuperBase)
 - Video backgrounds for Doctor Desarbo site (spinning brain)
 

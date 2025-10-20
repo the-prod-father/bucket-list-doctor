@@ -13,7 +13,7 @@ export default function Navigation() {
     { href: '/books', label: 'Books' },
     { href: '/tips-ideas', label: 'Tips & Ideas' },
     { href: '/your-brain', label: 'Your Brain' },
-    { href: '/blog', label: 'Articles & Media' },
+    { href: '/blog', label: 'Videos & Media' },
   ];
 
   return (

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Your Brain on a Bucket List | Neuroscience Benefits',
@@ -79,10 +80,11 @@ export default function YourBrainPage() {
               {/* Image Section */}
               <div className={`md:w-1/2 relative overflow-hidden bg-gradient-to-br ${benefit.color}`}>
                 <div className="aspect-square md:aspect-auto md:h-full relative">
-                  <img
+                  <Image
                     src={benefit.image}
                     alt={benefit.title}
-                    className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    className="object-cover opacity-90 group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
                   {/* Number Badge */}

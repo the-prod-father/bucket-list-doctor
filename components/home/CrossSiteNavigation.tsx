@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function CrossSiteNavigation() {
   const [hoveredSite, setHoveredSite] = useState<number | null>(null);
@@ -8,9 +9,9 @@ export default function CrossSiteNavigation() {
   const otherSites = [
     {
       id: 'ed180',
-      name: 'Ed180',
+      name: 'ED180',
       description: 'Educational Resources & Programs',
-      url: 'https://www.ed180.com',
+      url: 'https://ed-180.com/',
       // Using gradient as placeholder until actual logo is provided
       logo: '',
       gradient: 'from-yellow-400 via-orange-400 to-red-400',
@@ -24,16 +25,6 @@ export default function CrossSiteNavigation() {
       logo: '/images/profile/profile-pic-dr-d.png',
       gradient: 'from-blue-500 via-purple-500 to-pink-500',
       bgColor: 'bg-blue-50',
-    },
-    {
-      id: 'sciencepublishing',
-      name: 'Science Publishing',
-      description: 'Published Research & Books',
-      url: '#', // TODO: Replace with actual URL
-      // Using gradient as placeholder until actual logo is provided
-      logo: '',
-      gradient: 'from-green-500 via-teal-500 to-cyan-500',
-      bgColor: 'bg-green-50',
     },
   ];
 
@@ -51,7 +42,7 @@ export default function CrossSiteNavigation() {
         </div>
 
         {/* Site Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {otherSites.map((site, index) => (
             <a
               key={site.id}
@@ -71,9 +62,11 @@ export default function CrossSiteNavigation() {
                   {/* Logo/Image */}
                   <div className={`w-32 h-32 mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-opacity-50 transition-all duration-300 transform group-hover:scale-110 ${!site.logo ? `bg-gradient-to-br ${site.gradient}` : ''}`}>
                     {site.logo ? (
-                      <img
+                      <Image
                         src={site.logo}
                         alt={`${site.name} logo`}
+                        width={128}
+                        height={128}
                         className="w-full h-full object-cover"
                         style={{ objectPosition: 'center 18%' }}
                       />
