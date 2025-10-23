@@ -2,6 +2,8 @@ const { chromium } = require('playwright');
 
 (async () => {
   const browser = await chromium.launch();
+  
+  try {
   const page = await browser.newPage();
 
   // Navigate to homepage
@@ -26,6 +28,11 @@ const { chromium } = require('playwright');
   // Get all h2 headings
   const h2s = await page.locator('h2').allTextContents();
   console.log('H2 headings:', h2s);
-
+  } catch (error) {
+    console.error('Error occurred during screenshot process:', error);
+    throw error;
+  } finally {
+    // Always close the browser, even if an error occurred
   await browser.close();
+  }
 })();
