@@ -118,7 +118,7 @@ export default function AboutPage() {
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed">
-                Having traveled to all seven continents and completed hundreds of bucket list experiences himself, Dr. DeSarbo blends personal adventure with scientific research to demonstrate how bucket listing can literally rewire the brain for success, happiness, and fulfillment. His work bridges science and everyday living—showing that purposeful experiences aren't just meaningful, but also neurologically transformative.
+                Having traveled to all seven continents and completed hundreds of bucket list experiences himself, Dr. DeSarbo blends personal adventure with scientific research to demonstrate how bucket listing can literally rewire the brain for success, happiness, and fulfillment. His work bridges science and everyday living—showing that purposeful experiences aren&apos;t just meaningful, but also neurologically transformative.
               </p>
             </div>
           </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
                 <ul className="space-y-2 text-gray-700">
                   <li>• The neuroscience of bucket lists and purposeful living</li>
                   <li>• Brain health, longevity, and motivation</li>
-                  <li>• Goal-setting and adventure's impact on the brain</li>
+                  <li>• Goal-setting and adventure&apos;s impact on the brain</li>
                   <li>• Performance enhancement and mental wellness</li>
                   <li>• Eating disorder treatment innovations</li>
                 </ul>
