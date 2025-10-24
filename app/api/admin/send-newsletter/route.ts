@@ -7,7 +7,13 @@ import { Resend } from 'resend';
 // Allow self-signed certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy initialize Resend only when needed
+function getResendClient() {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY is not configured');
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,6 +49,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    // Get Resend client
+    const resend = getResendClient();
 
     // Send emails (in batches to avoid rate limits)
     const batchSize = 50;
