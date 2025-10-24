@@ -39,7 +39,7 @@ export default function BlogPage() {
   const [content, setContent] = useState('');
   const [featuredImage, setFeaturedImage] = useState('');
   const [metaDescription, setMetaDescription] = useState('');
-  const [status, setStatus] = useState<'draft' | 'published'>('draft');
+  const [status, setStatus] = useState<'draft' | 'published' | 'archived'>('draft');
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
@@ -356,11 +356,12 @@ export default function BlogPage() {
                 </label>
                 <select
                   value={status}
-                  onChange={(e) => setStatus(e.target.value as 'draft' | 'published')}
+                  onChange={(e) => setStatus(e.target.value as 'draft' | 'published' | 'archived')}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent"
                 >
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
+                  <option value="archived">Archived</option>
                 </select>
               </div>
 
