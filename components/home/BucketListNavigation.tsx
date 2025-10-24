@@ -21,7 +21,7 @@ export default function BucketListNavigation() {
     },
     {
       id: 'books',
-      title: 'Get the Book',
+      title: 'Get the Books',
       description: 'Discover the neuroscience behind bucket lists.',
       buttonText: 'Buy Now',
       image: '/images/benefits/bucketlistdoctor-book-cover.png',

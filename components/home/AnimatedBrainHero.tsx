@@ -231,7 +231,7 @@ export default function AnimatedBrainHero() {
         
         <div className={`transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-8 max-w-3xl drop-shadow-lg font-light">
-            Getting the Most from Your Brain and Life
+            Getting the Most from Your Brain and Life.
           </p>
         </div>
         
@@ -242,7 +242,7 @@ export default function AnimatedBrainHero() {
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-gray-900 font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-2xl text-lg md:text-xl"
           >
-            Get the Book
+            Get the Books
           </a>
         </div>
       </div>

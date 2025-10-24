@@ -181,7 +181,7 @@ export default function TipsIdeasPage() {
             href="/books"
             className="inline-block bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-4 px-10 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
           >
-            Get the Book
+            Get the Books
           </a>
         </div>
       </div>
