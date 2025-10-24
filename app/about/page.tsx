@@ -61,19 +61,6 @@ export default function AboutPage() {
                   {/* Animated corner accents */}
                   <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-brand-blue/50 rounded-tl-2xl animate-pulse" />
                   <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-brand-purple/50 rounded-br-2xl animate-pulse" style={{ animationDelay: '0.5s' }} />
-
-                  {/* Seven Continents Badge */}
-                  <div className="absolute -bottom-6 -right-6 w-32 h-32 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                    <div className="relative w-full h-full">
-                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full blur-xl opacity-50" />
-                      <Image
-                        src="/images/profile/seven-continents-patch.jpg"
-                        alt="Seven Continents Traveler"
-                        fill
-                        className="object-cover rounded-full border-4 border-white shadow-xl relative z-10"
-                      />
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -133,6 +120,88 @@ export default function AboutPage() {
               <p className="text-lg text-gray-700 leading-relaxed">
                 Having traveled to all seven continents and completed hundreds of bucket list experiences himself, Dr. DeSarbo blends personal adventure with scientific research to demonstrate how bucket listing can literally rewire the brain for success, happiness, and fulfillment. His work bridges science and everyday living—showing that purposeful experiences aren't just meaningful, but also neurologically transformative.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Adventures & Achievements Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `
+            linear-gradient(to right, #000 1px, transparent 1px),
+            linear-gradient(to bottom, #000 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }} />
+
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Adventures & <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Achievements</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              From exploring all seven continents to pushing the boundaries of neuroscience research
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Seven Continents Feature */}
+            <div className="group bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500 border border-gray-100">
+              <div className="flex items-center justify-center mb-6">
+                <div className="relative w-48 h-48 group-hover:scale-110 transition-transform duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
+                  <Image
+                    src="/images/profile/seven-continents-patch.jpg"
+                    alt="Seven Continents Traveler Badge"
+                    fill
+                    className="object-cover rounded-full border-4 border-white shadow-xl relative z-10"
+                  />
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3 text-center">Seven Continent Traveler</h3>
+              <p className="text-gray-700 text-center leading-relaxed">
+                Dr. DeSarbo has traveled to all seven continents, completing hundreds of bucket list experiences that inform his research and therapeutic approach. His adventures range from Antarctica to the Arctic, demonstrating firsthand how bucket list experiences transform the brain.
+              </p>
+            </div>
+
+            {/* Additional Achievements */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FaBook className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">Published Author</h4>
+                    <p className="text-gray-600 text-sm">Three groundbreaking books on bucket list neuroscience, including the main title and specialized supplements for eating disorders</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FaMicrophoneAlt className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">International Speaker</h4>
+                    <p className="text-gray-600 text-sm">Featured on major media outlets including KTRS 550 ABC News Radio, News 12, WICC Radio, and Connecticut Today</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FaBrain className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 mb-2">Neuropsychiatry Expert</h4>
+                    <p className="text-gray-600 text-sm">Over 20 years of clinical experience treating elite clients including politicians, CEOs, Olympic athletes, and healthcare providers</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
