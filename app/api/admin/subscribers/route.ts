@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { getAllSubscribers, getSubscriberCount } from '@/lib/db/newsletter';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 // Allow self-signed certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
