@@ -25,7 +25,7 @@ async function fixPolicies() {
 
     console.log('🔧 Fixing RLS policies for newsletter_subscribers...\n');
 
-    // Drop existing policies
+    // Drop ALL existing policies
     await client.query(`
       DROP POLICY IF EXISTS "Anyone can subscribe to newsletter" ON newsletter_subscribers;
       DROP POLICY IF EXISTS "Anyone can update their subscription" ON newsletter_subscribers;
@@ -33,6 +33,9 @@ async function fixPolicies() {
       DROP POLICY IF EXISTS "Public can subscribe to newsletter" ON newsletter_subscribers;
       DROP POLICY IF EXISTS "Public can update subscription" ON newsletter_subscribers;
       DROP POLICY IF EXISTS "Admins can read subscribers" ON newsletter_subscribers;
+      DROP POLICY IF EXISTS "Public newsletter signup" ON newsletter_subscribers;
+      DROP POLICY IF EXISTS "Public newsletter unsubscribe" ON newsletter_subscribers;
+      DROP POLICY IF EXISTS "Admin read subscribers" ON newsletter_subscribers;
     `);
 
     console.log('✅ Dropped old policies\n');
