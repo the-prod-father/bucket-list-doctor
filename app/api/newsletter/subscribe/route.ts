@@ -1,12 +1,57 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { addNewsletterSubscriber } from '@/lib/supabase';
+import { Client } from 'pg';
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
 
 // Allow self-signed certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+// Direct PostgreSQL client for newsletter (bypasses Supabase RLS)
+async function addNewsletterSubscriberDirect(email: string) {
+  const client = new Client({
+    connectionString: process.env.POSTGRES_URL_NON_POOLING,
+    ssl: { rejectUnauthorized: false },
+  });
+
+  try {
+    await client.connect();
+
+    // Check if email exists
+    const checkResult = await client.query(
+      'SELECT email, subscribed FROM newsletter_subscribers WHERE email = $1',
+      [email]
+    );
+
+    if (checkResult.rows.length > 0) {
+      const existing = checkResult.rows[0];
+      if (existing.subscribed) {
+        return { success: false, message: 'You are already subscribed!' };
+      } else {
+        // Resubscribe
+        await client.query(
+          'UPDATE newsletter_subscribers SET subscribed = true WHERE email = $1',
+          [email]
+        );
+        return { success: true, message: 'Welcome back! You have been resubscribed.' };
+      }
+    }
+
+    // Insert new subscriber
+    await client.query(
+      'INSERT INTO newsletter_subscribers (email, subscribed) VALUES ($1, true)',
+      [email]
+    );
+
+    return { success: true, message: 'Thank you for subscribing!' };
+  } catch (error: any) {
+    console.error('Error adding newsletter subscriber:', error);
+    return { success: false, message: 'Failed to subscribe. Please try again.' };
+  } finally {
+    await client.end();
+  }
+}
 
 // Lazy initialize Resend only when needed
 function getResendClient() {
@@ -27,8 +72,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Add subscriber to database
-    const result = await addNewsletterSubscriber(email);
+    // Add subscriber to database using direct PostgreSQL
+    const result = await addNewsletterSubscriberDirect(email);
 
     if (!result.success) {
       return NextResponse.json(
