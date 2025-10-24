@@ -70,6 +70,33 @@ export default function AboutPage() {
                 Buy on Amazon
               </a>
             </div>
+
+            {/* Schedule Appointment Section */}
+            <div className="mt-12 bg-gradient-to-r from-brand-blue/10 to-brand-purple/10 p-8 rounded-lg border-2 border-brand-blue/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Schedule an Appointment
+              </h3>
+              <p className="text-lg text-gray-700 mb-6">
+                Interested in working with Dr. DeSarbo? He is available for consultations, speaking engagements, and professional collaborations.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="mailto:contact@bucketlistdoctor.com"
+                  className="inline-block bg-brand-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all text-center"
+                >
+                  Email Dr. DeSarbo
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-block bg-white hover:bg-gray-50 text-brand-blue border-2 border-brand-blue font-bold py-3 px-6 rounded-lg transition-all text-center"
+                >
+                  Contact Form
+                </a>
+              </div>
+              <p className="text-sm text-gray-600 mt-4">
+                Available for: Medical consultations • Speaking engagements • Radio interviews • Podcast appearances • Educational seminars
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import BucketListNavigation from '@/components/home/BucketListNavigation';
 import ValueProp from '@/components/home/ValueProp';
 import BookShowcase from '@/components/home/BookShowcase';
 import AboutSection from '@/components/home/AboutSection';
+import MediaAppearances from '@/components/home/MediaAppearances';
 import CrossSiteNavigation from '@/components/home/CrossSiteNavigation';
 import { Metadata } from 'next';
 
@@ -43,6 +44,7 @@ export default function Home() {
       <ValueProp />
       <BookShowcase />
       <AboutSection />
+      <MediaAppearances />
       <CrossSiteNavigation />
     </>
   );

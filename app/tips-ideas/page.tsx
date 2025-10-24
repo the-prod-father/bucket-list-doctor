@@ -20,7 +20,7 @@ export default function TipsIdeasPage() {
             Tips & Ideas
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            Practical strategies and inspiration for creating and pursuing your bucket list adventures
+            Practical strategies and inspiration for creating and pursuing your bucket list adventures.
           </p>
         </div>
 

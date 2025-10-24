@@ -6,15 +6,30 @@ export default function BookShowcase() {
     <section className="py-20 bg-gradient-to-br from-brand-navy to-brand-navy-dark text-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Book Cover Image */}
-          <div className="flex justify-center">
-            <Image
-              src="/images/benefits/bucketlistdoctor-book-cover.png"
-              alt="The Neuroscience of a Bucket List Book Cover"
-              width={320}
-              height={480}
-              className="w-80 h-auto rounded-lg shadow-2xl"
-            />
+          {/* Book Cover Image with 3D Flip Animation */}
+          <div className="flex justify-center" style={{ perspective: '1200px' }}>
+            <div className="group relative w-80 h-[480px]" style={{ transformStyle: 'preserve-3d' }}>
+              <div className="relative w-full h-full transition-all duration-700 transform-style-3d group-hover:rotate-y-180" style={{ transformStyle: 'preserve-3d' }}>
+                {/* Front - Book Cover */}
+                <div className="absolute inset-0 backface-hidden" style={{ backfaceVisibility: 'hidden' }}>
+                  <Image
+                    src="/images/benefits/bucketlistdoctor-book-cover.png"
+                    alt="The Neuroscience of a Bucket List Book Cover"
+                    fill
+                    className="object-contain rounded-lg shadow-2xl"
+                  />
+                </div>
+                {/* Back - Book Back Cover */}
+                <div className="absolute inset-0 backface-hidden rotate-y-180" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
+                  <Image
+                    src="/images/benefits/bucketlistdoctor-book-back-cover.png"
+                    alt="The Neuroscience of a Bucket List Back Cover"
+                    fill
+                    className="object-contain rounded-lg shadow-2xl"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Book Description */}

@@ -177,11 +177,11 @@ export default function AnimatedBrainHero() {
         <div className="relative">
           {/* Main Brain Image */}
           <img
-            src="/images/hero/2d-brain-hero.png"
-            alt="Neuroscience Brain"
-            className="w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] object-contain opacity-90 animate-pulse"
+            src="/images/hero/artistic-brain-hero.png"
+            alt="Artistic Brain with World Map"
+            className="w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] object-contain opacity-95 animate-pulse"
             style={{
-              filter: 'drop-shadow(0 0 20px rgba(75, 144, 226, 0.3)) drop-shadow(0 0 40px rgba(185, 104, 224, 0.2))',
+              filter: 'drop-shadow(0 0 30px rgba(255, 100, 150, 0.4)) drop-shadow(0 0 60px rgba(100, 200, 255, 0.3)) drop-shadow(0 0 90px rgba(185, 104, 224, 0.2))',
               animation: 'brainFloat 6s ease-in-out infinite'
             }}
           />
@@ -231,7 +231,7 @@ export default function AnimatedBrainHero() {
         
         <div className={`transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-8 max-w-3xl drop-shadow-lg font-light">
-            Getting the most from your brain and life
+            Getting the Most from Your Brain and Life
           </p>
         </div>
         

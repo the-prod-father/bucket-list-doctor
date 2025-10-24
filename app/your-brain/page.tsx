@@ -54,7 +54,7 @@ export default function YourBrainPage() {
             Your Brain & Bucket Lists
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            Discover the fascinating neuroscience behind why bucket lists are so powerful for brain health and cognitive enhancement
+            Discover the fascinating neuroscience behind why bucket lists are so powerful for brain health and cognitive enhancement.
           </p>
         </div>
 

@@ -12,7 +12,7 @@ export default function BucketListNavigation() {
     {
       id: 'blog',
       title: 'Videos & Media',
-      description: 'Watch Dr. D discuss neuroscience and bucket lists',
+      description: 'Watch Dr. D discuss neuroscience and bucket lists.',
       buttonText: 'Watch Videos',
       image: '/images/cards/dr-d-writing.png',
       gradient: 'from-amber-500 via-orange-500 to-red-500',
@@ -22,7 +22,7 @@ export default function BucketListNavigation() {
     {
       id: 'books',
       title: 'Get the Book',
-      description: 'Discover the neuroscience behind bucket lists',
+      description: 'Discover the neuroscience behind bucket lists.',
       buttonText: 'Buy Now',
       image: '/images/benefits/bucketlistdoctor-book-cover.png',
       gradient: 'from-purple-500 via-pink-500 to-red-500',
@@ -32,7 +32,7 @@ export default function BucketListNavigation() {
     {
       id: 'tips',
       title: 'Tips & Ideas',
-      description: 'Practical advice for your bucket list journey',
+      description: 'Practical advice for your bucket list journey.',
       buttonText: 'Get Tips',
       image: '/images/benefits/bucketlist-sailing.jpeg',
       gradient: 'from-yellow-400 via-orange-500 to-red-500',
@@ -42,7 +42,7 @@ export default function BucketListNavigation() {
     {
       id: 'brain',
       title: 'Your Brain on a Bucket List',
-      description: 'The neuroscience behind adventure and goals',
+      description: 'The neuroscience behind adventure and goals.',
       buttonText: 'Learn More',
       image: '/images/cards/brain-network.png',
       gradient: 'from-indigo-500 via-purple-500 to-pink-500',
