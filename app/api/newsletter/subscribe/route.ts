@@ -56,8 +56,10 @@ async function addNewsletterSubscriberDirect(email: string) {
 // Lazy initialize Resend only when needed
 function getResendClient() {
   if (!process.env.RESEND_API_KEY) {
+    console.log('⚠️ RESEND_API_KEY not found in environment');
     return null; // Email sending disabled if not configured
   }
+  console.log('✅ RESEND_API_KEY found, initializing Resend client');
   return new Resend(process.env.RESEND_API_KEY);
 }
 
@@ -84,11 +86,16 @@ export async function POST(request: NextRequest) {
 
     // Send welcome email if Resend is configured and it's a new subscription
     const resend = getResendClient();
+    console.log('🔍 Resend client initialized:', !!resend);
+    console.log('🔍 Result message:', result.message);
+    console.log('🔍 Should send email:', resend && result.message.includes('Thank you for subscribing'));
+
     if (resend && result.message.includes('Thank you for subscribing')) {
       try {
+        console.log('📧 Attempting to send welcome email to:', email);
         const unsubscribeUrl = `${process.env.NEXTAUTH_URL}/unsubscribe?email=${encodeURIComponent(email)}`;
 
-        await resend.emails.send({
+        const emailResult = await resend.emails.send({
           from: 'Dr. Jeffrey DeSarbo <newsletter@bucketlistdoctor.com>',
           to: [email],
           subject: 'Welcome to Bucket List Doctor! 🧠✨',
@@ -145,10 +152,14 @@ export async function POST(request: NextRequest) {
             </div>
           `,
         });
+
+        console.log('✅ Welcome email sent successfully!', emailResult);
       } catch (emailError) {
-        console.error('Error sending welcome email:', emailError);
+        console.error('❌ Error sending welcome email:', emailError);
         // Don't fail the request if email fails - subscriber is already added
       }
+    } else {
+      console.log('⚠️ Skipping email send - Resend not configured or not a new subscription');
     }
 
     return NextResponse.json({
