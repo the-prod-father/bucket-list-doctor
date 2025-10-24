@@ -14,6 +14,16 @@ export default function MediaAppearances() {
       logo: '/images/media/news12-long-island-logo.png',
       type: 'tv',
     },
+    {
+      name: 'WICC Radio',
+      logo: '/images/media/wicc-logo.png',
+      type: 'radio',
+    },
+    {
+      name: 'Connecticut Today',
+      logo: '/images/media/connecticut-today-logo.png',
+      type: 'tv',
+    },
   ];
 
   return (
@@ -45,14 +55,6 @@ export default function MediaAppearances() {
               />
             </div>
           ))}
-
-          {/* Placeholder for future media appearances */}
-          <div className="flex items-center justify-center p-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl border-2 border-dashed border-gray-300 w-full h-32">
-            <p className="text-gray-400 text-sm font-semibold">More to come...</p>
-          </div>
-          <div className="flex items-center justify-center p-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl border-2 border-dashed border-gray-300 w-full h-32">
-            <p className="text-gray-400 text-sm font-semibold">More to come...</p>
-          </div>
         </div>
 
         {/* Call to Action */}
@@ -61,7 +63,7 @@ export default function MediaAppearances() {
             Interested in having Dr. DeSarbo on your show or podcast?
           </p>
           <a
-            href="/about#contact"
+            href="mailto:drdesarbo@gmail.com"
             className="inline-block bg-brand-blue hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg"
           >
             Get in Touch
