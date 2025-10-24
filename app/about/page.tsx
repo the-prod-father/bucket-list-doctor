@@ -1,105 +1,236 @@
+'use client';
+
 import { Metadata } from 'next';
 import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: 'About Dr. Jeffrey DeSarbo | Bucket List Doctor',
-  description: 'Meet Dr. Jeffrey DeSarbo, physician and neuroscience enthusiast who has traveled to all 7 continents. Learn how he combines personal adventure with scientific research to help people unlock their potential.',
-  openGraph: {
-    title: 'About Dr. Jeffrey DeSarbo | Bucket List Doctor',
-    description: 'Physician, adventurer, and advocate for purposeful living through neuroscience-backed bucket list experiences.',
-    images: ['/images/profile/profile-pic-dr-d.png'],
-  },
-};
+import { useState, useEffect, useRef } from 'react';
+import { FaBrain, FaGlobe, FaBook, FaMicrophoneAlt, FaUserMd, FaEnvelope } from 'react-icons/fa';
 
 export default function AboutPage() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-        {/* Profile Image */}
-        <div className="lg:col-span-1 flex justify-center lg:justify-start">
-          <div className="relative">
-            <Image
-              src="/images/profile/profile-pic-dr-d.png"
-              alt="Dr. Jeffrey DeSarbo"
-              width={384}
-              height={384}
-              className="w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-4 border-white"
-              style={{ objectPosition: 'center 18%' }}
-            />
-            {/* Animated glow ring */}
-            <div className="absolute inset-0 rounded-full border-4 border-brand-blue/30 animate-pulse"></div>
-            <div className="absolute inset-2 rounded-full border-2 border-brand-purple/40 animate-pulse" style={{ animationDelay: '1s' }}></div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `
+            linear-gradient(to right, #000 1px, transparent 1px),
+            linear-gradient(to bottom, #000 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-purple-300/20 to-pink-300/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-blue-300/20 to-cyan-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
-        {/* About Content */}
-        <div className="lg:col-span-2">
-          <h1 className="text-5xl font-bold text-gray-900 mb-8">About Jeffrey DeSarbo, D.O.</h1>
-          <div className="prose prose-lg">
-            <p className="text-xl text-gray-700 leading-relaxed mb-6">
-              Dr. Jeffrey DeSarbo is a physician, neuroscience enthusiast, and adventurer dedicated to exploring the intersection of brain health and purposeful living.
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              With extensive medical training and a passion for understanding how our brains work, Dr. D has devoted his career to helping people unlock their full potential through intentional goal-setting and bucket list experiences.
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Having traveled to all seven continents and completed hundreds of bucket list experiences, he combines personal adventure with scientific research to demonstrate how bucket lists literally rewire our brains for success, happiness, and resilience.
-            </p>
-            
-            {/* Book Section */}
-            <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border-l-4 border-brand-purple">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Author of &ldquo;The Neuroscience of a Bucket List&rdquo;</h3>
-              <div className="flex items-center gap-4 mb-4">
-                <Image
-                  src="/images/benefits/bucketlistdoctor-book-cover.png"
-                  alt="The Neuroscience of a Bucket List Book Cover"
-                  width={128}
-                  height={192}
-                  className="w-32 h-auto rounded shadow-lg"
-                />
-                <p className="text-gray-700">
-                  Discover how your bucket list isn&apos;t just a wish list—it&apos;s a powerful tool for brain health, cognitive enhancement, and purposeful living.
-                </p>
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-5 gap-12 items-center">
+            {/* Profile Image */}
+            <div className="md:col-span-2 flex justify-center">
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-full opacity-30 group-hover:opacity-50 blur-2xl transition-all duration-500" />
+                <div className="relative">
+                  <Image
+                    src="/images/profile/profile-pic-dr-d.png"
+                    alt="Dr. Jeffrey DeSarbo"
+                    width={400}
+                    height={400}
+                    className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover shadow-2xl border-4 border-white relative z-10 transition-transform duration-500 group-hover:scale-105"
+                    style={{ objectPosition: 'center 18%' }}
+                    priority
+                  />
+                  {/* Animated rings */}
+                  <div className="absolute inset-0 rounded-full border-4 border-brand-blue/30 animate-pulse" />
+                  <div className="absolute inset-2 rounded-full border-2 border-brand-purple/40 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                  <div className="absolute -inset-2 rounded-full border-2 border-brand-teal/20 animate-pulse" style={{ animationDelay: '1s' }} />
+                </div>
               </div>
-              <a
-                href="https://a.co/d/559YKwr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg transition-all"
-              >
-                Buy on Amazon
-              </a>
             </div>
 
-            {/* Schedule Appointment Section */}
-            <div className="mt-12 bg-gradient-to-r from-brand-blue/10 to-brand-purple/10 p-8 rounded-lg border-2 border-brand-blue/20">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            {/* Hero Text */}
+            <div className="md:col-span-3 text-center md:text-left">
+              <div className="inline-block mb-4">
+                <span className="text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                  Physician • Author • Adventurer
+                </span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                About Jeffrey DeSarbo, <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">D.O.</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
+                Neuropsychiatrist dedicated to exploring the intersection of brain health and purposeful living.
+              </p>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-100">
+                  <FaGlobe className="w-8 h-8 mx-auto mb-2 text-brand-blue" />
+                  <div className="text-2xl font-bold text-gray-900">7</div>
+                  <div className="text-sm text-gray-600">Continents</div>
+                </div>
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-100">
+                  <FaBook className="w-8 h-8 mx-auto mb-2 text-brand-purple" />
+                  <div className="text-2xl font-bold text-gray-900">3</div>
+                  <div className="text-sm text-gray-600">Books</div>
+                </div>
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-100">
+                  <FaBrain className="w-8 h-8 mx-auto mb-2 text-brand-teal" />
+                  <div className="text-2xl font-bold text-gray-900">20+</div>
+                  <div className="text-sm text-gray-600">Years</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Bio Section */}
+      <section ref={sectionRef} className="py-16 md:py-24 relative">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className={`bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100 transform transition-all duration-1000 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+          }`}>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-xl text-gray-800 leading-relaxed mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-brand-purple first-letter:mr-2 first-letter:float-left">
+                Dr. Jeffrey DeSarbo is a physician, neuropsychiatrist, author, speaker, and adventurer dedicated to exploring the intersection of brain health and purposeful living. With extensive medical training and a deep passion for understanding how our brains work, Dr. D has devoted his career to helping people unlock their full potential through intentional goal-setting, neuroscience, and bucket list experiences.
+              </p>
+
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                In his clinical practice, Dr. DeSarbo provides both in-person and virtual psychiatric care, specializing in the treatment of mood disorders, anxiety, obsessive-compulsive disorder (OCD), and eating disorders. He combines evidence-based medicine with neuroscience-informed therapeutic approaches to help patients achieve greater emotional balance, resilience, and self-understanding.
+              </p>
+
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Having traveled to all seven continents and completed hundreds of bucket list experiences himself, Dr. DeSarbo blends personal adventure with scientific research to demonstrate how bucket listing can literally rewire the brain for success, happiness, and fulfillment. His work bridges science and everyday living—showing that purposeful experiences aren't just meaningful, but also neurologically transformative.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Clinical Practice & Speaking Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Clinical Practice Card */}
+            <div className="group bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <FaUserMd className="w-8 h-8 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900">Clinical Practice</h2>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-brand-blue rounded-full mt-2 flex-shrink-0" />
+                  <p className="text-gray-700">In-person and virtual psychiatric care</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-brand-purple rounded-full mt-2 flex-shrink-0" />
+                  <p className="text-gray-700">Specializing in mood disorders, anxiety, OCD, and eating disorders</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-brand-teal rounded-full mt-2 flex-shrink-0" />
+                  <p className="text-gray-700">Evidence-based medicine with neuroscience-informed approaches</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-brand-pink rounded-full mt-2 flex-shrink-0" />
+                  <p className="text-gray-700">Clientele ranges from students to international politicians, CEOs, Olympic athletes, and healthcare providers</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Speaking & Expertise Card */}
+            <div className="group bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <FaMicrophoneAlt className="w-8 h-8 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900">Speaker & Educator</h2>
+              </div>
+
+              <p className="text-gray-700 mb-6">
+                Dr. DeSarbo has presented locally, nationally, and internationally on topics including brain science, mental health, performance enhancement, cultural psychiatry, and eating disorders to both public and professional audiences.
+              </p>
+
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border-l-4 border-purple-500">
+                <h3 className="font-bold text-gray-900 mb-3">Speaking Topics:</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• The neuroscience of bucket lists and purposeful living</li>
+                  <li>• Brain health, longevity, and motivation</li>
+                  <li>• Goal-setting and adventure's impact on the brain</li>
+                  <li>• Performance enhancement and mental wellness</li>
+                  <li>• Eating disorder treatment innovations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Schedule Appointment CTA */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-grid-white/10" style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: '40px 40px'
+            }} />
+
+            <div className="relative z-10 p-8 md:p-12 text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                <FaEnvelope className="w-10 h-10 text-white" />
+              </div>
+
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Schedule an Appointment
-              </h3>
-              <p className="text-lg text-gray-700 mb-6">
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                 Interested in working with Dr. DeSarbo? He is available for consultations, speaking engagements, and professional collaborations.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="mailto:contact@bucketlistdoctor.com"
-                  className="inline-block bg-brand-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all text-center"
-                >
-                  Email Dr. DeSarbo
-                </a>
-                <a
-                  href="#contact"
-                  className="inline-block bg-white hover:bg-gray-50 text-brand-blue border-2 border-brand-blue font-bold py-3 px-6 rounded-lg transition-all text-center"
-                >
-                  Contact Form
-                </a>
+
+              <a
+                href="mailto:DeSarbo312@gmail.com"
+                className="inline-flex items-center gap-3 bg-white hover:bg-gray-100 text-purple-600 font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-xl text-lg"
+              >
+                <FaEnvelope className="w-5 h-5" />
+                <span>Email Dr. DeSarbo</span>
+              </a>
+
+              <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm text-white/80">
+                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Medical Consultations</span>
+                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Speaking Engagements</span>
+                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Radio Interviews</span>
+                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Podcast Appearances</span>
+                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Educational Seminars</span>
               </div>
-              <p className="text-sm text-gray-600 mt-4">
-                Available for: Medical consultations • Speaking engagements • Radio interviews • Podcast appearances • Educational seminars
-              </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
