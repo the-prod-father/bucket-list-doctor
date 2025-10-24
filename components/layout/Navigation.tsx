@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -21,8 +22,17 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-display font-bold text-white">
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="relative w-10 h-10 transition-transform group-hover:scale-110">
+              <Image
+                src="/images/logos/bucketlistdoctor-logo.webp"
+                alt="Bucket List Doctor Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="text-xl sm:text-2xl font-display font-bold text-white">
               Bucket List Doctor
             </div>
           </Link>
