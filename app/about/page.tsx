@@ -45,24 +45,35 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-5 gap-12 items-center">
-            {/* Profile Image */}
+            {/* Profile Image - Radio Show */}
             <div className="md:col-span-2 flex justify-center">
               <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-full opacity-30 group-hover:opacity-50 blur-2xl transition-all duration-500" />
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-3xl opacity-30 group-hover:opacity-50 blur-2xl transition-all duration-500" />
                 <div className="relative">
                   <Image
-                    src="/images/profile/profile-pic-dr-d.png"
-                    alt="Dr. Jeffrey DeSarbo"
-                    width={400}
-                    height={400}
-                    className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover shadow-2xl border-4 border-white relative z-10 transition-transform duration-500 group-hover:scale-105"
-                    style={{ objectPosition: 'center 18%' }}
+                    src="/images/profile/dr-d-radio-show.jpg"
+                    alt="Dr. Jeffrey DeSarbo in Radio Studio"
+                    width={500}
+                    height={600}
+                    className="w-full max-w-md rounded-2xl object-cover shadow-2xl border-4 border-white relative z-10 transition-transform duration-500 group-hover:scale-105"
                     priority
                   />
-                  {/* Animated rings */}
-                  <div className="absolute inset-0 rounded-full border-4 border-brand-blue/30 animate-pulse" />
-                  <div className="absolute inset-2 rounded-full border-2 border-brand-purple/40 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                  <div className="absolute -inset-2 rounded-full border-2 border-brand-teal/20 animate-pulse" style={{ animationDelay: '1s' }} />
+                  {/* Animated corner accents */}
+                  <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-brand-blue/50 rounded-tl-2xl animate-pulse" />
+                  <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-brand-purple/50 rounded-br-2xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+
+                  {/* Seven Continents Badge */}
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                    <div className="relative w-full h-full">
+                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full blur-xl opacity-50" />
+                      <Image
+                        src="/images/profile/seven-continents-patch.jpg"
+                        alt="Seven Continents Traveler"
+                        fill
+                        className="object-cover rounded-full border-4 border-white shadow-xl relative z-10"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
