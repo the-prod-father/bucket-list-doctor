@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
         const unsubscribeUrl = `${process.env.NEXTAUTH_URL}/unsubscribe?email=${encodeURIComponent(email)}`;
 
         const emailResult = await resend.emails.send({
-          from: 'Dr. Jeffrey DeSarbo <newsletter@bucketlistdoctor.com>',
+          from: 'Bucket List Doctor <onboarding@resend.dev>',
           to: [email],
           subject: 'Welcome to Bucket List Doctor! 🧠✨',
           html: `
