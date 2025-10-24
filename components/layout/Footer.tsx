@@ -68,9 +68,29 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {currentYear} Dr. Jeffrey DeSarbo. All rights reserved.</p>
+        {/* Created By Section */}
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <div className="flex flex-col items-center justify-center space-y-4">
+            <div className="group">
+              <a
+                href="https://whynotus.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-400 hover:text-white transition-all duration-300"
+              >
+                <span className="text-sm font-medium">Site Created by</span>
+                <span className="text-xl font-bold bg-gradient-to-r from-brand-blue via-brand-purple to-brand-pink bg-clip-text text-transparent group-hover:from-brand-yellow group-hover:via-brand-teal group-hover:to-brand-blue transition-all duration-300">
+                  Why Not Us Labs
+                </span>
+                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+            <p className="text-gray-500 text-xs">
+              &copy; {currentYear} Dr. Jeffrey DeSarbo. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
