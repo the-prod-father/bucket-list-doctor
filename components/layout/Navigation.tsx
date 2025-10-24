@@ -20,19 +20,20 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-brand-navy shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20 md:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 transition-transform group-hover:scale-110">
+          <Link href="/" className="flex items-center space-x-3 sm:space-x-4 group">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/30 to-brand-purple/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <Image
                 src="/images/logos/bucketlistdoctor-logo.webp"
                 alt="Bucket List Doctor Logo"
                 fill
-                className="object-contain"
+                className="object-contain relative z-10 drop-shadow-lg"
                 priority
               />
             </div>
-            <div className="text-xl sm:text-2xl font-display font-bold text-white">
+            <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
               Bucket List Doctor
             </div>
           </Link>
