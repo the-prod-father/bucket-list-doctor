@@ -55,7 +55,7 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
 
   const handleEdit = () => {
     if (post) {
-      router.push(`/admin/cms/posts/${post.id}`);
+      router.push(`/admin/blog?edit=${post.id}`);
     }
   };
 

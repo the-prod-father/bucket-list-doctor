@@ -81,7 +81,7 @@ export default function Navigation() {
                   <span className="text-white/90 text-sm font-medium whitespace-nowrap">Admin</span>
                 </div>
                 <Link
-                  href="/admin/cms/posts/new"
+                  href="/admin/blog"
                   className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center space-x-2 shadow-lg whitespace-nowrap flex-shrink-0"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -90,7 +90,7 @@ export default function Navigation() {
                   <span>New Post</span>
                 </Link>
                 <Link
-                  href="/admin/cms"
+                  href="/admin/dashboard"
                   className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
                 >
                   Dashboard
@@ -152,7 +152,7 @@ export default function Navigation() {
                   <span className="text-white font-medium">Admin Mode</span>
                 </div>
                 <Link
-                  href="/admin/cms/posts/new"
+                  href="/admin/blog"
                   onClick={() => setIsOpen(false)}
                   className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-center mb-2 flex items-center justify-center space-x-2"
                 >
@@ -162,11 +162,11 @@ export default function Navigation() {
                   <span>Create New Post</span>
                 </Link>
                 <Link
-                  href="/admin/cms"
+                  href="/admin/dashboard"
                   onClick={() => setIsOpen(false)}
                   className="block w-full bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center mb-2"
                 >
-                  CMS Dashboard
+                  Dashboard
                 </Link>
                 <button
                   onClick={() => {

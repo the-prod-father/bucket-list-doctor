@@ -7,11 +7,29 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { FaEnvelope, FaBlog, FaUsers, FaChartLine } from 'react-icons/fa';
 import Link from 'next/link';
 
+interface Subscriber {
+  email: string;
+  created_at: string;
+}
+
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  status: 'draft' | 'published' | 'archived';
+  view_count: number;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 interface DashboardStats {
   subscribers: number;
   posts: number;
   views: number;
   users: number;
+  subscribersList: Subscriber[];
+  postsList: BlogPost[];
 }
 
 export default function AdminDashboard() {
@@ -25,10 +43,14 @@ export default function AdminDashboard() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch('/api/admin/stats');
+      const response = await fetch('/api/admin/stats', {
+        credentials: 'include',
+      });
       if (response.ok) {
         const data = await response.json();
         setStats(data);
+      } else {
+        console.error('Failed to fetch stats:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error fetching stats:', error);
@@ -144,13 +166,130 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          {/* Recent Activity */}
+          {/* Newsletter Subscribers List */}
           <div className="bg-white rounded-lg p-6 shadow-md">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Activity</h2>
-            <div className="text-center text-gray-500 py-8">
-              <p>No recent activity yet.</p>
-              <p className="text-sm mt-2">Activity will appear here as you use the CMS.</p>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-gray-900">Newsletter Subscribers</h2>
+              <span className="bg-brand-blue text-white px-3 py-1 rounded-full text-sm font-medium">
+                {stats?.subscribers || 0} Total
+              </span>
             </div>
+            {loading ? (
+              <div className="text-center text-gray-500 py-8">Loading subscribers...</div>
+            ) : stats?.subscribersList && stats.subscribersList.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Email Address
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Subscribed Date
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {stats.subscribersList.map((subscriber, index) => (
+                      <tr key={index} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          {subscriber.email}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {new Date(subscriber.created_at).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                          })}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="text-center text-gray-500 py-8">
+                <p>No subscribers yet.</p>
+                <p className="text-sm mt-2">Subscribers will appear here once people sign up.</p>
+              </div>
+            )}
+          </div>
+
+          {/* Blog Posts List */}
+          <div className="bg-white rounded-lg p-6 shadow-md">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-bold text-gray-900">Your Blog Posts</h2>
+              <Link
+                href="/admin/blog"
+                className="bg-brand-blue hover:bg-brand-blue/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                Create New Post
+              </Link>
+            </div>
+            {loading ? (
+              <div className="text-center text-gray-500 py-8">Loading posts...</div>
+            ) : stats?.postsList && stats.postsList.length > 0 ? (
+              <div className="space-y-3">
+                {stats.postsList.map((post) => (
+                  <div
+                    key={post.id}
+                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="text-lg font-semibold text-gray-900">{post.title}</h3>
+                          <span
+                            className={`px-2 py-1 rounded text-xs font-medium ${
+                              post.status === 'published'
+                                ? 'bg-green-100 text-green-800'
+                                : post.status === 'draft'
+                                ? 'bg-yellow-100 text-yellow-800'
+                                : 'bg-gray-100 text-gray-800'
+                            }`}
+                          >
+                            {post.status.charAt(0).toUpperCase() + post.status.slice(1)}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-4 text-sm text-gray-600">
+                          <span className="flex items-center gap-1">
+                            <FaChartLine className="w-4 h-4" />
+                            {post.view_count.toLocaleString()} views
+                          </span>
+                          <span>
+                            {post.published_at
+                              ? `Published ${new Date(post.published_at).toLocaleDateString()}`
+                              : `Created ${new Date(post.created_at).toLocaleDateString()}`}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 ml-4">
+                        {post.status === 'published' && (
+                          <Link
+                            href={`/newsletter/${post.slug}`}
+                            target="_blank"
+                            className="text-brand-blue hover:text-brand-blue/80 text-sm font-medium px-3 py-1.5 border border-brand-blue rounded-lg transition-colors"
+                          >
+                            View
+                          </Link>
+                        )}
+                        <Link
+                          href={`/admin/blog?edit=${post.id}`}
+                          className="bg-brand-purple hover:bg-brand-purple/90 text-white text-sm font-medium px-3 py-1.5 rounded-lg transition-colors"
+                        >
+                          Edit
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center text-gray-500 py-8">
+                <p>No posts yet.</p>
+                <p className="text-sm mt-2">Create your first blog post to get started!</p>
+              </div>
+            )}
           </div>
 
           {/* System Info */}
