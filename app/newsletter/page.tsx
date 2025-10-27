@@ -1,8 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+
+// Force dynamic rendering since we use searchParams
+export const dynamic = 'force-dynamic';
 
 interface BlogPost {
   id: string;
