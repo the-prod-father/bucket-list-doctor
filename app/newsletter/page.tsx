@@ -2,7 +2,9 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 interface BlogPost {
   id: string;
@@ -20,12 +22,16 @@ interface BlogPost {
 }
 
 function NewsletterContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const { data: session } = useSession();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [subscribing, setSubscribing] = useState(false);
   const [subscribeMessage, setSubscribeMessage] = useState('');
+
+  const isAdmin = session?.user?.role === 'admin';
 
   // Check if user just subscribed
   const justSubscribed = searchParams.get('subscribed') === 'true';
@@ -268,8 +274,23 @@ function NewsletterContent() {
               {posts.map((post) => (
                 <article
                   key={post.id}
-                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] relative"
                 >
+                  {/* Admin Quick Actions */}
+                  {isAdmin && (
+                    <div className="absolute top-4 right-4 z-10 flex space-x-2">
+                      <button
+                        onClick={() => router.push(`/admin/cms/posts/${post.id}`)}
+                        className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg shadow-lg transition-colors"
+                        title="Edit post"
+                      >
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </div>
+                  )}
+
                   {(() => {
                     const postImage = getPostImage(post);
                     return postImage ? (

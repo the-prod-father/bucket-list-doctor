@@ -4,11 +4,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { useSession, signOut } from 'next-auth/react';
 import NewsletterModal from '../newsletter/NewsletterModal';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const { data: session } = useSession();
+
+  const isAdmin = session?.user?.role === 'admin';
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -61,6 +65,30 @@ export default function Navigation() {
               </svg>
               <span>Newsletter</span>
             </button>
+
+            {/* Admin Controls */}
+            {isAdmin && (
+              <div className="flex items-center space-x-3 pl-3 ml-3 border-l-2 border-white/20">
+                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-1.5 rounded-lg">
+                  <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-white/90 text-sm font-medium">Admin</span>
+                </div>
+                <Link
+                  href="/admin/cms"
+                  className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                >
+                  CMS
+                </Link>
+                <button
+                  onClick={() => signOut()}
+                  className="bg-red-500/80 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,6 +127,34 @@ export default function Navigation() {
               </svg>
               <span>Newsletter</span>
             </button>
+
+            {/* Mobile Admin Controls */}
+            {isAdmin && (
+              <div className="mt-6 pt-6 border-t border-white/20">
+                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-2 rounded-lg mb-3">
+                  <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-white font-medium">Admin Mode</span>
+                </div>
+                <Link
+                  href="/admin/cms"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center mb-2"
+                >
+                  Go to CMS
+                </Link>
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    signOut();
+                  }}
+                  className="w-full bg-red-500/80 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
