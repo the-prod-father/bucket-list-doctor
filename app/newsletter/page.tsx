@@ -136,11 +136,11 @@ export default function NewsletterPage() {
                 </p>
               )}
               <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-8">
-                You now have exclusive access to Dr. DeSarbo's insights on neuroscience, bucket lists, and purposeful living. Check your inbox for a welcome email!
+                You now have exclusive access to Dr. DeSarbo&apos;s insights on neuroscience, bucket lists, and purposeful living. Check your inbox for a welcome email!
               </p>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto">
-                <h3 className="text-lg font-bold mb-4">What You'll Get:</h3>
+                <h3 className="text-lg font-bold mb-4">What You&apos;ll Get:</h3>
                 <div className="space-y-3 text-left">
                   <div className="flex items-start space-x-3">
                     <svg className="w-6 h-6 text-brand-yellow flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
