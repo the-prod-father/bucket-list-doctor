@@ -11,6 +11,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    // Check if Blob storage is configured
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json(
+        { error: 'Image upload not configured. Please use image URL instead or contact admin to enable Blob storage.' },
+        { status: 503 }
+      );
+    }
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
 
