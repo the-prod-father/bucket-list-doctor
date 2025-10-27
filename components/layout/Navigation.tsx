@@ -44,20 +44,24 @@ export default function Navigation() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Desktop Nav - Scrollable when admin controls present */}
+          <div className={`hidden md:flex items-center gap-6 ${isAdmin ? 'overflow-x-auto max-w-[calc(100vw-20rem)] scroll-smooth' : ''}`}
+               style={isAdmin ? {
+                 scrollbarWidth: 'thin',
+                 scrollbarColor: 'rgba(255, 255, 255, 0.2) transparent'
+               } : {}}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/90 hover:text-white transition-colors font-medium"
+                className="text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap flex-shrink-0"
               >
                 {link.label}
               </Link>
             ))}
             <button
               onClick={() => setIsNewsletterModalOpen(true)}
-              className="bg-gradient-to-r from-brand-yellow to-brand-orange hover:from-brand-orange hover:to-brand-yellow text-brand-navy font-bold py-2 px-5 rounded-lg transition-all transform hover:scale-105 shadow-lg flex items-center space-x-2"
+              className="bg-gradient-to-r from-brand-yellow to-brand-orange hover:from-brand-orange hover:to-brand-yellow text-brand-navy font-bold py-2 px-5 rounded-lg transition-all transform hover:scale-105 shadow-lg flex items-center space-x-2 whitespace-nowrap flex-shrink-0"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -68,16 +72,17 @@ export default function Navigation() {
 
             {/* Admin Controls */}
             {isAdmin && (
-              <div className="flex items-center space-x-3 pl-3 ml-3 border-l-2 border-white/20">
-                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-1.5 rounded-lg border border-yellow-400/30">
+              <>
+                <div className="h-8 w-px bg-white/20 flex-shrink-0" />
+                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-1.5 rounded-lg border border-yellow-400/30 flex-shrink-0">
                   <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-white/90 text-sm font-medium">Admin</span>
+                  <span className="text-white/90 text-sm font-medium whitespace-nowrap">Admin</span>
                 </div>
                 <Link
                   href="/admin/cms/posts/new"
-                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center space-x-2 shadow-lg"
+                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center space-x-2 shadow-lg whitespace-nowrap flex-shrink-0"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
@@ -86,17 +91,17 @@ export default function Navigation() {
                 </Link>
                 <Link
                   href="/admin/cms"
-                  className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                  className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
                 >
                   Dashboard
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className="bg-red-500/80 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                  className="bg-red-500/80 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
                 >
                   Logout
                 </button>
-              </div>
+              </>
             )}
           </div>
 
