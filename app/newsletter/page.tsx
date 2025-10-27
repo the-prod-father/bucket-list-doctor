@@ -4,9 +4,6 @@ import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-// Force dynamic rendering since we use searchParams
-export const dynamic = 'force-dynamic';
-
 interface BlogPost {
   id: string;
   title: string;
@@ -22,7 +19,7 @@ interface BlogPost {
   meta_description: string | null;
 }
 
-export default function NewsletterPage() {
+function NewsletterContent() {
   const searchParams = useSearchParams();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -334,5 +331,20 @@ export default function NewsletterPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function NewsletterPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-brand-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading newsletter...</p>
+        </div>
+      </div>
+    }>
+      <NewsletterContent />
+    </Suspense>
   );
 }
