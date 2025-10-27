@@ -69,17 +69,26 @@ export default function Navigation() {
             {/* Admin Controls */}
             {isAdmin && (
               <div className="flex items-center space-x-3 pl-3 ml-3 border-l-2 border-white/20">
-                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-1.5 rounded-lg">
+                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-1.5 rounded-lg border border-yellow-400/30">
                   <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                   </svg>
                   <span className="text-white/90 text-sm font-medium">Admin</span>
                 </div>
                 <Link
+                  href="/admin/cms/posts/new"
+                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center space-x-2 shadow-lg"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                  </svg>
+                  <span>New Post</span>
+                </Link>
+                <Link
                   href="/admin/cms"
                   className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-lg transition-colors"
                 >
-                  CMS
+                  Dashboard
                 </Link>
                 <button
                   onClick={() => signOut()}
@@ -131,18 +140,28 @@ export default function Navigation() {
             {/* Mobile Admin Controls */}
             {isAdmin && (
               <div className="mt-6 pt-6 border-t border-white/20">
-                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-2 rounded-lg mb-3">
+                <div className="flex items-center space-x-2 bg-yellow-400/20 px-3 py-2 rounded-lg border border-yellow-400/30 mb-3">
                   <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                   </svg>
                   <span className="text-white font-medium">Admin Mode</span>
                 </div>
                 <Link
+                  href="/admin/cms/posts/new"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-center mb-2 flex items-center justify-center space-x-2"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                  </svg>
+                  <span>Create New Post</span>
+                </Link>
+                <Link
                   href="/admin/cms"
                   onClick={() => setIsOpen(false)}
                   className="block w-full bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center mb-2"
                 >
-                  Go to CMS
+                  CMS Dashboard
                 </Link>
                 <button
                   onClick={() => {
