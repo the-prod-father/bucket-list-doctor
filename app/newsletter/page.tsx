@@ -280,7 +280,7 @@ function NewsletterContent() {
                   {isAdmin && (
                     <div className="absolute top-4 right-4 z-10 flex space-x-2">
                       <button
-                        onClick={() => router.push(`/admin/blog?edit=${post.id}`)}
+                        onClick={() => router.push(`/admin/cms/posts/${post.id}`)}
                         className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg shadow-lg transition-colors"
                         title="Edit post"
                       >

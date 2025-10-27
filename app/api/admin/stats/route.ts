@@ -61,37 +61,11 @@ export async function GET() {
     );
     const usersCount = parseInt(usersResult.rows[0].count);
 
-    // Get subscriber list with emails
-    const subscribersListResult = await client.query(
-      `SELECT email, created_at
-       FROM newsletter_subscribers
-       WHERE subscribed = true
-       ORDER BY created_at DESC`
-    );
-    const subscribersList = subscribersListResult.rows;
-
-    // Get recent posts with details
-    const postsListResult = await client.query(
-      `SELECT id, title, slug, status, view_count, published_at, created_at, updated_at
-       FROM blog_posts
-       ORDER BY
-         CASE
-           WHEN status = 'published' THEN 1
-           WHEN status = 'draft' THEN 2
-           ELSE 3
-         END,
-         COALESCE(published_at, created_at) DESC
-       LIMIT 10`
-    );
-    const postsList = postsListResult.rows;
-
     return NextResponse.json({
       subscribers: subscribersCount,
       posts: postsCount,
       views: totalViews,
       users: usersCount,
-      subscribersList: subscribersList,
-      postsList: postsList,
     });
   } catch (error) {
     console.error('Error fetching dashboard stats:', error);

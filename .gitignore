@@ -37,4 +37,3 @@ next-env.d.ts
 
 # meeting notes (private client communications)
 /docs/meeting-notes/
-/public/uploads/*

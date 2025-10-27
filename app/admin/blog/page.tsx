@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
-import { useSearchParams } from 'next/navigation';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { FaBlog, FaPlus, FaEdit, FaTrash, FaEye, FaSave, FaTimes } from 'react-icons/fa';
@@ -28,9 +27,6 @@ interface BlogPost {
 
 export default function BlogPage() {
   const { data: session } = useSession();
-  const searchParams = useSearchParams();
-  const editPostId = searchParams.get('edit');
-
   const [activeView, setActiveView] = useState<'list' | 'edit'>('list');
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [counts, setCounts] = useState({ total: 0, published: 0, draft: 0, archived: 0 });
@@ -46,23 +42,9 @@ export default function BlogPage() {
   const [status, setStatus] = useState<'draft' | 'published' | 'archived'>('draft');
   const [saving, setSaving] = useState(false);
 
-  // Image upload state
-  const [uploading, setUploading] = useState(false);
-  const [uploadError, setUploadError] = useState('');
-
   useEffect(() => {
     fetchPosts();
   }, []);
-
-  // Auto-load post for editing if URL parameter is present
-  useEffect(() => {
-    if (editPostId && posts.length > 0) {
-      const postToEdit = posts.find(p => p.id === editPostId);
-      if (postToEdit) {
-        handleEditPost(postToEdit);
-      }
-    }
-  }, [editPostId, posts]);
 
   const fetchPosts = async () => {
     try {
@@ -168,50 +150,6 @@ export default function BlogPage() {
     } catch (error) {
       console.error('Error deleting post:', error);
       alert('Failed to delete post');
-    }
-  };
-
-  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    // Validate file type
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
-    if (!allowedTypes.includes(file.type)) {
-      setUploadError('Please upload a valid image file (JPEG, PNG, GIF, or WebP)');
-      return;
-    }
-
-    // Validate file size (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setUploadError('Image must be less than 5MB');
-      return;
-    }
-
-    setUploading(true);
-    setUploadError('');
-
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const response = await fetch('/api/admin/upload-image', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setFeaturedImage(data.url);
-      } else {
-        setUploadError(data.error || 'Failed to upload image');
-      }
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      setUploadError('Failed to upload image');
-    } finally {
-      setUploading(false);
     }
   };
 
@@ -383,76 +321,11 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              {/* Featured Image */}
+              {/* Featured Image URL */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Featured Image
+                  Featured Image URL (Optional)
                 </label>
-
-                {/* Image Preview */}
-                {featuredImage && (
-                  <div className="mb-4 relative">
-                    <img
-                      src={featuredImage}
-                      alt="Featured"
-                      className="max-w-md h-48 object-cover rounded-lg border border-gray-300"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setFeaturedImage('')}
-                      className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition-colors"
-                      title="Remove image"
-                    >
-                      <FaTimes />
-                    </button>
-                  </div>
-                )}
-
-                {/* Upload Button */}
-                <div className="flex gap-4 mb-3">
-                  <label className="flex-1">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      className="hidden"
-                      disabled={uploading}
-                    />
-                    <div className="cursor-pointer bg-brand-blue hover:bg-blue-600 text-white px-4 py-3 rounded-lg transition-colors text-center font-medium">
-                      {uploading ? (
-                        <span className="flex items-center justify-center">
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                          Uploading...
-                        </span>
-                      ) : (
-                        <span className="flex items-center justify-center">
-                          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
-                            <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
-                          </svg>
-                          Upload Image
-                        </span>
-                      )}
-                    </div>
-                  </label>
-                </div>
-
-                {/* Upload Error */}
-                {uploadError && (
-                  <div className="mb-3 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-                    {uploadError}
-                  </div>
-                )}
-
-                {/* URL Input (alternative) */}
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300"></div>
-                  </div>
-                  <div className="relative flex justify-center text-sm mb-3">
-                    <span className="px-2 bg-white text-gray-500">Or enter image URL</span>
-                  </div>
-                </div>
                 <input
                   type="text"
                   value={featuredImage}
