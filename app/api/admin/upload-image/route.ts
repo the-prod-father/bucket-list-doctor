@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { put } from '@vercel/blob';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
@@ -18,6 +17,9 @@ export async function POST(request: NextRequest) {
         { status: 503 }
       );
     }
+
+    // Dynamically import Vercel Blob
+    const { put } = await import('@vercel/blob');
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
