@@ -12,7 +12,7 @@ export default function Navigation() {
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const { data: session } = useSession();
 
-  const isAdmin = session?.user?.role === 'admin';
+  const isAdmin = session?.user?.role === 'admin' || session?.user?.role === 'super_admin';
 
   const navLinks = [
     { href: '/', label: 'Home' },

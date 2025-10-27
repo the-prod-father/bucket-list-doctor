@@ -1,39 +1,67 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
+import { useState, useEffect } from 'react';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { FaEnvelope, FaBlog, FaUsers, FaChartLine } from 'react-icons/fa';
 import Link from 'next/link';
 
+interface DashboardStats {
+  subscribers: number;
+  posts: number;
+  views: number;
+  users: number;
+}
+
 export default function AdminDashboard() {
   const { data: session } = useSession();
+  const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const stats = [
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const fetchStats = async () => {
+    try {
+      const response = await fetch('/api/admin/stats');
+      if (response.ok) {
+        const data = await response.json();
+        setStats(data);
+      }
+    } catch (error) {
+      console.error('Error fetching stats:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const statCards = [
     {
       name: 'Newsletter Subscribers',
-      value: '0',
+      value: loading ? '...' : (stats?.subscribers || 0).toString(),
       icon: FaEnvelope,
       href: '/admin/newsletter',
       gradient: 'from-blue-500 to-cyan-500',
     },
     {
       name: 'Blog Posts',
-      value: '0',
+      value: loading ? '...' : (stats?.posts || 0).toString(),
       icon: FaBlog,
       href: '/admin/blog',
       gradient: 'from-purple-500 to-pink-500',
     },
     {
       name: 'Active Users',
-      value: '2',
+      value: loading ? '...' : (stats?.users || 0).toString(),
       icon: FaUsers,
       href: '#',
       gradient: 'from-green-500 to-teal-500',
     },
     {
       name: 'Total Views',
-      value: '—',
+      value: loading ? '...' : (stats?.views || 0).toLocaleString(),
       icon: FaChartLine,
       href: '#',
       gradient: 'from-orange-500 to-red-500',
@@ -77,7 +105,7 @@ export default function AdminDashboard() {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((stat) => {
+            {statCards.map((stat) => {
               const Icon = stat.icon;
               return (
                 <Link

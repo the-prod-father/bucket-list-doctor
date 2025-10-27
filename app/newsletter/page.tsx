@@ -31,7 +31,7 @@ function NewsletterContent() {
   const [subscribing, setSubscribing] = useState(false);
   const [subscribeMessage, setSubscribeMessage] = useState('');
 
-  const isAdmin = session?.user?.role === 'admin';
+  const isAdmin = session?.user?.role === 'admin' || session?.user?.role === 'super_admin';
 
   // Check if user just subscribed
   const justSubscribed = searchParams.get('subscribed') === 'true';

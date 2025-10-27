@@ -28,7 +28,7 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
   const [error, setError] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
 
-  const isAdmin = session?.user?.role === 'admin';
+  const isAdmin = session?.user?.role === 'admin' || session?.user?.role === 'super_admin';
 
   useEffect(() => {
     fetchPost();
