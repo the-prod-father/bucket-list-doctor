@@ -27,7 +27,8 @@ async function addNewsletterSubscriberDirect(email: string) {
     if (checkResult.rows.length > 0) {
       const existing = checkResult.rows[0];
       if (existing.subscribed) {
-        return { success: false, message: 'You are already subscribed!' };
+        // Treat as success - they're subscribed, just navigate them to newsletter
+        return { success: true, message: 'You are already subscribed!', alreadySubscribed: true };
       } else {
         // Resubscribe
         await client.query(
