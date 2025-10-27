@@ -142,7 +142,7 @@ export async function POST(request: NextRequest) {
                   <a href="https://facebook.com/bucketlistdoctor" style="color: #4A90E2; text-decoration: none; margin: 0 10px;">Facebook</a>
                   <a href="https://instagram.com/bucketlistdoctor" style="color: #4A90E2; text-decoration: none; margin: 0 10px;">Instagram</a>
                   <a href="https://linkedin.com/in/drdesarbo" style="color: #4A90E2; text-decoration: none; margin: 0 10px;">LinkedIn</a>
-                  <a href="https://youtube.com/@bucketlistdoctor" style="color: #4A90E2; text-decoration: none; margin: 0 10px;">YouTube</a>
+                  <a href="https://youtube.com/@dr.jeffreydesarbo2584" style="color: #4A90E2; text-decoration: none; margin: 0 10px;">YouTube</a>
                 </div>
                 <p style="color: #999; font-size: 12px;">
                   You're receiving this email because you subscribed at bucketlistdoctor.com<br/>
