@@ -331,7 +331,7 @@ git push origin main
 
 ### For Content Questions
 - Contact: Dr. Jeffrey DeSarbo
-- Email: drdesarbo@gmail.com
+- Email: drdbucketlist@gmail.com
 
 ---
 

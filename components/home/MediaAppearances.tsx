@@ -170,7 +170,7 @@ export default function MediaAppearances() {
                 Interested in having Dr. DeSarbo on your show or podcast?
               </p>
               <a
-                href="mailto:drdesarbo@gmail.com"
+                href="mailto:drdbucketlist@gmail.com"
                 className="group inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl"
               >
                 <span>Get in Touch</span>

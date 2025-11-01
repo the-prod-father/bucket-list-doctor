@@ -23,7 +23,7 @@ const admins = [
     username: 'Dr. D',
     password: 'bucketlistking',
     display_name: 'Dr. Jeffrey DeSarbo',
-    email: 'drdesarbo@gmail.com',
+    email: 'drdbucketlist@gmail.com',
     role: 'admin'
   },
   {

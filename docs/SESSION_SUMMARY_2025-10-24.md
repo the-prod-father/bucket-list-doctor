@@ -29,7 +29,7 @@
 - Bottom accent bar that slides in from left
 - Smooth grayscale → color transition on hover
 - Enhanced CTA with gradient background and arrow animation
-- Email link to drdesarbo@gmail.com
+- Email link to drdbucketlist@gmail.com
 
 **Assets Added**:
 - `/public/images/media/wicc-logo.png`
