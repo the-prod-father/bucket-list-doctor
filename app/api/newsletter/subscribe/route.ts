@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
                   Dive deeper into the science behind bucket lists with my book:
                   <strong>"The Neuroscience of a Bucket List"</strong>
                 </p>
-                <a href="https://a.co/d/559YKwr" style="display: inline-block; background: linear-gradient(135deg, #4A90E2, #B968E0); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+                <a href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0" style="display: inline-block; background: linear-gradient(135deg, #4A90E2, #B968E0); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
                   Get Your Copy
                 </a>
               </div>

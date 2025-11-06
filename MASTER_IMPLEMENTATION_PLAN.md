@@ -75,7 +75,7 @@ This plan balances:
    - Third book (check with Dr. D for details)
 
 2. Fix "Buy Now" links:
-   - Amazon: https://a.co/d/559YKwr
+   - Amazon: https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0
    - BookBaby: https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list?srsltid=AfmBOoqGi5v7J9qv2KD7hLrNoibKl46uxPP9ZqZ0HXKSx-aYiw6t957p
    - Barnes & Noble: https://www.barnesandnoble.com/s/desarbo
 

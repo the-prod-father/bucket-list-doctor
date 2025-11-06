@@ -62,7 +62,7 @@ export default function BookShowcase() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://a.co/d/559YKwr"
+                href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105"
