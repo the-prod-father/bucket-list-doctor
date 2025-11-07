@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { FaArrowRight, FaCalendar } from 'react-icons/fa';
 
 interface YouTubeVideo {
   id: string;
@@ -10,9 +12,21 @@ interface YouTubeVideo {
   publishedAt: string;
 }
 
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  featured_image_url: string | null;
+  published_at: string;
+  view_count: number;
+}
+
 export default function BlogPage() {
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [postsLoading, setPostsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   // YouTube channel URL
@@ -20,7 +34,23 @@ export default function BlogPage() {
 
   useEffect(() => {
     fetchVideos();
+    fetchBlogPosts();
   }, []);
+
+  const fetchBlogPosts = async () => {
+    try {
+      const response = await fetch('/api/blog/posts');
+      const data = await response.json();
+
+      if (data.posts && data.posts.length > 0) {
+        setBlogPosts(data.posts);
+      }
+    } catch (err) {
+      console.error('Error fetching blog posts:', err);
+    } finally {
+      setPostsLoading(false);
+    }
+  };
 
   const fetchVideos = async () => {
     try {
@@ -47,12 +77,73 @@ export default function BlogPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Videos & Media
+            Blog & Media
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            Watch Dr. DeSarbo&apos;s insights on neuroscience, bucket lists, and purposeful living.
+            Read Dr. DeSarbo&apos;s latest articles and watch videos on neuroscience, bucket lists, and purposeful living.
           </p>
         </div>
+
+        {/* Blog Posts Section */}
+        {!postsLoading && blogPosts.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+              Latest Articles
+            </h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post) => (
+                <Link
+                  key={post.id}
+                  href={`/blog/${post.slug}`}
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group"
+                >
+                  {/* Featured Image */}
+                  {post.featured_image_url ? (
+                    <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
+                      <img
+                        src={post.featured_image_url}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-48 bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">
+                      <svg className="w-16 h-16 text-white opacity-50" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+
+                  {/* Post Info */}
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-brand-blue transition-colors">
+                      {post.title}
+                    </h3>
+                    {post.excerpt && (
+                      <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                        {post.excerpt}
+                      </p>
+                    )}
+                    <div className="flex items-center justify-between text-sm text-gray-500">
+                      <div className="flex items-center">
+                        <FaCalendar className="mr-2" />
+                        <span>{new Date(post.published_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        })}</span>
+                      </div>
+                      <div className="flex items-center text-brand-blue font-semibold group-hover:translate-x-1 transition-transform">
+                        Read More <FaArrowRight className="ml-2" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Videos Section */}
         <div className="mb-16">

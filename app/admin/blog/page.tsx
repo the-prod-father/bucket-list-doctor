@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
+import ImageUpload from '@/components/admin/ImageUpload';
 import { FaBlog, FaPlus, FaEdit, FaTrash, FaEye, FaSave, FaTimes } from 'react-icons/fa';
 import dynamic from 'next/dynamic';
 
@@ -321,19 +322,13 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              {/* Featured Image URL */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Featured Image URL (Optional)
-                </label>
-                <input
-                  type="text"
-                  value={featuredImage}
-                  onChange={(e) => setFeaturedImage(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent"
-                  placeholder="https://example.com/image.jpg"
-                />
-              </div>
+              {/* Featured Image Upload */}
+              <ImageUpload
+                value={featuredImage}
+                onChange={setFeaturedImage}
+                label="Featured Image (Optional)"
+                description="Upload an image to display at the top of your post and as a social sharing thumbnail"
+              />
 
               {/* Meta Description */}
               <div>
