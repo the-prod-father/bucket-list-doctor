@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
 import ImageUpload from '@/components/admin/ImageUpload';
@@ -28,6 +29,7 @@ interface BlogPost {
 
 export default function BlogPage() {
   const { data: session } = useSession();
+  const searchParams = useSearchParams();
   const [activeView, setActiveView] = useState<'list' | 'edit'>('list');
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [counts, setCounts] = useState({ total: 0, published: 0, draft: 0, archived: 0 });
@@ -46,6 +48,12 @@ export default function BlogPage() {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  useEffect(() => {
+    if (searchParams.get('new') === '1' && activeView === 'list') {
+      handleNewPost();
+    }
+  }, [searchParams, activeView]);
 
   const fetchPosts = async () => {
     try {
