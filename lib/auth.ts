@@ -22,7 +22,10 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials?.password) {
+        const username = credentials?.username?.trim();
+        const password = credentials?.password;
+
+        if (!username || !password) {
           throw new Error('Please enter username and password');
         }
 
@@ -33,8 +36,8 @@ export const authOptions: NextAuthOptions = {
 
           // Find user by username
           const result = await client.query(
-            'SELECT * FROM users WHERE username = $1 AND is_active = true',
-            [credentials.username]
+            'SELECT * FROM users WHERE LOWER(username) = LOWER($1) AND is_active = true',
+            [username]
           );
 
           const user = result.rows[0];
@@ -44,7 +47,7 @@ export const authOptions: NextAuthOptions = {
           }
 
           // Verify password
-          const isValid = await bcrypt.compare(credentials.password, user.password_hash);
+          const isValid = await bcrypt.compare(password, user.password_hash);
 
           if (!isValid) {
             throw new Error('Invalid username or password');
