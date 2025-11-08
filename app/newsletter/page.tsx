@@ -101,8 +101,26 @@ function NewsletterContent() {
     return img?.src || null;
   };
 
+  const FALLBACK_IMAGE = '/images/cards/dr-d-writing.png';
+
+  const normalizeImageUrl = (value: string | null): string | null => {
+    if (!value) return null;
+    const trimmed = value.trim();
+    if (!trimmed) return null;
+
+    if (trimmed.startsWith('data:')) return trimmed;
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+    if (trimmed.startsWith('/Users/')) return FALLBACK_IMAGE;
+    if (trimmed.startsWith('/uploads/')) return trimmed;
+    if (trimmed.startsWith('uploads/')) return `/${trimmed}`;
+    if (trimmed.startsWith('/')) return trimmed;
+
+    return FALLBACK_IMAGE;
+  };
+
   const getPostImage = (post: BlogPost): string | null => {
-    return post.featured_image_url || extractImageFromContent(post.content);
+    const raw = post.featured_image_url || extractImageFromContent(post.content);
+    return normalizeImageUrl(raw) ?? FALLBACK_IMAGE;
   };
 
   const formatDate = (value: string | null) => {
@@ -316,7 +334,7 @@ function NewsletterContent() {
                           fill
                           className="object-cover"
                           sizes="(min-width: 1024px) 640px, 100vw"
-                          unoptimized={image.startsWith('data:')}
+                          unoptimized={image?.startsWith('data:')}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                       </div>
@@ -385,7 +403,7 @@ function NewsletterContent() {
                                 fill
                                 className="object-cover"
                                 sizes="(min-width: 1024px) 192px, 50vw"
-                                unoptimized={image.startsWith('data:')}
+                                unoptimized={image?.startsWith('data:')}
                               />
                             </div>
                           </Link>

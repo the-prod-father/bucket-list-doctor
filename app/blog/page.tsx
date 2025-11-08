@@ -23,6 +23,23 @@ interface BlogPost {
   view_count: number;
 }
 
+const BLOG_FALLBACK_IMAGE = '/images/cards/dr-d-writing.png';
+
+const normalizeImageUrl = (value: string | null): string | null => {
+  if (!value) return BLOG_FALLBACK_IMAGE;
+  const trimmed = value.trim();
+  if (!trimmed) return BLOG_FALLBACK_IMAGE;
+
+  if (trimmed.startsWith('data:')) return trimmed;
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+  if (trimmed.startsWith('/Users/')) return BLOG_FALLBACK_IMAGE;
+  if (trimmed.startsWith('/uploads/')) return trimmed;
+  if (trimmed.startsWith('uploads/')) return `/${trimmed}`;
+  if (trimmed.startsWith('/')) return trimmed;
+
+  return BLOG_FALLBACK_IMAGE;
+};
+
 export default function BlogPage() {
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
@@ -93,58 +110,62 @@ export default function BlogPage() {
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/blog/${post.slug}`}
-                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group"
-                >
-                  {/* Featured Image */}
-                  <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
-                    {post.featured_image_url ? (
-                      <Image
-                        src={post.featured_image_url}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                        unoptimized={post.featured_image_url.startsWith('data:')}
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">
-                        <svg className="w-16 h-16 text-white opacity-50" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
+              {blogPosts.map((post) => {
+                const imageUrl = normalizeImageUrl(post.featured_image_url);
 
-                  {/* Post Info */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-brand-blue transition-colors">
-                      {post.title}
-                    </h3>
-                    {post.excerpt && (
-                      <p className="text-gray-600 text-sm line-clamp-3 mb-3">
-                        {post.excerpt}
-                      </p>
-                    )}
-                    <div className="flex items-center justify-between text-sm text-gray-500">
-                      <div className="flex items-center">
-                        <FaCalendar className="mr-2" />
-                        <span>{new Date(post.published_at).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric'
-                        })}</span>
-                      </div>
-                      <div className="flex items-center text-brand-blue font-semibold group-hover:translate-x-1 transition-transform">
-                        Read More <FaArrowRight className="ml-2" />
+                return (
+                  <Link
+                    key={post.id}
+                    href={`/blog/${post.slug}`}
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group"
+                  >
+                    {/* Featured Image */}
+                    <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
+                      {imageUrl ? (
+                        <Image
+                          src={imageUrl}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                          unoptimized={imageUrl.startsWith('data:')}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">
+                          <svg className="w-16 h-16 text-white opacity-50" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Post Info */}
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-brand-blue transition-colors">
+                        {post.title}
+                      </h3>
+                      {post.excerpt && (
+                        <p className="text-gray-600 text-sm line-clamp-3 mb-3">
+                          {post.excerpt}
+                        </p>
+                      )}
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <div className="flex items-center">
+                          <FaCalendar className="mr-2" />
+                          <span>{new Date(post.published_at).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                          })}</span>
+                        </div>
+                        <div className="flex items-center text-brand-blue font-semibold group-hover:translate-x-1 transition-transform">
+                          Read More <FaArrowRight className="ml-2" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}

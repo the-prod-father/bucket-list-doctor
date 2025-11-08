@@ -18,6 +18,23 @@ interface BlogPost {
   status: string;
 }
 
+const BLOG_FALLBACK_IMAGE = '/images/cards/dr-d-writing.png';
+
+const normalizeImageUrl = (value: string | null): string | null => {
+  if (!value) return BLOG_FALLBACK_IMAGE;
+  const trimmed = value.trim();
+  if (!trimmed) return BLOG_FALLBACK_IMAGE;
+
+  if (trimmed.startsWith('data:')) return trimmed;
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+  if (trimmed.startsWith('/Users/')) return BLOG_FALLBACK_IMAGE;
+  if (trimmed.startsWith('/uploads/')) return trimmed;
+  if (trimmed.startsWith('uploads/')) return `/${trimmed}`;
+  if (trimmed.startsWith('/')) return trimmed;
+
+  return BLOG_FALLBACK_IMAGE;
+};
+
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const client = new Client({
     connectionString: process.env.POSTGRES_URL_NON_POOLING,
@@ -95,6 +112,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound();
   }
 
+  const featuredImageUrl = normalizeImageUrl(post.featured_image_url);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
       <div className="max-w-4xl mx-auto px-4 py-16">
@@ -110,16 +129,16 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         {/* Article Header */}
         <article className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Featured Image */}
-          {post.featured_image_url && (
+          {featuredImageUrl && (
             <div className="relative w-full h-96">
               <Image
-                src={post.featured_image_url}
+                src={featuredImageUrl}
                 alt={post.title}
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 1024px, 100vw"
                 priority
-                unoptimized={post.featured_image_url.startsWith('data:')}
+                unoptimized={featuredImageUrl.startsWith('data:')}
               />
             </div>
           )}

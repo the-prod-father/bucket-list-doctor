@@ -6,6 +6,23 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
+const FALLBACK_IMAGE = '/images/cards/dr-d-writing.png';
+
+const normalizeImageUrl = (value: string | null): string | null => {
+  if (!value) return FALLBACK_IMAGE;
+  const trimmed = value.trim();
+  if (!trimmed) return FALLBACK_IMAGE;
+
+  if (trimmed.startsWith('data:')) return trimmed;
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+  if (trimmed.startsWith('/Users/')) return FALLBACK_IMAGE;
+  if (trimmed.startsWith('/uploads/')) return trimmed;
+  if (trimmed.startsWith('uploads/')) return `/${trimmed}`;
+  if (trimmed.startsWith('/')) return trimmed;
+
+  return FALLBACK_IMAGE;
+};
+
 interface BlogPost {
   id: string;
   title: string;
@@ -100,7 +117,8 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
   };
 
   const getPostImage = (post: BlogPost): string | null => {
-    return post.featured_image_url || extractImageFromContent(post.content);
+    const raw = post.featured_image_url || extractImageFromContent(post.content);
+    return normalizeImageUrl(raw);
   };
 
   if (loading) {
