@@ -119,6 +119,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 className="object-cover"
                 sizes="(min-width: 1024px) 1024px, 100vw"
                 priority
+                unoptimized={post.featured_image_url.startsWith('data:')}
               />
             </div>
           )}

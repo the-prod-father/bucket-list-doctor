@@ -108,6 +108,7 @@ export default function BlogPage() {
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-110"
                         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        unoptimized={post.featured_image_url.startsWith('data:')}
                       />
                     ) : (
                       <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">

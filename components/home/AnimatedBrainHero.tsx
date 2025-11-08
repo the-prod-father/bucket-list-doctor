@@ -262,8 +262,9 @@ export default function AnimatedBrainHero() {
               alt="The Neuroscience of a Bucket List books"
               width={256}
               height={320}
-              className="shadow-2xl"
+                  className="shadow-2xl"
               priority
+                  unoptimized
             />
           </div>
         </div>

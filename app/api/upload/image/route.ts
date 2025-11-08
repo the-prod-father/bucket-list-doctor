@@ -65,17 +65,20 @@ export async function POST(request: NextRequest) {
     const extension = file.name.split('.').pop();
     const safeName = `${timestamp}-${randomString}.${extension}`;
 
-    ensureUploadDir();
-
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    const filePath = path.join(BASE_UPLOAD_DIR, BLOG_UPLOAD_SUBDIR, safeName);
 
-    await fs.promises.writeFile(filePath, buffer);
-
-    const publicUrl = `/uploads/${BLOG_UPLOAD_SUBDIR}/${safeName}`;
-
-    return NextResponse.json({ success: true, url: publicUrl, filename: publicUrl });
+    try {
+      ensureUploadDir();
+      const filePath = path.join(BASE_UPLOAD_DIR, BLOG_UPLOAD_SUBDIR, safeName);
+      await fs.promises.writeFile(filePath, buffer);
+      const publicUrl = `/uploads/${BLOG_UPLOAD_SUBDIR}/${safeName}`;
+      return NextResponse.json({ success: true, url: publicUrl, filename: publicUrl, storage: 'filesystem' });
+    } catch (writeErr) {
+      console.warn('Image upload: falling back to inline data URL', writeErr);
+      const dataUrl = `data:${file.type};base64,${buffer.toString('base64')}`;
+      return NextResponse.json({ success: true, url: dataUrl, filename: `inline-${safeName}`, storage: 'inline' });
+    }
 
   } catch (error) {
     console.error('Error uploading image:', error);

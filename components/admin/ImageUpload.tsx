@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import { FaUpload, FaImage as FaImageIcon, FaTimes, FaSpinner } from 'react-icons/fa';
 
@@ -16,7 +16,24 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [preview, setPreview] = useState<string>(value || '');
+  const [previewAspect, setPreviewAspect] = useState<number | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setPreview(value || '');
+    if (typeof window !== 'undefined' && value) {
+      const img = new window.Image();
+      img.onload = () => {
+        if (img.naturalWidth && img.naturalHeight) {
+          setPreviewAspect(img.naturalWidth / img.naturalHeight);
+        }
+      };
+      img.onerror = () => setPreviewAspect(null);
+      img.src = value;
+    } else {
+      setPreviewAspect(null);
+    }
+  }, [value]);
 
   const handleUpload = useCallback(async (file: File) => {
     // Validate file type
@@ -69,6 +86,7 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
 
       setPreview(data.url as string);
       onChange(data.url as string);
+      setPreviewAspect(null);
     } catch (err) {
       console.error('Upload error:', err);
       setError(err instanceof Error ? err.message : 'Failed to upload image');
@@ -108,6 +126,7 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
     setPreview('');
     onChange('');
     setError(null);
+    setPreviewAspect(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -141,13 +160,22 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
       {/* Preview or Upload Area */}
       {preview ? (
         <div className="relative group">
-          <div className="relative w-full h-64 rounded-lg border-2 border-gray-300 overflow-hidden">
+          <div
+            className="relative w-full rounded-lg border-2 border-gray-300 bg-gray-100 overflow-hidden"
+            style={{ aspectRatio: previewAspect || 16 / 9 }}
+          >
             <Image
               src={preview}
               alt="Preview"
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(min-width: 1024px) 512px, 100vw"
+              unoptimized={preview.startsWith('data:')}
+              onLoadingComplete={(img) => {
+                if (img.naturalWidth && img.naturalHeight) {
+                  setPreviewAspect(img.naturalWidth / img.naturalHeight);
+                }
+              }}
             />
           </div>
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all rounded-lg flex items-center justify-center">

@@ -203,6 +203,7 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 896px, 100vw"
+                unoptimized={postImage.startsWith('data:')}
               />
             </div>
           </div>

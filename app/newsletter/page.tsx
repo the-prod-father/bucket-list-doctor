@@ -316,6 +316,7 @@ function NewsletterContent() {
                           fill
                           className="object-cover"
                           sizes="(min-width: 1024px) 640px, 100vw"
+                          unoptimized={image.startsWith('data:')}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                       </div>
@@ -384,6 +385,7 @@ function NewsletterContent() {
                                 fill
                                 className="object-cover"
                                 sizes="(min-width: 1024px) 192px, 50vw"
+                                unoptimized={image.startsWith('data:')}
                               />
                             </div>
                           </Link>
