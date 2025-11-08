@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
-import { FaUpload, FaImage, FaTimes, FaSpinner } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaUpload, FaImage as FaImageIcon, FaTimes, FaSpinner } from 'react-icons/fa';
 
 interface ImageUploadProps {
   value: string;
@@ -17,7 +18,7 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
   const [preview, setPreview] = useState<string>(value || '');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleUpload = async (file: File) => {
+  const handleUpload = useCallback(async (file: File) => {
     // Validate file type
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
     if (!validTypes.includes(file.type)) {
@@ -44,22 +45,37 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
         body: formData,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to upload image');
+      const raw = await response.text();
+      let data: any = null;
+      if (raw) {
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          data = null;
+        }
       }
 
-      // Update preview and notify parent
-      setPreview(data.url);
-      onChange(data.url);
+      if (!response.ok) {
+        const message =
+          (data && typeof data === 'object' && data.error) ||
+          raw ||
+          `Failed to upload image (status ${response.status})`;
+        throw new Error(message);
+      }
+
+      if (!data || typeof data !== 'object' || !data.url) {
+        throw new Error('Unexpected response from upload service.');
+      }
+
+      setPreview(data.url as string);
+      onChange(data.url as string);
     } catch (err) {
       console.error('Upload error:', err);
       setError(err instanceof Error ? err.message : 'Failed to upload image');
     } finally {
       setUploading(false);
     }
-  };
+  }, [onChange]);
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -79,7 +95,7 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleUpload(e.dataTransfer.files[0]);
     }
-  }, []);
+  }, [handleUpload]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -125,11 +141,15 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
       {/* Preview or Upload Area */}
       {preview ? (
         <div className="relative group">
-          <img
-            src={preview}
-            alt="Preview"
-            className="w-full h-64 object-cover rounded-lg border-2 border-gray-300"
-          />
+          <div className="relative w-full h-64 rounded-lg border-2 border-gray-300 overflow-hidden">
+            <Image
+              src={preview}
+              alt="Preview"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 512px, 100vw"
+            />
+          </div>
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all rounded-lg flex items-center justify-center">
             <button
               type="button"
@@ -149,9 +169,7 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
           onDrop={handleDrop}
           onClick={handleClick}
           className={`relative border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all ${
-            dragActive
-              ? 'border-brand-blue bg-blue-50'
-              : 'border-gray-300 hover:border-brand-blue hover:bg-gray-50'
+            dragActive ? 'border-brand-blue bg-blue-50' : 'border-gray-300 hover:border-brand-blue hover:bg-gray-50'
           } ${uploading ? 'pointer-events-none opacity-60' : ''}`}
         >
           {uploading ? (
@@ -162,7 +180,7 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
           ) : (
             <div className="flex flex-col items-center justify-center space-y-3">
               <div className="p-4 bg-brand-blue bg-opacity-10 rounded-full">
-                <FaImage className="w-8 h-8 text-brand-blue" />
+                <FaImageIcon className="w-8 h-8 text-brand-blue" />
               </div>
               <div>
                 <p className="text-lg font-medium text-gray-900 mb-1">

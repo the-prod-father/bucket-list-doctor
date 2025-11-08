@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaArrowRight, FaCalendar } from 'react-icons/fa';
 
 interface YouTubeVideo {
@@ -99,21 +100,23 @@ export default function BlogPage() {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] group"
                 >
                   {/* Featured Image */}
-                  {post.featured_image_url ? (
-                    <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
-                      <img
+                  <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
+                    {post.featured_image_url ? (
+                      <Image
                         src={post.featured_image_url}
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       />
-                    </div>
-                  ) : (
-                    <div className="relative w-full h-48 bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">
-                      <svg className="w-16 h-16 text-white opacity-50" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  )}
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">
+                        <svg className="w-16 h-16 text-white opacity-50" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
 
                   {/* Post Info */}
                   <div className="p-6">
@@ -211,12 +214,13 @@ export default function BlogPage() {
                 >
                   {/* Video Thumbnail */}
                   <div className="relative w-full pb-[56.25%] bg-gray-900 overflow-hidden">
-                    <img
+                    <Image
                       src={video.thumbnail}
                       alt={video.title}
-                      className="absolute top-0 left-0 w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     />
-                    {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
                       <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
                         <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">

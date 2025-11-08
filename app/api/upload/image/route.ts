@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { put } from '@vercel/blob';
+import fs from 'fs';
+import path from 'path';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
@@ -7,9 +8,23 @@ export const runtime = 'nodejs';
 
 /**
  * Upload Image API
- * Handles image uploads to Vercel Blob storage
+ * Handles image uploads to local storage (public/uploads)
  * Requires authentication (admin users only)
  */
+const BASE_UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads');
+const BLOG_UPLOAD_SUBDIR = 'blog-images';
+
+function ensureUploadDir() {
+  if (!fs.existsSync(BASE_UPLOAD_DIR)) {
+    fs.mkdirSync(BASE_UPLOAD_DIR, { recursive: true });
+  }
+
+  const blogDir = path.join(BASE_UPLOAD_DIR, BLOG_UPLOAD_SUBDIR);
+  if (!fs.existsSync(blogDir)) {
+    fs.mkdirSync(blogDir, { recursive: true });
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Check authentication
@@ -48,28 +63,19 @@ export async function POST(request: NextRequest) {
     const timestamp = Date.now();
     const randomString = Math.random().toString(36).substring(2, 8);
     const extension = file.name.split('.').pop();
-    const filename = `blog-images/${timestamp}-${randomString}.${extension}`;
+    const safeName = `${timestamp}-${randomString}.${extension}`;
 
-    // Check if Vercel Blob token is configured
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
-      console.error('BLOB_READ_WRITE_TOKEN not configured');
-      return NextResponse.json(
-        { error: 'Image upload not configured. Please contact administrator.' },
-        { status: 503 }
-      );
-    }
+    ensureUploadDir();
 
-    // Upload to Vercel Blob
-    const blob = await put(filename, file, {
-      access: 'public',
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-    });
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const filePath = path.join(BASE_UPLOAD_DIR, BLOG_UPLOAD_SUBDIR, safeName);
 
-    return NextResponse.json({
-      success: true,
-      url: blob.url,
-      filename: filename,
-    });
+    await fs.promises.writeFile(filePath, buffer);
+
+    const publicUrl = `/uploads/${BLOG_UPLOAD_SUBDIR}/${safeName}`;
+
+    return NextResponse.json({ success: true, url: publicUrl, filename: publicUrl });
 
   } catch (error) {
     console.error('Error uploading image:', error);

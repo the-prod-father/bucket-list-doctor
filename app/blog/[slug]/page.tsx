@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Client } from 'pg';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaArrowLeft, FaCalendar, FaEye } from 'react-icons/fa';
 
 interface BlogPost {
@@ -110,11 +111,14 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <article className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Featured Image */}
           {post.featured_image_url && (
-            <div className="w-full h-96 relative">
-              <img
+            <div className="relative w-full h-96">
+              <Image
                 src={post.featured_image_url}
                 alt={post.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                priority
               />
             </div>
           )}

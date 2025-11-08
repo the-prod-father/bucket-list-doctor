@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
@@ -30,11 +31,7 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
 
   const isAdmin = session?.user?.role === 'admin' || session?.user?.role === 'super_admin';
 
-  useEffect(() => {
-    fetchPost();
-  }, [slug]);
-
-  const fetchPost = async () => {
+  const fetchPost = useCallback(async () => {
     try {
       const response = await fetch(`/api/blog/${slug}`);
       if (response.ok) {
@@ -51,7 +48,11 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [slug]);
+
+  useEffect(() => {
+    fetchPost();
+  }, [fetchPost]);
 
   const handleEdit = () => {
     if (post) {
@@ -195,11 +196,15 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
         {/* Featured Image */}
         {postImage && (
           <div className="mb-8 rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src={postImage}
-              alt={post.title}
-              className="w-full h-auto object-cover"
-            />
+            <div className="relative w-full h-96">
+              <Image
+                src={postImage}
+                alt={post.title}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 896px, 100vw"
+              />
+            </div>
           </div>
         )}
 

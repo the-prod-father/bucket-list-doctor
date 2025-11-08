@@ -1,0 +1,1 @@
+Place uploaded blog images in this directory.

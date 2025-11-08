@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
@@ -129,7 +130,7 @@ function NewsletterContent() {
             </div>
             <div className="space-y-2">
               <h3 className="text-2xl font-bold">
-                {subscriptionStatus === 'existing' ? 'Welcome back to the list!' : "You're officially on the list 🎉"}
+                {subscriptionStatus === 'existing' ? 'Welcome back to the list!' : 'You\u2019re officially on the list 🎉'}
               </h3>
               {subscriberEmail && (
                 <p className="text-white/80 text-lg">{subscriberEmail}</p>
@@ -309,10 +310,12 @@ function NewsletterContent() {
                     const image = getPostImage(featuredPost);
                     return image ? (
                       <div className="relative h-64 w-full overflow-hidden">
-                        <img
+                        <Image
                           src={image}
                           alt={featuredPost.title}
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 1024px) 640px, 100vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                       </div>
@@ -374,8 +377,14 @@ function NewsletterContent() {
                       <article key={post.id} className="py-8 flex flex-col md:flex-row gap-6">
                         {image && (
                           <Link href={`/newsletter/${post.slug}`} className="md:w-48 w-full flex-shrink-0">
-                            <div className="h-32 md:h-full rounded-2xl overflow-hidden bg-gray-100">
-                              <img src={image} alt={post.title} className="w-full h-full object-cover" />
+                            <div className="relative h-32 md:h-full rounded-2xl overflow-hidden bg-gray-100">
+                              <Image
+                                src={image}
+                                alt={post.title}
+                                fill
+                                className="object-cover"
+                                sizes="(min-width: 1024px) 192px, 50vw"
+                              />
                             </div>
                           </Link>
                         )}
@@ -448,7 +457,7 @@ function NewsletterContent() {
 
             <div className="bg-white border border-gray-200 rounded-3xl p-6 space-y-4">
               <h3 className="text-lg font-bold text-gray-900">Why subscribers stay</h3>
-              <p className="text-sm text-gray-600">“Every email feels like sitting in on a masterclass about how the brain responds to goals." — longtime reader</p>
+              <p className="text-sm text-gray-600">&ldquo;Every email feels like sitting in on a masterclass about how the brain responds to goals.&rdquo; — longtime reader</p>
               <Link
                 href="/blog"
                 className="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl bg-brand-blue hover:bg-brand-purple text-white font-semibold transition-colors"

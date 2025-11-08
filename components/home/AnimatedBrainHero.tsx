@@ -3,6 +3,14 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
+const PARTICLE_COLORS = [
+  '#4A90E2',
+  '#50E3C2',
+  '#B968E0',
+  '#FF6B9D',
+  '#FFD93D',
+];
+
 interface Particle {
   id: number;
   x: number;
@@ -22,15 +30,6 @@ export default function AnimatedBrainHero() {
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
-
-  // Particle colors inspired by your brand
-  const particleColors = [
-    '#4A90E2', // Brand blue
-    '#50E3C2', // Brand teal
-    '#B968E0', // Brand purple
-    '#FF6B9D', // Brand pink
-    '#FFD93D', // Brand yellow
-  ];
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -69,7 +68,7 @@ export default function AnimatedBrainHero() {
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 3 + 1,
           opacity: Math.random() * 0.8 + 0.2,
-          color: particleColors[Math.floor(Math.random() * particleColors.length)],
+          color: PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)],
           life: Math.random() * 100,
           maxLife: 100,
         });
@@ -177,15 +176,20 @@ export default function AnimatedBrainHero() {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative">
           {/* Main Brain Image */}
-          <img
-            src="/images/hero/artistic-brain-hero.png"
-            alt="Artistic Brain with World Map"
-            className="w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] object-contain opacity-95 animate-pulse"
-            style={{
-              filter: 'drop-shadow(0 0 30px rgba(255, 100, 150, 0.4)) drop-shadow(0 0 60px rgba(100, 200, 255, 0.3)) drop-shadow(0 0 90px rgba(185, 104, 224, 0.2))',
-              animation: 'brainFloat 6s ease-in-out infinite'
-            }}
-          />
+          <div className="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px]">
+            <Image
+              src="/images/hero/artistic-brain-hero.png"
+              alt="Artistic Brain with World Map"
+              fill
+              className="object-contain opacity-95 animate-pulse"
+              priority
+              sizes="(min-width: 1024px) 500px, (min-width: 640px) 384px, 320px"
+              style={{
+                filter: 'drop-shadow(0 0 30px rgba(255, 100, 150, 0.4)) drop-shadow(0 0 60px rgba(100, 200, 255, 0.3)) drop-shadow(0 0 90px rgba(185, 104, 224, 0.2))',
+                animation: 'brainFloat 6s ease-in-out infinite'
+              }}
+            />
+          </div>
           
           {/* Animated Glow Rings */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

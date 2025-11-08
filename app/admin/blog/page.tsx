@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
@@ -27,7 +27,7 @@ interface BlogPost {
   meta_description: string | null;
 }
 
-export default function BlogPage() {
+function BlogPageContent() {
   const { data: session } = useSession();
   const searchParams = useSearchParams();
   const [activeView, setActiveView] = useState<'list' | 'edit'>('list');
@@ -391,5 +391,22 @@ export default function BlogPage() {
         </div>
       </AdminLayout>
     </ProtectedRoute>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-brand-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading admin tools…</p>
+          </div>
+        </div>
+      }
+    >
+      <BlogPageContent />
+    </Suspense>
   );
 }
