@@ -21,7 +21,7 @@ export default function Navigation() {
     { href: '/books', label: 'Books' },
     { href: '/tips-ideas', label: 'Tips & Ideas' },
     { href: '/your-brain', label: 'Your Brain' },
-    { href: '/newsletter', label: 'Blog' },
+    { href: '/newsletter', label: 'Blogs' },
     { href: '/blog', label: 'Videos & Media' },
   ];
 

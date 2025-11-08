@@ -378,7 +378,7 @@ function NewsletterContent() {
                       <article key={post.id} className="py-8 flex flex-col md:flex-row gap-6">
                         {image && (
                           <Link href={`/newsletter/${post.slug}`} className="md:w-48 w-full flex-shrink-0">
-                            <div className="relative h-32 md:h-full rounded-2xl overflow-hidden bg-gray-100">
+                            <div className="relative h-32 md:h-36 lg:h-40 xl:h-48 rounded-2xl overflow-hidden bg-gray-100">
                               <Image
                                 src={image}
                                 alt={post.title}
