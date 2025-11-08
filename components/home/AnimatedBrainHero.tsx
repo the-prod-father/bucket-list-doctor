@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 interface Particle {
@@ -245,6 +246,32 @@ export default function AnimatedBrainHero() {
             Get the Books
           </a>
         </div>
+      </div>
+
+      {/* Floating book stack */}
+      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 md:bottom-10 md:right-12 flex flex-col items-end gap-4 z-20">
+        <div className="pointer-events-none relative w-28 sm:w-36 md:w-44 lg:w-52">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/30 via-brand-blue/30 to-brand-teal/30 blur-3xl rounded-2xl animate-pulse" />
+          <div className="relative w-full drop-shadow-2xl">
+            <Image
+              src="/images/two-books.png"
+              alt="The Neuroscience of a Bucket List books"
+              width={256}
+              height={320}
+              className="shadow-2xl"
+              priority
+            />
+          </div>
+        </div>
+        <a
+          href="/newsletter"
+          className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-semibold py-2 px-5 rounded-xl transition-all transform hover:scale-105 shadow-xl pointer-events-auto"
+        >
+          <span>Recent Blog Posts</span>
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
 
       {/* Gradient overlays for depth */}

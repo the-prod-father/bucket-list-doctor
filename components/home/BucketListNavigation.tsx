@@ -11,13 +11,13 @@ export default function BucketListNavigation() {
   const bucketListSections = [
     {
       id: 'blog',
-      title: 'Videos & Media',
-      description: 'Watch Dr. D discuss neuroscience and bucket lists.',
-      buttonText: 'Watch Videos',
+      title: 'Newsletter',
+      description: 'Read weekly essays on neuroscience and purposeful living.',
+      buttonText: 'Read Latest',
       image: '/images/cards/dr-d-writing.png',
       gradient: 'from-amber-500 via-orange-500 to-red-500',
       bgGradient: 'from-amber-100 via-orange-50 to-red-100',
-      link: '/blog',
+      link: '/newsletter',
     },
     {
       id: 'books',

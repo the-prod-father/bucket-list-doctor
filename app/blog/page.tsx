@@ -86,7 +86,7 @@ export default function BlogPage() {
 
         {/* Blog Posts Section */}
         {!postsLoading && blogPosts.length > 0 && (
-          <div className="mb-16">
+          <div id="articles" className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
               Latest Articles
             </h2>
