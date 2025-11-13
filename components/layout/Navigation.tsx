@@ -16,7 +16,6 @@ export default function Navigation() {
   const isAuthenticated = status === 'authenticated';
 
   const navLinks = [
-    { href: '/', label: 'Home' },
     { href: '/about', label: 'About Dr. D' },
     { href: '/books', label: 'Books' },
     { href: '/tips-ideas', label: 'Tips & Ideas' },
@@ -47,11 +46,11 @@ export default function Navigation() {
 
   return (
     <nav className="sticky top-0 z-50 bg-brand-navy shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 md:h-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 sm:h-20 md:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 sm:space-x-4 group">
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 group flex-shrink-0 min-w-0 pr-2 sm:pr-4">
+            <div className="relative w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 lg:w-16 lg:h-16 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
               <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/30 to-brand-purple/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <Image
                 src="/images/logos/bucketlistdoctor-logo.webp"
@@ -61,33 +60,32 @@ export default function Navigation() {
                 priority
               />
             </div>
-            <div className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white group-hover:text-brand-yellow transition-colors duration-300">
+            <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-display font-bold text-white group-hover:text-brand-yellow transition-colors duration-300 whitespace-nowrap flex-shrink-0 leading-tight">
               Bucket List Doctor
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-3 lg:gap-4 xl:gap-5 flex-shrink-0">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/90 hover:text-white transition-colors font-medium whitespace-nowrap flex-shrink-0"
+                className="text-white/90 hover:text-white transition-colors font-medium text-xs md:text-sm lg:text-base whitespace-nowrap flex-shrink-0 px-1.5 md:px-2 py-1.5 rounded-md hover:bg-white/10"
               >
                 {link.label}
               </Link>
             ))}
-            <div className="relative flex-shrink-0" ref={adminMenuRef}>
+            <div className="relative flex-shrink-0 ml-1 md:ml-2" ref={adminMenuRef}>
               <button
                 onClick={() => setIsAdminMenuOpen((prev) => !prev)}
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-3 rounded-lg transition-colors"
+                className="inline-flex items-center gap-1 md:gap-1.5 lg:gap-2 bg-white/10 hover:bg-white/20 text-white font-medium py-1 md:py-1.5 lg:py-2 px-2 md:px-2.5 lg:px-3 rounded-lg transition-colors text-xs md:text-sm"
                 aria-haspopup="true"
                 aria-expanded={isAdminMenuOpen}
                 aria-label="Admin menu"
               >
-                <FaUserCog className="w-4 h-4" />
-                <span className="text-sm tracking-wide">Admin</span>
-                <FaBars className="w-4 h-4 opacity-70" />
+                <FaUserCog className="w-3 h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4" />
+                <span className="tracking-wide">Admin</span>
               </button>
 
               {isAdminMenuOpen && (
@@ -149,21 +147,21 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 flex-shrink-0 ml-2 sm:ml-3"
             aria-label="Toggle menu"
           >
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isOpen ? <FaTimes size={22} className="sm:w-6 sm:h-6" /> : <FaBars size={22} className="sm:w-6 sm:h-6" />}
           </button>
         </div>
 
         {/* Mobile Nav */}
         {isOpen && (
-          <div className="md:hidden pb-4">
+          <div className="md:hidden pb-4 pt-2 border-t border-white/10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-white/90 hover:text-white transition-colors"
+                className="block py-2.5 px-2 text-white/90 hover:text-white hover:bg-white/10 transition-colors rounded-md text-sm sm:text-base"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
