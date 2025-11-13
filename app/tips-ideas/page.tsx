@@ -3,10 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Bucket List Tips & Ideas | Practical Strategies',
+  title: 'Bucket List Tips & Advice | Practical Strategies',
   description: 'Get practical strategies and inspiration for creating and pursuing your bucket list. Learn how to set achievable goals that transform your brain and life.',
   openGraph: {
-    title: 'Bucket List Tips & Ideas',
+    title: 'Bucket List Tips & Advice',
     description: 'Practical strategies for creating bucket list experiences that enhance brain health.',
   },
 };
@@ -91,7 +91,7 @@ export default function TipsIdeasPage() {
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-12 sm:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 px-4">
-            Tips & Ideas
+            Tips & Advice
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto px-4">
             Practical strategies and inspiration for creating and pursuing your bucket list adventures. Explore our comprehensive guides covering everything from travel documents to cultural considerations.

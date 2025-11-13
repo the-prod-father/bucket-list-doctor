@@ -369,7 +369,7 @@ export default function CulturalPage() {
             href="/tips-ideas"
             className="inline-block bg-gradient-to-r from-brand-navy to-brand-blue text-white font-bold py-3 px-8 rounded-lg hover:shadow-lg transition-all transform hover:scale-105"
           >
-            ← Back to Tips & Ideas
+            ← Back to Tips & Advice
           </Link>
         </div>
       </div>

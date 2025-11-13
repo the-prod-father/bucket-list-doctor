@@ -98,7 +98,7 @@ export default function BlogPage() {
             Blog & Media
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            Read Dr. DeSarbo&apos;s latest articles and watch videos on neuroscience, bucket lists, and purposeful living.
+            Additional information from Dr. DeSarbo on neuroscience, mental health, eating disorders, bucket lists, and purposeful living.
           </p>
         </div>
 
@@ -290,6 +290,42 @@ export default function BlogPage() {
               </a>
             </div>
           )}
+        </div>
+
+        {/* Media Banners Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+            As Featured On
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 items-center justify-items-center">
+            <div className="relative w-full h-24 flex items-center justify-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <Image
+                src="/images/speaker/doctor-radio-siriusxm.png"
+                alt="Doctor Radio / Sirius XM"
+                width={200}
+                height={100}
+                className="object-contain max-h-20 w-full"
+              />
+            </div>
+            <div className="relative w-full h-24 flex items-center justify-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <Image
+                src="/images/speaker/newsday-banner.png"
+                alt="Newsday"
+                width={200}
+                height={100}
+                className="object-contain max-h-20 w-full"
+              />
+            </div>
+            <div className="relative w-full h-24 flex items-center justify-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <Image
+                src="/images/speaker/iheart-radio.png"
+                alt="iHeart Radio"
+                width={200}
+                height={100}
+                className="object-contain max-h-20 w-full"
+              />
+            </div>
+          </div>
         </div>
 
         {/* YouTube CTA Section */}

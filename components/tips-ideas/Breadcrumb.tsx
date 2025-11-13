@@ -16,7 +16,7 @@ export default function Breadcrumb({ categoryName }: BreadcrumbProps) {
         <li className="text-gray-400">/</li>
         <li>
           <Link href="/tips-ideas" className="text-gray-600 hover:text-brand-blue transition-colors">
-            Tips & Ideas
+            Tips & Advice
           </Link>
         </li>
         <li className="text-gray-400">/</li>

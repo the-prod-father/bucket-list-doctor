@@ -252,9 +252,9 @@ export default function AnimatedBrainHero() {
         </div>
       </div>
 
-      {/* Floating book stack */}
-      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 md:bottom-10 md:right-12 flex flex-col items-end gap-4 z-20">
-        <div className="pointer-events-none relative w-28 sm:w-36 md:w-44 lg:w-52">
+      {/* Floating book stack - Bottom Right */}
+      <div className="absolute bottom-3 right-2 sm:bottom-4 sm:right-4 md:bottom-6 md:right-8 lg:bottom-10 lg:right-12 flex flex-col items-end gap-2 sm:gap-3 md:gap-4 z-20">
+        <div className="pointer-events-none relative w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/30 via-brand-blue/30 to-brand-teal/30 blur-3xl rounded-2xl animate-pulse" />
           <div className="relative w-full drop-shadow-2xl">
             <Image
@@ -262,20 +262,45 @@ export default function AnimatedBrainHero() {
               alt="The Neuroscience of a Bucket List books"
               width={256}
               height={320}
-                  className="shadow-2xl"
+              className="shadow-2xl w-full h-auto"
               priority
-                  unoptimized
+              unoptimized
+            />
+          </div>
+        </div>
+        <a
+          href="/blog"
+          className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-semibold py-2.5 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg pointer-events-auto text-sm md:text-base"
+        >
+          <span>Recent Blog Posts</span>
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      {/* Magazine Cover - Bottom Left */}
+      <div className="absolute bottom-3 left-2 sm:bottom-4 sm:left-4 md:bottom-6 md:left-8 lg:bottom-10 lg:left-12 flex flex-col items-start gap-2 sm:gap-3 md:gap-4 z-30">
+        <div className="pointer-events-none relative w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/30 via-brand-orange/30 to-brand-red/30 blur-3xl rounded-2xl animate-pulse" />
+          <div className="relative w-full">
+            <Image
+              src="/images/hero/bucketlist-magazine-cover.png"
+              alt="Your Brain & Bucket Listing Magazine"
+              width={256}
+              height={320}
+              className="rounded-lg w-full h-auto"
+              priority
+              unoptimized
             />
           </div>
         </div>
         <a
           href="/newsletter"
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-semibold py-2 px-5 rounded-xl transition-all transform hover:scale-105 shadow-xl pointer-events-auto"
+          className="inline-flex flex-col items-center bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-gray-900 font-bold py-2.5 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg text-sm md:text-base pointer-events-auto"
         >
-          <span>Recent Blog Posts</span>
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          <span className="leading-tight">On-Line Magazine</span>
+          <span className="leading-tight font-extrabold">HERE</span>
         </a>
       </div>
 

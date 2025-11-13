@@ -10,28 +10,40 @@ export default function MediaAppearances() {
 
   const mediaAppearances = [
     {
-      name: 'KTRS 550 ABC News Radio',
-      logo: '/images/media/ktrs-550-abc-news-radio-logo.png',
-      type: 'radio',
-      gradient: 'from-red-500 via-orange-500 to-yellow-500',
-    },
-    {
-      name: 'News 12 Long Island',
-      logo: '/images/media/news12-long-island-logo.png',
-      type: 'tv',
+      name: 'Newsday',
+      logo: '/images/speaker/newsday-banner.png',
+      type: 'print',
       gradient: 'from-blue-500 via-cyan-500 to-teal-500',
     },
     {
-      name: 'WICC Radio',
-      logo: '/images/media/wicc-logo.png',
+      name: 'Doctor Radio / Sirius XM',
+      logo: '/images/speaker/doctor-radio-siriusxm.png',
       type: 'radio',
       gradient: 'from-purple-500 via-pink-500 to-red-500',
     },
     {
-      name: 'Connecticut Today',
-      logo: '/images/media/connecticut-today-logo.png',
-      type: 'tv',
+      name: 'WJR Radio',
+      logo: '/images/speaker/wjr-radio-banner.png',
+      type: 'radio',
+      gradient: 'from-orange-500 via-red-500 to-pink-500',
+    },
+    {
+      name: 'KOA Radio',
+      logo: '/images/speaker/koa-radio-banner.png',
+      type: 'radio',
       gradient: 'from-green-500 via-emerald-500 to-cyan-500',
+    },
+    {
+      name: 'iHeart Radio',
+      logo: '/images/speaker/iheart-radio.png',
+      type: 'radio',
+      gradient: 'from-red-500 via-pink-500 to-purple-500',
+    },
+    {
+      name: 'WBZ News Radio',
+      logo: '/images/speaker/wbz-news-radio.png',
+      type: 'radio',
+      gradient: 'from-blue-500 via-indigo-500 to-purple-500',
     },
   ];
 
@@ -81,15 +93,15 @@ export default function MediaAppearances() {
             </span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            As <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Featured In</span>
+            As <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Featured On</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Dr. DeSarbo shares insights on neuroscience and bucket lists across major media outlets.
+            Dr. DeSarbo has been featured with his insights on psychiatry, neuroscience and bucket lists across major media outlets.
           </p>
         </div>
 
         {/* Media Logos Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center mb-16">
           {mediaAppearances.map((media, index) => (
             <div
               key={media.name}

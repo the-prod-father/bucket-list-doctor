@@ -110,15 +110,15 @@ export default function AboutPage() {
           }`}>
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-800 leading-relaxed mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-brand-purple first-letter:mr-2 first-letter:float-left">
-                Dr. Jeffrey DeSarbo is a physician, neuropsychiatrist, author, speaker, and adventurer dedicated to exploring the intersection of brain health and purposeful living. With extensive medical training and a deep passion for understanding how our brains work, Dr. D has devoted his career to helping people unlock their full potential through intentional goal-setting, neuroscience, and bucket list experiences.
+                Jeffrey DeSarbo, D.O. is a physician/neuropsychiatrist and the Founder/Medical Director of ED-180 Treatment Programs in Garden City, N.Y. Dr. Desarbo, a former Diplomat of the American Board of Psychiatry and Neurology, has practiced at all levels of treatment including intensive outpatient programs (IOP), partial hospitalization programs (PHP), residential and inpatient hospitalization for eating disorders and general psychiatry. Currently, He maintains an active private practice treating patients with mood disorders such as depression, bipolar disorder, anxiety disorders, performance disorders, and eating disorders. Dr. DeSarbo continues to serve as a national and international consultant for select client cases in Europe, Australia, New Zealand, the Middle East and throughout the United States and Canada.
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                In his clinical practice, Dr. DeSarbo provides both in-person and virtual psychiatric care, specializing in the treatment of mood disorders, anxiety, obsessive-compulsive disorder (OCD), and eating disorders. He combines evidence-based medicine with neuroscience-informed therapeutic approaches to help patients achieve greater emotional balance, resilience, and self-understanding.
+                As a clinician, Dr. DeSarbo is both a psycho-pharmacologist and psychotherapist who is formally trained in psychodynamic, CBT, ACT, mindfulness training, and existential therapy, incorporating these modalities into treatment plans with medication management and bio/neurofeedback interventions. Dr. DeSarbo practices psychiatry from a biological and neuroscientific perspective with the goal of helping his patients achieve their highest quality of life and performance level both physically and mentally. His clientele ranges from students to international politicians, prominent CEOs, figures in the entertainment industry, Olympic and professional athletes, and other physicians and health care providers offering mental health care and psycho/neuro coaching consultations.
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed">
-                Having traveled to all seven continents and completed hundreds of bucket list experiences himself, Dr. DeSarbo blends personal adventure with scientific research to demonstrate how bucket listing can literally rewire the brain for success, happiness, and fulfillment. His work bridges science and everyday living—showing that purposeful experiences aren&apos;t just meaningful, but also neurologically transformative.
+                As a speaker/lecturer, Dr. DeSarbo has presented locally, nationally and internationally on the topics of the brain, biology and the science of mental health, performance enhancement, cultural psychiatry and eating disorders, and the brain benefits of bucket list living, to both the public and professionals. Dr. DeSarbo is also the author of The Neuroscience of a Bucket List: How to Get the Most from Your Brain and Life (Psyance Publishing, 2025) and its accompanying workbook. With over two decades of experience blending clinical expertise with human performance, he brings a dynamic, engaging, and science-based approach to purposeful living. His talks explore how goal-setting, novelty, and adventure impact brain health, longevity, motivation, and fulfillment. He has delivered talks and keynote presentations to professional organizations, wellness centers, hospitals, universities and academic institutions, corporations, and is now expanding his platform to adventurists, luxury travelers and lifelong learners seeking insight, inspiration, and personal growth.
               </p>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-2">Published Author</h4>
-                    <p className="text-gray-600 text-sm">Three groundbreaking books on bucket list neuroscience, including the main title and specialized supplements for eating disorders</p>
+                    <p className="text-gray-600 text-sm">Three groundbreaking books on bucket list neuroscience, including the main title and specialized supplements for eating disorders. Author of numerous articles for professional publication.</p>
                   </div>
                 </div>
               </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-2">International Speaker</h4>
-                    <p className="text-gray-600 text-sm">Featured on major media outlets including KTRS 550 ABC News Radio, News 12, WICC Radio, and Connecticut Today</p>
+                    <p className="text-gray-600 text-sm">National and international professional presenter. Featured on major media outlets including iHeart Radio, KTRS 550 ABC News Radio, News 12 Television, Doctor Radio/Sirius XM, Newsday, WICC Radio, Connecticut Today and many more.</p>
                   </div>
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-2">Neuropsychiatry Expert</h4>
-                    <p className="text-gray-600 text-sm">Over 20 years of clinical experience treating elite clients including politicians, CEOs, Olympic athletes, and healthcare providers</p>
+                    <p className="text-gray-600 text-sm">Over 20 years of clinical experience treating elite clients including politicians, CEOs, Olympic athletes, and healthcare providers.</p>
                   </div>
                 </div>
               </div>
@@ -303,9 +303,10 @@ export default function AboutPage() {
               <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm text-white/80">
                 <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Medical Consultations</span>
                 <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Speaking Engagements</span>
-                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Radio Interviews</span>
+                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">TV/Radio Interviews</span>
                 <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Podcast Appearances</span>
                 <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Educational Seminars</span>
+                <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Psychiatry Consultation</span>
               </div>
             </div>
           </div>

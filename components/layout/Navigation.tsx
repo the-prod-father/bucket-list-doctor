@@ -11,7 +11,7 @@ export default function Navigation() {
   const navLinks = [
     { href: '/about', label: 'About Dr. D' },
     { href: '/books', label: 'Books' },
-    { href: '/tips-ideas', label: 'Tips & Ideas' },
+    { href: '/tips-ideas', label: 'Tips & Advice' },
     { href: '/your-brain', label: 'Your Brain' },
     { href: '/newsletter', label: 'Blogs' },
     { href: '/blog', label: 'Videos & Media' },

@@ -31,7 +31,7 @@ export default function BucketListNavigation() {
     },
     {
       id: 'tips',
-      title: 'Tips & Ideas',
+      title: 'Tips & Advice',
       description: 'Practical advice for your bucket list journey.',
       buttonText: 'Get Tips',
       image: '/images/benefits/bucketlist-sailing.jpeg',
