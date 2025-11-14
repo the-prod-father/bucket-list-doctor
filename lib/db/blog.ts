@@ -1,4 +1,5 @@
 import { Client } from 'pg';
+import { sendBlogPostNotification } from '@/lib/email/blogPostNotification';
 
 // PostgreSQL client
 function getClient() {
@@ -147,7 +148,20 @@ export async function createBlogPost(input: CreateBlogPostInput): Promise<BlogPo
       ]
     );
 
-    return result.rows[0];
+    const post = result.rows[0];
+
+    // Send email notification if post is published
+    if (input.status === 'published') {
+      try {
+        console.log(`📧 Post created as published, sending notification for: ${post.title}`);
+        await sendBlogPostNotification(post);
+      } catch (emailError) {
+        // Don't fail post creation if email fails
+        console.error('❌ Error sending blog post notification (post still created):', emailError);
+      }
+    }
+
+    return post;
   } finally {
     await client.end();
   }
@@ -161,6 +175,19 @@ export async function updateBlogPost(
   const client = getClient();
   try {
     await client.connect();
+
+    // Get current post status to check if we're changing TO published
+    let previousStatus: string | null = null;
+    let shouldSendEmail = false;
+
+    if (input.status !== undefined && input.status === 'published') {
+      const currentPost = await getBlogPostById(id);
+      if (currentPost) {
+        previousStatus = currentPost.status;
+        // Only send email if status is changing FROM something other than 'published' TO 'published'
+        shouldSendEmail = previousStatus !== 'published';
+      }
+    }
 
     // Build dynamic update query
     const updates: string[] = [];
@@ -219,7 +246,20 @@ export async function updateBlogPost(
       values
     );
 
-    return result.rows[0] || null;
+    const updatedPost = result.rows[0] || null;
+
+    // Send email notification if status changed to published
+    if (shouldSendEmail && updatedPost) {
+      try {
+        console.log(`📧 Post status changed to published, sending notification for: ${updatedPost.title}`);
+        await sendBlogPostNotification(updatedPost);
+      } catch (emailError) {
+        // Don't fail post update if email fails
+        console.error('❌ Error sending blog post notification (post still updated):', emailError);
+      }
+    }
+
+    return updatedPost;
   } finally {
     await client.end();
   }

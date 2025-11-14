@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { FaEnvelope, FaBlog, FaUsers, FaChartLine } from 'react-icons/fa';
+import { FaEnvelope, FaBlog, FaUsers, FaChartLine, FaPaperPlane } from 'react-icons/fa';
 import Link from 'next/link';
 
 interface DashboardStats {
@@ -18,6 +18,8 @@ export default function AdminDashboard() {
   const { data: session } = useSession();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [testingNewsletter, setTestingNewsletter] = useState(false);
+  const [testResult, setTestResult] = useState<{ success: boolean; message: string } | null>(null);
 
   useEffect(() => {
     fetchStats();
@@ -34,6 +36,58 @@ export default function AdminDashboard() {
       console.error('Error fetching stats:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleTestNewsletter = async () => {
+    if (!confirm('Send the latest published article to all subscribers? This will send a real email to all active subscribers.')) {
+      return;
+    }
+
+    setTestingNewsletter(true);
+    setTestResult(null);
+
+    try {
+      const response = await fetch('/api/admin/test-newsletter', {
+        method: 'POST',
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const stats = data.emailStats;
+        let message = `✅ Test newsletter sent! ${stats.sent} emails sent to ${stats.total} subscribers. Post: "${data.post.title}"`;
+        
+        if (data.note) {
+          message += `\n\nℹ️ ${data.note}`;
+        }
+        
+        if (stats.errors > 0 && data.emailStats.errorDetails) {
+          message += `\n\n⚠️ ${stats.errors} errors occurred. Check server logs for details.`;
+        }
+        
+        if (!data.smtpConfigured) {
+          message = `⚠️ WARNING: SMTP_USER or SMTP_PASSWORD not configured. No emails were actually sent.\n\n${message}`;
+        }
+        
+        setTestResult({
+          success: data.smtpConfigured && stats.sent > 0,
+          message,
+        });
+      } else {
+        const errorMsg = data.warning || data.error || data.message || 'Failed to send test newsletter';
+        setTestResult({
+          success: false,
+          message: `❌ Error: ${errorMsg}${data.smtpConfigured === false ? '\n\n⚠️ SMTP_USER or SMTP_PASSWORD is not configured in environment variables.' : ''}`,
+        });
+      }
+    } catch (error) {
+      setTestResult({
+        success: false,
+        message: `❌ Error: ${error instanceof Error ? error.message : 'Failed to send test newsletter'}`,
+      });
+    } finally {
+      setTestingNewsletter(false);
     }
   };
 
@@ -142,6 +196,51 @@ export default function AdminDashboard() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Test Newsletter */}
+          <div className="bg-white rounded-lg p-6 shadow-md border-2 border-yellow-200">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-xl font-bold text-gray-900 mb-1">Test Newsletter Email</h2>
+                <p className="text-sm text-gray-600">
+                  Send the latest published article to all subscribers to test the email functionality
+                </p>
+              </div>
+              <button
+                onClick={handleTestNewsletter}
+                disabled={testingNewsletter}
+                className="flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              >
+                <FaPaperPlane />
+                <span>{testingNewsletter ? 'Sending...' : 'Test Newsletter'}</span>
+              </button>
+            </div>
+            {testResult && (
+              <div className={`mt-4 p-4 rounded-lg ${testResult.success ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+                <p className={`text-sm whitespace-pre-line ${testResult.success ? 'text-green-800' : 'text-red-800'}`}>
+                  {testResult.message}
+                </p>
+                {!testResult.success && (
+                  <div className="mt-3">
+                    <button
+                      onClick={async () => {
+                        try {
+                          const response = await fetch('/api/admin/check-email-config');
+                          const data = await response.json();
+                          alert(JSON.stringify(data.diagnostics, null, 2));
+                        } catch (err) {
+                          alert('Failed to check email config');
+                        }
+                      }}
+                      className="text-xs text-blue-600 hover:text-blue-800 underline"
+                    >
+                      Check Email Configuration
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Recent Activity */}

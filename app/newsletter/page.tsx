@@ -189,10 +189,9 @@ function NewsletterContent() {
     return (
       <div className="bg-white border border-gray-200 rounded-3xl shadow-xl p-8 space-y-6">
         <div className="space-y-2">
-          <span className="text-sm font-semibold uppercase tracking-wide text-brand-blue">Join 15k+ curious readers</span>
           <h3 className="text-2xl font-bold text-gray-900">Get the weekly neuroscience dispatch</h3>
           <p className="text-gray-600">
-            Practical neuroscience, bucket list experiments, and purposeful living tactics—delivered once a week.
+            Practical neuroscience, bucket list experiments, and purposeful living tactics delivered once a week.
           </p>
         </div>
         <form onSubmit={handleSubscribe} className="space-y-4">
@@ -254,7 +253,7 @@ function NewsletterContent() {
                 Bucket List Doctor Newsletter
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                Neuroscience, purposeful living, and bucket list breakthroughs—every week.
+                Neuroscience, purposeful living, and bucket list breakthroughs every week.
               </h1>
               <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
                 Curated essays, research summaries, and experiments from neuropsychiatrist Dr. Jeffrey DeSarbo. Designed for people who want their bucket list to rewire their brain for good.

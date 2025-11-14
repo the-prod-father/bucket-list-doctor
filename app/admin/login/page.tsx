@@ -24,20 +24,35 @@ function AdminLoginForm() {
 
     try {
       const result = await signIn('credentials', {
-        username,
+        username: username.trim(),
         password,
         redirect: false,
+        callbackUrl: callbackUrl,
       });
 
+      console.log('Sign in result:', result);
+
+      // Check for errors
       if (result?.error) {
-        setError('Invalid username or password');
+        console.error('Login error:', result.error);
+        setError(`Login failed: ${result.error}`);
         setLoading(false);
+        return;
+      }
+
+      // Check if result is ok
+      if (result?.ok) {
+        // Successful login - refresh and redirect
+        window.location.href = callbackUrl;
       } else {
-        // Successful login - redirect to dashboard
-        router.push(callbackUrl);
+        // Unknown error state
+        console.error('Unexpected result:', result);
+        setError('Login failed. Please check your credentials and try again.');
+        setLoading(false);
       }
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      console.error('Login exception:', err);
+      setError(`An error occurred: ${err instanceof Error ? err.message : 'Unknown error'}`);
       setLoading(false);
     }
   };

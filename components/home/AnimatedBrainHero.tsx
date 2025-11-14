@@ -235,26 +235,39 @@ export default function AnimatedBrainHero() {
         </div>
         
         <div className={`transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-8 max-w-3xl drop-shadow-lg font-light">
+          <p className="text-xl sm:text-2xl md:text-3xl text-white/90 mb-4 max-w-3xl drop-shadow-lg font-light">
             Getting the Most from Your Brain and Life.
           </p>
         </div>
         
         <div className={`transform transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <a
-            href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-gray-900 font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-2xl text-lg md:text-xl"
-          >
-            Get the Books
-          </a>
+          <div className="flex items-center justify-center space-x-3 sm:space-x-4 md:space-x-5">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/30 to-brand-purple/30 rounded-full blur-lg opacity-50" />
+              <Image
+                src="/images/logos/bucketlistdoctor-logo.webp"
+                alt="Bucket List Doctor Logo"
+                width={80}
+                height={80}
+                className="object-contain relative z-10 drop-shadow-lg w-full h-full"
+                priority
+              />
+            </div>
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white drop-shadow-lg">
+              Bucket List Doctor
+            </p>
+          </div>
         </div>
+        
       </div>
 
       {/* Floating book stack - Bottom Right */}
       <div className="absolute bottom-3 right-2 sm:bottom-4 sm:right-4 md:bottom-6 md:right-8 lg:bottom-10 lg:right-12 flex flex-col items-end gap-2 sm:gap-3 md:gap-4 z-20">
-        <div className="pointer-events-none relative w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52">
+        {/* Clickable Books Image */}
+        <a
+          href="/blog"
+          className="relative w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 transition-all transform hover:scale-105 cursor-pointer"
+        >
           <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/30 via-brand-blue/30 to-brand-teal/30 blur-3xl rounded-2xl animate-pulse" />
           <div className="relative w-full drop-shadow-2xl">
             <Image
@@ -267,13 +280,14 @@ export default function AnimatedBrainHero() {
               unoptimized
             />
           </div>
-        </div>
+        </a>
+        {/* Books Button */}
         <a
           href="/blog"
-          className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-semibold py-2.5 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg pointer-events-auto text-sm md:text-base"
+          className="w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 inline-flex items-center justify-center gap-1 bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-semibold py-1 px-3 rounded-lg transition-all transform hover:scale-105 shadow-lg pointer-events-auto text-xs whitespace-nowrap"
         >
           <span>Recent Blog Posts</span>
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-2 h-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
@@ -281,7 +295,11 @@ export default function AnimatedBrainHero() {
 
       {/* Magazine Cover - Bottom Left */}
       <div className="absolute bottom-3 left-2 sm:bottom-4 sm:left-4 md:bottom-6 md:left-8 lg:bottom-10 lg:left-12 flex flex-col items-start gap-2 sm:gap-3 md:gap-4 z-30">
-        <div className="pointer-events-none relative w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52">
+        {/* Clickable Magazine Image */}
+        <a
+          href="/newsletter"
+          className="relative w-16 sm:w-24 md:w-28 lg:w-36 xl:w-44 transition-all transform hover:scale-105 cursor-pointer"
+        >
           <div className="absolute inset-0 bg-gradient-to-br from-brand-yellow/30 via-brand-orange/30 to-brand-red/30 blur-3xl rounded-2xl animate-pulse" />
           <div className="relative w-full">
             <Image
@@ -294,14 +312,19 @@ export default function AnimatedBrainHero() {
               unoptimized
             />
           </div>
-        </div>
-        <a
-          href="/newsletter"
-          className="inline-flex flex-col items-center bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-gray-900 font-bold py-2.5 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg text-sm md:text-base pointer-events-auto"
-        >
-          <span className="leading-tight">On-Line Magazine</span>
-          <span className="leading-tight font-extrabold">HERE</span>
         </a>
+        {/* Magazine Button - Centered relative to image */}
+        <div className="w-16 sm:w-24 md:w-28 lg:w-36 xl:w-44 flex justify-center">
+          <a
+            href="/newsletter"
+            className="w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 inline-flex items-center justify-center gap-1 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-gray-900 font-semibold py-1 px-3 rounded-lg transition-all transform hover:scale-105 shadow-lg pointer-events-auto text-xs whitespace-nowrap"
+          >
+            <span>On-Line Magazine HERE</span>
+            <svg className="w-2 h-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
       </div>
 
       {/* Gradient overlays for depth */}

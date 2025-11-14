@@ -9,7 +9,19 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 # NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 # NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
+# SMTP Email Configuration
+# For Gmail/Google Workspace: smtp.gmail.com, port 587
+# For Office 365: smtp.office365.com, port 587
+# For custom: check with your email provider
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=gavin@whynotus.ai
+SMTP_PASSWORD=Gr@p3-Pr0pe!-bunt
+SMTP_FROM=support@whynotus.ai
+
 # Instructions:
 # 1. Copy this file to .env.local
-# 2. Replace the placeholder values with your actual SuperBase credentials
+# 2. Replace the placeholder values with your actual credentials
 # 3. Never commit .env.local to git

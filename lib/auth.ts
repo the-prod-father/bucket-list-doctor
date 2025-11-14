@@ -26,7 +26,8 @@ export const authOptions: NextAuthOptions = {
         const password = credentials?.password;
 
         if (!username || !password) {
-          throw new Error('Please enter username and password');
+          console.error('Auth: Missing username or password');
+          return null;
         }
 
         const client = getClient();
@@ -43,14 +44,16 @@ export const authOptions: NextAuthOptions = {
           const user = result.rows[0];
 
           if (!user) {
-            throw new Error('Invalid username or password');
+            console.error(`Auth: User not found: ${username}`);
+            return null;
           }
 
           // Verify password
           const isValid = await bcrypt.compare(password, user.password_hash);
 
           if (!isValid) {
-            throw new Error('Invalid username or password');
+            console.error(`Auth: Invalid password for user: ${username}`);
+            return null;
           }
 
           // Update last login
@@ -58,6 +61,8 @@ export const authOptions: NextAuthOptions = {
             'UPDATE users SET last_login_at = NOW() WHERE id = $1',
             [user.id]
           );
+
+          console.log(`Auth: Successfully authenticated user: ${username}`);
 
           // Return user object (will be stored in session)
           return {
@@ -69,7 +74,7 @@ export const authOptions: NextAuthOptions = {
           };
         } catch (error) {
           console.error('Auth error:', error);
-          throw error;
+          return null;
         } finally {
           await client.end();
         }
