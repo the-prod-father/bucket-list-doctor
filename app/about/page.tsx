@@ -197,7 +197,7 @@ export default function AboutPage() {
                     <FaBrain className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2">Neuropsychiatry Expert</h4>
+                    <h4 className="font-bold text-gray-900 mb-2">Neuropsychiatry Expert.</h4>
                     <p className="text-gray-600 text-sm">Over 20 years of clinical experience treating elite clients including politicians, CEOs, Olympic athletes, and healthcare providers.</p>
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <FaUserMd className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900">Clinical Practice</h2>
+                <h2 className="text-3xl font-bold text-gray-900">Clinical Practice.</h2>
               </div>
 
               <div className="space-y-4">
@@ -246,7 +246,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <FaMicrophoneAlt className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900">Speaker & Educator</h2>
+                <h2 className="text-3xl font-bold text-gray-900">Speaker & Educator.</h2>
               </div>
 
               <p className="text-gray-700 mb-6">
