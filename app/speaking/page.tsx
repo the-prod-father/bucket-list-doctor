@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower } from 'react-icons/fa';
+import TopicCarousel from '@/components/speaking/TopicCarousel';
+import ExperienceCarousel from '@/components/speaking/ExperienceCarousel';
 
 export const metadata: Metadata = {
   title: 'Speaking Engagements | Dr. Jeffrey DeSarbo',
@@ -54,27 +56,27 @@ export default function SpeakingPage() {
     {
       type: 'Professional Organizations',
       description: 'Keynote presentations and workshops for medical and mental health professionals',
-      icon: FaBuilding,
+      iconName: 'FaBuilding',
     },
     {
       type: 'Wellness Centers & Hospitals',
       description: 'Educational seminars on brain health and purposeful living',
-      icon: FaHospital,
+      iconName: 'FaHospital',
     },
     {
       type: 'Universities & Academic Institutions',
       description: 'Lectures on neuroscience, psychiatry, and the science of goal-setting',
-      icon: FaUniversity,
+      iconName: 'FaUniversity',
     },
     {
       type: 'Corporations',
       description: 'Talks on performance enhancement, motivation, and work-life balance',
-      icon: FaBuilding,
+      iconName: 'FaBuilding',
     },
     {
       type: 'Media Appearances',
       description: 'Featured on major radio, TV, and print media outlets nationwide',
-      icon: FaBroadcastTower,
+      iconName: 'FaBroadcastTower',
     },
   ];
 
@@ -204,24 +206,7 @@ export default function SpeakingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {speakingTopics.map((topic, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaCheckCircle className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{topic.title}</h3>
-                    <p className="text-gray-700 leading-relaxed">{topic.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TopicCarousel topics={speakingTopics} />
         </div>
       </section>
 
@@ -237,27 +222,7 @@ export default function SpeakingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {pastEngagements.map((engagement, index) => {
-              const Icon = engagement.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{engagement.type}</h3>
-                      <p className="text-gray-700">{engagement.description}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <ExperienceCarousel experiences={pastEngagements} />
         </div>
       </section>
 
