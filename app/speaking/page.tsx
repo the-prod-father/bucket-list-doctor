@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower, FaQuoteLeft } from 'react-icons/fa';
+import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower } from 'react-icons/fa';
 
 export const metadata: Metadata = {
   title: 'Speaking Engagements | Dr. Jeffrey DeSarbo',
@@ -314,93 +314,6 @@ export default function SpeakingPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Speaker Photos Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              In <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Action</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              See Dr. DeSarbo in action at speaking engagements and media appearances
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl opacity-20 group-hover:opacity-30 blur-xl transition-opacity" />
-              <div className="relative bg-white rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/profile/dr-d-radio-show.jpg"
-                  alt="Dr. DeSarbo speaking on radio"
-                  width={600}
-                  height={400}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Radio Studio Appearance</h3>
-                  <p className="text-gray-600">Dr. DeSarbo discussing neuroscience and bucket lists on major radio networks</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-teal-600 rounded-2xl opacity-20 group-hover:opacity-30 blur-xl transition-opacity" />
-              <div className="relative bg-white rounded-xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/profile/dr-desarbo-professional-headshot.jpg"
-                  alt="Dr. Jeffrey DeSarbo professional headshot"
-                  width={600}
-                  height={400}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Professional Speaker</h3>
-                  <p className="text-gray-600">Keynote presentations and educational seminars on neuroscience and mental health</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              What <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Audiences Say</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl p-8 border border-gray-100">
-              <FaQuoteLeft className="w-8 h-8 text-purple-500 mb-4" />
-              <p className="text-gray-700 italic mb-4">
-                &quot;Dr. DeSarbo&apos;s presentation on the neuroscience of bucket lists was both scientifically rigorous and deeply inspiring. Our audience was captivated.&quot;
-              </p>
-              <p className="text-sm font-semibold text-gray-900">— Professional Medical Organization</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-50 to-teal-50 rounded-xl p-8 border border-gray-100">
-              <FaQuoteLeft className="w-8 h-8 text-blue-500 mb-4" />
-              <p className="text-gray-700 italic mb-4">
-                &quot;A dynamic speaker who brings complex neuroscience concepts to life. Dr. DeSarbo&apos;s talks are always engaging and thought-provoking.&quot;
-              </p>
-              <p className="text-sm font-semibold text-gray-900">— University Academic Department</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-teal-50 to-green-50 rounded-xl p-8 border border-gray-100">
-              <FaQuoteLeft className="w-8 h-8 text-teal-500 mb-4" />
-              <p className="text-gray-700 italic mb-4">
-                &quot;Dr. DeSarbo combines clinical expertise with real-world application. Our team found his insights on performance enhancement invaluable.&quot;
-              </p>
-              <p className="text-sm font-semibold text-gray-900">— Corporate Wellness Program</p>
-            </div>
           </div>
         </div>
       </section>
