@@ -184,6 +184,38 @@ export default function SpeakingPage() {
         </div>
       </section>
 
+      {/* Media Appearances Grid */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Media <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Appearances</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+              Dr. DeSarbo has been featured on major media outlets nationwide
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-16">
+            {mediaAppearances.map((media, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 flex items-center justify-center h-32"
+              >
+                <Image
+                  src={media.logo}
+                  alt={media.name}
+                  width={150}
+                  height={80}
+                  className="max-w-full max-h-full object-contain"
+                  unoptimized
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Speaking Topics */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -246,38 +278,6 @@ export default function SpeakingPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Media Appearances Grid */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Media <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Appearances</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-              Dr. DeSarbo has been featured on major media outlets nationwide
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-16">
-            {mediaAppearances.map((media, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 flex items-center justify-center h-32"
-              >
-                <Image
-                  src={media.logo}
-                  alt={media.name}
-                  width={150}
-                  height={80}
-                  className="max-w-full max-h-full object-contain"
-                  unoptimized
-                />
-              </div>
-            ))}
           </div>
         </div>
       </section>
