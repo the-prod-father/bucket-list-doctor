@@ -30,11 +30,11 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
       setOffset((prev) => {
         const cardWidth = 100 / 2; // Show 2 cards at once (50% each)
         const totalWidth = cardWidth * experiences.length;
-        const newOffset = prev - 0.02; // Slow scroll speed (negative = right direction)
+        let newOffset = prev - 0.02; // Slow scroll speed (negative = right direction)
         
         // Reset when we've scrolled through all items going right
         if (newOffset <= -totalWidth) {
-          return 0;
+          newOffset = 0;
         }
         return newOffset;
       });
