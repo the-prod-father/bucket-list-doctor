@@ -32,8 +32,12 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
         const totalWidth = cardWidth * experiences.length;
         const newOffset = prev - 0.02; // Slow scroll speed (negative = right direction)
         
-        // Reset when we've scrolled through all items
+        // Reset when we've scrolled through all items (going right, so negative values)
         if (newOffset <= -totalWidth) {
+          return 0;
+        }
+        // Handle wrap-around for seamless loop
+        if (newOffset < 0 && Math.abs(newOffset) >= totalWidth) {
           return 0;
         }
         return newOffset;
