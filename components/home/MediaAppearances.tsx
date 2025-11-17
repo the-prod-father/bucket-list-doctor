@@ -3,49 +3,89 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
+interface MediaAppearance {
+  id: string;
+  name: string;
+  logo_url: string;
+  type: string;
+  gradient: string;
+}
+
 export default function MediaAppearances() {
   const [hoveredMedia, setHoveredMedia] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [mediaAppearances, setMediaAppearances] = useState<MediaAppearance[]>([]);
+  const [loading, setLoading] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const mediaAppearances = [
+  // Fallback hardcoded data (for backwards compatibility)
+  const fallbackMedia = [
     {
+      id: '1',
       name: 'Newsday',
-      logo: '/images/speaker/newsday-banner.png',
+      logo_url: '/images/speaker/newsday-banner.png',
       type: 'print',
       gradient: 'from-blue-500 via-cyan-500 to-teal-500',
     },
     {
+      id: '2',
       name: 'Doctor Radio / Sirius XM',
-      logo: '/images/speaker/doctor-radio-siriusxm.png',
+      logo_url: '/images/speaker/doctor-radio-siriusxm.png',
       type: 'radio',
       gradient: 'from-purple-500 via-pink-500 to-red-500',
     },
     {
+      id: '3',
       name: 'WJR Radio',
-      logo: '/images/speaker/wjr-radio-banner.png',
+      logo_url: '/images/speaker/wjr-radio-banner.png',
       type: 'radio',
       gradient: 'from-orange-500 via-red-500 to-pink-500',
     },
     {
+      id: '4',
       name: 'KOA Radio',
-      logo: '/images/speaker/koa-radio-banner.png',
+      logo_url: '/images/speaker/koa-radio-banner.png',
       type: 'radio',
       gradient: 'from-green-500 via-emerald-500 to-cyan-500',
     },
     {
+      id: '5',
       name: 'iHeart Radio',
-      logo: '/images/speaker/iheart-radio.png',
+      logo_url: '/images/speaker/iheart-radio.png',
       type: 'radio',
       gradient: 'from-red-500 via-pink-500 to-purple-500',
     },
     {
+      id: '6',
       name: 'WBZ News Radio',
-      logo: '/images/speaker/wbz-news-radio.png',
+      logo_url: '/images/speaker/wbz-news-radio.png',
       type: 'radio',
       gradient: 'from-blue-500 via-indigo-500 to-purple-500',
     },
   ];
+
+  useEffect(() => {
+    fetchMediaAppearances();
+  }, []);
+
+  const fetchMediaAppearances = async () => {
+    try {
+      const response = await fetch('/api/media');
+      const data = await response.json();
+      if (data.media && data.media.length > 0) {
+        setMediaAppearances(data.media);
+      } else {
+        // Fallback to hardcoded if database is empty
+        setMediaAppearances(fallbackMedia);
+      }
+    } catch (error) {
+      console.error('Error fetching media appearances:', error);
+      // Fallback to hardcoded on error
+      setMediaAppearances(fallbackMedia);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -137,7 +177,7 @@ export default function MediaAppearances() {
                 {/* Logo with enhanced transitions */}
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
                   <Image
-                    src={media.logo}
+                    src={media.logo_url}
                     alt={media.name}
                     width={200}
                     height={100}

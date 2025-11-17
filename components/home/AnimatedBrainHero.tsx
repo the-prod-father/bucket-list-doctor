@@ -241,7 +241,7 @@ export default function AnimatedBrainHero() {
         </div>
         
         <div className={`transform transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <div className="flex items-center justify-center space-x-3 sm:space-x-4 md:space-x-5">
+          <div className="flex items-center justify-center space-x-3 sm:space-x-4 md:space-x-5 mb-8">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0">
               <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/30 to-brand-purple/30 rounded-full blur-lg opacity-50" />
               <Image
@@ -257,6 +257,17 @@ export default function AnimatedBrainHero() {
               Bucket List Doctor
             </p>
           </div>
+        </div>
+        
+        <div className={`transform transition-all duration-1000 delay-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <a
+            href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-gray-900 font-bold py-4 px-10 rounded-xl transition-all transform hover:scale-105 shadow-2xl text-lg md:text-xl"
+          >
+            Get the Books
+          </a>
         </div>
         
       </div>

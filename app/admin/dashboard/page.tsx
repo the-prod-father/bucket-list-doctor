@@ -136,6 +136,18 @@ export default function AdminDashboard() {
       color: 'bg-brand-purple',
     },
     {
+      name: 'View Analytics',
+      description: 'Track website performance and ROI',
+      href: '/admin/analytics',
+      color: 'bg-brand-yellow',
+    },
+    {
+      name: 'Manage Media',
+      description: 'Edit station call letters and media appearances',
+      href: '/admin/media',
+      color: 'bg-brand-pink',
+    },
+    {
       name: 'View Subscribers',
       description: 'Manage newsletter subscriber list',
       href: '/admin/newsletter',
