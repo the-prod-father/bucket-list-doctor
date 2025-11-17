@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower } from 'react-icons/fa';
+import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaHospital, FaBuilding, FaBroadcastTower } from 'react-icons/fa';
 
 export const metadata: Metadata = {
   title: 'Speaking Engagements | Dr. Jeffrey DeSarbo',
@@ -34,30 +34,6 @@ export default function SpeakingPage() {
     {
       title: 'Cultural Psychiatry & Mental Health',
       description: 'Understanding mental health across cultures and communities.',
-    },
-  ];
-
-  const specificVenues = [
-    {
-      name: 'Hofstra University',
-      type: 'University Lecture',
-      location: 'Hempstead, NY',
-      icon: FaUniversity,
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
-      name: 'ED-180 Treatment Programs',
-      type: 'Medical Conference',
-      location: 'Garden City, NY',
-      icon: FaHospital,
-      color: 'from-purple-500 to-pink-500',
-    },
-    {
-      name: 'Professional Medical Organizations',
-      type: 'Keynote Speaker',
-      location: 'National & International',
-      icon: FaBuilding,
-      color: 'from-teal-500 to-green-500',
     },
   ];
 
@@ -245,39 +221,6 @@ export default function SpeakingPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Specific Venues Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Recent <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Venues</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Dr. DeSarbo has delivered presentations at prestigious institutions and organizations
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {specificVenues.map((venue, index) => {
-              const Icon = venue.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 border-2 border-gray-100 hover:border-purple-300 hover:shadow-xl transition-all duration-300"
-                >
-                  <div className={`w-16 h-16 bg-gradient-to-br ${venue.color} rounded-xl flex items-center justify-center mb-4`}>
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{venue.name}</h3>
-                  <p className="text-purple-600 font-semibold mb-2">{venue.type}</p>
-                  <p className="text-gray-600 text-sm">{venue.location}</p>
-                </div>
-              );
-            })}
           </div>
         </div>
       </section>
