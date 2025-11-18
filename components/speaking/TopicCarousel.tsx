@@ -21,12 +21,13 @@ export default function TopicCarousel({ topics }: TopicCarouselProps) {
     const animate = () => {
       setOffset((prev) => {
         const cardWidth = 100 / 2; // Show 2 cards at once (50% each)
-        const totalWidth = cardWidth * topics.length;
-        const newOffset = prev + 0.02; // Slow scroll speed
+        const singleSetWidth = cardWidth * topics.length;
+        let newOffset = prev + 0.02; // Slow scroll speed
         
-        // Reset when we've scrolled through all items
-        if (newOffset >= totalWidth) {
-          return 0;
+        // Seamless infinite loop: when we scroll past first set, reset to 0
+        // Since duplicate set is identical, reset is invisible (snake eating its tail)
+        if (newOffset >= singleSetWidth) {
+          newOffset = 0;
         }
         return newOffset;
       });
@@ -41,7 +42,8 @@ export default function TopicCarousel({ topics }: TopicCarouselProps) {
     };
   }, [topics.length]);
 
-  // Duplicate items for seamless loop
+  // Duplicate items for seamless infinite loop (snake effect)
+  // Last card appears behind first card - infinite loop from the beginning
   const duplicatedTopics = [...topics, ...topics];
 
   return (
@@ -50,8 +52,12 @@ export default function TopicCarousel({ topics }: TopicCarouselProps) {
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 border border-gray-100 py-8">
         <div
           ref={containerRef}
-          className="flex transition-transform duration-100 ease-linear"
-          style={{ transform: `translateX(-${offset}%)` }}
+          className="flex"
+          style={{ 
+            transform: `translateX(-${offset}%)`,
+            willChange: 'transform',
+            transition: 'none' // Instant reset for seamless loop
+          }}
         >
           {duplicatedTopics.map((topic, index) => (
             <div
