@@ -29,13 +29,13 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
     const animate = () => {
       setOffset((prev) => {
         const cardWidth = 100 / 2; // Show 2 cards at once (50% each)
-        const totalWidth = cardWidth * experiences.length;
+        const singleSetWidth = cardWidth * experiences.length;
         let newOffset = prev + 0.02; // Slow scroll speed (cards move left to right)
         
-        // Seamless infinite loop: when we reach the end of first set, reset to 0
-        // Since we have duplicates, the reset is invisible - user sees duplicate set seamlessly
-        if (newOffset >= totalWidth) {
-          newOffset = 0;
+        // Seamless infinite loop: reset when we've scrolled through one full set
+        // Reset happens when viewing duplicate set, so it's invisible
+        if (newOffset >= singleSetWidth) {
+          newOffset = newOffset - singleSetWidth;
         }
         return newOffset;
       });
@@ -50,8 +50,9 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
     };
   }, [experiences.length]);
 
-  // Triple duplicate items for seamless infinite loop (snake effect)
-  const duplicatedExperiences = [...experiences, ...experiences, ...experiences];
+  // Duplicate items for seamless infinite loop (snake effect)
+  // When we reset offset, duplicate set looks identical, creating seamless loop
+  const duplicatedExperiences = [...experiences, ...experiences];
 
   return (
     <div className="relative overflow-hidden">
