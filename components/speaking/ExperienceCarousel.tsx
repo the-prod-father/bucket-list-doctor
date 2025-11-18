@@ -30,12 +30,12 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
       setOffset((prev) => {
         const cardWidth = 100 / 2; // Show 2 cards at once (50% each)
         const totalWidth = cardWidth * experiences.length;
-        let newOffset = prev + 0.02; // Slow scroll speed (positive = right direction, cards move left to right)
+        let newOffset = prev + 0.02; // Slow scroll speed (cards move left to right)
         
-        // Reset when we've scrolled through all items (seamless loop)
-        // Reset to 0 when we reach the end of the first set of duplicated items
+        // Seamless infinite loop: when we reach the end of first set, reset to 0
+        // Since we have duplicates, the reset is invisible - user sees duplicate set seamlessly
         if (newOffset >= totalWidth) {
-          newOffset = newOffset - totalWidth;
+          newOffset = 0;
         }
         return newOffset;
       });
@@ -50,8 +50,8 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
     };
   }, [experiences.length]);
 
-  // Duplicate items for seamless loop
-  const duplicatedExperiences = [...experiences, ...experiences];
+  // Triple duplicate items for seamless infinite loop (snake effect)
+  const duplicatedExperiences = [...experiences, ...experiences, ...experiences];
 
   return (
     <div className="relative overflow-hidden">
@@ -59,8 +59,11 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 border border-gray-100 py-8">
         <div
           ref={containerRef}
-          className="flex transition-transform duration-100 ease-linear"
-          style={{ transform: `translateX(${offset}%)` }}
+          className="flex"
+          style={{ 
+            transform: `translateX(${offset}%)`,
+            transition: 'none' // Remove transition for seamless reset
+          }}
         >
           {duplicatedExperiences.map((experience, index) => {
             const Icon = iconMap[experience.iconName] || FaBuilding;
