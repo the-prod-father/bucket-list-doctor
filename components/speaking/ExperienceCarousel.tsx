@@ -32,11 +32,11 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
         const singleSetWidth = cardWidth * experiences.length;
         let newOffset = prev + 0.02; // Slow scroll speed (cards move left to right)
         
-        // Seamless infinite loop: reset when we reach end of first set
-        // Since duplicate set matches first set exactly, reset is invisible
-        // Triple duplication ensures cards always ready from beginning - never empty
+        // Seamless infinite loop: when we scroll past first complete set, reset to 0
+        // Since the duplicate sets are identical, the reset is invisible (snake eating its tail)
+        // This creates perfect infinite loop with no blank space
         if (newOffset >= singleSetWidth) {
-          newOffset = newOffset - singleSetWidth;
+          newOffset = 0; // Reset to start position - seamless because duplicate set matches
         }
         return newOffset;
       });
@@ -51,9 +51,10 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
     };
   }, [experiences.length]);
 
-  // Triple duplicate items for seamless infinite loop (snake effect)
-  // Ensures cards are always available from the beginning - never empty space
-  const duplicatedExperiences = [...experiences, ...experiences, ...experiences];
+  // Duplicate items for seamless infinite loop (snake effect)
+  // Last card appears behind first card - infinite loop from the beginning
+  // Double duplication is enough for seamless loop when reset logic is correct
+  const duplicatedExperiences = [...experiences, ...experiences];
 
   return (
     <div className="relative overflow-hidden">
@@ -63,7 +64,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
           ref={containerRef}
           className="flex"
           style={{ 
-            transform: `translateX(${offset}%)`,
+            transform: `translateX(-${offset}%)`,
             willChange: 'transform',
             transition: 'none' // Instant reset for seamless loop
           }}
