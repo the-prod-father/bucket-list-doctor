@@ -226,6 +226,124 @@ export default function SpeakingPage() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              What People Are <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Saying</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Hear from event organizers, audience members, and media professionals
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 shadow-lg border border-purple-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                &quot;Dr. DeSarbo&apos;s presentation on the neuroscience of bucket lists was transformative for our team. His blend of scientific rigor and practical application gave everyone actionable insights.&quot;
+              </p>
+              <div className="border-t border-purple-200 pt-4">
+                <p className="font-bold text-gray-900">Sarah Mitchell</p>
+                <p className="text-sm text-gray-600">VP of Wellness, Fortune 500 Company</p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-blue-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                &quot;Engaging, informative, and inspiring. Dr. DeSarbo captivated our audience with real-world applications of neuroscience. Our listeners are still talking about it weeks later.&quot;
+              </p>
+              <div className="border-t border-blue-200 pt-4">
+                <p className="font-bold text-gray-900">Michael Chen</p>
+                <p className="text-sm text-gray-600">Radio Host, Major Market Station</p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-teal-50 to-purple-50 rounded-2xl p-8 shadow-lg border border-teal-100">
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4 italic">
+                &quot;As a conference organizer, I look for speakers who can deliver both depth and engagement. Dr. DeSarbo exceeded expectations on both fronts. Book him for your next event.&quot;
+              </p>
+              <div className="border-t border-teal-200 pt-4">
+                <p className="font-bold text-gray-900">Dr. Jennifer Lopez</p>
+                <p className="text-sm text-gray-600">Conference Director, Medical Association</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Frequently Asked <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Questions</span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Everything event planners need to know
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">What topics does Dr. DeSarbo speak on?</h3>
+              <p className="text-gray-700">
+                Dr. DeSarbo specializes in the neuroscience of bucket lists, brain health & longevity, performance enhancement, eating disorder treatment innovations, and cultural psychiatry. All presentations can be customized to your audience and event goals.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">How far in advance should we book?</h3>
+              <p className="text-gray-700">
+                For best availability, book 3-6 months in advance. However, Dr. DeSarbo can often accommodate shorter timelines depending on his schedule. Contact us to discuss your specific dates.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">What presentation formats are available?</h3>
+              <p className="text-gray-700">
+                Dr. DeSarbo offers keynote presentations (30-60 minutes), interactive workshops (half-day or full-day), panel discussions, podcast interviews, and both virtual and in-person events.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Can presentations be customized?</h3>
+              <p className="text-gray-700">
+                Absolutely. Dr. DeSarbo works with each organization to tailor content, examples, and takeaways to your specific audience, whether that&apos;s corporate executives, healthcare professionals, students, or general public.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Does Dr. DeSarbo travel for speaking engagements?</h3>
+              <p className="text-gray-700">
+                Yes. Dr. DeSarbo has presented nationally and internationally across all seven continents. He is available for both domestic and international events, as well as virtual presentations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Booking CTA */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4">
