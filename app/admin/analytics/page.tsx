@@ -177,7 +177,7 @@ export default function AnalyticsPage() {
                 <li>Redeploy the site</li>
               </ol>
               <p className="text-sm text-yellow-700 mt-4">
-                Once set up, you'll be able to see traffic spikes around show dates and track which media appearances drive the most traffic.
+                Once set up, you&apos;ll be able to see traffic spikes around show dates and track which media appearances drive the most traffic.
               </p>
             </div>
           )}

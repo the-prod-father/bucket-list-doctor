@@ -213,8 +213,8 @@ export default function MediaPage() {
                     placeholder="/images/speaker/logo.png"
                   />
                   <ImageUpload
-                    onUploadComplete={(url) => setNewMedia({ ...newMedia, logo_url: url })}
-                    folder="speaker"
+                    value={newMedia.logo_url || ''}
+                    onChange={(url) => setNewMedia({ ...newMedia, logo_url: url })}
                   />
                 </div>
                 <div>
@@ -393,7 +393,7 @@ export default function MediaPage() {
             </table>
             {media.length === 0 && (
               <div className="text-center py-12 text-gray-500">
-                No media appearances yet. Click "Add Media" to create one.
+                No media appearances yet. Click &quot;Add Media&quot; to create one.
               </div>
             )}
           </div>

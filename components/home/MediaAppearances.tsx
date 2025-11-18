@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 
 interface MediaAppearance {
@@ -64,11 +64,7 @@ export default function MediaAppearances() {
     },
   ];
 
-  useEffect(() => {
-    fetchMediaAppearances();
-  }, []);
-
-  const fetchMediaAppearances = async () => {
+  const fetchMediaAppearances = useCallback(async () => {
     try {
       const response = await fetch('/api/media');
       const data = await response.json();
@@ -85,7 +81,12 @@ export default function MediaAppearances() {
     } finally {
       setLoading(false);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetchMediaAppearances();
+  }, [fetchMediaAppearances]);
 
   // Intersection Observer for scroll animations
   useEffect(() => {
