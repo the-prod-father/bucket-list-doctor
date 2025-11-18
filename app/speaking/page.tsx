@@ -226,6 +226,100 @@ export default function SpeakingPage() {
         </div>
       </section>
 
+      {/* Speaking Videos Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Watch Dr. DeSarbo <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">In Action</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              See clips from recent speaking engagements, media appearances, and presentations
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+            {/* Video placeholders - Jeff can replace these with his actual videos */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+              <div className="relative w-full pb-[56.25%] bg-gray-900">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white p-6">
+                    <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <p className="text-sm">Speaking Clip Coming Soon</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  Featured Speaking Engagement
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Add your speaking videos via the admin panel or YouTube embeds
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+              <div className="relative w-full pb-[56.25%] bg-gray-900">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white p-6">
+                    <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <p className="text-sm">Media Appearance</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  TV/Radio Interview
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Clips from recent media appearances available soon
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+              <div className="relative w-full pb-[56.25%] bg-gray-900">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white p-6">
+                    <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <p className="text-sm">Workshop Highlight</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  Interactive Workshop
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  See Dr. DeSarbo engage audiences with hands-on learning
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <a
+              href="https://www.youtube.com/@dr.jeffreydesarbo2584"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-105 shadow-xl"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>View Full YouTube Channel</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4">

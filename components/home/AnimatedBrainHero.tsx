@@ -276,7 +276,9 @@ export default function AnimatedBrainHero() {
       <div className="absolute bottom-3 right-2 sm:bottom-4 sm:right-4 md:bottom-6 md:right-8 lg:bottom-10 lg:right-12 flex flex-col items-end gap-2 sm:gap-3 md:gap-4 z-20">
         {/* Clickable Books Image */}
         <a
-          href="/blog"
+          href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0"
+          target="_blank"
+          rel="noopener noreferrer"
           className="relative w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 transition-all transform hover:scale-105 cursor-pointer"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/30 via-brand-blue/30 to-brand-teal/30 blur-3xl rounded-2xl animate-pulse" />
@@ -294,10 +296,12 @@ export default function AnimatedBrainHero() {
         </a>
         {/* Books Button */}
         <a
-          href="/blog"
+          href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0"
+          target="_blank"
+          rel="noopener noreferrer"
           className="w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 inline-flex items-center justify-center gap-1 bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-semibold py-1 px-3 rounded-lg transition-all transform hover:scale-105 shadow-lg pointer-events-auto text-xs whitespace-nowrap"
         >
-          <span>Recent Blog Posts</span>
+          <span>Order Books</span>
           <svg className="w-2 h-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
