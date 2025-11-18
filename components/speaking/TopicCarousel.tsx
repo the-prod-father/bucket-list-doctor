@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 
 interface Topic {
@@ -13,58 +12,21 @@ interface TopicCarouselProps {
 }
 
 export default function TopicCarousel({ topics }: TopicCarouselProps) {
-  const [offset, setOffset] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
-
-  useEffect(() => {
-    const animate = () => {
-      setOffset((prev) => {
-        const cardWidth = 100 / 2; // Show 2 cards at once (50% each)
-        const singleSetWidth = cardWidth * topics.length;
-        let newOffset = prev + 0.02; // Slow scroll speed
-        
-        // Seamless infinite loop: reset when we reach end of first set
-        // Since duplicate set matches first set exactly, reset is invisible
-        // This creates snake effect - last card appears behind first card
-        if (newOffset >= singleSetWidth) {
-          newOffset = newOffset - singleSetWidth;
-        }
-        return newOffset;
-      });
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [topics.length]);
-
-  // Duplicate items for seamless infinite loop (snake effect)
-  // Last card appears behind first card - infinite loop from the beginning
+  // Duplicate items for seamless infinite loop
   const duplicatedTopics = [...topics, ...topics];
+  const animationDuration = `${topics.length * 6}s`; // scale duration by number of slides
 
   return (
     <div className="relative overflow-hidden">
-      {/* Carousel Container */}
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 border border-gray-100 py-8">
         <div
-          ref={containerRef}
-          className="flex"
-          style={{ 
-            transform: `translateX(-${offset}%)`,
-            willChange: 'transform',
-            transition: 'none' // Instant reset for seamless loop
-          }}
+          className="flex animate-marquee"
+          style={{ animationDuration }}
         >
           {duplicatedTopics.map((topic, index) => (
             <div
-              key={index}
-              className="flex-shrink-0 px-6 md:px-8"
-              style={{ width: '50%' }} // Show 2 cards at once
+              key={`${topic.title}-${index}`}
+              className="flex-shrink-0 px-6 md:px-8 w-1/2"
             >
               <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-gray-200 shadow-md h-full">
                 <div className="flex items-start gap-4">
