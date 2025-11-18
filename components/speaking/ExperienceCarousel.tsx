@@ -34,7 +34,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
         
         // Seamless infinite loop: reset when we reach end of first set
         // Since duplicate set matches first set exactly, reset is invisible
-        // This creates snake effect - last card appears behind first card
+        // Triple duplication ensures cards always ready from beginning - never empty
         if (newOffset >= singleSetWidth) {
           newOffset = newOffset - singleSetWidth;
         }
@@ -51,9 +51,9 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
     };
   }, [experiences.length]);
 
-  // Duplicate items for seamless infinite loop (snake effect)
-  // Last card appears behind first card - infinite loop from the beginning
-  const duplicatedExperiences = [...experiences, ...experiences];
+  // Triple duplicate items for seamless infinite loop (snake effect)
+  // Ensures cards are always available from the beginning - never empty space
+  const duplicatedExperiences = [...experiences, ...experiences, ...experiences];
 
   return (
     <div className="relative overflow-hidden">
@@ -63,7 +63,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
           ref={containerRef}
           className="flex"
           style={{ 
-            transform: `translateX(${offset}%)`,
+            transform: `translateX(-${offset}%)`,
             willChange: 'transform'
           }}
         >
