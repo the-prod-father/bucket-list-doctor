@@ -63,8 +63,9 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
           ref={containerRef}
           className="flex"
           style={{ 
-            transform: `translateX(-${offset}%)`,
-            willChange: 'transform'
+            transform: `translateX(${offset}%)`,
+            willChange: 'transform',
+            transition: 'none' // Instant reset for seamless loop
           }}
         >
           {duplicatedExperiences.map((experience, index) => {
