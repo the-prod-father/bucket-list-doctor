@@ -32,10 +32,11 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
         const singleSetWidth = cardWidth * experiences.length;
         let newOffset = prev + 0.02; // Slow scroll speed (cards move left to right)
         
-        // Seamless infinite loop: when we scroll past first set, reset to 0
-        // Since duplicate set is identical, reset is invisible (snake eating its tail)
+        // Seamless infinite loop: reset when we reach end of first set
+        // Since duplicate set matches first set exactly, reset is invisible
+        // This creates snake effect - last card appears behind first card
         if (newOffset >= singleSetWidth) {
-          newOffset = 0;
+          newOffset = newOffset - singleSetWidth;
         }
         return newOffset;
       });
@@ -63,8 +64,7 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
           className="flex"
           style={{ 
             transform: `translateX(${offset}%)`,
-            willChange: 'transform',
-            transition: 'none' // Instant reset for seamless loop
+            willChange: 'transform'
           }}
         >
           {duplicatedExperiences.map((experience, index) => {
