@@ -30,13 +30,13 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
       setOffset((prev) => {
         const cardWidth = 100 / 2; // Show 2 cards at once (50% each)
         const singleSetWidth = cardWidth * experiences.length;
-        let newOffset = prev + 0.02; // Slow scroll speed (cards move left to right)
+        let newOffset = prev + 0.02; // Slow scroll speed
         
-        // Seamless infinite loop: when we scroll past first complete set, reset to 0
-        // Since the duplicate sets are identical, the reset is invisible (snake eating its tail)
-        // This creates perfect infinite loop with no blank space
+        // Seamless infinite loop: reset when we reach end of first set
+        // Since duplicate set matches first set exactly, reset is invisible
+        // This creates snake effect - last card appears behind first card
         if (newOffset >= singleSetWidth) {
-          newOffset = 0; // Reset to start position - seamless because duplicate set matches
+          newOffset = newOffset - singleSetWidth;
         }
         return newOffset;
       });
