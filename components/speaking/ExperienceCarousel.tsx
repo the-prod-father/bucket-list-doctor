@@ -32,9 +32,10 @@ export default function ExperienceCarousel({ experiences }: ExperienceCarouselPr
         const totalWidth = cardWidth * experiences.length;
         let newOffset = prev + 0.02; // Slow scroll speed (positive = right direction, cards move left to right)
         
-        // Reset when we've scrolled through all items
+        // Reset when we've scrolled through all items (seamless loop)
+        // Reset to 0 when we reach the end of the first set of duplicated items
         if (newOffset >= totalWidth) {
-          newOffset = 0;
+          newOffset = newOffset - totalWidth;
         }
         return newOffset;
       });
