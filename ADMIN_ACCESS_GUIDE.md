@@ -81,3 +81,68 @@ If you have trouble accessing the admin panel:
 - Never share your password
 - Log out when done (especially on shared computers)
 
+---
+
+## Google Analytics - Track Your Traffic
+
+Your website is configured to use Google Analytics 4 (GA4) to track visitor traffic, including traffic spikes from media appearances.
+
+### Setting Up Google Analytics
+
+1. **Create a Google Analytics Account** (if you don't have one)
+   - Go to: https://analytics.google.com/
+   - Sign in with your Google account
+   - Click "Start measuring"
+
+2. **Create a Property**
+   - Property name: "Bucket List Doctor"
+   - Select your time zone and currency
+   - Click "Next"
+
+3. **Get Your Measurement ID**
+   - After setup, go to Admin (gear icon) > Data Streams
+   - Click on your web stream
+   - Copy the "Measurement ID" (starts with G-)
+   - Example: `G-ABC123XYZ`
+
+4. **Add to Your Website**
+   - Contact Gavin to add the Measurement ID to Vercel
+   - Or add `NEXT_PUBLIC_GA_ID=G-YOUR-ID` to Vercel environment variables
+
+### Viewing Your Analytics
+
+Once set up, visit https://analytics.google.com/ to see:
+
+- **Real-time visitors** - See who's on your site right now
+- **Traffic sources** - Where visitors come from (direct, search, social, referrals)
+- **Popular pages** - Which pages get the most views
+- **Geographic data** - Where your visitors are located
+- **Traffic trends** - How traffic changes over time
+
+### Tracking Media Appearance ROI
+
+After a radio/TV appearance:
+1. Log into Google Analytics
+2. Go to Reports > Acquisition > Traffic acquisition
+3. Look for traffic spikes on the date of your appearance
+4. Compare to your normal traffic baseline
+
+**Tip:** Note the date and time of each media appearance so you can correlate traffic spikes!
+
+---
+
+## Media Appearances Management (`/admin/media`)
+
+You can manage your "As Featured On" media stations:
+
+1. Go to `/admin/media`
+2. Add new stations with their logos
+3. Reorder how they appear on the site
+4. Edit or remove stations as needed
+
+
+
+
+
+
+

@@ -1,21 +1,49 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower } from 'react-icons/fa';
 import TopicCarousel from '@/components/speaking/TopicCarousel';
 import ExperienceCarousel from '@/components/speaking/ExperienceCarousel';
 
-export const metadata: Metadata = {
-  title: 'Speaking Engagements | Dr. Jeffrey DeSarbo',
-  description: 'Book Dr. Jeffrey DeSarbo for speaking engagements, keynote presentations, and educational seminars on neuroscience, bucket lists, and brain health.',
-  keywords: ['speaker', 'keynote', 'neuroscience speaker', 'bucket list', 'brain health', 'Dr. Jeffrey DeSarbo'],
-  openGraph: {
-    title: 'Speaking Engagements | Dr. Jeffrey DeSarbo',
-    description: 'Book Dr. Jeffrey DeSarbo for your next event',
-  },
-};
+interface YouTubeVideo {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  publishedAt: string;
+}
 
 export default function SpeakingPage() {
+  const [videos, setVideos] = useState<YouTubeVideo[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@dr.jeffreydesarbo2584';
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('/api/youtube/videos');
+        const data = await response.json();
+
+        if (data.videos && data.videos.length > 0) {
+          setVideos(data.videos);
+        } else if (data.error) {
+          console.warn('YouTube API not configured:', data.message);
+          setError(data.message);
+        }
+      } catch (err) {
+        console.error('Error fetching videos:', err);
+        setError('Failed to load videos');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchVideos();
+  }, []);
   const speakingTopics = [
     {
       title: 'The Neuroscience of Bucket Lists',
@@ -238,75 +266,135 @@ export default function SpeakingPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-            {/* Video placeholders - Jeff can replace these with his actual videos */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-              <div className="relative w-full pb-[56.25%] bg-gray-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white p-6">
-                    <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    <p className="text-sm">Speaking Clip Coming Soon</p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Featured Speaking Engagement
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Add your speaking videos via the admin panel or YouTube embeds
-                </p>
-              </div>
+          {/* Loading State */}
+          {loading && (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 border-4 border-brand-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading videos from YouTube...</p>
             </div>
+          )}
 
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-              <div className="relative w-full pb-[56.25%] bg-gray-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white p-6">
-                    <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    <p className="text-sm">Media Appearance</p>
+          {/* Videos Grid */}
+          {!loading && videos.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+              {videos.slice(0, 6).map((video) => (
+                <a
+                  key={video.id}
+                  href={`https://www.youtube.com/watch?v=${video.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
+                >
+                  {/* Video Thumbnail */}
+                  <div className="relative w-full pb-[56.25%] bg-gray-900 overflow-hidden">
+                    <Image
+                      src={video.thumbnail}
+                      alt={video.title}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
+                      <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+                        <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  TV/Radio Interview
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Clips from recent media appearances available soon
-                </p>
-              </div>
-            </div>
 
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
-              <div className="relative w-full pb-[56.25%] bg-gray-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white p-6">
-                    <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    <p className="text-sm">Workshop Highlight</p>
+                  {/* Video Info */}
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+                      {video.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm line-clamp-2 mb-3">
+                      {video.description}
+                    </p>
+                    <p className="text-gray-500 text-xs">
+                      {new Date(video.publishedAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {/* Fallback/Error State - Show placeholder cards */}
+          {!loading && (error || videos.length === 0) && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="relative w-full pb-[56.25%] bg-gray-900">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-white p-6">
+                      <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                      <p className="text-sm">Speaking Clip</p>
+                    </div>
                   </div>
                 </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    Featured Speaking Engagement
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Visit our YouTube channel to see all speaking videos
+                  </p>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  Interactive Workshop
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  See Dr. DeSarbo engage audiences with hands-on learning
-                </p>
+
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="relative w-full pb-[56.25%] bg-gray-900">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-white p-6">
+                      <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                      <p className="text-sm">Media Appearance</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    TV/Radio Interview
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    Watch Dr. DeSarbo&apos;s media appearances on YouTube
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="relative w-full pb-[56.25%] bg-gray-900">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-white p-6">
+                      <svg className="w-16 h-16 mx-auto mb-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                      <p className="text-sm">Workshop Highlight</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    Interactive Workshop
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    See Dr. DeSarbo engage audiences with hands-on learning
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           <div className="text-center">
             <a
-              href="https://www.youtube.com/@dr.jeffreydesarbo2584"
+              href={YOUTUBE_CHANNEL_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-105 shadow-xl"
