@@ -4,329 +4,114 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Bucket List Doctor is a Next.js 14 personal brand website for Dr. Jeffrey DeSarbo, exploring "The Neuroscience of a Bucket List" - how bucket lists activate neuroplasticity, goal-setting, and brain health. The site features vibrant splashy colors, animated 3D brain graphics, and neuroscience-focused content.
+Bucket List Doctor is a Next.js 14 personal brand website for Dr. Jeffrey DeSarbo, exploring "The Neuroscience of a Bucket List" - how bucket lists activate neuroplasticity, goal-setting, and brain health. The site features a custom admin CMS, newsletter system, and blog management.
 
 ## Development Commands
 
 ```bash
-# Development server (runs on port 8000)
-npm run dev
-
-# Development server on default port 3000
-npm run dev:3000
-
-# Build for production
-npm run build
-
-# Start production server (port 8000)
-npm start
-
-# Start production server on port 3000
-npm start:3000
-
-# Lint the code
-npm run lint
+npm run dev        # Development server on port 9000
+npm run dev:3000   # Development server on port 3000
+npm run build      # Build for production
+npm start          # Production server on port 9000
+npm run lint       # Lint the code
 ```
 
-**Note:** This project is configured to run on **port 8000** by default for both dev and production.
+**Note:** Default port is **9000** for both dev and production.
 
 ## Architecture Overview
 
 ### Tech Stack
 - **Framework:** Next.js 14.2.3 (App Router)
-- **React:** 18.2.0
-- **Styling:** Tailwind CSS 3.4.3 with custom brand colors
-- **3D Graphics:** @react-three/fiber + @react-three/drei for animated brain hero
-- **Backend:** Supabase for newsletter email collection
-- **Icons:** react-icons
-- **Utilities:** clsx, tailwind-merge
+- **Database:** PostgreSQL via Supabase (direct `pg` client, not Supabase SDK for most operations)
+- **Auth:** NextAuth.js with credentials provider
+- **Email:** Resend API + Nodemailer SMTP
+- **Styling:** Tailwind CSS with custom brand colors
+- **3D Graphics:** @react-three/fiber for animated brain hero
 
-### Directory Structure
+### Key Architectural Patterns
 
-```
-app/
-├── layout.tsx              # Root layout with Navigation + Footer
-├── page.tsx                # Homepage composition of all sections
-├── about/page.tsx          # About Dr. DeSarbo page (78 LOC)
-├── blog/page.tsx           # Videos & Media page with YouTube integration (169 LOC)
-├── books/page.tsx          # Book showcase page (153 LOC)
-├── tips-ideas/page.tsx     # Tips and ideas content
-└── your-brain/page.tsx     # Neuroscience content
-
-components/
-├── home/
-│   ├── AnimatedBrainHero.tsx       # DO NOT MODIFY - Complex 3D brain with particles (180 LOC)
-│   ├── BucketListNavigation.tsx    # Four navigation cards (Blog, Books, etc.)
-│   ├── ValueProp.tsx               # Value proposition section
-│   ├── BookShowcase.tsx            # Featured book display
-│   ├── AboutSection.tsx            # About section with profile
-│   └── CrossSiteNavigation.tsx     # Links to other Dr. D sites
-├── layout/
-│   ├── Navigation.tsx              # Main navigation header
-│   ├── Footer.tsx                  # Footer with social links
-│   └── NewsletterSignup.tsx        # Supabase-connected newsletter signup
-└── FeatureCard.tsx                 # Reusable card component
-
-lib/
-└── supabase.ts                     # Supabase client and newsletter functions
-
-docs/
-├── squarespace-site-reference/     # Complete Squarespace site content migration
-│   ├── MASTER_CONTENT_INVENTORY.md # Master summary of all content (18 pages documented)
-│   ├── SCREENSHOT_ORGANIZATION.md  # Image organization guide
-│   ├── homepage.md                 # Homepage content
-│   ├── books-page.md               # Books page content
-│   ├── blog-page.md                # Blog intro text
-│   ├── contributors-page.md        # Contributors corner content
-│   ├── city-country-page.md        # City/Country bucket list (empty)
-│   ├── your-brain-page.md          # Brain benefits and quotes
-│   ├── about-page.md               # About page (404, needs rebuild)
-│   ├── join-us-page.md             # Newsletter signup (needs redesign)
-│   ├── tips-ideas-*.md             # 10 comprehensive travel guide pages
-│   └── screenshots/                # 50+ organized images by page/section
-└── meeting-notes/                  # Client meeting requirements and priorities
+**Database Access:** Direct PostgreSQL connections via `pg` client (not Supabase SDK):
+```typescript
+// lib/db/*.ts files use this pattern
+const client = new Client({ connectionString: process.env.POSTGRES_URL_NON_POOLING });
 ```
 
-### Page Composition Pattern
+**Authentication:** NextAuth.js with JWT strategy, custom credentials provider in `lib/auth.ts`. Admin routes protected via `getServerSession(authOptions)`.
 
-The homepage (`app/page.tsx`) follows a component composition pattern:
-```tsx
-<AnimatedBrainHero />
-<BucketListNavigation />
-<ValueProp />
-<BookShowcase />
-<AboutSection />
-<CrossSiteNavigation />
-```
+**API Routes Structure:**
+- `/api/admin/*` - Protected routes requiring auth (blog CRUD, newsletter, media)
+- `/api/blog/*` - Public blog endpoints
+- `/api/newsletter/*` - Public subscription endpoint
+- `/api/youtube/videos` - Fetches from YouTube Data API
 
-Each section is self-contained and can be reordered or removed.
+### Database Tables
+- `users` - Admin users with bcrypt password hashes
+- `blog_posts` - Blog content with status (draft/published/archived)
+- `newsletter_subscribers` - Email subscribers
+- `media_appearances` - "As Featured On" media outlets (optional)
 
-### Design System
+### Admin CMS (`/admin/*`)
+Fully functional admin panel at `bucketlistdoctor.com/admin`:
+- `/admin/login` - NextAuth login page
+- `/admin/dashboard` - Overview and quick actions
+- `/admin/blog` - Create/edit/delete blog posts with image upload
+- `/admin/newsletter` - Send newsletters, view subscribers
+- `/admin/media` - Manage media appearance logos
 
-**Brand Colors** (defined in `tailwind.config.ts`):
-- `brand-navy`: #2B4C6F - Primary dark blue
-- `brand-blue`: #4A90E2 - Bright blue accents
-- `brand-teal`: #50E3C2 - Teal accents
-- `brand-purple`: #B968E0 - Purple gradients
-- `brand-pink`: #FF6B9D - Pink accents
-- `brand-yellow`: #FFD93D - Yellow highlights
-- `brand-cream`: #F5E6D3 - Warm neutral
+### Image Upload
+Images upload to `public/uploads/` locally. In production (Vercel's read-only filesystem), falls back to base64 data URLs stored in database. See `app/api/upload/image/route.ts`.
 
-**Typography:**
-- Body text: Inter (variable font)
-- Headings: Montserrat (variable font)
+## Design System
 
-### Supabase Integration
+**Brand Colors** (in `tailwind.config.ts`):
+- `brand-navy`: #2B4C6F
+- `brand-blue`: #4A90E2
+- `brand-teal`: #50E3C2
+- `brand-purple`: #B968E0
+- `brand-pink`: #FF6B9D
+- `brand-yellow`: #FFD93D
 
-The newsletter signup uses Supabase for email collection:
-
-1. **Configuration:** Set environment variables in `.env.local`:
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=your-url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-key
-   ```
-
-2. **Database table:** `newsletter_subscribers` with columns:
-   - `id` (uuid, primary key)
-   - `created_at` (timestamp)
-   - `email` (text, unique)
-   - `subscribed` (boolean)
-
-3. **Functions:** Use `lib/supabase.ts` functions:
-   - `addNewsletterSubscriber(email)` - Add/resubscribe email
-   - `unsubscribeNewsletter(email)` - Unsubscribe functionality
-
-4. **Graceful degradation:** If Supabase isn't configured, newsletter signup shows a placeholder message without errors.
-
-See `SUPABASE_SETUP.md` for detailed setup instructions.
+**Typography:** Inter (body), Montserrat (headings) via CSS variables.
 
 ## Important Guidelines
 
 ### DO NOT MODIFY
 - `components/home/AnimatedBrainHero.tsx` - Complex 3D brain animation with particle system. Changes risk breaking the visual centerpiece.
 
-### Component Development
-- Keep components self-contained and reusable
-- Use Tailwind CSS exclusively for styling (no CSS modules)
-- Prefer composition over prop drilling
-- Use TypeScript for all new components
-- Include proper SEO metadata for new pages
+### Environment Variables Required
+```
+POSTGRES_URL_NON_POOLING   # Direct PostgreSQL connection string
+NEXTAUTH_SECRET            # NextAuth JWT secret
+NEXTAUTH_URL               # Site URL (https://bucketlistdoctor.com)
+NEXT_PUBLIC_SUPABASE_URL   # Supabase project URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY
+YOUTUBE_API_KEY            # For YouTube video fetching
+RESEND_API_KEY             # For email sending
+NEXT_PUBLIC_GA_ID          # Google Analytics 4 (optional)
+```
 
 ### Styling Conventions
 - Use brand color utilities: `bg-brand-navy`, `text-brand-teal`, etc.
-- Gradients should use multiple brand colors for vibrant effects
-- Mobile-first responsive design with Tailwind breakpoints
-- Animations should be smooth and purposeful (avoid excessive motion)
+- Tailwind CSS exclusively (no CSS modules)
+- Mobile-first responsive design
 
-### Content Strategy
-- This is part of a 4-site portfolio for Dr. DeSarbo
-- Cross-site navigation connects to: doctordesarbo.com, ed-180.com, and a science publishing site
-- Content focuses on neuroscience, adventure, and bucket list psychology
-- Maintain professional yet accessible tone
-
-## Current Project Status
-
-**Completion:** ~95% complete - Final polish and handoff phase
-
-**What's Complete:**
-- 8 fully functional pages with SEO metadata (Homepage, About, Books, Blog/Media, Tips & Ideas, Your Brain, Speaking, Newsletter)
-- All core components (15+ total) built and styled with animations
-- Supabase integration with graceful fallback for newsletter AND blog management
-- Complete Squarespace content migration (18 pages documented)
-- Responsive design across all breakpoints
-- 3D animated brain hero with particle system
-- Speaking page with media appearances and topic carousels
-- Blog system with admin CMS for Dr. DeSarbo to manage posts
-- Media appearances section on homepage with "As Featured On"
-- Professional Summary updated on About page
-- Complete "Your Brain on a Bucket List" story with scientific detail
-- Tips & Advice page with 10 comprehensive travel guide categories
-
-**Recent Client Updates (November 2025):**
-All of Jeff's latest requests have been implemented in Cursor. This verification pass confirms:
-
-1. **Homepage Updates:**
-   - ✅ Book image placement verification needed
-   - ✅ "Get the Books" button link verification needed (should go to main title, not workbook)
-   - ✅ "As Featured On" media banners (Newsday, Doctor Radio) - MediaAppearances component exists
-   - ✅ Updated description text: "Dr. DeSarbo has been featured with his insights on psychiatry, neuroscience and bucket lists across major media outlets."
-
-2. **About Page Updates:**
-   - ✅ Professional Summary updated with new comprehensive copy
-   - ✅ Published Author section updated: "Three groundbreaking books on bucket list neuroscience, including the main title and specialized supplements for eating disorders. Author of numerous articles for professional publication."
-   - ✅ International Speaker section updated: "National and international professional presenter. Featured on major media outlets including iHeart Radio, KTRS 550 ABC News Radio, News 12 Television, Doctor Radio/Sirius XM, Newsday, WICC Radio, Connecticut Today and many more."
-   - ✅ Punctuation added to achievement sections
-   - ✅ Email CTA updated to include "TV/Radio Interviews" and "Psychiatry Consultation"
-
-3. **Tips & Ideas Page:**
-   - ✅ Page title changed to "Tips & Advice"
-   - ✅ 10 comprehensive category guides with icons and descriptions
-   - ✅ Content from Squarespace site migrated
-
-4. **Your Brain Page:**
-   - ✅ Complete "Story of Your Brain on a Bucket List" added after 5 brain points
-   - ✅ Three sections: Starting Our List, Our List in Action, Afterwords
-   - ✅ Three supporting images (brain, bucket, boat)
-   - ✅ Full scientific terminology with bold formatting
-
-5. **Videos and Media Page:**
-   - ✅ Updated intro text: "Additional information from Dr. DeSarbo on neuroscience, mental health, eating disorders, bucket lists, and purposeful living."
-   - ✅ YouTube integration with API
-   - ✅ Blog posts section for articles
-   - ✅ "As Featured On" media banners
-
-6. **Blog Functionality:**
-   - ✅ Admin CMS exists at `/admin/blog` for Dr. DeSarbo to add articles, images, and content
-   - ✅ Blog posts display on homepage at `/blog`
-   - ✅ Backend allows Jeff to manage content independently
-
-7. **Speaking Page:**
-   - ✅ Comprehensive speaking page with professional presentation
-   - ✅ Media appearances grid
-   - ✅ Speaking topics carousel
-   - ✅ Past engagements showcase
-   - ✅ Booking CTA
-
-**What's Still Needed (Verification):**
-- Confirm homepage book image placement in lower right corner
-- Verify "Get the Books" button links to main title (not workbook)
-- Final QA pass on all client requirements
-- Analytics setup for Jeff to track traffic from media appearances
-
-## Related Documentation
-
-### Primary Documentation
-- `PROJECT_CONTEXT.md` - Client info, brand message, social media links
-- `TECHNICAL_NOTES.md` - Implementation status and known issues
-- `SUPABASE_SETUP.md` - Step-by-step Supabase configuration
-- `LAUNCH_CHECKLIST.md` - Pre-deployment checklist
-- `README.md` - Standard Next.js documentation
-
-### Content Migration Documentation
-- `docs/squarespace-site-reference/MASTER_CONTENT_INVENTORY.md` - Complete inventory of old site
-- `docs/squarespace-site-reference/SCREENSHOT_ORGANIZATION.md` - Image organization guide
-- `docs/squarespace-site-reference/*.md` - 21 markdown files with all Squarespace content
-
-### Meeting Requirements
-- `docs/meeting-notes/` - Client meeting transcripts and requirements
-- **Critical Deadline:** Friday 10/25/2025 at 2PM (radio interview)
-- **Priority Items:** Punctuation fixes, URL corrections, Books section overhaul, logo integration
+### Blog Post Flow
+1. Admin creates post at `/admin/blog` with status "draft" or "published"
+2. If published, `sendBlogPostNotification()` emails all subscribers
+3. Posts display on `/blog` page and individual `/blog/[slug]` pages
+4. View counts tracked in database
 
 ## Cross-Site Integration
 
-Dr. DeSarbo maintains 4 websites with thumbnail navigation between them:
-- **bucketlistdoctor.com** (this site) - Colorful stethoscope/book logo
-- **drdesarbo.com** - Professional headshot image
-- **ed-180.com** - ED180 logo with yellow glow
-- Science publishing site - Book listings (future)
+Dr. DeSarbo's 4-site portfolio with thumbnail navigation:
+- **bucketlistdoctor.com** (this site)
+- **drdesarbo.com** - Professional site
+- **ed-180.com** - Eating disorder resources
 
 The `CrossSiteNavigation` component handles these connections.
 
-## Admin/Newsletter CMS System (Planned)
+## Known Issues
 
-**Goal:** Simple content management for Dr. DeSarbo to manage blog posts, videos, and newsletter
-
-**URL Options:**
-- `admin.bucketlistdoctor.com` (subdomain - preferred for separation)
-- `bucketlistdoctor.com/admin` (route-based - simpler deployment)
-
-**Required Features:**
-1. **Content Management:**
-   - Upload images (drag-and-drop)
-   - Add YouTube videos (paste URL)
-   - Create text posts with rich editor
-   - Upload PDFs and links
-   - Simple CRUD interface
-
-2. **Newsletter System:**
-   - Send newsletters to subscriber list
-   - Automated email on new blog post
-   - Basic email template system
-   - Integration with Supabase newsletter_subscribers table
-
-3. **Authentication:**
-   - Simple login (username/password)
-   - Admin-only access
-   - Session management
-
-4. **User Experience:**
-   - "Simple enough for 80-year-old who barely uses computer"
-   - Visual, not technical
-   - Clear feedback on all actions
-   - Preview before publish
-
-**Tech Stack (Planned):**
-- NextAuth.js for authentication
-- Vercel Blob for image/PDF storage
-- Resend or SendGrid for email delivery
-- Supabase for content database
-- shadcn/ui for admin UI components
-
-**Reusability:**
-- Extract to `wnu-newsletter-template` for future projects
-- Modular architecture for easy customization
-- Clear documentation for deployment
-
-## Known Issues & Context
-
-1. **Font loading warning:** fonts.gstatic.com may show errors in console (safe to ignore)
-2. **Unused components:** `BrainEarthHero.tsx` and `BrainHeader.tsx` exist but aren't currently used
-3. **Content pages:** Some pages (blog, tips-ideas, your-brain) may need content updates
-4. **Port configuration:** Always use port 8000 for consistency with client expectations
-5. **Blog page:** Currently using placeholder YouTube video IDs (need real URLs)
-6. **Meeting requirements:** Multiple fixes needed before 10/25/2025 radio interview
-
-## Social Media Links
-
-- Facebook: https://facebook.com/bucketlistdoctor
-- Instagram: https://instagram.com/bucketlistdoctor
-- LinkedIn: https://linkedin.com/in/drdesarbo
-- YouTube: @bucketlistdoctor (videos on neuroscience and bucket lists)
-
-## Book Information
-
-**"The Neuroscience of a Bucket List"**
-- Amazon: https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0
-- BookBaby: https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list?srsltid=AfmBOoqGi5v7J9qv2KD7hLrNoibKl46uxPP9ZqZ0HXKSx-aYiw6t957p
-- Barnes & Noble: https://www.barnesandnoble.com/s/desarbo
-- Audiobook in production using 11Labs voice cloning
+1. **Font loading warning:** fonts.gstatic.com console errors are safe to ignore
+2. **media_appearances table:** May not exist in all environments; handled gracefully
+3. **Image uploads in production:** Fall back to base64 data URLs on Vercel

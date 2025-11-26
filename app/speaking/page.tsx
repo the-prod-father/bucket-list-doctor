@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower } from 'react-icons/fa';
+import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower, FaStar, FaTv, FaPodcast } from 'react-icons/fa';
 import TopicCarousel from '@/components/speaking/TopicCarousel';
 import ExperienceCarousel from '@/components/speaking/ExperienceCarousel';
 
@@ -78,6 +78,37 @@ export default function SpeakingPage() {
     { name: 'News 12 Long Island', logo: '/images/media/news12-long-island-logo.png' },
     { name: 'WICC Radio', logo: '/images/media/wicc-logo.png' },
     { name: 'Connecticut Today', logo: '/images/media/connecticut-today-logo.png' },
+  ];
+
+  // Upcoming appearances - Jeff can update these or we can add admin functionality
+  const upcomingAppearances = [
+    {
+      id: 1,
+      title: 'Fox News Interview',
+      type: 'TV',
+      network: 'Fox News',
+      date: 'Coming Soon',
+      description: 'Discussing the neuroscience of bucket lists and purposeful living',
+      featured: true,
+    },
+    {
+      id: 2,
+      title: 'National Radio Tour',
+      type: 'Radio',
+      network: 'Multiple Stations',
+      date: 'December 2025',
+      description: 'Book promotion tour across major market radio stations',
+      featured: false,
+    },
+    {
+      id: 3,
+      title: 'Podcast Feature',
+      type: 'Podcast',
+      network: 'TBA',
+      date: 'Coming Soon',
+      description: 'Deep dive into brain health and adventure psychology',
+      featured: false,
+    },
   ];
 
   const pastEngagements = [
@@ -218,6 +249,120 @@ export default function SpeakingPage() {
                 />
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Appearances Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+        {/* Animated background effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-pink-500/10 to-cyan-500/10 rounded-full blur-3xl" />
+        </div>
+
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }} />
+
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-2 rounded-full text-sm font-bold mb-4 animate-pulse">
+              <FaStar className="w-4 h-4" />
+              <span>COMING SOON</span>
+              <FaStar className="w-4 h-4" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Upcoming <span className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 bg-clip-text text-transparent">Appearances</span>
+            </h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Catch Dr. DeSarbo on these upcoming media appearances and speaking engagements
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {upcomingAppearances.map((appearance) => (
+              <div
+                key={appearance.id}
+                className={`relative group ${appearance.featured ? 'md:col-span-1' : ''}`}
+              >
+                {/* Featured badge */}
+                {appearance.featured && (
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
+                    <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-1 rounded-full text-xs font-bold shadow-lg">
+                      FEATURED
+                    </span>
+                  </div>
+                )}
+
+                <div className={`relative bg-white/10 backdrop-blur-md rounded-2xl p-6 border ${appearance.featured ? 'border-yellow-400/50' : 'border-white/20'} hover:border-white/40 transition-all duration-300 hover:transform hover:scale-105 hover:bg-white/15 h-full`}>
+                  {/* Glow effect for featured */}
+                  {appearance.featured && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 rounded-2xl blur-xl -z-10" />
+                  )}
+
+                  {/* Type icon */}
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 ${
+                    appearance.type === 'TV' ? 'bg-gradient-to-br from-red-500 to-pink-600' :
+                    appearance.type === 'Radio' ? 'bg-gradient-to-br from-blue-500 to-cyan-600' :
+                    'bg-gradient-to-br from-purple-500 to-indigo-600'
+                  }`}>
+                    {appearance.type === 'TV' && <FaTv className="w-7 h-7 text-white" />}
+                    {appearance.type === 'Radio' && <FaBroadcastTower className="w-7 h-7 text-white" />}
+                    {appearance.type === 'Podcast' && <FaPodcast className="w-7 h-7 text-white" />}
+                  </div>
+
+                  {/* Content */}
+                  <div className="mb-4">
+                    <span className={`text-xs font-bold uppercase tracking-wider ${
+                      appearance.type === 'TV' ? 'text-red-400' :
+                      appearance.type === 'Radio' ? 'text-cyan-400' :
+                      'text-purple-400'
+                    }`}>
+                      {appearance.type}
+                    </span>
+                    <h3 className="text-xl font-bold text-white mt-1 mb-2">
+                      {appearance.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-3">
+                      {appearance.description}
+                    </p>
+                  </div>
+
+                  {/* Network & Date */}
+                  <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                    <div>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider">Network</p>
+                      <p className="text-white font-semibold">{appearance.network}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-gray-400 uppercase tracking-wider">Date</p>
+                      <p className={`font-bold ${appearance.date === 'Coming Soon' || appearance.date === 'TBA' ? 'text-yellow-400 animate-pulse' : 'text-white'}`}>
+                        {appearance.date}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to action */}
+          <div className="text-center">
+            <p className="text-gray-400 mb-4">Want to book Dr. DeSarbo for your show or event?</p>
+            <a
+              href="mailto:drdbucketlist@gmail.com?subject=Media Booking Inquiry"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-105 shadow-xl"
+            >
+              <FaEnvelope className="w-5 h-5" />
+              <span>Book for Your Show</span>
+            </a>
           </div>
         </div>
       </section>
