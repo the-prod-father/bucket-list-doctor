@@ -167,20 +167,20 @@ function BlogPageContent() {
       <AdminLayout>
         <div className="space-y-6">
           {/* Header */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center justify-between">
+          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">Blog Management</h1>
-                <p className="text-gray-600">Create and manage blog posts</p>
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Blog Management</h1>
+                <p className="text-gray-600 text-sm sm:text-base">Create and manage blog posts</p>
               </div>
-              <div className="flex gap-4">
-                <div className="text-center bg-brand-purple text-white rounded-lg px-6 py-3">
-                  <div className="text-2xl font-bold">{counts.published}</div>
-                  <div className="text-sm">Published</div>
+              <div className="flex gap-3 sm:gap-4">
+                <div className="text-center bg-brand-purple text-white rounded-lg px-4 sm:px-6 py-2 sm:py-3 flex-1 sm:flex-none">
+                  <div className="text-xl sm:text-2xl font-bold">{counts.published}</div>
+                  <div className="text-xs sm:text-sm">Published</div>
                 </div>
-                <div className="text-center bg-brand-yellow text-gray-900 rounded-lg px-6 py-3">
-                  <div className="text-2xl font-bold">{counts.draft}</div>
-                  <div className="text-sm">Drafts</div>
+                <div className="text-center bg-brand-yellow text-gray-900 rounded-lg px-4 sm:px-6 py-2 sm:py-3 flex-1 sm:flex-none">
+                  <div className="text-xl sm:text-2xl font-bold">{counts.draft}</div>
+                  <div className="text-xs sm:text-sm">Drafts</div>
                 </div>
               </div>
             </div>
@@ -223,15 +223,15 @@ function BlogPageContent() {
                   {posts.map((post) => (
                     <div
                       key={post.id}
-                      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                      className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow"
                     >
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-bold text-gray-900 mb-1">{post.title}</h3>
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 truncate">{post.title}</h3>
                           {post.excerpt && (
                             <p className="text-gray-600 text-sm mb-2 line-clamp-2">{post.excerpt}</p>
                           )}
-                          <div className="flex items-center gap-4 text-sm text-gray-500">
+                          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm text-gray-500">
                             <span
                               className={`px-2 py-1 rounded text-xs font-semibold ${
                                 post.status === 'published'
@@ -243,24 +243,24 @@ function BlogPageContent() {
                             >
                               {post.status}
                             </span>
-                            <span>{new Date(post.created_at).toLocaleDateString()}</span>
-                            <span>{post.view_count} views</span>
+                            <span className="text-xs sm:text-sm">{new Date(post.created_at).toLocaleDateString()}</span>
+                            <span className="text-xs sm:text-sm">{post.view_count} views</span>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-2 ml-4">
+                        <div className="flex items-center space-x-2 self-end sm:self-start">
                           <button
                             onClick={() => handleEditPost(post)}
                             className="p-2 text-brand-blue hover:bg-blue-50 rounded transition-colors"
                             title="Edit"
                           >
-                            <FaEdit />
+                            <FaEdit className="w-4 h-4 sm:w-5 sm:h-5" />
                           </button>
                           <button
                             onClick={() => handleDeletePost(post.id)}
                             className="p-2 text-red-500 hover:bg-red-50 rounded transition-colors"
                             title="Delete"
                           >
-                            <FaTrash />
+                            <FaTrash className="w-4 h-4 sm:w-5 sm:h-5" />
                           </button>
                         </div>
                       </div>

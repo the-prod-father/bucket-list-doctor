@@ -8,7 +8,7 @@ export default function BookShowcase() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Book Cover Image with 3D Flip Animation */}
           <div className="flex justify-center" style={{ perspective: '1200px' }}>
-            <div className="group relative w-80 h-[480px]" style={{ transformStyle: 'preserve-3d' }}>
+            <div className="group relative w-56 sm:w-64 md:w-72 lg:w-80 h-[340px] sm:h-[380px] md:h-[430px] lg:h-[480px]" style={{ transformStyle: 'preserve-3d' }}>
               <div className="relative w-full h-full transition-all duration-700 transform-style-3d group-hover:rotate-y-180" style={{ transformStyle: 'preserve-3d' }}>
                 {/* Front - Book Cover */}
                 <div className="absolute inset-0 backface-hidden" style={{ backfaceVisibility: 'hidden' }}>

@@ -111,20 +111,20 @@ export default function NewsletterPage() {
       <AdminLayout>
         <div className="space-y-6">
           {/* Header */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="flex items-center justify-between">
+          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">Newsletter Management</h1>
-                <p className="text-gray-600">Manage subscribers and send newsletters</p>
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Newsletter Management</h1>
+                <p className="text-gray-600 text-sm sm:text-base">Manage subscribers and send newsletters</p>
               </div>
-              <div className="flex gap-4">
-                <div className="text-center bg-brand-blue text-white rounded-lg px-6 py-3">
-                  <div className="text-2xl font-bold">{counts.active}</div>
-                  <div className="text-sm">Active</div>
+              <div className="flex gap-3 sm:gap-4">
+                <div className="text-center bg-brand-blue text-white rounded-lg px-4 sm:px-6 py-2 sm:py-3 flex-1 sm:flex-none">
+                  <div className="text-xl sm:text-2xl font-bold">{counts.active}</div>
+                  <div className="text-xs sm:text-sm">Active</div>
                 </div>
-                <div className="text-center bg-gray-500 text-white rounded-lg px-6 py-3">
-                  <div className="text-2xl font-bold">{counts.total}</div>
-                  <div className="text-sm">Total</div>
+                <div className="text-center bg-gray-500 text-white rounded-lg px-4 sm:px-6 py-2 sm:py-3 flex-1 sm:flex-none">
+                  <div className="text-xl sm:text-2xl font-bold">{counts.total}</div>
+                  <div className="text-xs sm:text-sm">Total</div>
                 </div>
               </div>
             </div>
@@ -133,27 +133,27 @@ export default function NewsletterPage() {
           {/* Tabs */}
           <div className="bg-white rounded-lg shadow-md">
             <div className="border-b border-gray-200">
-              <nav className="flex space-x-1 p-2">
+              <nav className="flex flex-col sm:flex-row sm:space-x-1 p-2 gap-2 sm:gap-0">
                 <button
                   onClick={() => setActiveTab('subscribers')}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all ${
+                  className={`flex items-center justify-center sm:justify-start space-x-2 px-4 sm:px-6 py-3 rounded-lg font-medium transition-all text-sm sm:text-base ${
                     activeTab === 'subscribers'
                       ? 'bg-brand-blue text-white'
                       : 'text-gray-600 hover:bg-gray-100'
                   }`}
                 >
-                  <FaEnvelope />
+                  <FaEnvelope className="w-4 h-4" />
                   <span>Subscribers ({counts.total})</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('compose')}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all ${
+                  className={`flex items-center justify-center sm:justify-start space-x-2 px-4 sm:px-6 py-3 rounded-lg font-medium transition-all text-sm sm:text-base ${
                     activeTab === 'compose'
                       ? 'bg-brand-blue text-white'
                       : 'text-gray-600 hover:bg-gray-100'
                   }`}
                 >
-                  <FaPaperPlane />
+                  <FaPaperPlane className="w-4 h-4" />
                   <span>Compose Newsletter</span>
                 </button>
               </nav>
