@@ -69,12 +69,22 @@ export default function AboutPage() {
             <div className="md:col-span-3 text-center md:text-left">
               <div className="inline-block mb-4">
                 <span className="text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                  Physician • Author • Adventurer
+                  Physician • Author • Speaker • Adventurer
                 </span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                 About Jeffrey DeSarbo, <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">D.O.</span>
               </h1>
+              <div className="flex items-center justify-center md:justify-start mb-6">
+                <Image
+                  src="/images/profile/trademark.png"
+                  alt="Trademark"
+                  width={120}
+                  height={40}
+                  className="h-8 md:h-10 w-auto"
+                  unoptimized
+                />
+              </div>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
                 Neuropsychiatrist dedicated to exploring the intersection of brain health and purposeful living.
               </p>
@@ -93,7 +103,7 @@ export default function AboutPage() {
                 </div>
                 <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-100">
                   <FaBrain className="w-8 h-8 mx-auto mb-2 text-brand-teal" />
-                  <div className="text-2xl font-bold text-gray-900">20+</div>
+                  <div className="text-2xl font-bold text-gray-900">25+</div>
                   <div className="text-sm text-gray-600">Years</div>
                 </div>
               </div>

@@ -8,7 +8,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Dr. DeSarbo Profile Image */}
-          <div className="flex justify-center order-2 lg:order-1">
+          <div className="flex flex-col items-center order-2 lg:order-1">
             <div className="relative">
               <Image
                 src="/images/profile/profile-pic-dr-d.png"
@@ -21,6 +21,16 @@ export default function AboutSection() {
               {/* Animated glow ring */}
               <div className="absolute inset-0 rounded-full border-4 border-brand-blue/30 animate-pulse"></div>
               <div className="absolute inset-2 rounded-full border-2 border-brand-purple/40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+            </div>
+            <div className="mt-6">
+              <Image
+                src="/images/profile/trademark.png"
+                alt="Bucket List Doctor"
+                width={150}
+                height={50}
+                className="h-10 md:h-12 w-auto"
+                unoptimized
+              />
             </div>
           </div>
 

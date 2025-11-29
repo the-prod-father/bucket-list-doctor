@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Dr. Jeffrey DeSarbo | Neuropsychiatrist & Author',
-  description: 'Learn about Dr. Jeffrey DeSarbo, D.O. - physician, neuropsychiatrist, author of "The Neuroscience of a Bucket List," and seven-continent explorer with 20+ years of clinical experience.',
+  description: 'Learn about Dr. Jeffrey DeSarbo, D.O. - physician, neuropsychiatrist, author of "The Neuroscience of a Bucket List," and seven-continent explorer with 25+ years of clinical experience.',
   keywords: ['Dr. Jeffrey DeSarbo', 'neuropsychiatrist', 'bucket list doctor', 'brain health', 'psychiatrist', 'author', 'speaker'],
   openGraph: {
     title: 'About Dr. Jeffrey DeSarbo | Neuropsychiatrist & Author',

@@ -109,20 +109,48 @@ export default function YourBrainPage() {
 
         {/* Brain Story Section */}
         <div className="mt-16 bg-white rounded-2xl shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             The Story of Your Brain on a Bucket List: Expanding Your Insight About Expanding Your Brain
           </h2>
           <p className="text-center text-gray-600 mb-8 italic">by Dr. Jeffrey DeSarbo</p>
           
           <div className="prose prose-lg max-w-none">
+            {/* Floating image for newspaper-style wrap */}
+            <div className="float-right w-full sm:w-1/3 md:w-1/4 ml-6 mb-4">
+              <div className="relative aspect-square rounded-lg overflow-hidden shadow-md">
+                <Image
+                  src="/images/brain-story/img-1.jpg"
+                  alt="Brain story illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              In this section, the words in <strong>bold</strong> may be new to you and sound intimidating to some, but hang in there, and soon you will better understand. Of course, I highly recommend reading <em>The Neuroscience of a Bucket List: Getting the Most from Your Brain and Life</em> to better understand these important concepts. I encourage you to consider making it a goal to learn more about how your brain works, perhaps even adding it to your own bucket list.
+              In this section, the words in <strong>bold</strong> may be new to you and sound intimidating to some, but hang in there, and soon you will better understand. Of course, I highly recommend reading <em>The Neuroscience of a Bucket List: Getting the Most from Your Brain and Life</em> to better understand these important concepts.
             </p>
+            <p className="text-lg text-gray-700 leading-relaxed mb-8">
+              I encourage you to consider making it a goal to learn more about how your brain works, perhaps even adding it to your own bucket list.
+            </p>
+            <div className="clear-both"></div>
 
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-6">Starting Our List</h3>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               When we begin to make a bucket list, something extraordinary begins to happen in the brain. It isn&apos;t just a to-do list; it&apos;s a neurological rehearsal for meaning, joy, growth, and vitality. Consider this your introduction to the complexities of your brain on a bucket list. Here you will begin to learn how approaching life with a bucket list engages and stimulates the brain, leading to brain exercises that promote <strong>neurogenesis</strong> and <strong>neuroplasticity</strong>.
             </p>
+            {/* Floating image for newspaper-style wrap */}
+            <div className="float-left w-full sm:w-1/3 md:w-1/4 mr-6 mb-4">
+              <div className="relative aspect-square rounded-lg overflow-hidden shadow-md">
+                <Image
+                  src="/images/brain-story/img-2.jpg"
+                  alt="Brain story illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               First, the <strong>prefrontal cortex</strong> comes alive. That&apos;s the brain&apos;s planning and decision-making center. As we imagine possibilities such as traveling, learning, creating, and connecting, it begins to weigh logic and emotion: Can I do this? Would this make me happy? This moment marks the spark of intentionality and our brain mapping possible futures before they&apos;ve even begun.
             </p>
@@ -143,6 +171,18 @@ export default function YourBrainPage() {
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Now comes the moment itself, when we actually do something on our list. Let&apos;s say you&apos;re standing on the rim of the Grand Canyon. The wind brushes your face. The scale is almost too vast to comprehend.
             </p>
+            {/* Floating image for newspaper-style wrap */}
+            <div className="float-right w-full sm:w-1/3 md:w-1/4 ml-6 mb-4">
+              <div className="relative aspect-square rounded-lg overflow-hidden shadow-md">
+                <Image
+                  src="/images/brain-story/img-3.jpeg"
+                  alt="Brain story illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Instantly, your sensory systems go into overdrive. The <strong>thalamus</strong> relays an explosion of color, light, and sound to your visual and auditory cortices. The hippocampus flags it as &quot;novel,&quot; a once-in-a-lifetime moment worth encoding deeply. <strong>Dopamine</strong> and <strong>acetylcholine</strong> surge, sharpening focus and amplifying memory.
             </p>
@@ -169,24 +209,47 @@ export default function YourBrainPage() {
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               When you reflect, the hippocampus and Default Mode Network reactivate the same circuits used during the experience itself. You&apos;re not just remembering; your brain is re-living. The ventromedial prefrontal cortex and amygdala reengage, coloring those memories with warmth and meaning; that was special, that was us together.
             </p>
+            {/* Floating image for newspaper-style wrap */}
+            <div className="float-left w-full sm:w-1/3 md:w-1/4 mr-6 mb-4">
+              <div className="relative aspect-square rounded-lg overflow-hidden shadow-md">
+                <Image
+                  src="/images/brain-story/img-4.jpeg"
+                  alt="Brain story illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Your reward circuits quietly hum again. Dopamine trickles in, not as a rush but as a gentle glow of satisfaction. This reinforces the habit of savoring, teaching the brain that joy doesn&apos;t come only from doing, but also from appreciating.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              As you tell the story, maybe showing your kids the pictures, the <strong>medial prefrontal cortex</strong> and <strong>temporoparietal junction</strong> weave it into your life story. The language centers sync with emotional ones, forming a coherent narrative: &quot;This is part of who we are.&quot;
+              As you tell the story, maybe showing your kids the pictures, the <strong>medial prefrontal cortex</strong> and <strong>temporoparietal junction</strong> weave it into your life story. The language centers sync with emotional ones, forming a coherent narrative: &quot;This is part of who we are.&quot; Even empathy gets involved. The <strong>mirror neuron system</strong> mirrors your loved ones&apos; emotions, deepening connection through shared joy.
             </p>
+            <div className="clear-both"></div>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Even empathy gets involved. The <strong>mirror neuron system</strong> mirrors your loved ones&apos; emotions, deepening connection through shared joy. Oxytocin flows again, bonding you further.
+              Oxytocin flows again, bonding you further.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               And as reflection turns to gratitude, the <strong>anterior cingulate cortex</strong> and insula balance emotion and body, slowing heart rate, easing tension, creating that peaceful calm we associate with contentment. Gratitude isn&apos;t just a feeling; it&apos;s the brain&apos;s version of harmony.
             </p>
+            {/* Floating image for newspaper-style wrap */}
+            <div className="float-right w-full sm:w-1/3 md:w-1/4 ml-6 mb-4">
+              <div className="relative aspect-square rounded-lg overflow-hidden shadow-md">
+                <Image
+                  src="/images/brain-story/IMG-5.jpeg"
+                  alt="Brain story illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Each time you recall or retell, you&apos;re reinforcing identity: I&apos;m someone who dreams, acts, and cherishes. That&apos;s neuroplastic growth in action. Over time, these cycles of planning, experiencing, and reflecting build resilience, motivation, and emotional stability.
+              Each time you recall or retell, you&apos;re reinforcing identity: I&apos;m someone who dreams, acts, and cherishes. That&apos;s neuroplastic growth in action. Over time, these cycles of planning, experiencing, and reflecting build resilience, motivation, and emotional stability. The result? A brain wired for meaning, gratitude, and lifelong curiosity. That is the neuroscience of a bucket list. It&apos;s how the simple act of dreaming, doing, and reflecting can literally reshape your brain for a fuller, more intentional life.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">
-              The result? A brain wired for meaning, gratitude, and lifelong curiosity. That is the neuroscience of a bucket list. It&apos;s how the simple act of dreaming, doing, and reflecting can literally reshape your brain for a fuller, more intentional life.
-            </p>
+            <div className="clear-both"></div>
           </div>
 
           {/* Three Images Section */}

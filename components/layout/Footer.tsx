@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import NewsletterSignup from './NewsletterSignup';
 
@@ -17,7 +18,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Column */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Bucket List Doctor</h3>
+            <div className="mb-4">
+              <Image
+                src="/images/profile/trademark.png"
+                alt="Bucket List Doctor"
+                width={150}
+                height={50}
+                className="h-10 w-auto"
+                unoptimized
+              />
+            </div>
             <p className="text-gray-400">
               Exploring the neuroscience behind purposeful living and meaningful goals.
             </p>
