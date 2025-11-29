@@ -19,6 +19,8 @@ export default function BooksPage() {
       subtitle: 'Getting the Most from Your Brain and Life.',
       image: '/images/benefits/bucketlistdoctor-book-cover.png',
       amazonUrl: 'https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0',
+      bookBabyUrl: 'https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list',
+      barnesNobleUrl: 'https://www.barnesandnoble.com/w/the-neuroscience-of-a-bucket-list-do-desarbo/1147438064',
       description: `Are you ready to transform your life and uncover the hidden potential within your mind? "The Neuroscience of a Bucket List: Getting the Most from Your Brain and Life" is not just a book—it's an invitation to rethink how you approach living. This groundbreaking work delves deep into the science of goal setting, motivation, and fulfilment, blending cutting-edge neuroscience with practical advice to empower readers to craft a life of purpose, joy, and achievement. A bucket list isn't just a wish list of adventures and achievements; it's a powerful tool for reshaping how you think, feel, and live. Through engaging storytelling and actionable insights, this book reveals how your brain responds to meaningful goals and helps you unlock creativity, resilience, and happiness.`,
       gradient: 'from-purple-500 to-blue-500',
     },
@@ -28,6 +30,8 @@ export default function BooksPage() {
       subtitle: 'The Companion Guide to Transform Your Life',
       image: '/images/benefits/bucketlist-workbook-cover.jpg',
       amazonUrl: 'https://www.amazon.com/Neuroscience-Bucket-List-Workbook-Companion/dp/B0FBFNYWLW?ref_=ast_author_dp&th=1&psc=1',
+      bookBabyUrl: 'https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list-workbook',
+      barnesNobleUrl: 'https://www.barnesandnoble.com/w/the-neuroscience-of-a-bucket-list-workbook-jeffrey-desarbo-do/1147508735?ean=9798317801854',
       description: `"The Neuroscience of a Bucket List Workbook: The Companion Guide to Transform Your Life" is a dynamic, science-based workbook created to help readers put their dreams into motion through practical, intentional action. As the official workbook to the acclaimed title, "The Neuroscience of a Bucket List: Getting the Most from Your Brain and Life," this guide takes readers deeper into the journey of designing a life that aligns with their values, passions, and purpose―using the transformative power of the brain.`,
       gradient: 'from-blue-500 to-teal-500',
     },
@@ -79,19 +83,41 @@ export default function BooksPage() {
                 <p className="text-lg text-gray-600 mb-4 italic">
                   {book.subtitle}
                 </p>
-                <p className="text-gray-700 mb-6 leading-relaxed line-clamp-6 flex-1">
+                <p className="text-gray-700 leading-relaxed line-clamp-6">
                   {book.description}
                 </p>
 
-                {/* Buy Button */}
-                <a
-                  href={book.amazonUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-center bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
-                >
-                  Buy on Amazon
-                </a>
+                {/* Buy Buttons - fixed height container to ensure equal card sizes */}
+                <div className="flex flex-col gap-2 mt-auto pt-6 min-h-[168px] justify-end">
+                  {book.bookBabyUrl && (
+                    <a
+                      href={book.bookBabyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center bg-brand-navy hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+                    >
+                      Buy on BookBaby
+                    </a>
+                  )}
+                  {book.barnesNobleUrl && (
+                    <a
+                      href={book.barnesNobleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-center bg-brand-purple hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+                    >
+                      Buy on Barnes & Noble
+                    </a>
+                  )}
+                  <a
+                    href={book.amazonUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center bg-brand-yellow hover:bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+                  >
+                    Buy on Amazon
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -99,9 +125,9 @@ export default function BooksPage() {
 
         {/* Additional Purchase Options Section */}
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            Also Available At:
-          </h3>
+          <p className="text-center text-gray-700 text-xl leading-relaxed mb-6 max-w-4xl mx-auto">
+            Our books can often be out of stock on amazon during peak seasons and following media appearances. Please note that books are also available at your favorite online retailer including Book Baby and Barnes & Noble
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list?srsltid=AfmBOoqGi5v7J9qv2KD7hLrNoibKl46uxPP9ZqZ0HXKSx-aYiw6t957p"
@@ -121,12 +147,12 @@ export default function BooksPage() {
             </a>
           </div>
           <p className="text-center text-gray-600 mt-6">
-            Available in paperback, hardcover, and coming soon as an audiobook.
+            Available in soft cover, ebook, and coming soon as an audiobook.
           </p>
         </div>
 
         {/* About the Author Section */}
-        <div className="grid md:grid-cols-5 gap-8 items-center bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 md:p-12">
+        <div className="grid md:grid-cols-5 gap-8 items-center bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 md:p-12 mb-8">
           <div className="md:col-span-2 flex justify-center">
             <Image
               src="/images/profile/profile-pic-dr-d.png"
@@ -144,6 +170,26 @@ export default function BooksPage() {
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
               The main title is co-authored with his son, Lukas DeSarbo, LCSW, bridging scientific research with practical, real-world application.
+            </p>
+          </div>
+        </div>
+
+        {/* About Lukas DeSarbo Section */}
+        <div className="grid md:grid-cols-5 gap-8 items-center bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 md:p-12">
+          <div className="md:col-span-2 flex justify-center">
+            <Image
+              src="/images/profile/luke-profile-img.png"
+              alt="Lukas S. DeSarbo, LCSW"
+              width={256}
+              height={256}
+              className="w-64 h-64 rounded-full object-cover shadow-xl border-4 border-white"
+              style={{ objectPosition: 'center 25%' }}
+            />
+          </div>
+          <div className="md:col-span-3">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">Lukas S. DeSarbo, LCSW, Psychotherapist</h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Lukas DeSarbo is a psychotherapist in Garden City, New York who works in private practice with Dr. DeSarbo. His training is in CBT, ACT, and psychodynamic therapy and in the neuroscience of mental health.
             </p>
           </div>
         </div>

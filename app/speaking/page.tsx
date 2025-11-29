@@ -1,11 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaMicrophoneAlt, FaGlobe, FaUsers, FaCalendar, FaEnvelope, FaCheckCircle, FaUniversity, FaHospital, FaBuilding, FaBroadcastTower, FaStar, FaTv, FaPodcast } from 'react-icons/fa';
 import TopicCarousel from '@/components/speaking/TopicCarousel';
 import ExperienceCarousel from '@/components/speaking/ExperienceCarousel';
+
+// YouTube IFrame API types
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
 
 interface YouTubeVideo {
   id: string;
@@ -19,8 +27,80 @@ export default function SpeakingPage() {
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const videoPlayerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@dr.jeffreydesarbo2584';
+  const VIDEO_ID = 'OXZJqGofLVE';
+
+  // Load YouTube IFrame API and initialize video player
+  useEffect(() => {
+    // Load YouTube IFrame API script
+    if (!window.YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        if (videoPlayerRef.current && !playerRef.current) {
+          playerRef.current = new window.YT.Player(videoPlayerRef.current, {
+            videoId: VIDEO_ID,
+            playerVars: {
+              autoplay: 1,
+              mute: 1, // Required for autoplay, we'll unmute and set volume after ready
+              controls: 1,
+              rel: 0,
+              modestbranding: 1,
+              enablejsapi: 1,
+            },
+            events: {
+              onReady: (event: any) => {
+                setIsVideoReady(true);
+                // Set volume to 50% and unmute
+                event.target.setVolume(50);
+                event.target.unMute();
+                // Play the video
+                event.target.playVideo();
+              },
+            },
+          });
+        }
+      };
+    } else if (videoPlayerRef.current && !playerRef.current) {
+      // API already loaded, create player immediately
+      playerRef.current = new window.YT.Player(videoPlayerRef.current, {
+        videoId: VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 1,
+          rel: 0,
+          modestbranding: 1,
+          enablejsapi: 1,
+        },
+        events: {
+          onReady: (event: any) => {
+            setIsVideoReady(true);
+            event.target.setVolume(50);
+            event.target.unMute();
+            event.target.playVideo();
+          },
+        },
+      });
+    }
+
+    return () => {
+      if (playerRef.current) {
+        try {
+          playerRef.current.destroy();
+        } catch (e) {
+          console.error('Error destroying player:', e);
+        }
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -68,6 +148,10 @@ export default function SpeakingPage() {
   ];
 
   const mediaAppearances = [
+    { name: 'Fox 5', logo: '/images/speaker/fox-5-top.png' },
+    { name: 'NBC News Now', logo: '/images/speaker/NBC-NEWS-NOW.png' },
+    { name: 'WBAP', logo: '/images/speaker/WBAP.png' },
+    { name: '700 WLW', logo: '/images/speaker/700-WLW.png' },
     { name: 'iHeart Radio', logo: '/images/speaker/iheart-radio.png' },
     { name: 'Doctor Radio / Sirius XM', logo: '/images/speaker/doctor-radio-siriusxm.png' },
     { name: 'Newsday', logo: '/images/speaker/newsday-banner.png' },
@@ -77,6 +161,7 @@ export default function SpeakingPage() {
     { name: 'KTRS 550 ABC News Radio', logo: '/images/media/ktrs-550-abc-news-radio-logo.png' },
     { name: 'News 12 Long Island', logo: '/images/media/news12-long-island-logo.png' },
     { name: 'WICC Radio', logo: '/images/media/wicc-logo.png' },
+    { name: 'Fox 5', logo: '/images/speaker/fox-5-end.png' },
     { name: 'Connecticut Today', logo: '/images/media/connecticut-today-logo.png' },
   ];
 
@@ -141,6 +226,22 @@ export default function SpeakingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-purple-50">
+      {/* Video Hero Section */}
+      <section className="relative w-full bg-black py-4 md:py-6 lg:py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="relative w-full mx-auto" style={{ 
+            height: '50vh',
+            minHeight: '250px',
+            maxHeight: '400px'
+          }}>
+            <div 
+              ref={videoPlayerRef}
+              className="absolute top-0 left-0 w-full h-full rounded-lg overflow-hidden shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -163,10 +264,10 @@ export default function SpeakingPage() {
                 <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-3xl opacity-30 group-hover:opacity-50 blur-2xl transition-all duration-500" />
                 <div className="relative">
                   <Image
-                    src="/images/profile/dr-d-radio-show.jpg"
-                    alt="Dr. Jeffrey DeSarbo speaking on radio"
-                    width={600}
-                    height={800}
+                    src="/images/speaker/On Stage.png"
+                    alt="Dr. Jeffrey DeSarbo speaking on stage"
+                    width={800}
+                    height={600}
                     className="w-full rounded-2xl object-cover shadow-2xl border-4 border-white relative z-10 transition-transform duration-500 group-hover:scale-105"
                     priority
                   />
@@ -191,6 +292,7 @@ export default function SpeakingPage() {
                 <span className="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold">Keynote Speaker</span>
                 <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Workshop Leader</span>
                 <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-semibold">Medical Educator</span>
+                <span className="bg-pink-100 text-pink-800 px-4 py-2 rounded-full text-sm font-semibold">Cruise/Destination Speaker</span>
               </div>
             </div>
           </div>
@@ -199,7 +301,7 @@ export default function SpeakingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 text-center">
               <FaGlobe className="w-8 h-8 mx-auto mb-2 text-brand-blue" />
-              <div className="text-3xl font-bold text-gray-900">20+</div>
+              <div className="text-3xl font-bold text-gray-900">25+</div>
               <div className="text-sm text-gray-600">Years Experience</div>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 text-center">

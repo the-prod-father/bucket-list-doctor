@@ -296,9 +296,7 @@ export default function AnimatedBrainHero() {
         </a>
         {/* Books Button */}
         <a
-          href="https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/books"
           className="w-20 sm:w-28 md:w-36 lg:w-44 xl:w-52 inline-flex items-center justify-center gap-1 bg-gradient-to-r from-brand-purple to-brand-blue hover:from-brand-blue hover:to-brand-purple text-white font-semibold py-1 px-3 rounded-lg transition-all transform hover:scale-105 shadow-lg pointer-events-auto text-xs whitespace-nowrap"
         >
           <span>Order Books</span>

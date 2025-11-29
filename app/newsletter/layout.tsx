@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bucket List Doctor Newsletter',
+    title: 'Bucket List Doctor Magazine',
     description: 'Weekly neuroscience insights and purposeful living tactics',
   },
 };

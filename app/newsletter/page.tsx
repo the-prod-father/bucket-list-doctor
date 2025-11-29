@@ -189,9 +189,9 @@ function NewsletterContent() {
     return (
       <div className="bg-white border border-gray-200 rounded-3xl shadow-xl p-8 space-y-6">
         <div className="space-y-2">
-          <h3 className="text-2xl font-bold text-gray-900">Get the weekly neuroscience dispatch</h3>
+          <h3 className="text-2xl font-bold text-gray-900">Get Dr. DeSarbo's Neuroscience Dispatch</h3>
           <p className="text-gray-600">
-            Practical neuroscience, bucket list experiments, and purposeful living tactics delivered once a week.
+            Practical neuroscience, bucket list tips and ideas, and purposeful living tactics delivered directly to you.
           </p>
         </div>
         <form onSubmit={handleSubscribe} className="space-y-4">
@@ -223,7 +223,7 @@ function NewsletterContent() {
             <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            Weekly essays, no spam.
+            No spam and unwanted advertising
           </li>
           <li className="flex items-center gap-2">
             <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
@@ -250,13 +250,28 @@ function NewsletterContent() {
             <header className="space-y-6">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 text-brand-blue text-sm font-semibold w-fit">
                 <span className="w-2 h-2 bg-brand-blue rounded-full" />
-                Bucket List Doctor Newsletter
+                Bucket List Doctor Magazine
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                Neuroscience, purposeful living, and bucket list breakthroughs every week.
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
-                Curated essays, research summaries, and experiments from neuropsychiatrist Dr. Jeffrey DeSarbo. Designed for people who want their bucket list to rewire their brain for good.
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="flex-shrink-0">
+                  <Image
+                    src="/images/hero/bucketlist-magazine-cover.png"
+                    alt="Your Brain & Bucket Listing Magazine"
+                    width={256}
+                    height={320}
+                    className="rounded-lg w-full h-auto max-w-[200px] md:max-w-[256px] shadow-lg"
+                    priority
+                    unoptimized
+                  />
+                </div>
+                <div className="flex-1 flex items-center min-h-[320px]">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                    Neuroscience, purposeful living, and bucket list breakthroughs every week.
+                  </h1>
+                </div>
+              </div>
+              <p className="text-base md:text-lg lg:text-xl text-gray-600">
+                Curated essays, human interest stories, research summaries, and experiments from neuropsychiatrist Dr. Jeffrey DeSarbo. Designed for people who want their bucket list to rewire their brain for good.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="flex items-start gap-3 bg-white rounded-2xl border border-gray-200 p-4">
@@ -301,7 +316,7 @@ function NewsletterContent() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Actionable takeaways</p>
-                    <p className="text-sm text-gray-600">Each issue ends with prompts and experiments you can run this week.</p>
+                    <p className="text-sm text-gray-600">Fun, thought provoking, short articles to make your life more interesting.</p>
                   </div>
                 </div>
               </div>

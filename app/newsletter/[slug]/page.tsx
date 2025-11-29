@@ -87,7 +87,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     || `Read ${post.title} by Dr. Jeffrey DeSarbo on Bucket List Doctor.`;
 
   return {
-    title: `${post.title} | Bucket List Doctor Newsletter`,
+    title: `${post.title} | Bucket List Doctor Magazine`,
     description: description,
     keywords: ['bucket list', 'neuroscience', 'brain health', 'Dr. Jeffrey DeSarbo', 'newsletter'],
     authors: [{ name: 'Dr. Jeffrey DeSarbo' }],

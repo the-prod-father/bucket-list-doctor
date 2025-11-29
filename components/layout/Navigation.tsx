@@ -9,12 +9,13 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
+    { href: '/', label: 'Home' },
     { href: '/about', label: 'About Dr. D' },
     { href: '/books', label: 'Books' },
     { href: '/tips-ideas', label: 'Tips & Advice' },
     { href: '/your-brain', label: 'Your Brain' },
     { href: '/speaking', label: 'Speaking' },
-    { href: '/newsletter', label: 'Blogs' },
+    { href: '/newsletter', label: 'Articles' },
     { href: '/blog', label: 'Videos & Media' },
   ];
 
