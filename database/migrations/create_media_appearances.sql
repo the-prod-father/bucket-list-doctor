@@ -40,3 +40,9 @@ INSERT INTO media_appearances (name, logo_url, type, gradient, display_order, is
   ('WBZ News Radio', '/images/speaker/wbz-news-radio.png', 'radio', 'from-blue-500 via-indigo-500 to-purple-500', 6, true)
 ON CONFLICT DO NOTHING;
 
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import ProtectedRoute from '@/components/admin/ProtectedRoute';
 import AdminLayout from '@/components/admin/AdminLayout';
 import ImageUpload from '@/components/admin/ImageUpload';
@@ -350,7 +351,7 @@ export default function MediaPage() {
                         <td className="px-6 py-4">
                           <div className="w-16 h-10 bg-gray-100 rounded flex items-center justify-center overflow-hidden">
                             {item.logo_url ? (
-                              <img src={item.logo_url} alt={item.name} className="max-w-full max-h-full object-contain" />
+                              <Image src={item.logo_url} alt={item.name} width={64} height={40} className="object-contain" unoptimized />
                             ) : (
                               <span className="text-xs text-gray-400">No logo</span>
                             )}

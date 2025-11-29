@@ -46,6 +46,51 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data for rich search results
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://bucketlistdoctor.com/#website',
+      url: 'https://bucketlistdoctor.com',
+      name: 'Bucket List Doctor',
+      description: 'The Neuroscience of a Bucket List by Dr. Jeffrey DeSarbo',
+      publisher: {
+        '@id': 'https://bucketlistdoctor.com/#person',
+      },
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://bucketlistdoctor.com/#person',
+      name: 'Dr. Jeffrey DeSarbo',
+      jobTitle: 'Neuropsychiatrist',
+      description: 'Physician, neuropsychiatrist, author, and speaker specializing in the neuroscience of bucket lists and purposeful living.',
+      url: 'https://bucketlistdoctor.com/about',
+      image: 'https://bucketlistdoctor.com/images/profile/dr-d-radio-show.jpg',
+      sameAs: [
+        'https://facebook.com/bucketlistdoctor',
+        'https://instagram.com/bucketlistdoctor',
+        'https://linkedin.com/in/drdesarbo',
+        'https://www.youtube.com/@dr.jeffreydesarbo2584',
+      ],
+    },
+    {
+      '@type': 'Book',
+      '@id': 'https://bucketlistdoctor.com/#book',
+      name: 'The Neuroscience of a Bucket List',
+      author: {
+        '@id': 'https://bucketlistdoctor.com/#person',
+      },
+      description: 'Discover how your bucket list activates neuroplasticity, goal-setting, and brain health.',
+      image: 'https://bucketlistdoctor.com/images/benefits/bucketlistdoctor-book-cover.png',
+      url: 'https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD',
+      publisher: 'Psyance Publishing',
+      datePublished: '2025',
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -53,6 +98,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased bg-white">
         <Providers>
           <Navigation />
