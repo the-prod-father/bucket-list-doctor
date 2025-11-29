@@ -189,7 +189,7 @@ function NewsletterContent() {
     return (
       <div className="bg-white border border-gray-200 rounded-3xl shadow-xl p-8 space-y-6">
         <div className="space-y-2">
-          <h3 className="text-2xl font-bold text-gray-900">Get Dr. DeSarbo's Neuroscience Dispatch</h3>
+          <h3 className="text-2xl font-bold text-gray-900">Get Dr. DeSarbo&apos;s Neuroscience Dispatch</h3>
           <p className="text-gray-600">
             Practical neuroscience, bucket list tips and ideas, and purposeful living tactics delivered directly to you.
           </p>
