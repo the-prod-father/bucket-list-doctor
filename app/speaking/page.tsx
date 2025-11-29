@@ -298,7 +298,7 @@ export default function SpeakingPage() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 text-center">
               <FaGlobe className="w-8 h-8 mx-auto mb-2 text-brand-blue" />
               <div className="text-3xl font-bold text-gray-900">25+</div>
@@ -324,7 +324,7 @@ export default function SpeakingPage() {
       </section>
 
       {/* Media Appearances Grid */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="pt-8 md:pt-12 pb-16 md:pb-24 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
