@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
-import { FaUpload, FaImage as FaImageIcon, FaTimes, FaSpinner } from 'react-icons/fa';
+import { FaUpload, FaImage as FaImageIcon, FaTimes, FaSpinner, FaCompress } from 'react-icons/fa';
 
 interface ImageUploadProps {
   value: string;
@@ -11,8 +11,81 @@ interface ImageUploadProps {
   description?: string;
 }
 
+// Compress image using Canvas API
+async function compressImage(file: File, maxSizeMB: number = 4.5): Promise<File> {
+  return new Promise((resolve, reject) => {
+    const img = new window.Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    img.onload = () => {
+      // Calculate new dimensions - reduce if image is very large
+      let { width, height } = img;
+      const maxDimension = 2000; // Max width/height
+
+      if (width > maxDimension || height > maxDimension) {
+        if (width > height) {
+          height = Math.round((height * maxDimension) / width);
+          width = maxDimension;
+        } else {
+          width = Math.round((width * maxDimension) / height);
+          height = maxDimension;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      if (!ctx) {
+        reject(new Error('Could not get canvas context'));
+        return;
+      }
+
+      // Draw image on canvas
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Try different quality levels to get under max size
+      const tryCompress = (quality: number) => {
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) {
+              reject(new Error('Failed to compress image'));
+              return;
+            }
+
+            const sizeInMB = blob.size / (1024 * 1024);
+
+            // If still too large and quality can be reduced, try again
+            if (sizeInMB > maxSizeMB && quality > 0.1) {
+              tryCompress(quality - 0.1);
+              return;
+            }
+
+            // Create new file from blob
+            const compressedFile = new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), {
+              type: 'image/jpeg',
+              lastModified: Date.now(),
+            });
+
+            resolve(compressedFile);
+          },
+          'image/jpeg',
+          quality
+        );
+      };
+
+      // Start with 90% quality
+      tryCompress(0.9);
+    };
+
+    img.onerror = () => reject(new Error('Failed to load image for compression'));
+    img.src = URL.createObjectURL(file);
+  });
+}
+
 export default function ImageUpload({ value, onChange, label, description }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
+  const [compressing, setCompressing] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [preview, setPreview] = useState<string>(value || '');
@@ -43,19 +116,32 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
       return;
     }
 
-    // Validate file size (5MB)
+    setError(null);
+
+    // Check if file needs compression (over 5MB)
     const maxSize = 5 * 1024 * 1024;
+    let fileToUpload = file;
+
     if (file.size > maxSize) {
-      setError('File size must be less than 5MB');
-      return;
+      setCompressing(true);
+      try {
+        const originalSizeMB = (file.size / (1024 * 1024)).toFixed(1);
+        fileToUpload = await compressImage(file);
+        const newSizeMB = (fileToUpload.size / (1024 * 1024)).toFixed(1);
+        console.log(`Image compressed: ${originalSizeMB}MB → ${newSizeMB}MB`);
+      } catch (compressError) {
+        setCompressing(false);
+        setError(`Failed to compress image: ${compressError instanceof Error ? compressError.message : 'Unknown error'}`);
+        return;
+      }
+      setCompressing(false);
     }
 
-    setError(null);
     setUploading(true);
 
     try {
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', fileToUpload);
 
       const response = await fetch('/api/upload/image', {
         method: 'POST',
@@ -198,9 +284,15 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
           onClick={handleClick}
           className={`relative border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-all ${
             dragActive ? 'border-brand-blue bg-blue-50' : 'border-gray-300 hover:border-brand-blue hover:bg-gray-50'
-          } ${uploading ? 'pointer-events-none opacity-60' : ''}`}
+          } ${(uploading || compressing) ? 'pointer-events-none opacity-60' : ''}`}
         >
-          {uploading ? (
+          {compressing ? (
+            <div className="flex flex-col items-center justify-center space-y-3">
+              <FaCompress className="w-12 h-12 text-brand-purple animate-pulse" />
+              <p className="text-gray-600 font-medium">Compressing large image...</p>
+              <p className="text-sm text-gray-500">This may take a moment</p>
+            </div>
+          ) : uploading ? (
             <div className="flex flex-col items-center justify-center space-y-3">
               <FaSpinner className="w-12 h-12 text-brand-blue animate-spin" />
               <p className="text-gray-600 font-medium">Uploading image...</p>
@@ -217,7 +309,7 @@ export default function ImageUpload({ value, onChange, label, description }: Ima
                 <p className="text-sm text-gray-500">or click to browse</p>
               </div>
               <p className="text-xs text-gray-400">
-                Supports: JPEG, PNG, GIF, WebP (max 5MB)
+                Supports: JPEG, PNG, GIF, WebP (large images auto-compressed)
               </p>
             </div>
           )}
