@@ -37,8 +37,14 @@ export async function GET() {
 
   } catch (error) {
     console.error('Error fetching blog posts:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     return NextResponse.json(
-      { error: 'Failed to fetch blog posts', posts: [], count: 0 },
+      { 
+        error: 'Failed to fetch blog posts',
+        message: errorMessage,
+        posts: [], 
+        count: 0 
+      },
       { status: 500 }
     );
   } finally {

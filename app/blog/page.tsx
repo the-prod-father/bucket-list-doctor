@@ -46,6 +46,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
   const [postsLoading, setPostsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [postsError, setPostsError] = useState<string | null>(null);
 
   // YouTube channel URL
   const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@dr.jeffreydesarbo2584';
@@ -57,14 +58,29 @@ export default function BlogPage() {
 
   const fetchBlogPosts = async () => {
     try {
+      setPostsError(null);
       const response = await fetch('/api/blog/posts');
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch blog posts: ${response.status} ${response.statusText}`);
+      }
+      
       const data = await response.json();
 
-      if (data.posts && data.posts.length > 0) {
+      if (data.error) {
+        setPostsError(data.error);
+        setBlogPosts([]);
+      } else if (data.posts && data.posts.length > 0) {
         setBlogPosts(data.posts);
+        setPostsError(null);
+      } else {
+        setBlogPosts([]);
+        setPostsError(null);
       }
     } catch (err) {
       console.error('Error fetching blog posts:', err);
+      setPostsError(err instanceof Error ? err.message : 'Failed to load articles. Please try again later.');
+      setBlogPosts([]);
     } finally {
       setPostsLoading(false);
     }
@@ -103,12 +119,42 @@ export default function BlogPage() {
         </div>
 
         {/* Blog Posts Section */}
-        {!postsLoading && blogPosts.length > 0 && (
-          <div id="articles" className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Latest Articles
-            </h2>
+        <div id="articles" className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Latest Articles
+          </h2>
 
+          {/* Loading State */}
+          {postsLoading && (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 border-4 border-brand-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading articles...</p>
+            </div>
+          )}
+
+          {/* Error State */}
+          {!postsLoading && postsError && (
+            <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-8 mb-8">
+              <div className="flex items-start space-x-4">
+                <svg className="w-8 h-8 text-yellow-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Unable to Load Articles</h3>
+                  <p className="text-gray-700 mb-4">{postsError}</p>
+                  <button
+                    onClick={fetchBlogPosts}
+                    className="inline-block bg-brand-blue hover:bg-brand-navy text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                  >
+                    Try Again
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Articles Grid */}
+          {!postsLoading && !postsError && blogPosts.length > 0 && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.map((post) => {
                 const imageUrl = normalizeImageUrl(post.featured_image_url);
@@ -167,8 +213,21 @@ export default function BlogPage() {
                 );
               })}
             </div>
-          </div>
-        )}
+          )}
+
+          {/* Empty State */}
+          {!postsLoading && !postsError && blogPosts.length === 0 && (
+            <div className="text-center py-12 bg-white rounded-2xl shadow-xl">
+              <svg className="w-20 h-20 text-gray-300 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+              </svg>
+              <p className="text-gray-600 text-lg mb-4">No articles found</p>
+              <p className="text-gray-500 text-sm">
+                Check back soon for new articles from Dr. DeSarbo.
+              </p>
+            </div>
+          )}
+        </div>
 
         {/* Videos Section */}
         <div className="mb-16">
