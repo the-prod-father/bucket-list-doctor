@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { Client } from 'pg';
 
+// Force dynamic rendering - don't cache API responses
+export const dynamic = 'force-dynamic';
+
 /**
  * Get Published Blog Posts API
  * Fetches all published blog posts for public display
