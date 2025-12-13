@@ -111,7 +111,7 @@ export default function BlogPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Media and Videos
+            Videos and Media
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
             Additional information from Dr. DeSarbo on neuroscience, mental health, eating disorders, bucket lists, and purposeful living.

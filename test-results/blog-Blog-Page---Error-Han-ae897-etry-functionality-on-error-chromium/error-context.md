@@ -1,0 +1,332 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Bucket List Doctor Logo Bucket List Doctor" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Bucket List Doctor Logo" [ref=e8]
+        - generic [ref=e9]: Bucket List Doctor
+      - generic [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: /
+        - link "About Dr. D" [ref=e12] [cursor=pointer]:
+          - /url: /about
+        - link "Books" [ref=e13] [cursor=pointer]:
+          - /url: /books
+        - link "Tips & Advice" [ref=e14] [cursor=pointer]:
+          - /url: /tips-ideas
+        - link "Your Brain" [ref=e15] [cursor=pointer]:
+          - /url: /your-brain
+        - link "Speaking" [ref=e16] [cursor=pointer]:
+          - /url: /speaking
+        - link "Articles" [ref=e17] [cursor=pointer]:
+          - /url: /newsletter
+        - link "Videos & Media" [ref=e18] [cursor=pointer]:
+          - /url: /blog
+  - main [ref=e19]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - heading "Blog & Media" [level=1] [ref=e23]
+        - paragraph [ref=e24]: Additional information from Dr. DeSarbo on neuroscience, mental health, eating disorders, bucket lists, and purposeful living.
+      - generic [ref=e25]:
+        - heading "Latest Articles" [level=2] [ref=e26]
+        - link "Test Article Test Article Test excerpt Dec 9, 2025 Read More" [ref=e28] [cursor=pointer]:
+          - /url: /blog/test-article
+          - img "Test Article" [ref=e30]
+          - generic [ref=e31]:
+            - heading "Test Article" [level=3] [ref=e32]
+            - paragraph [ref=e33]: Test excerpt
+            - generic [ref=e34]:
+              - generic [ref=e35]:
+                - img [ref=e36]
+                - generic [ref=e38]: Dec 9, 2025
+              - generic [ref=e39]:
+                - text: Read More
+                - img [ref=e40]
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - heading "All Videos (23)" [level=2] [ref=e44]
+          - link "View Channel →" [ref=e45] [cursor=pointer]:
+            - /url: https://www.youtube.com/@dr.jeffreydesarbo2584
+            - img [ref=e46]
+            - text: View Channel →
+        - generic [ref=e48]:
+          - link "Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List Over the years/decades I have privileged to speak to so many people including the general public, healthcare professionals, ... November 4, 2025" [ref=e49] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=OXZJqGofLVE
+            - generic [ref=e50]:
+              - img "Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List" [ref=e51]
+              - img [ref=e54]
+            - generic [ref=e56]:
+              - heading "Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List" [level=3] [ref=e57]
+              - paragraph [ref=e58]: Over the years/decades I have privileged to speak to so many people including the general public, healthcare professionals, ...
+              - paragraph [ref=e59]: November 4, 2025
+          - link "The Neuroscience of a Bucket List Author Interview The Neuroscience of a Bucket List Author Interview A neuropsychiatrist shares his discovery for a life of purpose and gratitude. The evolotion of a book. What if your brain was wired ... August 4, 2025" [ref=e60] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=EFIyOZMcT6o
+            - generic [ref=e61]:
+              - img "The Neuroscience of a Bucket List Author Interview" [ref=e62]
+              - img [ref=e65]
+            - generic [ref=e67]:
+              - heading "The Neuroscience of a Bucket List Author Interview" [level=3] [ref=e68]
+              - paragraph [ref=e69]: A neuropsychiatrist shares his discovery for a life of purpose and gratitude. The evolotion of a book. What if your brain was wired ...
+              - paragraph [ref=e70]: August 4, 2025
+          - 'link "The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use. The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use. An objective presentation about the diabetes medications generically known as semaglutide and tirzepitide and their controversial ... May 28, 2023" [ref=e71] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=PlZh7v2SWZI
+            - generic [ref=e72]:
+              - 'img "The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use." [ref=e73]'
+              - img [ref=e76]
+            - generic [ref=e78]:
+              - 'heading "The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use." [level=3] [ref=e79]'
+              - paragraph [ref=e80]: An objective presentation about the diabetes medications generically known as semaglutide and tirzepitide and their controversial ...
+              - paragraph [ref=e81]: May 28, 2023
+          - link "Body Image Surveillance Scale Explained Body Image Surveillance Scale Explained Dr. DeSarbo discusses the use of the Body Image Surveillance Scale (BISS) which he created for patient assessment and ... April 9, 2022" [ref=e82] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=Po2b7N7aKkI
+            - generic [ref=e83]:
+              - img "Body Image Surveillance Scale Explained" [ref=e84]
+              - img [ref=e87]
+            - generic [ref=e89]:
+              - heading "Body Image Surveillance Scale Explained" [level=3] [ref=e90]
+              - paragraph [ref=e91]: Dr. DeSarbo discusses the use of the Body Image Surveillance Scale (BISS) which he created for patient assessment and ...
+              - paragraph [ref=e92]: April 9, 2022
+          - link "Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S. Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S. Dr. DeSarbo and Lukas DeSarbo, LMSW discuss the latest eating disorder research and interview with Robyn Goldberg, RDN, ... June 2, 2021" [ref=e93] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=yp3wWJb1J6M
+            - generic [ref=e94]:
+              - img "Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S." [ref=e95]
+              - img [ref=e98]
+            - generic [ref=e100]:
+              - heading "Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S." [level=3] [ref=e101]
+              - paragraph [ref=e102]: Dr. DeSarbo and Lukas DeSarbo, LMSW discuss the latest eating disorder research and interview with Robyn Goldberg, RDN, ...
+              - paragraph [ref=e103]: June 2, 2021
+          - link "Ep 101 Welcome to Translating ED. Eating disorders and COVID-19. Ep 101 Welcome to Translating ED. Eating disorders and COVID-19. Dr. Jeffrey DeSarbo and eating disorder therapist Lukas DeSarbo introduce themselves and discuss the impact of COVID-19 on ... May 15, 2021" [ref=e104] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=ZaLSyQGU4o4
+            - generic [ref=e105]:
+              - img "Ep 101 Welcome to Translating ED. Eating disorders and COVID-19." [ref=e106]
+              - img [ref=e109]
+            - generic [ref=e111]:
+              - heading "Ep 101 Welcome to Translating ED. Eating disorders and COVID-19." [level=3] [ref=e112]
+              - paragraph [ref=e113]: Dr. Jeffrey DeSarbo and eating disorder therapist Lukas DeSarbo introduce themselves and discuss the impact of COVID-19 on ...
+              - paragraph [ref=e114]: May 15, 2021
+          - 'link "NeuroSeries 14: The Family Support System NeuroSeries 14: The Family Support System A video on the importance of family support with a loved one with an eating disorder. Discussing studies on caregiving, a family ... March 18, 2021" [ref=e115] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=__R85EoYEP8
+            - generic [ref=e116]:
+              - 'img "NeuroSeries 14: The Family Support System" [ref=e117]'
+              - img [ref=e120]
+            - generic [ref=e122]:
+              - 'heading "NeuroSeries 14: The Family Support System" [level=3] [ref=e123]'
+              - paragraph [ref=e124]: A video on the importance of family support with a loved one with an eating disorder. Discussing studies on caregiving, a family ...
+              - paragraph [ref=e125]: March 18, 2021
+          - 'link "NeuroSeries 12: Neuro-Medical Connection NeuroSeries 12: Neuro-Medical Connection Dr. Jeffrey DeSarbo discusses the unique interplay between the brain and nervous system and all of the other body''s system such ... March 18, 2021" [ref=e126] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=KHC_EnDjgog
+            - generic [ref=e127]:
+              - 'img "NeuroSeries 12: Neuro-Medical Connection" [ref=e128]'
+              - img [ref=e131]
+            - generic [ref=e133]:
+              - 'heading "NeuroSeries 12: Neuro-Medical Connection" [level=3] [ref=e134]'
+              - paragraph [ref=e135]: Dr. Jeffrey DeSarbo discusses the unique interplay between the brain and nervous system and all of the other body's system such ...
+              - paragraph [ref=e136]: March 18, 2021
+          - 'link "NeuroSeries 13: Neurobiology of Nutrition NeuroSeries 13: Neurobiology of Nutrition Dr. Jeffrey DeSarbo presents an atypical discussion on nutrition with eating disorders. Nutrition here is presented from an ... March 18, 2021" [ref=e137] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=lsQm03vnQ4s
+            - generic [ref=e138]:
+              - 'img "NeuroSeries 13: Neurobiology of Nutrition" [ref=e139]'
+              - img [ref=e142]
+            - generic [ref=e144]:
+              - 'heading "NeuroSeries 13: Neurobiology of Nutrition" [level=3] [ref=e145]'
+              - paragraph [ref=e146]: Dr. Jeffrey DeSarbo presents an atypical discussion on nutrition with eating disorders. Nutrition here is presented from an ...
+              - paragraph [ref=e147]: March 18, 2021
+          - 'link "NeuroSeries 11: Neuroscience of Thought Control NeuroSeries 11: Neuroscience of Thought Control Dr. Jeffrey DeSarbo discusses how mindfulness training is a very important part of a treatment plan that often is neglected with ... March 18, 2021" [ref=e148] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=BPVi97z4tbU
+            - generic [ref=e149]:
+              - 'img "NeuroSeries 11: Neuroscience of Thought Control" [ref=e150]'
+              - img [ref=e153]
+            - generic [ref=e155]:
+              - 'heading "NeuroSeries 11: Neuroscience of Thought Control" [level=3] [ref=e156]'
+              - paragraph [ref=e157]: Dr. Jeffrey DeSarbo discusses how mindfulness training is a very important part of a treatment plan that often is neglected with ...
+              - paragraph [ref=e158]: March 18, 2021
+          - 'link "NeuroSeries 10: Neuroscience of Medications NeuroSeries 10: Neuroscience of Medications Dr. DeSarbo discusses from a psychiatrist and ED specialist point of view how medications may help, as well as their substantial ... March 18, 2021" [ref=e159] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=EhS4vrTLUEQ
+            - generic [ref=e160]:
+              - 'img "NeuroSeries 10: Neuroscience of Medications" [ref=e161]'
+              - img [ref=e164]
+            - generic [ref=e166]:
+              - 'heading "NeuroSeries 10: Neuroscience of Medications" [level=3] [ref=e167]'
+              - paragraph [ref=e168]: Dr. DeSarbo discusses from a psychiatrist and ED specialist point of view how medications may help, as well as their substantial ...
+              - paragraph [ref=e169]: March 18, 2021
+          - 'link "NeuroSeries 9: Psychology and Therapy NeuroSeries 9: Psychology and Therapy Dr Jeffrey DeSarbo discusses psychotherapy from a neuroscience perspective and how therapy effects the brain. Some insights ... March 18, 2021" [ref=e170] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=nKArmCYOXkM
+            - generic [ref=e171]:
+              - 'img "NeuroSeries 9: Psychology and Therapy" [ref=e172]'
+              - img [ref=e175]
+            - generic [ref=e177]:
+              - 'heading "NeuroSeries 9: Psychology and Therapy" [level=3] [ref=e178]'
+              - paragraph [ref=e179]: Dr Jeffrey DeSarbo discusses psychotherapy from a neuroscience perspective and how therapy effects the brain. Some insights ...
+              - paragraph [ref=e180]: March 18, 2021
+          - 'link "NeuroSeries 7: Neurobiology of Anorexia Nervosa NeuroSeries 7: Neurobiology of Anorexia Nervosa Dr. DeSarbo discusses some of the findings that lead to a compromised brain secondary to deprivation from nutritional ... March 18, 2021" [ref=e181] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=riFDWmGSwSA
+            - generic [ref=e182]:
+              - 'img "NeuroSeries 7: Neurobiology of Anorexia Nervosa" [ref=e183]'
+              - img [ref=e186]
+            - generic [ref=e188]:
+              - 'heading "NeuroSeries 7: Neurobiology of Anorexia Nervosa" [level=3] [ref=e189]'
+              - paragraph [ref=e190]: Dr. DeSarbo discusses some of the findings that lead to a compromised brain secondary to deprivation from nutritional ...
+              - paragraph [ref=e191]: March 18, 2021
+          - 'link "NeuroSeries 8: Neurobiology of Body Image NeuroSeries 8: Neurobiology of Body Image Dr. DeSarbo discusses the neurobiological findings in patient with eating disorders who struggle with body image distortions and ... March 18, 2021" [ref=e192] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=10d4Utt7Qpc
+            - generic [ref=e193]:
+              - 'img "NeuroSeries 8: Neurobiology of Body Image" [ref=e194]'
+              - img [ref=e197]
+            - generic [ref=e199]:
+              - 'heading "NeuroSeries 8: Neurobiology of Body Image" [level=3] [ref=e200]'
+              - paragraph [ref=e201]: Dr. DeSarbo discusses the neurobiological findings in patient with eating disorders who struggle with body image distortions and ...
+              - paragraph [ref=e202]: March 18, 2021
+          - 'link "NeuroSeries 6: Neurobiology of Bulimia Nervosa NeuroSeries 6: Neurobiology of Bulimia Nervosa Dr. Jeffrey DeSarbo discusses the neurobiology of bulimia nervosa and the unique brain and central nervous findings with this ... March 18, 2021" [ref=e203] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=Sn_WGx86-yQ
+            - generic [ref=e204]:
+              - 'img "NeuroSeries 6: Neurobiology of Bulimia Nervosa" [ref=e205]'
+              - img [ref=e208]
+            - generic [ref=e210]:
+              - 'heading "NeuroSeries 6: Neurobiology of Bulimia Nervosa" [level=3] [ref=e211]'
+              - paragraph [ref=e212]: Dr. Jeffrey DeSarbo discusses the neurobiology of bulimia nervosa and the unique brain and central nervous findings with this ...
+              - paragraph [ref=e213]: March 18, 2021
+          - link "Introducing Dr. Desarbo Introducing Dr. Desarbo Meet Dr. Jeffrey DeSarbo, the host of this NeuroSeries, a psychiatrist and eating disorder specialist, and the Medical Director of ... March 18, 2021" [ref=e214] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=wuwGkmgxjgc
+            - generic [ref=e215]:
+              - img "Introducing Dr. Desarbo" [ref=e216]
+              - img [ref=e219]
+            - generic [ref=e221]:
+              - heading "Introducing Dr. Desarbo" [level=3] [ref=e222]
+              - paragraph [ref=e223]: Meet Dr. Jeffrey DeSarbo, the host of this NeuroSeries, a psychiatrist and eating disorder specialist, and the Medical Director of ...
+              - paragraph [ref=e224]: March 18, 2021
+          - 'link "NeuroSeries 5: Neurobiology of Binge Eating NeuroSeries 5: Neurobiology of Binge Eating Dr. DeSarbo discusses specific findings with the brain and central nervous system and how the brain is wired with binge eating ... March 18, 2021" [ref=e225] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=8OlKxOWzq2s
+            - generic [ref=e226]:
+              - 'img "NeuroSeries 5: Neurobiology of Binge Eating" [ref=e227]'
+              - img [ref=e230]
+            - generic [ref=e232]:
+              - 'heading "NeuroSeries 5: Neurobiology of Binge Eating" [level=3] [ref=e233]'
+              - paragraph [ref=e234]: Dr. DeSarbo discusses specific findings with the brain and central nervous system and how the brain is wired with binge eating ...
+              - paragraph [ref=e235]: March 18, 2021
+          - 'link "NeuroSeries 4: Children &amp; Adolescents NeuroSeries 4: Children &amp; Adolescents Dr. Jeffrey DeSarbo discusses findings unique with children, adolescents and teenagers with eating disorders including the need ... March 18, 2021" [ref=e236] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=nHCMBoX1MVg
+            - generic [ref=e237]:
+              - 'img "NeuroSeries 4: Children &amp; Adolescents" [ref=e238]'
+              - img [ref=e241]
+            - generic [ref=e243]:
+              - 'heading "NeuroSeries 4: Children &amp; Adolescents" [level=3] [ref=e244]'
+              - paragraph [ref=e245]: Dr. Jeffrey DeSarbo discusses findings unique with children, adolescents and teenagers with eating disorders including the need ...
+              - paragraph [ref=e246]: March 18, 2021
+          - 'link "NeuroSeries 3: Neuro-Biological Findings NeuroSeries 3: Neuro-Biological Findings Dr. Jeffrey DeSarbo discusses some more of the neurobiological findings that are unique to individuals with eating disorders and ... March 18, 2021" [ref=e247] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=L8nS5m_4TMg
+            - generic [ref=e248]:
+              - 'img "NeuroSeries 3: Neuro-Biological Findings" [ref=e249]'
+              - img [ref=e252]
+            - generic [ref=e254]:
+              - 'heading "NeuroSeries 3: Neuro-Biological Findings" [level=3] [ref=e255]'
+              - paragraph [ref=e256]: Dr. Jeffrey DeSarbo discusses some more of the neurobiological findings that are unique to individuals with eating disorders and ...
+              - paragraph [ref=e257]: March 18, 2021
+          - 'link "NeuroSeries 2: The Neuroscience of ED Research NeuroSeries 2: The Neuroscience of ED Research Dr. Jeffrey DeSarbo discusses the emergence of research based evidence regarding eating disorders, especially with the ... March 18, 2021" [ref=e258] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=JJXHGnnbCdI
+            - generic [ref=e259]:
+              - 'img "NeuroSeries 2: The Neuroscience of ED Research" [ref=e260]'
+              - img [ref=e263]
+            - generic [ref=e265]:
+              - 'heading "NeuroSeries 2: The Neuroscience of ED Research" [level=3] [ref=e266]'
+              - paragraph [ref=e267]: Dr. Jeffrey DeSarbo discusses the emergence of research based evidence regarding eating disorders, especially with the ...
+              - paragraph [ref=e268]: March 18, 2021
+          - 'link "NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders Dr. Jeffrey DeSarbo gives this introduction to how an eating disorder is all about changes in the brain and central nervous system ... March 18, 2021" [ref=e269] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=7eUGBa7RXS4
+            - generic [ref=e270]:
+              - 'img "NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders" [ref=e271]'
+              - img [ref=e274]
+            - generic [ref=e276]:
+              - 'heading "NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders" [level=3] [ref=e277]'
+              - paragraph [ref=e278]: Dr. Jeffrey DeSarbo gives this introduction to how an eating disorder is all about changes in the brain and central nervous system ...
+              - paragraph [ref=e279]: March 18, 2021
+          - 'link "Eating Disorders and COVID-19 Update: Patients Positive Eating Disorders and COVID-19 Update: Patients Positive A follow up video on the impact of COVID-19 with eating disorder patients including anorexia nervosa, bulimia nervosa, binge ... April 7, 2020" [ref=e280] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=7NxuVXkoOqc
+            - generic [ref=e281]:
+              - 'img "Eating Disorders and COVID-19 Update: Patients Positive" [ref=e282]'
+              - img [ref=e285]
+            - generic [ref=e287]:
+              - 'heading "Eating Disorders and COVID-19 Update: Patients Positive" [level=3] [ref=e288]'
+              - paragraph [ref=e289]: A follow up video on the impact of COVID-19 with eating disorder patients including anorexia nervosa, bulimia nervosa, binge ...
+              - paragraph [ref=e290]: April 7, 2020
+          - link "Special Concerns with COVID-19 and Eating Disorders Special Concerns with COVID-19 and Eating Disorders A brief presentation about some special considerations with COVID-19 in patients with eating disorders including anorexia ... March 27, 2020" [ref=e291] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=Cq0eYyqW7pY
+            - generic [ref=e292]:
+              - img "Special Concerns with COVID-19 and Eating Disorders" [ref=e293]
+              - img [ref=e296]
+            - generic [ref=e298]:
+              - heading "Special Concerns with COVID-19 and Eating Disorders" [level=3] [ref=e299]
+              - paragraph [ref=e300]: A brief presentation about some special considerations with COVID-19 in patients with eating disorders including anorexia ...
+              - paragraph [ref=e301]: March 27, 2020
+      - generic [ref=e302]:
+        - heading "As Featured On" [level=2] [ref=e303]
+        - generic [ref=e304]:
+          - img "Doctor Radio / Sirius XM" [ref=e306]
+          - img "Newsday" [ref=e308]
+          - img "iHeart Radio" [ref=e310]
+      - generic [ref=e312]:
+        - img [ref=e314]
+        - heading "Subscribe on YouTube" [level=2] [ref=e316]
+        - paragraph [ref=e317]: Get notified when new videos are published. Deep dives into neuroscience, bucket lists, and living a purposeful life.
+        - link "Subscribe Now" [ref=e318] [cursor=pointer]:
+          - /url: https://www.youtube.com/@dr.jeffreydesarbo2584
+      - generic [ref=e319]:
+        - generic [ref=e320]:
+          - img [ref=e322]
+          - heading "Podcast Features" [level=3] [ref=e324]
+          - paragraph [ref=e325]: Guest appearances discussing adventure and brain science.
+        - generic [ref=e326]:
+          - img [ref=e328]
+          - heading "Radio Interviews" [level=3] [ref=e330]
+          - paragraph [ref=e331]: Listen to Dr. D's radio interviews and media appearances.
+        - generic [ref=e332]:
+          - img [ref=e334]
+          - heading "Newsletter" [level=3] [ref=e337]
+          - paragraph [ref=e338]: Subscribe for exclusive insights and bucket list inspiration.
+  - contentinfo [ref=e339]:
+    - generic [ref=e342]:
+      - heading "Join Our Community" [level=3] [ref=e343]
+      - paragraph [ref=e344]: Get brain science insights, bucket list inspiration, and updates on new projects. No spam, ever. Unsubscribe anytime.
+      - generic [ref=e345]:
+        - textbox "Enter your email" [ref=e346]
+        - button "Subscribe" [ref=e347] [cursor=pointer]
+    - generic [ref=e348]:
+      - generic [ref=e349]:
+        - generic [ref=e350]:
+          - img "Bucket List Doctor" [ref=e352]
+          - paragraph [ref=e353]: Exploring the neuroscience behind purposeful living and meaningful goals.
+        - generic [ref=e354]:
+          - heading "Quick Links" [level=3] [ref=e355]
+          - list [ref=e356]:
+            - listitem [ref=e357]:
+              - link "About" [ref=e358] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e359]:
+              - link "Books" [ref=e360] [cursor=pointer]:
+                - /url: /books
+            - listitem [ref=e361]:
+              - link "Blog" [ref=e362] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e363]:
+          - heading "Connect" [level=3] [ref=e364]
+          - generic [ref=e365]:
+            - link "Facebook" [ref=e366] [cursor=pointer]:
+              - /url: https://facebook.com/bucketlistdoctor
+              - img [ref=e367]
+            - link "Instagram" [ref=e369] [cursor=pointer]:
+              - /url: https://instagram.com/bucketlistdoctor
+              - img [ref=e370]
+            - link "LinkedIn" [ref=e372] [cursor=pointer]:
+              - /url: https://linkedin.com/in/drdesarbo
+              - img [ref=e373]
+      - generic [ref=e376]:
+        - link "Site Created by Why Not Us Labs" [ref=e378] [cursor=pointer]:
+          - /url: https://whynotus.ai
+          - generic [ref=e379]: Site Created by
+          - generic [ref=e380]: Why Not Us Labs
+          - img [ref=e381]
+        - paragraph [ref=e383]: © 2025 Dr. Jeffrey DeSarbo. All rights reserved.
+  - alert [ref=e384]
+```

@@ -1,0 +1,565 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Bucket List Doctor Logo Bucket List Doctor" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Bucket List Doctor Logo" [ref=e8]
+        - generic [ref=e9]: Bucket List Doctor
+      - button "Toggle menu" [ref=e10] [cursor=pointer]:
+        - img [ref=e11]
+  - main [ref=e13]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - heading "Blog & Media" [level=1] [ref=e17]
+        - paragraph [ref=e18]: Additional information from Dr. DeSarbo on neuroscience, mental health, eating disorders, bucket lists, and purposeful living.
+      - generic [ref=e19]:
+        - heading "Latest Articles" [level=2] [ref=e20]
+        - generic [ref=e21]:
+          - 'link "Bucket List Research in 2025: A Study That Looked Closer Than Anyone Had Before Bucket List Research in 2025: A Study That Looked Closer Than Anyone Had Before This article explores the newest bucket-list research published in 2025, highlighting a groundbreaking scoping review by Handique, Bennett, and Ryan. The study reveals how pursuing meaningful goals increases emotional well-being, strengthens relationships, enhances gratitude, and boosts motivation, all effects that extend far beyond end-of-life care. Dec 6, 2025 Read More" [ref=e22] [cursor=pointer]':
+            - /url: /blog/bucket-list-research-in-2025-a-study-that-looked-closer-than-anyone-had-before
+            - 'img "Bucket List Research in 2025: A Study That Looked Closer Than Anyone Had Before" [ref=e24]'
+            - generic [ref=e25]:
+              - 'heading "Bucket List Research in 2025: A Study That Looked Closer Than Anyone Had Before" [level=3] [ref=e26]'
+              - paragraph [ref=e27]: This article explores the newest bucket-list research published in 2025, highlighting a groundbreaking scoping review by Handique, Bennett, and Ryan. The study reveals how pursuing meaningful goals increases emotional well-being, strengthens relationships, enhances gratitude, and boosts motivation, all effects that extend far beyond end-of-life care.
+              - generic [ref=e28]:
+                - generic [ref=e29]:
+                  - img [ref=e30]
+                  - generic [ref=e32]: Dec 6, 2025
+                - generic [ref=e33]:
+                  - text: Read More
+                  - img [ref=e34]
+          - 'link "Learning the Language of Your Own Brain: A Bucket List Goal Worth Putting on Your List Learning the Language of Your Own Brain: A Bucket List Goal Worth Putting on Your List This article explores why understanding the brain deserves a place on every bucket list. Learning the language of your own mind can reduce anxiety, strengthen emotional resilience, deepen purpose, and support anti-aging brain health. We also introduce readers to the reasons why the neurobiology behind bucket listing empowers people to live with greater intentionality, emotional resilience, and cognitive vitality. Dec 4, 2025 Read More" [ref=e36] [cursor=pointer]':
+            - /url: /blog/learning-the-language-of-your-own-brain-a-bucket-list-goal-worth-putting-on-your-list
+            - 'img "Learning the Language of Your Own Brain: A Bucket List Goal Worth Putting on Your List" [ref=e38]'
+            - generic [ref=e39]:
+              - 'heading "Learning the Language of Your Own Brain: A Bucket List Goal Worth Putting on Your List" [level=3] [ref=e40]'
+              - paragraph [ref=e41]: This article explores why understanding the brain deserves a place on every bucket list. Learning the language of your own mind can reduce anxiety, strengthen emotional resilience, deepen purpose, and support anti-aging brain health. We also introduce readers to the reasons why the neurobiology behind bucket listing empowers people to live with greater intentionality, emotional resilience, and cognitive vitality.
+              - generic [ref=e42]:
+                - generic [ref=e43]:
+                  - img [ref=e44]
+                  - generic [ref=e46]: Dec 4, 2025
+                - generic [ref=e47]:
+                  - text: Read More
+                  - img [ref=e48]
+          - 'link "Reach Goals: The Dreams That Sit Just Beyond Our Fingertips are also Important Reach Goals: The Dreams That Sit Just Beyond Our Fingertips are also Important This article explores the powerful psychology behind reach goals — the dreams that sit just beyond our current abilities, resources, or life stage. Here we reveal why imagining an uncertain future strengthens resilience, sharpens attention, and quietly shapes the opportunities we notice. Reach goals aren’t fantasies; they are invitations for the brain to stay curious, open, and responsive to possibility. Dec 3, 2025 Read More" [ref=e50] [cursor=pointer]':
+            - /url: /blog/reach-goals-the-dreams-that-sit-just-beyond-our-fingertips-are-also-important
+            - 'img "Reach Goals: The Dreams That Sit Just Beyond Our Fingertips are also Important" [ref=e52]'
+            - generic [ref=e53]:
+              - 'heading "Reach Goals: The Dreams That Sit Just Beyond Our Fingertips are also Important" [level=3] [ref=e54]'
+              - paragraph [ref=e55]: This article explores the powerful psychology behind reach goals — the dreams that sit just beyond our current abilities, resources, or life stage. Here we reveal why imagining an uncertain future strengthens resilience, sharpens attention, and quietly shapes the opportunities we notice. Reach goals aren’t fantasies; they are invitations for the brain to stay curious, open, and responsive to possibility.
+              - generic [ref=e56]:
+                - generic [ref=e57]:
+                  - img [ref=e58]
+                  - generic [ref=e60]: Dec 3, 2025
+                - generic [ref=e61]:
+                  - text: Read More
+                  - img [ref=e62]
+          - 'link "The Inter-Species Bucket List Network: How Pets Activate Human Predictive Coding and Rewires Two Brains The Inter-Species Bucket List Network: How Pets Activate Human Predictive Coding and Rewires Two Brains This article explores the surprising neuroscience behind taking bucket-list adventures with your pet. Through narrative examples and peer-reviewed research, it explains how pets alter our brain’s predictive systems, reduce fear through amygdala modulation, and even synchronize their physiology with ours during new experiences. Together, these mechanisms show why shared adventures with a pet are not just meaningful but are also neurobiologically transformative for both species. Nov 29, 2025 Read More" [ref=e64] [cursor=pointer]':
+            - /url: /blog/the-inter-species-bucket-list-network-how-pets-activate-human-predictive-coding-and-rewires-two-brains
+            - 'img "The Inter-Species Bucket List Network: How Pets Activate Human Predictive Coding and Rewires Two Brains" [ref=e66]'
+            - generic [ref=e67]:
+              - 'heading "The Inter-Species Bucket List Network: How Pets Activate Human Predictive Coding and Rewires Two Brains" [level=3] [ref=e68]'
+              - paragraph [ref=e69]: This article explores the surprising neuroscience behind taking bucket-list adventures with your pet. Through narrative examples and peer-reviewed research, it explains how pets alter our brain’s predictive systems, reduce fear through amygdala modulation, and even synchronize their physiology with ours during new experiences. Together, these mechanisms show why shared adventures with a pet are not just meaningful but are also neurobiologically transformative for both species.
+              - generic [ref=e70]:
+                - generic [ref=e71]:
+                  - img [ref=e72]
+                  - generic [ref=e74]: Nov 29, 2025
+                - generic [ref=e75]:
+                  - text: Read More
+                  - img [ref=e76]
+          - link "Why Cruises Change Your Brain in Ways Land Vacations Can’t Why Cruises Change Your Brain in Ways Land Vacations Can’t This article explores how cruising affects the brain differently than traditional land vacations, blending neuroscience with real travel stories. From the calming rhythm of the ocean to the ease of waking up in a new country without repacking, cruising creates a unique mental reset. It also fosters unexpected friendships and life-changing opportunities through shared adventures at sea. The piece ends with a reminder not to judge all cruises by one experience, just as one bad hotel doesn’t define travel itself. Nov 29, 2025 Read More" [ref=e78] [cursor=pointer]:
+            - /url: /blog/why-cruises-change-your-brain-in-ways-land-vacations-can-t
+            - img "Why Cruises Change Your Brain in Ways Land Vacations Can’t" [ref=e80]
+            - generic [ref=e81]:
+              - heading "Why Cruises Change Your Brain in Ways Land Vacations Can’t" [level=3] [ref=e82]
+              - paragraph [ref=e83]: This article explores how cruising affects the brain differently than traditional land vacations, blending neuroscience with real travel stories. From the calming rhythm of the ocean to the ease of waking up in a new country without repacking, cruising creates a unique mental reset. It also fosters unexpected friendships and life-changing opportunities through shared adventures at sea. The piece ends with a reminder not to judge all cruises by one experience, just as one bad hotel doesn’t define travel itself.
+              - generic [ref=e84]:
+                - generic [ref=e85]:
+                  - img [ref=e86]
+                  - generic [ref=e88]: Nov 29, 2025
+                - generic [ref=e89]:
+                  - text: Read More
+                  - img [ref=e90]
+          - link "Why I Wrote the Eating Disorder Supplement to The Neuroscience of a Bucket List Why I Wrote the Eating Disorder Supplement to The Neuroscience of a Bucket List Dr. DeSarbo discusses why he wrote the eating disorder supplement to his main book The Neuroscience of a Bucket List and why he feels it's important to give back to a field he has spent his career in. He also discusses why he offers this supplement free to clinicians and some patients as a way to advance treatment and recovery. Nov 29, 2025 Read More" [ref=e92] [cursor=pointer]:
+            - /url: /blog/why-i-wrote-the-eating-disorder-supplement-to-the-neuroscience-of-a-bucket-list
+            - img "Why I Wrote the Eating Disorder Supplement to The Neuroscience of a Bucket List" [ref=e94]
+            - generic [ref=e95]:
+              - heading "Why I Wrote the Eating Disorder Supplement to The Neuroscience of a Bucket List" [level=3] [ref=e96]
+              - paragraph [ref=e97]: Dr. DeSarbo discusses why he wrote the eating disorder supplement to his main book The Neuroscience of a Bucket List and why he feels it's important to give back to a field he has spent his career in. He also discusses why he offers this supplement free to clinicians and some patients as a way to advance treatment and recovery.
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - img [ref=e100]
+                  - generic [ref=e102]: Nov 29, 2025
+                - generic [ref=e103]:
+                  - text: Read More
+                  - img [ref=e104]
+          - link "Psychotherapy as a Bucket List Item? You Betcha! Psychotherapy as a Bucket List Item? You Betcha! Discover why psychotherapy belongs on your bucket list, whether you're thriving or struggling. Learn how top performers like athletes, CEOs, doctors and entertainers use therapy to elevate mental strength, emotional resilience, and peak performance. Explore how working with the right therapist can transform your life, your brain, and your personal fulfillment. Nov 18, 2025 Read More" [ref=e106] [cursor=pointer]:
+            - /url: /blog/psychotherapy-as-a-bucket-list-item-you-betcha
+            - img "Psychotherapy as a Bucket List Item? You Betcha!" [ref=e108]
+            - generic [ref=e109]:
+              - heading "Psychotherapy as a Bucket List Item? You Betcha!" [level=3] [ref=e110]
+              - paragraph [ref=e111]: Discover why psychotherapy belongs on your bucket list, whether you're thriving or struggling. Learn how top performers like athletes, CEOs, doctors and entertainers use therapy to elevate mental strength, emotional resilience, and peak performance. Explore how working with the right therapist can transform your life, your brain, and your personal fulfillment.
+              - generic [ref=e112]:
+                - generic [ref=e113]:
+                  - img [ref=e114]
+                  - generic [ref=e116]: Nov 18, 2025
+                - generic [ref=e117]:
+                  - text: Read More
+                  - img [ref=e118]
+          - link "The Bucket List You Didn’t See Coming The Bucket List You Didn’t See Coming This article reframes what a bucket list truly is by exploring the profound, meaningful moments that arrive without planning—quiet encounters, spontaneous detours, accidental discoveries, and past experiences that reveal their significance only in hindsight. Blending storytelling with neuroscience, it shows how unplanned bucket list moments activate the brain’s salience and reward networks, deepen memory, and strengthen emotional resilience. It’s an invitation to stay open, stay curious, and recognize that some of life’s greatest bucket list experiences don’t need to be written down to matter. Nov 18, 2025 Read More" [ref=e120] [cursor=pointer]:
+            - /url: /blog/the-bucket-list-you-didn-t-see-coming
+            - img "The Bucket List You Didn’t See Coming" [ref=e122]
+            - generic [ref=e123]:
+              - heading "The Bucket List You Didn’t See Coming" [level=3] [ref=e124]
+              - paragraph [ref=e125]: This article reframes what a bucket list truly is by exploring the profound, meaningful moments that arrive without planning—quiet encounters, spontaneous detours, accidental discoveries, and past experiences that reveal their significance only in hindsight. Blending storytelling with neuroscience, it shows how unplanned bucket list moments activate the brain’s salience and reward networks, deepen memory, and strengthen emotional resilience. It’s an invitation to stay open, stay curious, and recognize that some of life’s greatest bucket list experiences don’t need to be written down to matter.
+              - generic [ref=e126]:
+                - generic [ref=e127]:
+                  - img [ref=e128]
+                  - generic [ref=e130]: Nov 18, 2025
+                - generic [ref=e131]:
+                  - text: Read More
+                  - img [ref=e132]
+          - 'link "Heaven and Hell on Earth: 8 Impossible Places to Visit That Aren’t Entirely Impossible Heaven and Hell on Earth: 8 Impossible Places to Visit That Aren’t Entirely Impossible Yes, there are people who actually enjoy bucket listing at its extreme. “Heaven and Hell on Earth” explores eight of the planet’s most extreme, dangerous, and remote destinations. From volcanic infernos and scorching deserts to towering fjords and frozen cliff worlds, for those who want to push the limits. For the rest of us, it''s fun just knowing these places exists and that others can tell use stories about them. Nov 16, 2025 Read More" [ref=e134] [cursor=pointer]':
+            - /url: /blog/heaven-and-hell-on-earth-8-impossible-places-to-visit-that-aren-t-entirely-impossible
+            - 'img "Heaven and Hell on Earth: 8 Impossible Places to Visit That Aren’t Entirely Impossible" [ref=e136]'
+            - generic [ref=e137]:
+              - 'heading "Heaven and Hell on Earth: 8 Impossible Places to Visit That Aren’t Entirely Impossible" [level=3] [ref=e138]'
+              - paragraph [ref=e139]: Yes, there are people who actually enjoy bucket listing at its extreme. “Heaven and Hell on Earth” explores eight of the planet’s most extreme, dangerous, and remote destinations. From volcanic infernos and scorching deserts to towering fjords and frozen cliff worlds, for those who want to push the limits. For the rest of us, it's fun just knowing these places exists and that others can tell use stories about them.
+              - generic [ref=e140]:
+                - generic [ref=e141]:
+                  - img [ref=e142]
+                  - generic [ref=e144]: Nov 16, 2025
+                - generic [ref=e145]:
+                  - text: Read More
+                  - img [ref=e146]
+          - 'link "You May Be Thinking About Bucket Lists All Wrong: There’s A Better Way to Live Your Life You May Be Thinking About Bucket Lists All Wrong: There’s A Better Way to Live Your Life Many people have a very narrow, stereotypical idea of what a bucket list \"is.\" The truth is, a bucket list involves a more complex, yet meaningful purpose than the traditional concept of making a list and checking things off. Dr. DeSarbo here explains five key concepts behind modern day bucket list living that focuses on meaning, neuroscience and mental health. Nov 16, 2025 Read More" [ref=e148] [cursor=pointer]':
+            - /url: /blog/you-may-be-thinking-about-bucket-lists-all-wrong-there-s-a-better-way-to-live-your-life
+            - 'img "You May Be Thinking About Bucket Lists All Wrong: There’s A Better Way to Live Your Life" [ref=e150]'
+            - generic [ref=e151]:
+              - 'heading "You May Be Thinking About Bucket Lists All Wrong: There’s A Better Way to Live Your Life" [level=3] [ref=e152]'
+              - paragraph [ref=e153]: Many people have a very narrow, stereotypical idea of what a bucket list "is." The truth is, a bucket list involves a more complex, yet meaningful purpose than the traditional concept of making a list and checking things off. Dr. DeSarbo here explains five key concepts behind modern day bucket list living that focuses on meaning, neuroscience and mental health.
+              - generic [ref=e154]:
+                - generic [ref=e155]:
+                  - img [ref=e156]
+                  - generic [ref=e158]: Nov 16, 2025
+                - generic [ref=e159]:
+                  - text: Read More
+                  - img [ref=e160]
+          - 'link "Reverse Bucket Listing: A Great Place to Start - Or Go Back To Reverse Bucket Listing: A Great Place to Start - Or Go Back To Many people begin their bucket list by asking what they haven’t done yet. But what if the most powerful place to start is with what you’ve already lived? Reverse bucket listing is a practice that helps you rediscover meaning, calm cortisol, awaken acetylcholine and BDNF, and rewire your brain for self-trust and gratitude. It turns memory into momentum, showing that your life, in all its ordinary moments, has already been extraordinary. Nov 12, 2025 Read More" [ref=e162] [cursor=pointer]':
+            - /url: /blog/reverse-bucket-listing-a-great-place-to-start-or-go-back-to
+            - 'img "Reverse Bucket Listing: A Great Place to Start - Or Go Back To" [ref=e164]'
+            - generic [ref=e165]:
+              - 'heading "Reverse Bucket Listing: A Great Place to Start - Or Go Back To" [level=3] [ref=e166]'
+              - paragraph [ref=e167]: Many people begin their bucket list by asking what they haven’t done yet. But what if the most powerful place to start is with what you’ve already lived? Reverse bucket listing is a practice that helps you rediscover meaning, calm cortisol, awaken acetylcholine and BDNF, and rewire your brain for self-trust and gratitude. It turns memory into momentum, showing that your life, in all its ordinary moments, has already been extraordinary.
+              - generic [ref=e168]:
+                - generic [ref=e169]:
+                  - img [ref=e170]
+                  - generic [ref=e172]: Nov 12, 2025
+                - generic [ref=e173]:
+                  - text: Read More
+                  - img [ref=e174]
+          - 'link "The Bucket List Approach, Mentality, and Lifestyle: A Framework for Living With Intention The Bucket List Approach, Mentality, and Lifestyle: A Framework for Living With Intention The real magic of a bucket list lies in how it reshapes life while we’re living it. A bucket list approach trains the brain to think intentionally; a mentality grows from that structure, turning purpose into belief; and a lifestyle emerges, where every day becomes an expression of meaning, curiosity, and gratitude. Understanding these three levels isn’t just philosophical, it’s a practical neuroscience for living wide awake. Nov 12, 2025 Read More" [ref=e176] [cursor=pointer]':
+            - /url: /blog/the-bucket-list-approach-mentality-and-lifestyle-a-framework-for-living-with-intention
+            - 'img "The Bucket List Approach, Mentality, and Lifestyle: A Framework for Living With Intention" [ref=e178]'
+            - generic [ref=e179]:
+              - 'heading "The Bucket List Approach, Mentality, and Lifestyle: A Framework for Living With Intention" [level=3] [ref=e180]'
+              - paragraph [ref=e181]: The real magic of a bucket list lies in how it reshapes life while we’re living it. A bucket list approach trains the brain to think intentionally; a mentality grows from that structure, turning purpose into belief; and a lifestyle emerges, where every day becomes an expression of meaning, curiosity, and gratitude. Understanding these three levels isn’t just philosophical, it’s a practical neuroscience for living wide awake.
+              - generic [ref=e182]:
+                - generic [ref=e183]:
+                  - img [ref=e184]
+                  - generic [ref=e186]: Nov 12, 2025
+                - generic [ref=e187]:
+                  - text: Read More
+                  - img [ref=e188]
+          - link [ref=e190] [cursor=pointer]:
+            - /url: /blog/considering-activism-and-protesting-as-a-bucket-list-item-slight-nuances-in-your-approach-can-decide-better-brain-health-or-psychological-decline
+            - img "Considering Activism and Protesting as a Bucket List Item? Slight Nuances in Your Approach Can Decide Better Brain Health or Psychological Decline." [ref=e192]
+            - generic [ref=e193]:
+              - heading "Considering Activism and Protesting as a Bucket List Item? Slight Nuances in Your Approach Can Decide Better Brain Health or Psychological Decline." [level=3] [ref=e194]
+              - paragraph [ref=e195]: Many people add “participate in a protest” to their bucket list as a way of expressing meaning, identity, and purpose. Protests can create belonging, emotional uplift, and a sense of personal impact. However, the mindset behind why we protest matters. This article explores the neuroscience of approach-driven versus avoidance-driven activism and how the way we frame our cause can support psychological resilience, hope, and healthier long-term engagement. If protesting is on your bucket list, the key is choosing causes and actions that help you build something meaningful, rather than only reacting to what you oppose.
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - img [ref=e198]
+                  - generic [ref=e200]: Nov 11, 2025
+                - generic [ref=e201]:
+                  - text: Read More
+                  - img [ref=e202]
+          - 'link "Scientifically Invalidating Regret: The Decisional Entropy Illusion Theory Scientifically Invalidating Regret: The Decisional Entropy Illusion Theory The Decisional Entropy Illusion Theory challenges the belief that different choices would have led to better outcomes. Using unique insights from thermodynamics, chaos theory, quantum mechanics, and neuroscience, this work reveals why regret is scientifically unfounded and how embracing uncertainty can free us to move forward. Nov 11, 2025 Read More" [ref=e204] [cursor=pointer]':
+            - /url: /blog/scientifically-invalidating-regret-the-decisional-entropy-illusion-theory
+            - 'img "Scientifically Invalidating Regret: The Decisional Entropy Illusion Theory" [ref=e206]'
+            - generic [ref=e207]:
+              - 'heading "Scientifically Invalidating Regret: The Decisional Entropy Illusion Theory" [level=3] [ref=e208]'
+              - paragraph [ref=e209]: The Decisional Entropy Illusion Theory challenges the belief that different choices would have led to better outcomes. Using unique insights from thermodynamics, chaos theory, quantum mechanics, and neuroscience, this work reveals why regret is scientifically unfounded and how embracing uncertainty can free us to move forward.
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - img [ref=e212]
+                  - generic [ref=e214]: Nov 11, 2025
+                - generic [ref=e215]:
+                  - text: Read More
+                  - img [ref=e216]
+          - link "The Anti-Aging Benefits of Being a Bucket Lister The Anti-Aging Benefits of Being a Bucket Lister Emerging research in neuroscience and aging consistently shows that novelty, planning, and meaningful action activate brain networks involved in memory, emotional regulation, neuroplasticity, motivation, and vitality. In this article, neuropsychiatrist Dr. Jeffrey DeSarbo explores how a bucket-list lifestyle can support cognitive health, preserve brain function, increase neurotrophic growth factors, and strengthen a sense of purpose as we age. Nov 10, 2025 Read More" [ref=e218] [cursor=pointer]:
+            - /url: /blog/the-anti-aging-benefits-of-being-a-bucket-lister
+            - img "The Anti-Aging Benefits of Being a Bucket Lister" [ref=e220]
+            - generic [ref=e221]:
+              - heading "The Anti-Aging Benefits of Being a Bucket Lister" [level=3] [ref=e222]
+              - paragraph [ref=e223]: Emerging research in neuroscience and aging consistently shows that novelty, planning, and meaningful action activate brain networks involved in memory, emotional regulation, neuroplasticity, motivation, and vitality. In this article, neuropsychiatrist Dr. Jeffrey DeSarbo explores how a bucket-list lifestyle can support cognitive health, preserve brain function, increase neurotrophic growth factors, and strengthen a sense of purpose as we age.
+              - generic [ref=e224]:
+                - generic [ref=e225]:
+                  - img [ref=e226]
+                  - generic [ref=e228]: Nov 10, 2025
+                - generic [ref=e229]:
+                  - text: Read More
+                  - img [ref=e230]
+          - 'link "Why Mondays Suck: A Neuropsychiatrist’s Take and a Brief Worksheet for You and How to Turn That Around Why Mondays Suck: A Neuropsychiatrist’s Take and a Brief Worksheet for You and How to Turn That Around If Sunday night make your chest tighten and your mind start spinning, you’re not alone. Neuroscience shows that sleep patterns, dopamine levels, stress hormones, and even cultural messaging all collide to make Monday feel harder than the rest of the week. The good news: there are ways to shift the experience. Nov 9, 2025 Read More" [ref=e232] [cursor=pointer]':
+            - /url: /blog/why-mondays-suck-a-neuropsychiatrist-s-take-and-a-brief-worksheet-for-you-and-how-to-turn-that-around
+            - 'img "Why Mondays Suck: A Neuropsychiatrist’s Take and a Brief Worksheet for You and How to Turn That Around" [ref=e234]'
+            - generic [ref=e235]:
+              - 'heading "Why Mondays Suck: A Neuropsychiatrist’s Take and a Brief Worksheet for You and How to Turn That Around" [level=3] [ref=e236]'
+              - paragraph [ref=e237]: "If Sunday night make your chest tighten and your mind start spinning, you’re not alone. Neuroscience shows that sleep patterns, dopamine levels, stress hormones, and even cultural messaging all collide to make Monday feel harder than the rest of the week. The good news: there are ways to shift the experience."
+              - generic [ref=e238]:
+                - generic [ref=e239]:
+                  - img [ref=e240]
+                  - generic [ref=e242]: Nov 9, 2025
+                - generic [ref=e243]:
+                  - text: Read More
+                  - img [ref=e244]
+          - 'link "To List or Not to List: The Psychology of Living With, Not For, Your Dreams To List or Not to List: The Psychology of Living With, Not For, Your Dreams The skeptics warn against a life lived for the sake of a list of goals, mistaking movement for meaning. The doers understand that when approached with mindfulness and curiosity, a bucket list can serve as a psychological and neurological compass, pointing toward purpose, novelty, and growth. Modern neuroscience supports both views. Nov 8, 2025 Read More" [ref=e246] [cursor=pointer]':
+            - /url: /blog/to-list-or-not-to-list-the-psychology-of-living-with-not-for-your-dreams
+            - 'img "To List or Not to List: The Psychology of Living With, Not For, Your Dreams" [ref=e248]'
+            - generic [ref=e249]:
+              - 'heading "To List or Not to List: The Psychology of Living With, Not For, Your Dreams" [level=3] [ref=e250]'
+              - paragraph [ref=e251]: The skeptics warn against a life lived for the sake of a list of goals, mistaking movement for meaning. The doers understand that when approached with mindfulness and curiosity, a bucket list can serve as a psychological and neurological compass, pointing toward purpose, novelty, and growth. Modern neuroscience supports both views.
+              - generic [ref=e252]:
+                - generic [ref=e253]:
+                  - img [ref=e254]
+                  - generic [ref=e256]: Nov 8, 2025
+                - generic [ref=e257]:
+                  - text: Read More
+                  - img [ref=e258]
+          - 'link "When and How Children Can Bucket List: A Guide to Nurturing Wonder, Curiosity, Connection, and the Developing Brain. When and How Children Can Bucket List: A Guide to Nurturing Wonder, Curiosity, Connection, and the Developing Brain. We tend to think of bucket lists as something we do later in life, after careers have taken shape, after children are grown, after responsibilities have settled enough to give us room to dream. However, bucket lists can also be tools for children. Children are natural dreamers, wired for curiosity, imagination, exploration, and delight. Their brains are built to seek novelty. They chase wonder without even knowing that’s what they’re doing. Nov 8, 2025 Read More" [ref=e260] [cursor=pointer]':
+            - /url: /blog/when-and-how-children-can-bucket-list-a-guide-to-nurturing-wonder-curiosity-connection-and-the-developing-brain
+            - 'img "When and How Children Can Bucket List: A Guide to Nurturing Wonder, Curiosity, Connection, and the Developing Brain." [ref=e262]'
+            - generic [ref=e263]:
+              - 'heading "When and How Children Can Bucket List: A Guide to Nurturing Wonder, Curiosity, Connection, and the Developing Brain." [level=3] [ref=e264]'
+              - paragraph [ref=e265]: We tend to think of bucket lists as something we do later in life, after careers have taken shape, after children are grown, after responsibilities have settled enough to give us room to dream. However, bucket lists can also be tools for children. Children are natural dreamers, wired for curiosity, imagination, exploration, and delight. Their brains are built to seek novelty. They chase wonder without even knowing that’s what they’re doing.
+              - generic [ref=e266]:
+                - generic [ref=e267]:
+                  - img [ref=e268]
+                  - generic [ref=e270]: Nov 8, 2025
+                - generic [ref=e271]:
+                  - text: Read More
+                  - img [ref=e272]
+          - 'link "Can AI Supercharge Your Bucket List (Without Taking the Soul Out of It)? Can AI Supercharge Your Bucket List (Without Taking the Soul Out of It)? A true bucket list comes from within; it’s an intrinsic process, a reflection of your values and your neurochemical cocktail of curiosity and purpose. But AI can be a powerful ally in discovery. Imagine telling an AI travel assistant: “I’ve always loved astronomy, art, and solitude. Find me destinations that combine those passions. The key is that you provide the emotional compass with your custom prompts; the AI helps locate the coordinates. Nov 7, 2025 Read More" [ref=e274] [cursor=pointer]':
+            - /url: /blog/can-ai-supercharge-your-bucket-list-without-taking-the-soul-out-of-it
+            - img "Can AI Supercharge Your Bucket List (Without Taking the Soul Out of It)?" [ref=e276]
+            - generic [ref=e277]:
+              - heading "Can AI Supercharge Your Bucket List (Without Taking the Soul Out of It)?" [level=3] [ref=e278]
+              - paragraph [ref=e279]: "A true bucket list comes from within; it’s an intrinsic process, a reflection of your values and your neurochemical cocktail of curiosity and purpose. But AI can be a powerful ally in discovery. Imagine telling an AI travel assistant: “I’ve always loved astronomy, art, and solitude. Find me destinations that combine those passions. The key is that you provide the emotional compass with your custom prompts; the AI helps locate the coordinates."
+              - generic [ref=e280]:
+                - generic [ref=e281]:
+                  - img [ref=e282]
+                  - generic [ref=e284]: Nov 7, 2025
+                - generic [ref=e285]:
+                  - text: Read More
+                  - img [ref=e286]
+          - link "What’s Your Bucket List Style? Understanding the Mind Behind Your Dreams. What’s Your Bucket List Style? Understanding the Mind Behind Your Dreams. In my work as a neuropsychiatrist and through my research for my book The Neuroscience of a Bucket List, I’ve found that the types of experiences we crave often align with how our brains process reward, novelty, mastery, and meaning. Some of us chase adrenaline and exploration; others are drawn to growth, connection, or creative expression. Nov 7, 2025 Read More" [ref=e288] [cursor=pointer]:
+            - /url: /blog/what-s-your-bucket-list-style-understanding-the-mind-behind-your-dreams
+            - img "What’s Your Bucket List Style? Understanding the Mind Behind Your Dreams." [ref=e290]
+            - generic [ref=e291]:
+              - heading "What’s Your Bucket List Style? Understanding the Mind Behind Your Dreams." [level=3] [ref=e292]
+              - paragraph [ref=e293]: In my work as a neuropsychiatrist and through my research for my book The Neuroscience of a Bucket List, I’ve found that the types of experiences we crave often align with how our brains process reward, novelty, mastery, and meaning. Some of us chase adrenaline and exploration; others are drawn to growth, connection, or creative expression.
+              - generic [ref=e294]:
+                - generic [ref=e295]:
+                  - img [ref=e296]
+                  - generic [ref=e298]: Nov 7, 2025
+                - generic [ref=e299]:
+                  - text: Read More
+                  - img [ref=e300]
+      - generic [ref=e302]:
+        - generic [ref=e303]:
+          - heading "All Videos (23)" [level=2] [ref=e304]
+          - link "View Channel →" [ref=e305] [cursor=pointer]:
+            - /url: https://www.youtube.com/@dr.jeffreydesarbo2584
+            - img [ref=e306]
+            - text: View Channel →
+        - generic [ref=e308]:
+          - link "Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List Over the years/decades I have privileged to speak to so many people including the general public, healthcare professionals, ... November 4, 2025" [ref=e309] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=OXZJqGofLVE
+            - generic [ref=e310]:
+              - img "Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List" [ref=e311]
+              - img [ref=e314]
+            - generic [ref=e316]:
+              - heading "Dr.D Keynote SpeakerTrailer - Neuroscience of a Bucket List" [level=3] [ref=e317]
+              - paragraph [ref=e318]: Over the years/decades I have privileged to speak to so many people including the general public, healthcare professionals, ...
+              - paragraph [ref=e319]: November 4, 2025
+          - link "The Neuroscience of a Bucket List Author Interview The Neuroscience of a Bucket List Author Interview A neuropsychiatrist shares his discovery for a life of purpose and gratitude. The evolotion of a book. What if your brain was wired ... August 4, 2025" [ref=e320] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=EFIyOZMcT6o
+            - generic [ref=e321]:
+              - img "The Neuroscience of a Bucket List Author Interview" [ref=e322]
+              - img [ref=e325]
+            - generic [ref=e327]:
+              - heading "The Neuroscience of a Bucket List Author Interview" [level=3] [ref=e328]
+              - paragraph [ref=e329]: A neuropsychiatrist shares his discovery for a life of purpose and gratitude. The evolotion of a book. What if your brain was wired ...
+              - paragraph [ref=e330]: August 4, 2025
+          - 'link "The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use. The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use. An objective presentation about the diabetes medications generically known as semaglutide and tirzepitide and their controversial ... May 28, 2023" [ref=e331] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=PlZh7v2SWZI
+            - generic [ref=e332]:
+              - 'img "The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use." [ref=e333]'
+              - img [ref=e336]
+            - generic [ref=e338]:
+              - 'heading "The Weight Loss Shots Ozempic, Wegovy and Mounjaro: Controversy and understanding with their use." [level=3] [ref=e339]'
+              - paragraph [ref=e340]: An objective presentation about the diabetes medications generically known as semaglutide and tirzepitide and their controversial ...
+              - paragraph [ref=e341]: May 28, 2023
+          - link "Body Image Surveillance Scale Explained Body Image Surveillance Scale Explained Dr. DeSarbo discusses the use of the Body Image Surveillance Scale (BISS) which he created for patient assessment and ... April 9, 2022" [ref=e342] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=Po2b7N7aKkI
+            - generic [ref=e343]:
+              - img "Body Image Surveillance Scale Explained" [ref=e344]
+              - img [ref=e347]
+            - generic [ref=e349]:
+              - heading "Body Image Surveillance Scale Explained" [level=3] [ref=e350]
+              - paragraph [ref=e351]: Dr. DeSarbo discusses the use of the Body Image Surveillance Scale (BISS) which he created for patient assessment and ...
+              - paragraph [ref=e352]: April 9, 2022
+          - link "Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S. Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S. Dr. DeSarbo and Lukas DeSarbo, LMSW discuss the latest eating disorder research and interview with Robyn Goldberg, RDN, ... June 2, 2021" [ref=e353] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=yp3wWJb1J6M
+            - generic [ref=e354]:
+              - img "Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S." [ref=e355]
+              - img [ref=e358]
+            - generic [ref=e360]:
+              - heading "Translating ED episode 102. The latest research and interview with Robyn Goldberg, RDN, CEDRD-S." [level=3] [ref=e361]
+              - paragraph [ref=e362]: Dr. DeSarbo and Lukas DeSarbo, LMSW discuss the latest eating disorder research and interview with Robyn Goldberg, RDN, ...
+              - paragraph [ref=e363]: June 2, 2021
+          - link "Ep 101 Welcome to Translating ED. Eating disorders and COVID-19. Ep 101 Welcome to Translating ED. Eating disorders and COVID-19. Dr. Jeffrey DeSarbo and eating disorder therapist Lukas DeSarbo introduce themselves and discuss the impact of COVID-19 on ... May 15, 2021" [ref=e364] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=ZaLSyQGU4o4
+            - generic [ref=e365]:
+              - img "Ep 101 Welcome to Translating ED. Eating disorders and COVID-19." [ref=e366]
+              - img [ref=e369]
+            - generic [ref=e371]:
+              - heading "Ep 101 Welcome to Translating ED. Eating disorders and COVID-19." [level=3] [ref=e372]
+              - paragraph [ref=e373]: Dr. Jeffrey DeSarbo and eating disorder therapist Lukas DeSarbo introduce themselves and discuss the impact of COVID-19 on ...
+              - paragraph [ref=e374]: May 15, 2021
+          - 'link "NeuroSeries 14: The Family Support System NeuroSeries 14: The Family Support System A video on the importance of family support with a loved one with an eating disorder. Discussing studies on caregiving, a family ... March 18, 2021" [ref=e375] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=__R85EoYEP8
+            - generic [ref=e376]:
+              - 'img "NeuroSeries 14: The Family Support System" [ref=e377]'
+              - img [ref=e380]
+            - generic [ref=e382]:
+              - 'heading "NeuroSeries 14: The Family Support System" [level=3] [ref=e383]'
+              - paragraph [ref=e384]: A video on the importance of family support with a loved one with an eating disorder. Discussing studies on caregiving, a family ...
+              - paragraph [ref=e385]: March 18, 2021
+          - 'link "NeuroSeries 12: Neuro-Medical Connection NeuroSeries 12: Neuro-Medical Connection Dr. Jeffrey DeSarbo discusses the unique interplay between the brain and nervous system and all of the other body''s system such ... March 18, 2021" [ref=e386] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=KHC_EnDjgog
+            - generic [ref=e387]:
+              - 'img "NeuroSeries 12: Neuro-Medical Connection" [ref=e388]'
+              - img [ref=e391]
+            - generic [ref=e393]:
+              - 'heading "NeuroSeries 12: Neuro-Medical Connection" [level=3] [ref=e394]'
+              - paragraph [ref=e395]: Dr. Jeffrey DeSarbo discusses the unique interplay between the brain and nervous system and all of the other body's system such ...
+              - paragraph [ref=e396]: March 18, 2021
+          - 'link "NeuroSeries 13: Neurobiology of Nutrition NeuroSeries 13: Neurobiology of Nutrition Dr. Jeffrey DeSarbo presents an atypical discussion on nutrition with eating disorders. Nutrition here is presented from an ... March 18, 2021" [ref=e397] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=lsQm03vnQ4s
+            - generic [ref=e398]:
+              - 'img "NeuroSeries 13: Neurobiology of Nutrition" [ref=e399]'
+              - img [ref=e402]
+            - generic [ref=e404]:
+              - 'heading "NeuroSeries 13: Neurobiology of Nutrition" [level=3] [ref=e405]'
+              - paragraph [ref=e406]: Dr. Jeffrey DeSarbo presents an atypical discussion on nutrition with eating disorders. Nutrition here is presented from an ...
+              - paragraph [ref=e407]: March 18, 2021
+          - 'link "NeuroSeries 11: Neuroscience of Thought Control NeuroSeries 11: Neuroscience of Thought Control Dr. Jeffrey DeSarbo discusses how mindfulness training is a very important part of a treatment plan that often is neglected with ... March 18, 2021" [ref=e408] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=BPVi97z4tbU
+            - generic [ref=e409]:
+              - 'img "NeuroSeries 11: Neuroscience of Thought Control" [ref=e410]'
+              - img [ref=e413]
+            - generic [ref=e415]:
+              - 'heading "NeuroSeries 11: Neuroscience of Thought Control" [level=3] [ref=e416]'
+              - paragraph [ref=e417]: Dr. Jeffrey DeSarbo discusses how mindfulness training is a very important part of a treatment plan that often is neglected with ...
+              - paragraph [ref=e418]: March 18, 2021
+          - 'link "NeuroSeries 10: Neuroscience of Medications NeuroSeries 10: Neuroscience of Medications Dr. DeSarbo discusses from a psychiatrist and ED specialist point of view how medications may help, as well as their substantial ... March 18, 2021" [ref=e419] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=EhS4vrTLUEQ
+            - generic [ref=e420]:
+              - 'img "NeuroSeries 10: Neuroscience of Medications" [ref=e421]'
+              - img [ref=e424]
+            - generic [ref=e426]:
+              - 'heading "NeuroSeries 10: Neuroscience of Medications" [level=3] [ref=e427]'
+              - paragraph [ref=e428]: Dr. DeSarbo discusses from a psychiatrist and ED specialist point of view how medications may help, as well as their substantial ...
+              - paragraph [ref=e429]: March 18, 2021
+          - 'link "NeuroSeries 9: Psychology and Therapy NeuroSeries 9: Psychology and Therapy Dr Jeffrey DeSarbo discusses psychotherapy from a neuroscience perspective and how therapy effects the brain. Some insights ... March 18, 2021" [ref=e430] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=nKArmCYOXkM
+            - generic [ref=e431]:
+              - 'img "NeuroSeries 9: Psychology and Therapy" [ref=e432]'
+              - img [ref=e435]
+            - generic [ref=e437]:
+              - 'heading "NeuroSeries 9: Psychology and Therapy" [level=3] [ref=e438]'
+              - paragraph [ref=e439]: Dr Jeffrey DeSarbo discusses psychotherapy from a neuroscience perspective and how therapy effects the brain. Some insights ...
+              - paragraph [ref=e440]: March 18, 2021
+          - 'link "NeuroSeries 7: Neurobiology of Anorexia Nervosa NeuroSeries 7: Neurobiology of Anorexia Nervosa Dr. DeSarbo discusses some of the findings that lead to a compromised brain secondary to deprivation from nutritional ... March 18, 2021" [ref=e441] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=riFDWmGSwSA
+            - generic [ref=e442]:
+              - 'img "NeuroSeries 7: Neurobiology of Anorexia Nervosa" [ref=e443]'
+              - img [ref=e446]
+            - generic [ref=e448]:
+              - 'heading "NeuroSeries 7: Neurobiology of Anorexia Nervosa" [level=3] [ref=e449]'
+              - paragraph [ref=e450]: Dr. DeSarbo discusses some of the findings that lead to a compromised brain secondary to deprivation from nutritional ...
+              - paragraph [ref=e451]: March 18, 2021
+          - 'link "NeuroSeries 8: Neurobiology of Body Image NeuroSeries 8: Neurobiology of Body Image Dr. DeSarbo discusses the neurobiological findings in patient with eating disorders who struggle with body image distortions and ... March 18, 2021" [ref=e452] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=10d4Utt7Qpc
+            - generic [ref=e453]:
+              - 'img "NeuroSeries 8: Neurobiology of Body Image" [ref=e454]'
+              - img [ref=e457]
+            - generic [ref=e459]:
+              - 'heading "NeuroSeries 8: Neurobiology of Body Image" [level=3] [ref=e460]'
+              - paragraph [ref=e461]: Dr. DeSarbo discusses the neurobiological findings in patient with eating disorders who struggle with body image distortions and ...
+              - paragraph [ref=e462]: March 18, 2021
+          - 'link "NeuroSeries 6: Neurobiology of Bulimia Nervosa NeuroSeries 6: Neurobiology of Bulimia Nervosa Dr. Jeffrey DeSarbo discusses the neurobiology of bulimia nervosa and the unique brain and central nervous findings with this ... March 18, 2021" [ref=e463] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=Sn_WGx86-yQ
+            - generic [ref=e464]:
+              - 'img "NeuroSeries 6: Neurobiology of Bulimia Nervosa" [ref=e465]'
+              - img [ref=e468]
+            - generic [ref=e470]:
+              - 'heading "NeuroSeries 6: Neurobiology of Bulimia Nervosa" [level=3] [ref=e471]'
+              - paragraph [ref=e472]: Dr. Jeffrey DeSarbo discusses the neurobiology of bulimia nervosa and the unique brain and central nervous findings with this ...
+              - paragraph [ref=e473]: March 18, 2021
+          - link "Introducing Dr. Desarbo Introducing Dr. Desarbo Meet Dr. Jeffrey DeSarbo, the host of this NeuroSeries, a psychiatrist and eating disorder specialist, and the Medical Director of ... March 18, 2021" [ref=e474] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=wuwGkmgxjgc
+            - generic [ref=e475]:
+              - img "Introducing Dr. Desarbo" [ref=e476]
+              - img [ref=e479]
+            - generic [ref=e481]:
+              - heading "Introducing Dr. Desarbo" [level=3] [ref=e482]
+              - paragraph [ref=e483]: Meet Dr. Jeffrey DeSarbo, the host of this NeuroSeries, a psychiatrist and eating disorder specialist, and the Medical Director of ...
+              - paragraph [ref=e484]: March 18, 2021
+          - 'link "NeuroSeries 5: Neurobiology of Binge Eating NeuroSeries 5: Neurobiology of Binge Eating Dr. DeSarbo discusses specific findings with the brain and central nervous system and how the brain is wired with binge eating ... March 18, 2021" [ref=e485] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=8OlKxOWzq2s
+            - generic [ref=e486]:
+              - 'img "NeuroSeries 5: Neurobiology of Binge Eating" [ref=e487]'
+              - img [ref=e490]
+            - generic [ref=e492]:
+              - 'heading "NeuroSeries 5: Neurobiology of Binge Eating" [level=3] [ref=e493]'
+              - paragraph [ref=e494]: Dr. DeSarbo discusses specific findings with the brain and central nervous system and how the brain is wired with binge eating ...
+              - paragraph [ref=e495]: March 18, 2021
+          - 'link "NeuroSeries 4: Children &amp; Adolescents NeuroSeries 4: Children &amp; Adolescents Dr. Jeffrey DeSarbo discusses findings unique with children, adolescents and teenagers with eating disorders including the need ... March 18, 2021" [ref=e496] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=nHCMBoX1MVg
+            - generic [ref=e497]:
+              - 'img "NeuroSeries 4: Children &amp; Adolescents" [ref=e498]'
+              - img [ref=e501]
+            - generic [ref=e503]:
+              - 'heading "NeuroSeries 4: Children &amp; Adolescents" [level=3] [ref=e504]'
+              - paragraph [ref=e505]: Dr. Jeffrey DeSarbo discusses findings unique with children, adolescents and teenagers with eating disorders including the need ...
+              - paragraph [ref=e506]: March 18, 2021
+          - 'link "NeuroSeries 3: Neuro-Biological Findings NeuroSeries 3: Neuro-Biological Findings Dr. Jeffrey DeSarbo discusses some more of the neurobiological findings that are unique to individuals with eating disorders and ... March 18, 2021" [ref=e507] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=L8nS5m_4TMg
+            - generic [ref=e508]:
+              - 'img "NeuroSeries 3: Neuro-Biological Findings" [ref=e509]'
+              - img [ref=e512]
+            - generic [ref=e514]:
+              - 'heading "NeuroSeries 3: Neuro-Biological Findings" [level=3] [ref=e515]'
+              - paragraph [ref=e516]: Dr. Jeffrey DeSarbo discusses some more of the neurobiological findings that are unique to individuals with eating disorders and ...
+              - paragraph [ref=e517]: March 18, 2021
+          - 'link "NeuroSeries 2: The Neuroscience of ED Research NeuroSeries 2: The Neuroscience of ED Research Dr. Jeffrey DeSarbo discusses the emergence of research based evidence regarding eating disorders, especially with the ... March 18, 2021" [ref=e518] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=JJXHGnnbCdI
+            - generic [ref=e519]:
+              - 'img "NeuroSeries 2: The Neuroscience of ED Research" [ref=e520]'
+              - img [ref=e523]
+            - generic [ref=e525]:
+              - 'heading "NeuroSeries 2: The Neuroscience of ED Research" [level=3] [ref=e526]'
+              - paragraph [ref=e527]: Dr. Jeffrey DeSarbo discusses the emergence of research based evidence regarding eating disorders, especially with the ...
+              - paragraph [ref=e528]: March 18, 2021
+          - 'link "NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders Dr. Jeffrey DeSarbo gives this introduction to how an eating disorder is all about changes in the brain and central nervous system ... March 18, 2021" [ref=e529] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=7eUGBa7RXS4
+            - generic [ref=e530]:
+              - 'img "NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders" [ref=e531]'
+              - img [ref=e534]
+            - generic [ref=e536]:
+              - 'heading "NeuroSeries 1: Introduction to the Neuroscience of Eating Disorders" [level=3] [ref=e537]'
+              - paragraph [ref=e538]: Dr. Jeffrey DeSarbo gives this introduction to how an eating disorder is all about changes in the brain and central nervous system ...
+              - paragraph [ref=e539]: March 18, 2021
+          - 'link "Eating Disorders and COVID-19 Update: Patients Positive Eating Disorders and COVID-19 Update: Patients Positive A follow up video on the impact of COVID-19 with eating disorder patients including anorexia nervosa, bulimia nervosa, binge ... April 7, 2020" [ref=e540] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=7NxuVXkoOqc
+            - generic [ref=e541]:
+              - 'img "Eating Disorders and COVID-19 Update: Patients Positive" [ref=e542]'
+              - img [ref=e545]
+            - generic [ref=e547]:
+              - 'heading "Eating Disorders and COVID-19 Update: Patients Positive" [level=3] [ref=e548]'
+              - paragraph [ref=e549]: A follow up video on the impact of COVID-19 with eating disorder patients including anorexia nervosa, bulimia nervosa, binge ...
+              - paragraph [ref=e550]: April 7, 2020
+          - link "Special Concerns with COVID-19 and Eating Disorders Special Concerns with COVID-19 and Eating Disorders A brief presentation about some special considerations with COVID-19 in patients with eating disorders including anorexia ... March 27, 2020" [ref=e551] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=Cq0eYyqW7pY
+            - generic [ref=e552]:
+              - img "Special Concerns with COVID-19 and Eating Disorders" [ref=e553]
+              - img [ref=e556]
+            - generic [ref=e558]:
+              - heading "Special Concerns with COVID-19 and Eating Disorders" [level=3] [ref=e559]
+              - paragraph [ref=e560]: A brief presentation about some special considerations with COVID-19 in patients with eating disorders including anorexia ...
+              - paragraph [ref=e561]: March 27, 2020
+      - generic [ref=e562]:
+        - heading "As Featured On" [level=2] [ref=e563]
+        - generic [ref=e564]:
+          - img "Doctor Radio / Sirius XM" [ref=e566]
+          - img "Newsday" [ref=e568]
+          - img "iHeart Radio" [ref=e570]
+      - generic [ref=e572]:
+        - img [ref=e574]
+        - heading "Subscribe on YouTube" [level=2] [ref=e576]
+        - paragraph [ref=e577]: Get notified when new videos are published. Deep dives into neuroscience, bucket lists, and living a purposeful life.
+        - link "Subscribe Now" [ref=e578] [cursor=pointer]:
+          - /url: https://www.youtube.com/@dr.jeffreydesarbo2584
+      - generic [ref=e579]:
+        - generic [ref=e580]:
+          - img [ref=e582]
+          - heading "Podcast Features" [level=3] [ref=e584]
+          - paragraph [ref=e585]: Guest appearances discussing adventure and brain science.
+        - generic [ref=e586]:
+          - img [ref=e588]
+          - heading "Radio Interviews" [level=3] [ref=e590]
+          - paragraph [ref=e591]: Listen to Dr. D's radio interviews and media appearances.
+        - generic [ref=e592]:
+          - img [ref=e594]
+          - heading "Newsletter" [level=3] [ref=e597]
+          - paragraph [ref=e598]: Subscribe for exclusive insights and bucket list inspiration.
+  - contentinfo [ref=e599]:
+    - generic [ref=e602]:
+      - heading "Join Our Community" [level=3] [ref=e603]
+      - paragraph [ref=e604]: Get brain science insights, bucket list inspiration, and updates on new projects. No spam, ever. Unsubscribe anytime.
+      - generic [ref=e605]:
+        - textbox "Enter your email" [ref=e606]
+        - button "Subscribe" [ref=e607] [cursor=pointer]
+    - generic [ref=e608]:
+      - generic [ref=e609]:
+        - generic [ref=e610]:
+          - img "Bucket List Doctor" [ref=e612]
+          - paragraph [ref=e613]: Exploring the neuroscience behind purposeful living and meaningful goals.
+        - generic [ref=e614]:
+          - heading "Quick Links" [level=3] [ref=e615]
+          - list [ref=e616]:
+            - listitem [ref=e617]:
+              - link "About" [ref=e618] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e619]:
+              - link "Books" [ref=e620] [cursor=pointer]:
+                - /url: /books
+            - listitem [ref=e621]:
+              - link "Blog" [ref=e622] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e623]:
+          - heading "Connect" [level=3] [ref=e624]
+          - generic [ref=e625]:
+            - link "Facebook" [ref=e626] [cursor=pointer]:
+              - /url: https://facebook.com/bucketlistdoctor
+              - img [ref=e627]
+            - link "Instagram" [ref=e629] [cursor=pointer]:
+              - /url: https://instagram.com/bucketlistdoctor
+              - img [ref=e630]
+            - link "LinkedIn" [ref=e632] [cursor=pointer]:
+              - /url: https://linkedin.com/in/drdesarbo
+              - img [ref=e633]
+      - generic [ref=e636]:
+        - link "Site Created by Why Not Us Labs" [ref=e638] [cursor=pointer]:
+          - /url: https://whynotus.ai
+          - generic [ref=e639]: Site Created by
+          - generic [ref=e640]: Why Not Us Labs
+          - img [ref=e641]
+        - paragraph [ref=e643]: © 2025 Dr. Jeffrey DeSarbo. All rights reserved.
+  - alert [ref=e644]
+```
