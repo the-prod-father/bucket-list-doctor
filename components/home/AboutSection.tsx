@@ -45,7 +45,7 @@ export default function AboutSection() {
             </p>
 
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Having traveled to all seven continents and completed hundreds of bucket list experiences, Dr. D combines personal adventure with scientific research to demonstrate how bucket lists literally rewire our brains for success, happiness, and resilience.
+              Having traveled to all seven continents and completed hundreds of bucket list experiences. Dr. D combines personal adventure with scientific research to demonstrate how bucket lists literally rewire our brains for success, happiness, and resilience.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
