@@ -293,6 +293,7 @@ export default function SpeakingPage() {
                 <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Workshop Leader</span>
                 <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-semibold">Medical Educator</span>
                 <span className="bg-pink-100 text-pink-800 px-4 py-2 rounded-full text-sm font-semibold">Cruise/Destination Speaker</span>
+                <span className="bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold">Corporate Events/Performance</span>
               </div>
             </div>
           </div>
