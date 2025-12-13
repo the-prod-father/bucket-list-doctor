@@ -12,41 +12,40 @@ interface MediaAppearance {
 }
 
 export default function MediaAppearances() {
-  const [hoveredMedia, setHoveredMedia] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [mediaAppearances, setMediaAppearances] = useState<MediaAppearance[]>([]);
   const [loading, setLoading] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Fallback hardcoded data (for backwards compatibility)
+  // Fallback hardcoded data - matches Speakers page exactly
   const fallbackMedia = [
     {
       id: '1',
-      name: 'Newsday',
-      logo_url: '/images/speaker/newsday-banner.png',
-      type: 'print',
-      gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+      name: 'Fox 5',
+      logo_url: '/images/speaker/fox-5-top.png',
+      type: 'tv',
+      gradient: 'from-red-500 via-blue-500 to-red-500',
     },
     {
       id: '2',
-      name: 'Doctor Radio / Sirius XM',
-      logo_url: '/images/speaker/doctor-radio-siriusxm.png',
-      type: 'radio',
-      gradient: 'from-purple-500 via-pink-500 to-red-500',
+      name: 'NBC News Now',
+      logo_url: '/images/speaker/NBC-NEWS-NOW.png',
+      type: 'tv',
+      gradient: 'from-yellow-500 via-green-500 to-blue-500',
     },
     {
       id: '3',
-      name: 'WJR Radio',
-      logo_url: '/images/speaker/wjr-radio-banner.png',
+      name: 'WBAP',
+      logo_url: '/images/speaker/WBAP.png',
       type: 'radio',
-      gradient: 'from-orange-500 via-red-500 to-pink-500',
+      gradient: 'from-red-500 via-white to-blue-500',
     },
     {
       id: '4',
-      name: 'KOA Radio',
-      logo_url: '/images/speaker/koa-radio-banner.png',
+      name: '700 WLW',
+      logo_url: '/images/speaker/700-WLW.png',
       type: 'radio',
-      gradient: 'from-green-500 via-emerald-500 to-cyan-500',
+      gradient: 'from-red-500 via-orange-500 to-yellow-500',
     },
     {
       id: '5',
@@ -57,10 +56,73 @@ export default function MediaAppearances() {
     },
     {
       id: '6',
+      name: 'Doctor Radio / Sirius XM',
+      logo_url: '/images/speaker/doctor-radio-siriusxm.png',
+      type: 'radio',
+      gradient: 'from-purple-500 via-pink-500 to-red-500',
+    },
+    {
+      id: '7',
+      name: 'Newsday',
+      logo_url: '/images/speaker/newsday-banner.png',
+      type: 'print',
+      gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+    },
+    {
+      id: '8',
+      name: 'WJR Radio',
+      logo_url: '/images/speaker/wjr-radio-banner.png',
+      type: 'radio',
+      gradient: 'from-orange-500 via-red-500 to-pink-500',
+    },
+    {
+      id: '9',
+      name: 'KOA Radio',
+      logo_url: '/images/speaker/koa-radio-banner.png',
+      type: 'radio',
+      gradient: 'from-green-500 via-emerald-500 to-cyan-500',
+    },
+    {
+      id: '10',
       name: 'WBZ News Radio',
       logo_url: '/images/speaker/wbz-news-radio.png',
       type: 'radio',
       gradient: 'from-blue-500 via-indigo-500 to-purple-500',
+    },
+    {
+      id: '11',
+      name: 'KTRS 550 ABC News Radio',
+      logo_url: '/images/media/ktrs-550-abc-news-radio-logo.png',
+      type: 'radio',
+      gradient: 'from-blue-500 via-red-500 to-blue-500',
+    },
+    {
+      id: '12',
+      name: 'News 12 Long Island',
+      logo_url: '/images/media/news12-long-island-logo.png',
+      type: 'tv',
+      gradient: 'from-red-500 via-orange-500 to-yellow-500',
+    },
+    {
+      id: '13',
+      name: 'WICC Radio',
+      logo_url: '/images/media/wicc-logo.png',
+      type: 'radio',
+      gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+    },
+    {
+      id: '14',
+      name: 'Fox 5 Washington DC',
+      logo_url: '/images/speaker/fox-5-end.png',
+      type: 'tv',
+      gradient: 'from-red-500 via-blue-500 to-red-500',
+    },
+    {
+      id: '15',
+      name: 'Connecticut Today',
+      logo_url: '/images/media/connecticut-today-logo.png',
+      type: 'radio',
+      gradient: 'from-blue-500 via-gray-500 to-blue-500',
     },
   ];
 
@@ -141,71 +203,21 @@ export default function MediaAppearances() {
           </p>
         </div>
 
-        {/* Media Logos Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center mb-16">
+        {/* Media Logos Grid - matches Speakers page exactly */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-16">
           {mediaAppearances.map((media, index) => (
             <div
               key={media.name}
-              className={`group relative w-full transform transition-all duration-700 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              onMouseEnter={() => setHoveredMedia(index)}
-              onMouseLeave={() => setHoveredMedia(null)}
+              className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 flex items-center justify-center h-32"
             >
-              {/* Glow effect on hover */}
-              <div
-                className={`absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 bg-gradient-to-r ${media.gradient}`}
-                style={{ zIndex: -1 }}
+              <Image
+                src={media.logo_url}
+                alt={media.name}
+                width={150}
+                height={80}
+                className="max-w-full max-h-full object-contain"
+                unoptimized
               />
-
-              {/* Main card */}
-              <div className={`
-                relative flex items-center justify-center p-8 bg-white rounded-2xl
-                transition-all duration-500
-                ${hoveredMedia === index ? 'shadow-2xl -translate-y-2 scale-105' : 'shadow-lg'}
-                border border-gray-100 group-hover:border-transparent
-                h-32
-              `}>
-                {/* Animated gradient border */}
-                <div className={`
-                  absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                  bg-gradient-to-r ${media.gradient} p-[2px]
-                `}>
-                  <div className="h-full w-full bg-white rounded-2xl" />
-                </div>
-
-                {/* Logo with enhanced transitions */}
-                <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <Image
-                    src={media.logo_url}
-                    alt={media.name}
-                    width={200}
-                    height={100}
-                    className={`
-                      w-full h-auto object-contain max-h-20
-                      transition-all duration-500
-                      ${hoveredMedia === index ? 'grayscale-0 scale-110' : 'grayscale opacity-70'}
-                    `}
-                  />
-                </div>
-
-                {/* Bottom accent bar */}
-                <div className={`
-                  absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${media.gradient}
-                  transition-all duration-500 origin-left
-                  ${hoveredMedia === index ? 'scale-x-100' : 'scale-x-0'}
-                `} />
-
-                {/* Animated particles on hover */}
-                {hoveredMedia === index && (
-                  <>
-                    <div className="absolute top-4 left-4 w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-ping" />
-                    <div className="absolute top-6 right-8 w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
-                    <div className="absolute bottom-8 left-6 w-1.5 h-1.5 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-                  </>
-                )}
-              </div>
             </div>
           ))}
         </div>
