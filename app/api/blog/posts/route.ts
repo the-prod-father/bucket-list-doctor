@@ -4,17 +4,25 @@ import { Client } from 'pg';
 // Force dynamic rendering - don't cache API responses
 export const dynamic = 'force-dynamic';
 
-/**
- * Get Published Blog Posts API
- * Fetches all published blog posts for public display
- */
-export async function GET() {
-  const client = new Client({
+// Allow self-signed certificates in serverless environments (Vercel)
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+// PostgreSQL client factory
+function getClient() {
+  return new Client({
     connectionString: process.env.POSTGRES_URL_NON_POOLING,
     ssl: {
       rejectUnauthorized: false,
     },
   });
+}
+
+/**
+ * Get Published Blog Posts API
+ * Fetches all published blog posts for public display
+ */
+export async function GET() {
+  const client = getClient();
 
   try {
     await client.connect();
