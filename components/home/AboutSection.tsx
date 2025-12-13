@@ -54,7 +54,7 @@ export default function AboutSection() {
                   <FaStethoscope className="w-10 h-10 text-brand-blue" />
                 </div>
                 <h4 className="font-bold text-gray-900">Medical Doctor</h4>
-                <p className="text-sm text-gray-600">Board Certified</p>
+                <p className="text-sm text-gray-600">Neuropsychiatrist</p>
               </div>
               <div className="text-center">
                 <div className="flex justify-center mb-2">
