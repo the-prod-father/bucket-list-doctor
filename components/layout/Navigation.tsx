@@ -2,11 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -18,6 +21,13 @@ export default function Navigation() {
     { href: '/newsletter', label: 'Articles' },
     { href: '/blog', label: 'Videos & Media' },
   ];
+
+  // Prefetch all routes on mount for instant navigation
+  useEffect(() => {
+    navLinks.forEach(link => {
+      router.prefetch(link.href);
+    });
+  }, [router]);
 
 
   return (
