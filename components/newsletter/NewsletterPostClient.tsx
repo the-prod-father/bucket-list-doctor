@@ -50,18 +50,63 @@ export default function NewsletterPostClient({ slug }: { slug: string }) {
 
   const fetchPost = useCallback(async () => {
     try {
-      const response = await fetch(`/api/blog/${slug}`);
+      // Add cache-busting and ensure fresh data
+      const response = await fetch(`/api/blog/${slug}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+        },
+      });
+      
       if (response.ok) {
         const data = await response.json();
         setPost(data.post);
+        setError(null); // Clear any previous errors
       } else if (response.status === 404) {
         setError('Post not found');
       } else {
-        setError('Failed to load post');
+        // Retry once for transient errors
+        console.warn(`Failed to fetch post (${response.status}), retrying...`);
+        const retryResponse = await fetch(`/api/blog/${slug}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+          },
+        });
+        
+        if (retryResponse.ok) {
+          const retryData = await retryResponse.json();
+          setPost(retryData.post);
+          setError(null);
+        } else {
+          setError('Failed to load post. Please try refreshing the page.');
+        }
       }
     } catch (err) {
       console.error('Error fetching post:', err);
-      setError('Failed to load post');
+      // Retry once on network errors
+      try {
+        const retryResponse = await fetch(`/api/blog/${slug}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+          },
+        });
+        
+        if (retryResponse.ok) {
+          const retryData = await retryResponse.json();
+          setPost(retryData.post);
+          setError(null);
+        } else {
+          setError('Failed to load post. Please try refreshing the page.');
+        }
+      } catch (retryErr) {
+        console.error('Retry also failed:', retryErr);
+        setError('Failed to load post. Please try refreshing the page.');
+      }
     } finally {
       setLoading(false);
     }

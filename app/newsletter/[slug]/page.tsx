@@ -2,6 +2,11 @@ import { Metadata } from 'next';
 import { Client } from 'pg';
 import NewsletterPostClient from '@/components/newsletter/NewsletterPostClient';
 
+// Force dynamic rendering - don't cache or statically generate these pages
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true; // Allow dynamic params that weren't generated at build time
+export const revalidate = 0; // Never cache
+
 // Allow self-signed certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
@@ -68,14 +73,15 @@ function extractImageFromHtml(html: string): string | null {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  try {
+    const post = await getPost(params.slug);
 
-  if (!post) {
-    return {
-      title: 'Post Not Found | Bucket List Doctor',
-      description: 'The article you are looking for could not be found.',
-    };
-  }
+    if (!post) {
+      return {
+        title: 'Post Not Found | Bucket List Doctor',
+        description: 'The article you are looking for could not be found.',
+      };
+    }
 
   // Determine the best image to use for Open Graph
   const ogImage = post.featured_image_url
@@ -115,6 +121,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       creator: '@bucketlistdoc',
     },
   };
+  } catch (error) {
+    // If metadata generation fails, return fallback metadata
+    // This prevents the page from failing during static generation
+    console.error('Error generating metadata for newsletter post:', error);
+    return {
+      title: 'Article | Bucket List Doctor',
+      description: 'Read articles from Dr. Jeffrey DeSarbo on neuroscience and bucket lists.',
+    };
+  }
 }
 
 export default function NewsletterPostPage({ params }: { params: { slug: string } }) {

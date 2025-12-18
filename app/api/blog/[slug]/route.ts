@@ -38,10 +38,14 @@ export async function GET(
     );
 
     if (result.rows.length === 0) {
-      return NextResponse.json(
+      const notFoundResponse = NextResponse.json(
         { error: 'Post not found' },
         { status: 404 }
       );
+      // Don't cache 404s - the post might be published later
+      notFoundResponse.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+      notFoundResponse.headers.set('Pragma', 'no-cache');
+      return notFoundResponse;
     }
 
     const post = result.rows[0];
@@ -55,7 +59,12 @@ export async function GET(
     // Return post with incremented view count
     post.view_count = post.view_count + 1;
 
-    return NextResponse.json({ post });
+    // Set cache headers to prevent stale data
+    const response = NextResponse.json({ post });
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
+    return response;
   } catch (error) {
     console.error('Error fetching blog post:', error);
     return NextResponse.json(
