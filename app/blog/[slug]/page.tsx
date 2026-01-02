@@ -5,6 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaArrowLeft, FaCalendar, FaEye } from 'react-icons/fa';
 
+// Force dynamic rendering - don't cache or statically generate these pages
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true; // Allow dynamic params that weren't generated at build time
+export const revalidate = 0; // Never cache
+
 interface BlogPost {
   id: string;
   title: string;
@@ -71,38 +76,47 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getBlogPost(params.slug);
+  try {
+    const post = await getBlogPost(params.slug);
 
-  if (!post) {
+    if (!post) {
+      return {
+        title: 'Post Not Found | Bucket List Doctor Blog',
+        description: 'The article you are looking for could not be found.',
+      };
+    }
+
     return {
-      title: 'Post Not Found',
+      title: `${post.title} | Bucket List Doctor Blog`,
+      description: post.meta_description || post.excerpt || `Read ${post.title} on the Bucket List Doctor blog`,
+      openGraph: {
+        title: post.title,
+        description: post.meta_description || post.excerpt || undefined,
+        images: post.featured_image_url ? [
+          {
+            url: post.featured_image_url,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          }
+        ] : undefined,
+        type: 'article',
+        publishedTime: post.published_at,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.meta_description || post.excerpt || undefined,
+        images: post.featured_image_url ? [post.featured_image_url] : undefined,
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata for blog post:', error);
+    return {
+      title: 'Article | Bucket List Doctor Blog',
+      description: 'Read articles from Dr. Jeffrey DeSarbo on neuroscience and bucket lists.',
     };
   }
-
-  return {
-    title: `${post.title} | Bucket List Doctor Blog`,
-    description: post.meta_description || post.excerpt || `Read ${post.title} on the Bucket List Doctor blog`,
-    openGraph: {
-      title: post.title,
-      description: post.meta_description || post.excerpt || undefined,
-      images: post.featured_image_url ? [
-        {
-          url: post.featured_image_url,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        }
-      ] : undefined,
-      type: 'article',
-      publishedTime: post.published_at,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.meta_description || post.excerpt || undefined,
-      images: post.featured_image_url ? [post.featured_image_url] : undefined,
-    },
-  };
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
