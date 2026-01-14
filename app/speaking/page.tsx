@@ -161,8 +161,13 @@ export default function SpeakingPage() {
     { name: 'KTRS 550 ABC News Radio', logo: '/images/media/ktrs-550-abc-news-radio-logo.png' },
     { name: 'News 12 Long Island', logo: '/images/media/news12-long-island-logo.png' },
     { name: 'WICC Radio', logo: '/images/media/wicc-logo.png' },
-    { name: 'Fox 5', logo: '/images/speaker/fox-5-end.png' },
     { name: 'Connecticut Today', logo: '/images/media/connecticut-today-logo.png' },
+    { name: 'WGY News Radio', logo: '/images/media/wgy-news-radio.png' },
+    { name: 'WIOD News Radio', logo: '/images/media/wiod-news-radio.png' },
+    { name: 'KFBK NewsTalk', logo: '/images/media/kfbk-news-talk.png' },
+    { name: 'KSRM Radio', logo: '/images/media/ksrm-radio.png' },
+    { name: 'WHNZ Radio', logo: '/images/media/whnz-radio.png' },
+    { name: 'Radio Ritmo WPIK', logo: '/images/media/wpik-radio-ritmo.png' },
   ];
 
   // Upcoming appearances - Jeff can update these or we can add admin functionality
@@ -299,7 +304,7 @@ export default function SpeakingPage() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8 max-w-5xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 text-center">
               <FaGlobe className="w-8 h-8 mx-auto mb-2 text-brand-blue" />
               <div className="text-3xl font-bold text-gray-900">25+</div>
@@ -311,15 +316,112 @@ export default function SpeakingPage() {
               <div className="text-sm text-gray-600">& International</div>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 text-center">
+              <FaBroadcastTower className="w-8 h-8 mx-auto mb-2 text-brand-pink" />
+              <div className="text-3xl font-bold text-gray-900">350+</div>
+              <div className="text-sm text-gray-600">Media Appearances</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 text-center">
               <FaUsers className="w-8 h-8 mx-auto mb-2 text-brand-teal" />
               <div className="text-3xl font-bold text-gray-900">Public</div>
               <div className="text-sm text-gray-600">& Professional</div>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-100 text-center">
-              <FaCalendar className="w-8 h-8 mx-auto mb-2 text-brand-pink" />
+              <FaCalendar className="w-8 h-8 mx-auto mb-2 text-brand-yellow" />
               <div className="text-3xl font-bold text-gray-900">Flexible</div>
               <div className="text-sm text-gray-600">Scheduling</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Talk Category Boxes */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Explore <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Speaking Topics</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Click a category to explore presentations tailored to your audience
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Life Enrichment */}
+            <a
+              href="#life-enrichment"
+              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/80 to-cyan-600/80 z-10" />
+              <Image
+                src="/images/speaking/icon-life-brain.png"
+                alt="Life Enrichment"
+                width={300}
+                height={300}
+                className="w-full h-48 object-contain bg-white p-4"
+              />
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
+                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Life Enrichment</h3>
+                <p className="text-sm text-white/90 text-center hidden md:block">General Audience</p>
+              </div>
+            </a>
+
+            {/* Corporate */}
+            <a
+              href="#corporate"
+              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/80 to-pink-600/80 z-10" />
+              <Image
+                src="/images/speaking/icon-corporate-bucket.png"
+                alt="Corporate"
+                width={300}
+                height={300}
+                className="w-full h-48 object-contain bg-white p-4"
+              />
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
+                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Corporate</h3>
+                <p className="text-sm text-white/90 text-center hidden md:block">Leadership & Performance</p>
+              </div>
+            </a>
+
+            {/* Cruise */}
+            <a
+              href="#cruise"
+              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/80 to-green-600/80 z-10" />
+              <Image
+                src="/images/speaking/icon-cruise-ship.png"
+                alt="Cruise"
+                width={300}
+                height={300}
+                className="w-full h-48 object-contain bg-white p-4"
+              />
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
+                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Cruise</h3>
+                <p className="text-sm text-white/90 text-center hidden md:block">Travel Enrichment</p>
+              </div>
+            </a>
+
+            {/* Medical */}
+            <a
+              href="#medical"
+              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/80 to-orange-600/80 z-10" />
+              <Image
+                src="/images/speaking/icon-medical-brain.png"
+                alt="Medical"
+                width={300}
+                height={300}
+                className="w-full h-48 object-contain bg-white p-4"
+              />
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
+                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Medical</h3>
+                <p className="text-sm text-white/90 text-center hidden md:block">Professional & Physician</p>
+              </div>
+            </a>
           </div>
         </div>
       </section>
@@ -350,6 +452,165 @@ export default function SpeakingPage() {
                   className="max-w-full max-h-full object-contain"
                   unoptimized
                 />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Talk Category Detail Sections */}
+      {/* Life Enrichment Section */}
+      <section id="life-enrichment" className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-cyan-50 scroll-mt-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl mb-6 shadow-xl">
+              <Image src="/images/speaking/icon-life-brain.png" alt="Life Enrichment" width={60} height={60} className="object-contain" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Life Enrichment & <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">General Audience</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Engaging presentations for anyone curious about brain science and living a more fulfilling life
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: 'The Neuroscience of a Bucket List', desc: 'Understanding the science and brain benefits of engaging in a bucket list lifestyle' },
+              { title: 'Brain Science for the Curious', desc: 'An entertaining and informative discussion on the brain for a general audience' },
+              { title: 'Your Brain on Adventure', desc: 'Neuroscience of novelty, growth, and how new experiences change and benefit your brain' },
+              { title: 'Building a Life Worth Living', desc: 'The science behind living a meaningful and purposeful life' },
+              { title: 'The Psychology of Bucket Lists', desc: 'An exploration of who and why people make bucket lists' },
+              { title: 'Goal-Setting for Success', desc: 'A step-by-step guide to setting and achieving goals' },
+              { title: 'Rewire Your Brain, Transform Your Life', desc: 'How goal-setting and purposeful living spark neuroplasticity' },
+              { title: 'Fulfillment, Purpose, and Happiness', desc: 'Using neuroscience as a roadmap for wellness and a fulfilling life' },
+            ].map((talk, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <FaCheckCircle className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">{talk.title}</h3>
+                    <p className="text-gray-600 text-sm">{talk.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate Section */}
+      <section id="corporate" className="py-16 md:py-24 bg-gradient-to-br from-purple-50 to-pink-50 scroll-mt-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-6 shadow-xl">
+              <Image src="/images/speaking/icon-corporate-bucket.png" alt="Corporate" width={60} height={60} className="object-contain" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Corporate, Leadership & <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">High-Performance</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Science-backed strategies for peak performance, motivation, and sustainable success
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: 'The Neuroscience of Motivation', desc: 'Mental mastery, focus, and productivity for high performance' },
+              { title: 'Peak Performance Brain Hacks', desc: 'Cognitive strategies for achieving peak mental performance' },
+              { title: 'Psychology of Motivation & Goal Setting', desc: 'Understanding the science behind effective goals and sustained motivation' },
+              { title: 'Building a High-Performance Culture', desc: 'Creating environments that support cognitive performance' },
+              { title: 'Preventing Burnout', desc: 'The neuroscience of sustainable success and workplace wellness' },
+              { title: 'The Stress-Proof Brain', desc: 'Neuroscience-based strategies for managing stress for high achievers' },
+              { title: 'Leadership & Decision-Making', desc: 'How to make better decisions under pressure using brain science' },
+              { title: 'Creating a Burnout-Resistant Workforce', desc: 'Promoting workplace wellness through neuroscience insights' },
+            ].map((talk, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <FaCheckCircle className="w-6 h-6 text-purple-500 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">{talk.title}</h3>
+                    <p className="text-gray-600 text-sm">{talk.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cruise Section */}
+      <section id="cruise" className="py-16 md:py-24 bg-gradient-to-br from-teal-50 to-green-50 scroll-mt-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl mb-6 shadow-xl">
+              <Image src="/images/speaking/icon-cruise-ship.png" alt="Cruise" width={60} height={60} className="object-contain" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Cruise & <span className="bg-gradient-to-r from-teal-600 to-green-600 bg-clip-text text-transparent">Travel Enrichment</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Perfect for cruise lines, travel groups, and adventure seekers
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: 'The Bucket List Doctor\'s Guide to Travel', desc: 'How travel enhances brain health and wellness' },
+              { title: 'The Brain Science Behind Your Best Trip', desc: 'How travel impacts the brain and how to maximize cognitive benefits' },
+              { title: 'Unlocking Your Brain\'s Potential', desc: 'Using travel as a tool for cognitive health and growth' },
+              { title: 'Travel as Medicine', desc: 'The therapeutic effects of exploration on the brain' },
+              { title: 'Why Travel is the Ultimate Bucket List', desc: 'Understanding the science behind adventure travel' },
+              { title: 'Creating Your Perfect Bucket List', desc: 'A step-by-step workshop for planning and prioritizing adventures' },
+              { title: 'Exploring the World, One Bucket List at a Time', desc: 'Combining neuroscience insights with travel inspiration' },
+              { title: 'Jet Lag and Your Brain', desc: 'Cognitive strategies for managing travel fatigue' },
+              { title: 'Neuroscience of Exploration at Sea', desc: 'Custom talk for cruise ships on wellness and fulfillment' },
+              { title: 'Brain Health at Any Age', desc: 'Cognitive wellness insights for lifelong explorers' },
+            ].map((talk, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-lg border border-teal-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <FaCheckCircle className="w-6 h-6 text-teal-500 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">{talk.title}</h3>
+                    <p className="text-gray-600 text-sm">{talk.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Medical Section */}
+      <section id="medical" className="py-16 md:py-24 bg-gradient-to-br from-red-50 to-orange-50 scroll-mt-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl mb-6 shadow-xl">
+              <Image src="/images/speaking/icon-medical-brain.png" alt="Medical" width={60} height={60} className="object-contain" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Medical, Professional & <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Physician-Focused</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Evidence-based presentations for healthcare professionals and medical conferences
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: 'Brain Health and Bucket Lists', desc: 'A clinical look at lifestyle psychiatry and the intersection of adventure, goals and mental health' },
+              { title: 'Optimizing Brain Function for Clinicians', desc: 'Strategies for healthcare professionals to maintain cognitive sharpness' },
+              { title: 'Preventing Physician Burnout', desc: 'Addressing the mental health crisis among medical professionals' },
+              { title: 'Neuroscience and the Art of Healing', desc: 'How the brain-body connection impacts patient care' },
+              { title: 'Bucket Lists for Recovery', desc: 'A neuroscience approach to incorporating purposeful living into treatment' },
+              { title: 'Cultural Psychiatry', desc: 'Exploring mental health across diverse populations and communities' },
+              { title: 'Brain Health and Aging', desc: 'What clinicians need to know about cognitive health across the lifespan' },
+              { title: 'The Brain and Eating Disorders', desc: 'Evidence-based treatment approaches from a neuroscience perspective' },
+            ].map((talk, i) => (
+              <div key={i} className="bg-white rounded-xl p-6 shadow-lg border border-red-100 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <FaCheckCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">{talk.title}</h3>
+                    <p className="text-gray-600 text-sm">{talk.desc}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

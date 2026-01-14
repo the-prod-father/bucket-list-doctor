@@ -77,11 +77,11 @@ export default function AboutPage() {
               </h1>
               <div className="flex items-center justify-center md:justify-start mb-6">
                 <Image
-                  src="/images/profile/trademark.png"
-                  alt="Trademark"
-                  width={120}
-                  height={40}
-                  className="h-8 md:h-10 w-auto"
+                  src="/images/profile/trademark-new.png"
+                  alt="Bucket List Doctor"
+                  width={300}
+                  height={80}
+                  className="h-12 md:h-16 w-auto"
                   unoptimized
                 />
               </div>
