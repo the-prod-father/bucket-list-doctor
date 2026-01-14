@@ -35,19 +35,16 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 sm:h-20 md:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 group flex-shrink-0 min-w-0 pr-2 sm:pr-4">
-            <div className="relative w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 lg:w-16 lg:h-16 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/30 to-brand-purple/30 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <Link href="/" className="flex items-center group flex-shrink-0 min-w-0 pr-2 sm:pr-4">
+            <div className="relative h-10 sm:h-12 md:h-14 lg:h-16 w-auto flex-shrink-0 transition-all duration-300 group-hover:scale-105">
               <Image
-                src="/images/logos/bucketlistdoctor-logo.webp"
-                alt="Bucket List Doctor Logo"
-                fill
-                className="object-contain relative z-10 drop-shadow-lg"
+                src="/images/logos/bucketlistdoctor-logo-new.png"
+                alt="Bucket List Doctor"
+                width={280}
+                height={80}
+                className="h-full w-auto object-contain drop-shadow-lg"
                 priority
               />
-            </div>
-            <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-display font-bold text-white group-hover:text-brand-yellow transition-colors duration-300 whitespace-nowrap flex-shrink-0 leading-tight">
-              Bucket List Doctor
             </div>
           </Link>
 
