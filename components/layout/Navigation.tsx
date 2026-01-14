@@ -51,32 +51,32 @@ export default function Navigation() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-3 lg:gap-4 xl:gap-5 flex-shrink-0">
+          {/* Desktop Nav - shows at lg (1024px) and up */}
+          <div className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/90 hover:text-white transition-colors font-medium text-xs md:text-sm lg:text-base whitespace-nowrap flex-shrink-0 px-1.5 md:px-2 py-1.5 rounded-md hover:bg-white/10"
+                className="text-white/90 hover:text-white transition-colors font-medium text-sm xl:text-base whitespace-nowrap flex-shrink-0 px-2 xl:px-3 py-1.5 rounded-md hover:bg-white/10"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile/Tablet Menu Button - shows below lg (1024px) */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2 flex-shrink-0 ml-2 sm:ml-3"
+            className="lg:hidden text-white p-2 flex-shrink-0 ml-2 sm:ml-3"
             aria-label="Toggle menu"
           >
             {isOpen ? <FaTimes size={22} className="sm:w-6 sm:h-6" /> : <FaBars size={22} className="sm:w-6 sm:h-6" />}
           </button>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile/Tablet Nav */}
         {isOpen && (
-          <div className="md:hidden pb-4 pt-2 border-t border-white/10">
+          <div className="lg:hidden pb-4 pt-2 border-t border-white/10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
