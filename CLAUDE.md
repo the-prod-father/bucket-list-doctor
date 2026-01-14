@@ -18,6 +18,18 @@ npm run lint       # Lint the code
 
 **Note:** Default port is **9000** for both dev and production.
 
+### Testing (Playwright)
+
+```bash
+npm run test         # Run all Playwright tests
+npm run test:ui      # Run tests with Playwright UI
+npm run test:debug   # Run tests in debug mode
+npm run test:headed  # Run tests in headed browser mode
+npm run test:report  # Show HTML test report
+```
+
+Tests run against port 9000 and auto-start the dev server if not running.
+
 ## Architecture Overview
 
 ### Tech Stack
@@ -109,6 +121,19 @@ Dr. DeSarbo's 4-site portfolio with thumbnail navigation:
 - **ed-180.com** - Eating disorder resources
 
 The `CrossSiteNavigation` component handles these connections.
+
+## Dynamic Route Pattern (Important!)
+
+For dynamic routes that fetch from the database (like `/blog/[slug]` and `/newsletter/[slug]`), always include these exports to prevent sporadic 404 errors:
+
+```typescript
+// Force dynamic rendering - don't cache or statically generate these pages
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true; // Allow dynamic params not generated at build time
+export const revalidate = 0; // Never cache
+```
+
+Also wrap `generateMetadata()` in a try-catch with fallback metadata to handle database errors gracefully.
 
 ## Known Issues
 
