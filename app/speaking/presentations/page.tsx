@@ -194,7 +194,7 @@ export default function PresentationsPage() {
 
         {/* Hero Intro */}
         <div className="mb-10 md:mb-14">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 italic">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Distinctively Unique Talks from a Physician with an Equally Unique Background.
           </h1>
           <p className="text-gray-700 leading-relaxed text-base md:text-lg">
