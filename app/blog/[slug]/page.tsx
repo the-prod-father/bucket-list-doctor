@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Client } from 'pg';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaArrowLeft, FaCalendar, FaEye } from 'react-icons/fa';
+import { withRetryOrNull } from '@/lib/db/retry';
 
 // Force dynamic rendering - don't cache or statically generate these pages
 export const dynamic = 'force-dynamic';
@@ -40,17 +40,9 @@ const normalizeImageUrl = (value: string | null): string | null => {
   return BLOG_FALLBACK_IMAGE;
 };
 
+// Server-side data fetching with retry logic
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const client = new Client({
-    connectionString: process.env.POSTGRES_URL_NON_POOLING,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
-
-  try {
-    await client.connect();
-
+  return withRetryOrNull(async (client) => {
     const result = await client.query(
       'SELECT * FROM blog_posts WHERE slug = $1 AND status = $2',
       [slug, 'published']
@@ -67,12 +59,7 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
     );
 
     return result.rows[0];
-  } catch (error) {
-    console.error('Error fetching blog post:', error);
-    return null;
-  } finally {
-    await client.end();
-  }
+  });
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {

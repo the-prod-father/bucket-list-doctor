@@ -1,14 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaArrowRight, FaCalendar } from 'react-icons/fa';
-import { Client } from 'pg';
+import { withRetryOrEmpty } from '@/lib/db/retry';
 import VideoSection from './VideoSection';
 
 // Force dynamic rendering for fresh data
 export const dynamic = 'force-dynamic';
-
-// Allow self-signed certificates
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 interface BlogPost {
   id: string;
@@ -37,15 +34,9 @@ const normalizeImageUrl = (value: string | null): string | null => {
   return BLOG_FALLBACK_IMAGE;
 };
 
-// Server-side data fetching - no loading spinner needed!
+// Server-side data fetching with retry logic
 async function getBlogPosts(): Promise<BlogPost[]> {
-  const client = new Client({
-    connectionString: process.env.POSTGRES_URL_NON_POOLING,
-    ssl: { rejectUnauthorized: false },
-  });
-
-  try {
-    await client.connect();
+  return withRetryOrEmpty(async (client) => {
     const result = await client.query(`
       SELECT
         id,
@@ -60,12 +51,7 @@ async function getBlogPosts(): Promise<BlogPost[]> {
       ORDER BY published_at DESC
     `);
     return result.rows;
-  } catch (error) {
-    console.error('Error fetching blog posts:', error);
-    return [];
-  } finally {
-    await client.end();
-  }
+  });
 }
 
 export default async function BlogPage() {

@@ -1,24 +1,11 @@
 import { Metadata } from 'next';
-import { Client } from 'pg';
 import NewsletterPostClient from '@/components/newsletter/NewsletterPostClient';
+import { withRetryOrNull } from '@/lib/db/retry';
 
 // Force dynamic rendering - don't cache or statically generate these pages
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true; // Allow dynamic params that weren't generated at build time
 export const revalidate = 0; // Never cache
-
-// Allow self-signed certificates
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
-// PostgreSQL client
-function getClient() {
-  return new Client({
-    connectionString: process.env.POSTGRES_URL_NON_POOLING,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
-}
 
 interface BlogPost {
   id: string;
@@ -35,12 +22,9 @@ interface BlogPost {
   meta_description: string | null;
 }
 
+// Server-side data fetching with retry logic
 async function getPost(slug: string): Promise<BlogPost | null> {
-  const client = getClient();
-
-  try {
-    await client.connect();
-
+  return withRetryOrNull(async (client) => {
     const result = await client.query(
       `SELECT
         id, title, slug, excerpt, content, status,
@@ -56,12 +40,7 @@ async function getPost(slug: string): Promise<BlogPost | null> {
     }
 
     return result.rows[0];
-  } catch (error) {
-    console.error('Error fetching blog post for metadata:', error);
-    return null;
-  } finally {
-    await client.end();
-  }
+  });
 }
 
 function extractImageFromHtml(html: string): string | null {
