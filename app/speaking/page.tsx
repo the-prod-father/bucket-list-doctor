@@ -347,81 +347,61 @@ export default function SpeakingPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Life Enrichment */}
             <Link
               href="/speaking/life-enrichment"
-              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+              className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/80 to-cyan-600/80 z-10" />
               <Image
-                src="/images/speaking/icon-life-brain.png"
-                alt="Life Enrichment"
-                width={300}
-                height={300}
-                className="w-full h-48 object-contain bg-white p-4"
+                src="/images/speaking/life-enrichment.png"
+                alt="Life Enrichment & General Audience Presentations - Click Here"
+                width={658}
+                height={494}
+                className="w-full h-auto"
               />
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
-                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Life Enrichment</h3>
-                <p className="text-sm text-white/90 text-center hidden md:block">General Audience</p>
-              </div>
             </Link>
 
             {/* Corporate */}
             <Link
               href="/speaking/corporate"
-              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+              className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/80 to-pink-600/80 z-10" />
               <Image
-                src="/images/speaking/icon-corporate-bucket.png"
-                alt="Corporate"
-                width={300}
-                height={300}
-                className="w-full h-48 object-contain bg-white p-4"
+                src="/images/speaking/corporate.png"
+                alt="Corporate Team Building, Leadership, and Performance Presentations - Click Here"
+                width={658}
+                height={494}
+                className="w-full h-auto"
               />
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
-                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Corporate</h3>
-                <p className="text-sm text-white/90 text-center hidden md:block">Leadership & Performance</p>
-              </div>
-            </Link>
-
-            {/* Cruise */}
-            <Link
-              href="/speaking/cruise"
-              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/80 to-green-600/80 z-10" />
-              <Image
-                src="/images/speaking/icon-cruise-ship.png"
-                alt="Cruise"
-                width={300}
-                height={300}
-                className="w-full h-48 object-contain bg-white p-4"
-              />
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
-                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Cruise</h3>
-                <p className="text-sm text-white/90 text-center hidden md:block">Travel Enrichment</p>
-              </div>
             </Link>
 
             {/* Medical */}
             <Link
               href="/speaking/medical"
-              className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+              className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500/80 to-orange-600/80 z-10" />
               <Image
-                src="/images/speaking/icon-medical-brain.png"
-                alt="Medical"
-                width={300}
-                height={300}
-                className="w-full h-48 object-contain bg-white p-4"
+                src="/images/speaking/medical.png"
+                alt="Medical, Psychological, and Clinician-Focused Presentations - Click Here"
+                width={658}
+                height={494}
+                className="w-full h-auto"
               />
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white p-4">
-                <h3 className="text-lg md:text-xl font-bold text-center mb-2">Medical</h3>
-                <p className="text-sm text-white/90 text-center hidden md:block">Professional & Physician</p>
-              </div>
+            </Link>
+
+            {/* Cruise */}
+            <Link
+              href="/speaking/cruise"
+              className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
+            >
+              <Image
+                src="/images/speaking/cruise-travel.png"
+                alt="Cruise, Destination, and Travel Enrichment Presentations - Click Here"
+                width={658}
+                height={494}
+                className="w-full h-auto"
+              />
             </Link>
           </div>
         </div>
