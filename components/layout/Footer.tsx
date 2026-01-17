@@ -21,7 +21,7 @@ export default function Footer() {
             <div className="mb-4">
               <Image
                 src="/images/profile/trademark.png"
-                alt="Bucket List Doctor"
+                alt="Bucket List Doctor™"
                 width={150}
                 height={50}
                 className="h-10 w-auto"

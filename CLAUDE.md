@@ -28,7 +28,7 @@ npm run test:headed  # Run tests in headed browser mode
 npm run test:report  # Show HTML test report
 ```
 
-Tests run against port 9000 and auto-start the dev server if not running.
+Tests are in `/tests/` (`blog.spec.ts`, `homepage.spec.ts`, `visual-inspection.spec.ts`). They run against port 9000 and auto-start the dev server if not running.
 
 ## Architecture Overview
 
@@ -36,7 +36,7 @@ Tests run against port 9000 and auto-start the dev server if not running.
 - **Framework:** Next.js 14.2.3 (App Router)
 - **Database:** PostgreSQL via Supabase (direct `pg` client, not Supabase SDK for most operations)
 - **Auth:** NextAuth.js with credentials provider
-- **Email:** Resend API + Nodemailer SMTP
+- **Email:** SMTP (Nodemailer) for blog notifications (`lib/email/smtp.ts`), Resend API for manual newsletters
 - **Styling:** Tailwind CSS with custom brand colors
 - **3D Graphics:** @react-three/fiber for animated brain hero
 
@@ -45,10 +45,24 @@ Tests run against port 9000 and auto-start the dev server if not running.
 **Database Access:** Direct PostgreSQL connections via `pg` client (not Supabase SDK):
 ```typescript
 // lib/db/*.ts files use this pattern
-const client = new Client({ connectionString: process.env.POSTGRES_URL_NON_POOLING });
+const client = new Client({
+  connectionString: process.env.POSTGRES_URL_NON_POOLING,
+  ssl: { rejectUnauthorized: false }
+});
 ```
 
-**Authentication:** NextAuth.js with JWT strategy, custom credentials provider in `lib/auth.ts`. Admin routes protected via `getServerSession(authOptions)`.
+**Database Functions** (`lib/db/`):
+- `blog.ts` - `getAllBlogPosts()`, `getBlogPostBySlug()`, `createBlogPost()`, `updateBlogPost()`, `deleteBlogPost()`
+- `newsletter.ts` - `getAllSubscribers()`, `getActiveSubscribers()`, `unsubscribeEmail()`
+- `media.ts` - `getAllMediaAppearances()`, `createMediaAppearance()`, `updateMediaAppearance()`
+
+**Authentication:** NextAuth.js with JWT strategy, custom credentials provider in `lib/auth.ts`. Admin routes protected via:
+```typescript
+const session = await getServerSession(authOptions);
+if (!session) {
+  return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+}
+```
 
 **API Routes Structure:**
 - `/api/admin/*` - Protected routes requiring auth (blog CRUD, newsletter, media)
@@ -76,12 +90,13 @@ Images upload to `public/uploads/` locally. In production (Vercel's read-only fi
 ## Design System
 
 **Brand Colors** (in `tailwind.config.ts`):
-- `brand-navy`: #2B4C6F
+- `brand-navy`: #2B4C6F (also `brand-navy-light`: #3D5A7C, `brand-navy-dark`: #1A3A52)
 - `brand-blue`: #4A90E2
 - `brand-teal`: #50E3C2
 - `brand-purple`: #B968E0
 - `brand-pink`: #FF6B9D
 - `brand-yellow`: #FFD93D
+- `brand-cream`: #F5E6D3
 
 **Typography:** Inter (body), Montserrat (headings) via CSS variables.
 
@@ -98,8 +113,15 @@ NEXTAUTH_URL               # Site URL (https://bucketlistdoctor.com)
 NEXT_PUBLIC_SUPABASE_URL   # Supabase project URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 YOUTUBE_API_KEY            # For YouTube video fetching
-RESEND_API_KEY             # For email sending
+RESEND_API_KEY             # For manual newsletter sending (optional)
 NEXT_PUBLIC_GA_ID          # Google Analytics 4 (optional)
+
+# SMTP for automatic blog notifications
+SMTP_HOST                  # SMTP server (default: smtp.gmail.com)
+SMTP_PORT                  # SMTP port (default: 587)
+SMTP_USER                  # SMTP username
+SMTP_PASSWORD              # SMTP password
+SMTP_FROM                  # From email address
 ```
 
 ### Styling Conventions

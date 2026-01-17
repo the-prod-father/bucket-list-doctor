@@ -150,6 +150,8 @@ export default function SpeakingPage() {
   const mediaAppearances = [
     { name: 'Fox 5', logo: '/images/speaker/fox-5-top.png' },
     { name: 'NBC News Now', logo: '/images/speaker/NBC-NEWS-NOW.png' },
+    { name: 'KTRS 550 ABC News Radio', logo: '/images/media/ktrs-550-abc-news-radio-logo.png' },
+    { name: 'KATU 2 ABC', logo: '/images/media/katu-2-abc.png' },
     { name: 'WBAP', logo: '/images/speaker/WBAP.png' },
     { name: '700 WLW', logo: '/images/speaker/700-WLW.png' },
     { name: 'iHeart Radio', logo: '/images/speaker/iheart-radio.png' },
@@ -158,7 +160,6 @@ export default function SpeakingPage() {
     { name: 'WJR Radio', logo: '/images/speaker/wjr-radio-banner.png' },
     { name: 'KOA Radio', logo: '/images/speaker/koa-radio-banner.png' },
     { name: 'WBZ News Radio', logo: '/images/speaker/wbz-news-radio.png' },
-    { name: 'KTRS 550 ABC News Radio', logo: '/images/media/ktrs-550-abc-news-radio-logo.png' },
     { name: 'News 12 Long Island', logo: '/images/media/news12-long-island-logo.png' },
     { name: 'WICC Radio', logo: '/images/media/wicc-logo.png' },
     { name: 'Connecticut Today', logo: '/images/media/connecticut-today-logo.png' },
@@ -168,6 +169,9 @@ export default function SpeakingPage() {
     { name: 'KSRM Radio', logo: '/images/media/ksrm-radio.png' },
     { name: 'WHNZ Radio', logo: '/images/media/whnz-radio.png' },
     { name: 'Radio Ritmo WPIK', logo: '/images/media/wpik-radio-ritmo.png' },
+    { name: '600 KOGO NewsRadio', logo: '/images/media/kogo-600-newsradio.png' },
+    { name: 'KTAR News 92.3 FM', logo: '/images/media/ktar-news.png' },
+    { name: 'NewsRadio 630 WLAP', logo: '/images/media/wlap-630-newsradio.png' },
   ];
 
   // Upcoming appearances - Jeff can update these or we can add admin functionality
@@ -348,8 +352,8 @@ export default function SpeakingPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {/* Life Enrichment */}
-            <a
-              href="#life-enrichment"
+            <Link
+              href="/speaking/life-enrichment"
               className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/80 to-cyan-600/80 z-10" />
@@ -364,11 +368,11 @@ export default function SpeakingPage() {
                 <h3 className="text-lg md:text-xl font-bold text-center mb-2">Life Enrichment</h3>
                 <p className="text-sm text-white/90 text-center hidden md:block">General Audience</p>
               </div>
-            </a>
+            </Link>
 
             {/* Corporate */}
-            <a
-              href="#corporate"
+            <Link
+              href="/speaking/corporate"
               className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/80 to-pink-600/80 z-10" />
@@ -383,11 +387,11 @@ export default function SpeakingPage() {
                 <h3 className="text-lg md:text-xl font-bold text-center mb-2">Corporate</h3>
                 <p className="text-sm text-white/90 text-center hidden md:block">Leadership & Performance</p>
               </div>
-            </a>
+            </Link>
 
             {/* Cruise */}
-            <a
-              href="#cruise"
+            <Link
+              href="/speaking/cruise"
               className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/80 to-green-600/80 z-10" />
@@ -402,11 +406,11 @@ export default function SpeakingPage() {
                 <h3 className="text-lg md:text-xl font-bold text-center mb-2">Cruise</h3>
                 <p className="text-sm text-white/90 text-center hidden md:block">Travel Enrichment</p>
               </div>
-            </a>
+            </Link>
 
             {/* Medical */}
-            <a
-              href="#medical"
+            <Link
+              href="/speaking/medical"
               className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/80 to-orange-600/80 z-10" />
@@ -421,7 +425,7 @@ export default function SpeakingPage() {
                 <h3 className="text-lg md:text-xl font-bold text-center mb-2">Medical</h3>
                 <p className="text-sm text-white/90 text-center hidden md:block">Professional & Physician</p>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

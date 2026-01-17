@@ -39,7 +39,7 @@ export default function Navigation() {
             <div className="relative h-10 sm:h-12 md:h-14 lg:h-16 w-auto flex-shrink-0 transition-all duration-300 group-hover:scale-105">
               <Image
                 src="/images/logos/bucketlistdoctor-logo-new.png"
-                alt="Bucket List Doctor"
+                alt="Bucket List Doctor™"
                 width={280}
                 height={80}
                 className="h-full w-auto object-contain drop-shadow-lg"

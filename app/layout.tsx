@@ -19,13 +19,13 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Bucket List Doctor | The Neuroscience of a Bucket List',
+  title: 'Bucket List Doctor™ | The Neuroscience of a Bucket List',
   description: 'Dr. Jeffrey DeSarbo explores how bucket lists activate and strengthen your brain through neuroplasticity, goal-setting, and purposeful living.',
   keywords: ['bucket list', 'neuroscience', 'brain health', 'neuroplasticity', 'goal setting', 'Dr. Jeffrey DeSarbo'],
   authors: [{ name: 'Dr. Jeffrey DeSarbo' }],
   metadataBase: new URL('https://bucketlistdoctor.com'),
   openGraph: {
-    title: 'Bucket List Doctor | The Neuroscience of a Bucket List',
+    title: 'Bucket List Doctor™ | The Neuroscience of a Bucket List',
     description: 'Discover how bucket lists transform your brain and life',
     type: 'website',
     url: 'https://bucketlistdoctor.com',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bucket List Doctor | The Neuroscience of a Bucket List',
+    title: 'Bucket List Doctor™ | The Neuroscience of a Bucket List',
     description: 'Discover how bucket lists transform your brain and life',
     images: ['https://bucketlistdoctor.com/images/benefits/bucketlistdoctor-book-cover.png'],
   },
@@ -54,7 +54,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': 'https://bucketlistdoctor.com/#website',
       url: 'https://bucketlistdoctor.com',
-      name: 'Bucket List Doctor',
+      name: 'Bucket List Doctor™',
       description: 'The Neuroscience of a Bucket List by Dr. Jeffrey DeSarbo',
       publisher: {
         '@id': 'https://bucketlistdoctor.com/#person',

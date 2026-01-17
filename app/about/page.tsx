@@ -78,7 +78,7 @@ export default function AboutPage() {
               <div className="flex items-center justify-center md:justify-start mb-6">
                 <Image
                   src="/images/profile/trademark-new.png"
-                  alt="Bucket List Doctor"
+                  alt="Bucket List Doctor™"
                   width={300}
                   height={80}
                   className="h-12 md:h-16 w-auto"
