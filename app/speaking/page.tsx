@@ -342,12 +342,9 @@ export default function SpeakingPage() {
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Explore <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">Speaking Topics</span>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              For a list and description of Dr. DeSarbo&apos;s presentations – <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">click below.</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Click a category to explore presentations tailored to your audience
-            </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
