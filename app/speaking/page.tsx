@@ -350,7 +350,7 @@ export default function SpeakingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Life Enrichment */}
             <Link
-              href="/speaking/life-enrichment"
+              href="/speaking/presentations#life-enrichment"
               className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
             >
               <Image
@@ -364,7 +364,7 @@ export default function SpeakingPage() {
 
             {/* Corporate */}
             <Link
-              href="/speaking/corporate"
+              href="/speaking/presentations#corporate"
               className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
             >
               <Image
@@ -378,7 +378,7 @@ export default function SpeakingPage() {
 
             {/* Medical */}
             <Link
-              href="/speaking/medical"
+              href="/speaking/presentations#medical"
               className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
             >
               <Image
@@ -392,7 +392,7 @@ export default function SpeakingPage() {
 
             {/* Cruise */}
             <Link
-              href="/speaking/cruise"
+              href="/speaking/presentations#cruise"
               className="group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
             >
               <Image
