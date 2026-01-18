@@ -16,11 +16,33 @@ const DEFAULT_OPTIONS: Required<RetryOptions> = {
 };
 
 /**
+ * Get the appropriate database connection string
+ *
+ * REVERT INSTRUCTIONS:
+ * If pooled connections cause issues, set USE_POOLED_DB=false in Vercel env vars
+ * This instantly reverts to direct connections without a code deploy
+ *
+ * Pooled (port 6543): Faster, reuses connections, ideal for serverless
+ * Non-pooled (port 5432): Direct connections, needed for migrations/transactions
+ */
+function getConnectionString(): string {
+  const usePooled = process.env.USE_POOLED_DB !== 'false'; // Default: true (pooled)
+
+  if (usePooled && process.env.POSTGRES_URL) {
+    console.log('[DB] Using pooled connection (PgBouncer)');
+    return process.env.POSTGRES_URL;
+  }
+
+  console.log('[DB] Using direct connection (non-pooled)');
+  return process.env.POSTGRES_URL_NON_POOLING || '';
+}
+
+/**
  * Creates a PostgreSQL client with SSL configured
  */
 export function createClient(): Client {
   return new Client({
-    connectionString: process.env.POSTGRES_URL_NON_POOLING,
+    connectionString: getConnectionString(),
     ssl: { rejectUnauthorized: false },
   });
 }
