@@ -124,6 +124,13 @@ export default function MediaAppearances() {
       type: 'radio',
       gradient: 'from-blue-500 via-gray-500 to-blue-500',
     },
+    {
+      id: '16',
+      name: 'CBS 94.9 News Now',
+      logo_url: '/images/media/cbs-stimulating-talk.jpeg',
+      type: 'radio',
+      gradient: 'from-blue-500 via-red-500 to-blue-500',
+    },
   ];
 
   const fetchMediaAppearances = useCallback(async () => {

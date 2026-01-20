@@ -172,6 +172,7 @@ export default function SpeakingPage() {
     { name: '600 KOGO NewsRadio', logo: '/images/media/kogo-600-newsradio.png' },
     { name: 'KTAR News 92.3 FM', logo: '/images/media/ktar-news.png' },
     { name: 'NewsRadio 630 WLAP', logo: '/images/media/wlap-630-newsradio.png' },
+    { name: 'CBS 94.9 News Now', logo: '/images/media/cbs-stimulating-talk.jpeg' },
   ];
 
   // Upcoming appearances - Jeff can update these or we can add admin functionality
