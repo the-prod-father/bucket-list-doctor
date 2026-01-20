@@ -20,7 +20,7 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               <Image
-                src="/images/profile/trademark.png"
+                src="/images/logos/bld-lite-transparent-cropped.png"
                 alt="Bucket List Doctor™"
                 width={150}
                 height={50}

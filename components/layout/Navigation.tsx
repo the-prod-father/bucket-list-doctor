@@ -38,7 +38,7 @@ export default function Navigation() {
           <Link href="/" className="flex items-center group flex-shrink-0 min-w-0 pr-2 sm:pr-4">
             <div className="relative h-10 sm:h-12 md:h-14 lg:h-16 w-auto flex-shrink-0 transition-all duration-300 group-hover:scale-105">
               <Image
-                src="/images/logos/bucketlistdoctor-logo-new.png"
+                src="/images/logos/bld-lite-transparent-cropped.png"
                 alt="Bucket List Doctor™"
                 width={280}
                 height={80}

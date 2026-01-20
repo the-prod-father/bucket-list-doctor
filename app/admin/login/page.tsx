@@ -63,7 +63,7 @@ function AdminLoginForm() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Image
-            src="/images/logos/bucketlistdoctor-logo.webp"
+            src="/images/logos/bld-lite-transparent-cropped.png"
             alt="Bucket List Doctor"
             width={120}
             height={120}

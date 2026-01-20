@@ -245,7 +245,7 @@ export default function AnimatedBrainHero() {
             <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0">
               <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/30 to-brand-purple/30 rounded-full blur-lg opacity-50" />
               <Image
-                src="/images/logos/bucketlistdoctor-logo.webp"
+                src="/images/logos/bld-lite-transparent-cropped.png"
                 alt="Bucket List Doctor Logo"
                 width={80}
                 height={80}
