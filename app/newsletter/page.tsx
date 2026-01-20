@@ -385,7 +385,7 @@ function NewsletterContent() {
             <section className="space-y-6">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Recent issues</h2>
-                <Link href="/blog" className="text-sm font-semibold text-brand-blue hover:text-brand-purple">
+                <Link href="/videosandmedia" className="text-sm font-semibold text-brand-blue hover:text-brand-purple">
                   View full archive →
                 </Link>
               </div>
@@ -493,7 +493,7 @@ function NewsletterContent() {
               <h3 className="text-lg font-bold text-gray-900">Why subscribers stay</h3>
               <p className="text-sm text-gray-600">&ldquo;Every email feels like sitting in on a masterclass about how the brain responds to goals.&rdquo; — longtime reader</p>
               <Link
-                href="/blog"
+                href="/videosandmedia"
                 className="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl bg-brand-blue hover:bg-brand-purple text-white font-semibold transition-colors"
               >
                 Browse the archive

@@ -19,7 +19,7 @@ export default function Navigation() {
     { href: '/your-brain', label: 'Your Brain' },
     { href: '/speaking', label: 'Speaking' },
     { href: '/newsletter', label: 'Articles' },
-    { href: '/blog', label: 'Videos & Media' },
+    { href: '/videosandmedia', label: 'Videos & Media' },
   ];
 
   // Prefetch all routes on mount for instant navigation
