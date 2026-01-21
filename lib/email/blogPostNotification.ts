@@ -80,11 +80,6 @@ function generateEmailHtml(post: BlogPost, unsubscribeUrl: string): string {
   `;
 }
 
-/**
- * Send newsletter email notification to all active subscribers when a blog post is published
- * @param post - The published blog post
- * @returns Promise with sending statistics
- */
 export async function sendBlogPostNotification(post: BlogPost): Promise<{
   success: boolean;
   sent: number;

@@ -7,11 +7,6 @@ import { sendBlogPostNotification } from '@/lib/email/blogPostNotification';
 // Allow self-signed certificates
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-/**
- * POST /api/admin/test-newsletter
- * Test endpoint to send the latest published blog post to all subscribers
- * Admin only - for testing newsletter email functionality
- */
 export async function POST(request: NextRequest) {
   try {
     // Check authentication
@@ -118,10 +113,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-/**
- * GET /api/admin/test-newsletter
- * Get info about the latest published post (without sending)
- */
 export async function GET() {
   try {
     // Check authentication

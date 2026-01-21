@@ -180,13 +180,3 @@ export async function deleteMediaAppearance(id: string): Promise<boolean> {
     await client.end();
   }
 }
-
-
-
-
-
-
-
-
-
-

@@ -37,9 +37,6 @@ function getConnectionString(): string {
   return process.env.POSTGRES_URL_NON_POOLING || '';
 }
 
-/**
- * Creates a PostgreSQL client with SSL configured
- */
 export function createClient(): Client {
   return new Client({
     connectionString: getConnectionString(),
@@ -47,10 +44,6 @@ export function createClient(): Client {
   });
 }
 
-/**
- * Executes a database query with retry logic
- * Automatically handles connection, retries on failure, and cleanup
- */
 export async function withRetry<T>(
   queryFn: (client: Client) => Promise<T>,
   options: RetryOptions = {}
@@ -97,10 +90,6 @@ export async function withRetry<T>(
   throw lastError;
 }
 
-/**
- * Executes a database query with retry logic and returns null on failure
- * Useful for pages that should show gracefully degraded content on DB errors
- */
 export async function withRetryOrNull<T>(
   queryFn: (client: Client) => Promise<T>,
   options: RetryOptions = {}
@@ -113,10 +102,6 @@ export async function withRetryOrNull<T>(
   }
 }
 
-/**
- * Executes a database query with retry logic and returns empty array on failure
- * Useful for listing pages that should show empty state on DB errors
- */
 export async function withRetryOrEmpty<T>(
   queryFn: (client: Client) => Promise<T[]>,
   options: RetryOptions = {}
