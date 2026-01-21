@@ -11,9 +11,10 @@
 | Area | Status | Notes |
 |------|--------|-------|
 | **Logos** | Updated | Using `bld-lite-transparent-cropped.png` across site |
-| **Videos & Media** | New tabbed UI | Moved from `/blog` to `/videosandmedia` |
+| **Videos & Media** | New tabbed UI | At `/videosandmedia` with Videos + Articles tabs |
 | **Speaking Page** | Simplified | Removed 4 category detail sections |
 | **Media Appearances** | CBS added | CBS 94.9 News Now logo added |
+| **Code Quality** | Deslopped | Removed 39 lines of AI-generated slop |
 | **Database** | Pooled connections | Using PgBouncer for stability |
 
 ---
@@ -26,37 +27,16 @@
 - **Files:**
   - `bld-lite-transparent-cropped.png` - Light/pastel version (in use)
   - `BucketListDoctor-tm-transparent.png` - Vibrant version (available)
-- **Locations updated:** Navigation, Footer, Hero, Admin login, About page
 
-### 2. Videos & Media Page Restructure
+### 2. Videos & Media Page
 - **Status:** Complete
-- **New URL:** `/videosandmedia`
-- **Features:**
-  - Tabbed interface (Videos first, Articles second)
-  - Manila folder-style tabs
-  - FadeIn animation on tab switch
-- **Redirects:** `/blog` → `/videosandmedia`, `/blog/[slug]` → `/videosandmedia/[slug]`
-- **Key files:**
-  - `app/videosandmedia/page.tsx` - Main page (server component)
-  - `app/videosandmedia/TabsContainer.tsx` - Tab UI (client component)
-  - `app/videosandmedia/VideoSection.tsx` - YouTube videos
-  - `app/blog/page.tsx` - Redirect handler
+- **URL:** `/videosandmedia`
+- **Features:** Tabbed interface (Videos first, Articles second), manila folder-style tabs
 
-### 3. Speaking Page
-- **Status:** Simplified
-- **Removed sections:**
-  - Life Enrichment & General Audience
-  - Corporate, Leadership & High-Performance
-  - Cruise & Travel Enrichment
-  - Medical, Professional & Physician-Focused
-- **Kept:** Media appearances, Upcoming appearances
-
-### 4. Media Appearances
-- **Status:** CBS 94.9 added
-- **New logo:** `/public/images/media/cbs-stimulating-talk.jpeg`
-- **Updated in:**
-  - `app/speaking/page.tsx` (mediaAppearances array)
-  - `components/home/MediaAppearances.tsx` (fallbackMedia array)
+### 3. Code Quality
+- **Status:** Deslopped
+- **Details:** Removed JSDoc blocks and trailing whitespace (39 lines)
+- **Files cleaned:** `lib/db/retry.ts`, `lib/db/media.ts`, `app/api/admin/test-newsletter/route.ts`, `lib/email/blogPostNotification.ts`
 
 ---
 
@@ -70,15 +50,17 @@
 
 ### Recent Commits (Jan 20, 2026)
 ```
+81d2cec chore: remove AI-generated slop
+c402361 docs: initialize session-scribe documentation system
 32cadd1 feat: add tabbed Videos & Media page at /videosandmedia
 3adf974 feat: add CBS 94.9 News Now to media appearances
-1e20268 refactor: remove talk category detail sections from speaking page
-b77ae71 feat: update site logos to new transparent Bucket List Doctor branding
 ```
 
-### Known Issues
-- `media_appearances` table doesn't exist in some environments (handled gracefully with fallback)
-- Font loading warnings from fonts.gstatic.com (safe to ignore)
+### Codebase Style Conventions
+- Minimal inline comments (no JSDoc)
+- Try-catch only at API boundaries
+- No unnecessary `any` types
+- Clean interfaces at top of files
 
 ---
 
@@ -88,6 +70,7 @@ b77ae71 feat: update site logos to new transparent Bucket List Doctor branding
 - **UI style:** Clean, manila folder-style tabs
 - **Videos first:** User wants Videos tab to be default on media page
 - **Commits:** Prefers atomic commits with clear messages
+- **Code style:** Minimalist, no verbose JSDoc comments
 
 ---
 
@@ -99,9 +82,8 @@ _None at this time_
 
 ## Next Session Priorities
 
-1. [ ] Review tabbed UI on production after deploy
-2. [ ] Consider adding more media appearance logos if provided
-3. [ ] Any additional page updates user requests
+1. [ ] Continue with any new feature requests
+2. [ ] Site is clean and ready for new work
 
 ---
 
@@ -115,5 +97,6 @@ _None at this time_
 | Tabs component | `app/videosandmedia/TabsContainer.tsx` |
 | Speaking page | `app/speaking/page.tsx` |
 | Media appearances (home) | `components/home/MediaAppearances.tsx` |
+| DB retry logic | `lib/db/retry.ts` |
 | Logos folder | `public/images/logos/` |
 | Media logos folder | `public/images/media/` |
