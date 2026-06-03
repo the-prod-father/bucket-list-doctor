@@ -1,4 +1,5 @@
 import AnimatedBrainHero from '@/components/home/AnimatedBrainHero';
+import StarterKitCTA from '@/components/home/StarterKitCTA';
 import BucketListNavigation from '@/components/home/BucketListNavigation';
 import ValueProp from '@/components/home/ValueProp';
 import BookShowcase from '@/components/home/BookShowcase';
@@ -40,6 +41,7 @@ export default function Home() {
   return (
     <>
       <AnimatedBrainHero />
+      <StarterKitCTA />
       <BucketListNavigation />
       <ValueProp />
       <BookShowcase />

@@ -59,10 +59,10 @@ test.describe('Homepage', () => {
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
 
     // Check for newsletter form
-    const emailInput = page.locator('input[type="email"]');
+    const emailInput = page.locator('footer input[type="email"]');
     await expect(emailInput).toBeVisible();
 
-    const submitButton = page.locator('button[type="submit"]');
+    const submitButton = page.locator('footer button[type="submit"]');
     await expect(submitButton).toBeVisible();
   });
 });
@@ -74,14 +74,14 @@ test.describe('Newsletter Signup Functionality', () => {
   });
 
   test('should accept email input', async ({ page }) => {
-    const emailInput = page.locator('input[type="email"]');
+    const emailInput = page.locator('footer input[type="email"]');
     await emailInput.fill('test@example.com');
     await expect(emailInput).toHaveValue('test@example.com');
   });
 
   test('should validate email format', async ({ page }) => {
-    const emailInput = page.locator('input[type="email"]');
-    const submitButton = page.locator('button[type="submit"]');
+    const emailInput = page.locator('footer input[type="email"]');
+    const submitButton = page.locator('footer button[type="submit"]');
 
     // Try invalid email
     await emailInput.fill('invalid-email');
@@ -93,8 +93,8 @@ test.describe('Newsletter Signup Functionality', () => {
   });
 
   test('should show feedback after submission', async ({ page }) => {
-    const emailInput = page.locator('input[type="email"]');
-    const submitButton = page.locator('button[type="submit"]');
+    const emailInput = page.locator('footer input[type="email"]');
+    const submitButton = page.locator('footer button[type="submit"]');
 
     await emailInput.fill('test@example.com');
     await submitButton.click();

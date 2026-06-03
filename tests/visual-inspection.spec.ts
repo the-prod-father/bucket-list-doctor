@@ -57,7 +57,7 @@ test.describe('Visual Inspection Tests', () => {
     await page.waitForTimeout(1000);
 
     // Newsletter button
-    const submitButton = page.locator('button[type="submit"]');
+    const submitButton = page.locator('footer button[type="submit"]');
     await expect(submitButton).toBeVisible();
 
     // Hover over button

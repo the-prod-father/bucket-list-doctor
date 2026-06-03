@@ -41,3 +41,6 @@ next-env.d.ts
 *.m4a
 *.pdf
 *.docx
+
+# Exception: the Starter Kit lead-magnet PDF must be committed so it deploys
+!public/bucket-list-brain-starter-kit.pdf
