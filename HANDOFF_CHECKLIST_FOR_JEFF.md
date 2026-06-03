@@ -233,7 +233,7 @@ All items from Jeff's November 2025 email have been verified as **COMPLETE**:
 
 1. **Homepage** (`/`) - Hero, navigation cards, book showcase, media appearances
 2. **About** (`/about`) - Professional summary, achievements, clinical practice
-3. **Books** (`/books`) - Book showcase with purchase links (Amazon, BookBaby, B&N)
+3. **Books** (`/books`) - Book showcase with purchase links (Amazon, BookBaby)
 4. **Blog & Media** (`/blog`) - Articles, YouTube videos, media appearances
 5. **Tips & Advice** (`/tips-ideas`) - 10 comprehensive travel/bucket list guides
 6. **Your Brain** (`/your-brain`) - 5 brain benefits + full neuroscience story

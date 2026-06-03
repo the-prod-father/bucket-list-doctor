@@ -79,15 +79,6 @@ export default function BookShowcase() {
                 <FaBook className="w-5 h-5" />
                 BookBaby
               </a>
-              <a
-                href="https://www.barnesandnoble.com/s/desarbo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-8 rounded-lg border-2 border-white/30 transition-all"
-              >
-                <FaBook className="w-5 h-5" />
-                Barnes & Noble
-              </a>
             </div>
           </div>
         </div>

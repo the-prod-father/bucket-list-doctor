@@ -103,7 +103,6 @@ url: 'https://ed180.com/',
 
 **Additional Purchase Options (Lines 100-126):**
 - ✅ BookBaby link: Correct
-- ✅ Barnes & Noble link: Correct
 
 ### Action Required:
 - ✅ **NO CHANGES NEEDED** - Already perfect!
@@ -334,7 +333,6 @@ After making changes, test the following:
 - [ ] Visit /books - verify all 3 books show
 - [ ] Visit /books - click each "Buy on Amazon" link
 - [ ] Visit /books - click BookBaby link
-- [ ] Visit /books - click Barnes & Noble link
 - [ ] Check logo appears on all 7 pages
 - [ ] Check ED180 link in CrossSiteNavigation section
 - [ ] Check DoctorDesarbo link works
@@ -348,7 +346,6 @@ After making changes, test the following:
 ### Link Testing:
 - [ ] All Amazon book links open correct books
 - [ ] BookBaby link opens correct book
-- [ ] Barnes & Noble link works
 - [ ] ED180 link goes to correct domain
 - [ ] DoctorDesarbo link goes to https://www.doctordesarbo.com
 - [ ] All social media links work (footer)

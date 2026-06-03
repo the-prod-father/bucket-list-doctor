@@ -20,7 +20,6 @@ export default function BooksPage() {
       image: '/images/benefits/bucketlistdoctor-book-cover.png',
       amazonUrl: 'https://www.amazon.com/Neuroscience-Bucket-List-Getting-Brain/dp/B0F9NQGHGD/ref=tmm_pap_swatch_0',
       bookBabyUrl: 'https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list',
-      barnesNobleUrl: 'https://www.barnesandnoble.com/w/the-neuroscience-of-a-bucket-list-do-desarbo/1147438064',
       description: `Are you ready to transform your life and uncover the hidden potential within your mind? "The Neuroscience of a Bucket List: Getting the Most from Your Brain and Life" is not just a book—it's an invitation to rethink how you approach living. This groundbreaking work delves deep into the science of goal setting, motivation, and fulfilment, blending cutting-edge neuroscience with practical advice to empower readers to craft a life of purpose, joy, and achievement. A bucket list isn't just a wish list of adventures and achievements; it's a powerful tool for reshaping how you think, feel, and live. Through engaging storytelling and actionable insights, this book reveals how your brain responds to meaningful goals and helps you unlock creativity, resilience, and happiness.`,
       gradient: 'from-purple-500 to-blue-500',
     },
@@ -31,7 +30,6 @@ export default function BooksPage() {
       image: '/images/benefits/bucketlist-workbook-cover.jpg',
       amazonUrl: 'https://www.amazon.com/Neuroscience-Bucket-List-Workbook-Companion/dp/B0FBFNYWLW?ref_=ast_author_dp&th=1&psc=1',
       bookBabyUrl: 'https://store.bookbaby.com/book/the-neuroscience-of-a-bucket-list-workbook',
-      barnesNobleUrl: 'https://www.barnesandnoble.com/w/the-neuroscience-of-a-bucket-list-workbook-jeffrey-desarbo-do/1147508735?ean=9798317801854',
       description: `"The Neuroscience of a Bucket List Workbook: The Companion Guide to Transform Your Life" is a dynamic, science-based workbook created to help readers put their dreams into motion through practical, intentional action. As the official workbook to the acclaimed title, "The Neuroscience of a Bucket List: Getting the Most from Your Brain and Life," this guide takes readers deeper into the journey of designing a life that aligns with their values, passions, and purpose―using the transformative power of the brain.`,
       gradient: 'from-blue-500 to-teal-500',
     },
@@ -88,7 +86,7 @@ export default function BooksPage() {
                 </p>
 
                 {/* Buy Buttons - fixed height container to ensure equal card sizes */}
-                <div className="flex flex-col gap-2 mt-auto pt-6 min-h-[168px] justify-end">
+                <div className="flex flex-col gap-2 mt-auto pt-6 min-h-[120px] justify-end">
                   {book.bookBabyUrl && (
                     <a
                       href={book.bookBabyUrl}
@@ -97,16 +95,6 @@ export default function BooksPage() {
                       className="block text-center bg-brand-navy hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
                     >
                       Buy on BookBaby
-                    </a>
-                  )}
-                  {book.barnesNobleUrl && (
-                    <a
-                      href={book.barnesNobleUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-center bg-brand-purple hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
-                    >
-                      Buy on Barnes & Noble
                     </a>
                   )}
                   <a
@@ -126,7 +114,7 @@ export default function BooksPage() {
         {/* Additional Purchase Options Section */}
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
           <p className="text-center text-gray-700 text-xl leading-relaxed mb-6 max-w-4xl mx-auto">
-            Our books can often be out of stock on amazon during peak seasons and following media appearances. Please note that books are also available at your favorite online retailer including Book Baby and Barnes & Noble
+            Our books can often be out of stock on amazon during peak seasons and following media appearances. Please note that books are also available at your favorite online retailer including Book Baby.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -136,14 +124,6 @@ export default function BooksPage() {
               className="bg-brand-navy hover:bg-blue-900 text-white font-bold py-4 px-10 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
             >
               BookBaby
-            </a>
-            <a
-              href="https://www.barnesandnoble.com/s/desarbo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-brand-purple hover:bg-purple-600 text-white font-bold py-4 px-10 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg"
-            >
-              Barnes & Noble
             </a>
           </div>
           <p className="text-center text-gray-600 mt-6">
