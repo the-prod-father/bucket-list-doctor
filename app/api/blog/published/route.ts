@@ -1,28 +1,13 @@
 import { NextResponse } from 'next/server';
-import { Client } from 'pg';
+import { withRetryOrEmpty } from '@/lib/db/retry';
 
 export const dynamic = 'force-dynamic';
 
-// Allow self-signed certificates
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
-// PostgreSQL client
-function getClient() {
-  return new Client({
-    connectionString: process.env.POSTGRES_URL_NON_POOLING,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
-}
-
 // GET /api/blog/published - Get all published blog posts
+// Uses withRetryOrEmpty (3 retries + pooled connection) so a transient
+// Supabase cold-start timeout no longer silently returns an empty list.
 export async function GET() {
-  const client = getClient();
-
-  try {
-    await client.connect();
-
+  const posts = await withRetryOrEmpty(async (client) => {
     const result = await client.query(
       `SELECT
         id, title, slug, excerpt, content, status,
@@ -32,15 +17,8 @@ export async function GET() {
       WHERE status = 'published'
       ORDER BY published_at DESC NULLS LAST, created_at DESC`
     );
+    return result.rows;
+  });
 
-    return NextResponse.json({ posts: result.rows });
-  } catch (error) {
-    console.error('Error fetching published blog posts:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch blog posts', posts: [] },
-      { status: 500 }
-    );
-  } finally {
-    await client.end();
-  }
+  return NextResponse.json({ posts });
 }

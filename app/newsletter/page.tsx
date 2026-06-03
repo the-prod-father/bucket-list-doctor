@@ -42,22 +42,30 @@ function NewsletterContent() {
   }, []);
 
   const fetchPosts = async () => {
-    try {
-      const response = await fetch('/api/blog/published');
-      if (response.ok) {
-        const data = await response.json();
-        const sortedPosts = (data.posts || []).sort((a: BlogPost, b: BlogPost) => {
-          const dateA = new Date(b.published_at || b.created_at).getTime();
-          const dateB = new Date(a.published_at || a.created_at).getTime();
-          return dateA - dateB;
-        });
-        setPosts(sortedPosts);
+    const maxAttempts = 3;
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const response = await fetch('/api/blog/published', { cache: 'no-store' });
+        if (response.ok) {
+          const data = await response.json();
+          const sortedPosts = (data.posts || []).sort((a: BlogPost, b: BlogPost) => {
+            const dateA = new Date(b.published_at || b.created_at).getTime();
+            const dateB = new Date(a.published_at || a.created_at).getTime();
+            return dateA - dateB;
+          });
+          setPosts(sortedPosts);
+          setLoading(false);
+          return;
+        }
+      } catch (error) {
+        console.error(`Error fetching posts (attempt ${attempt}/${maxAttempts}):`, error);
       }
-    } catch (error) {
-      console.error('Error fetching posts:', error);
-    } finally {
-      setLoading(false);
+      // Back off before retrying a transient failure
+      if (attempt < maxAttempts) {
+        await new Promise((resolve) => setTimeout(resolve, 500 * attempt));
+      }
     }
+    setLoading(false);
   };
 
   const handleSubscribe = async (e: React.FormEvent) => {
