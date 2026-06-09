@@ -38,8 +38,9 @@ Shipped the free **Bucket List Starter Kit** lead magnet, removed **Barnes & Nob
 
 ### Then, in this exact order
 
-1. Continuity automation Gavin asked about: add a `SessionStart` hook in `.claude/settings.local.json` that surfaces this `CURRENT_CONTEXT.md` so every session opens with "where we left off." (gstack already installed; gbrain optional/skip.)
-2. Seed Claude's persistent memory for this project (currently empty): project facts, deploy workflow, the SMTP-pending item.
+1. Seed Claude's persistent memory for this project (currently empty): project facts, deploy workflow, the SMTP-pending item.
+
+✅ DONE this session: the `SessionStart` continuity hook now auto-surfaces this handoff on every resume — `.claude/settings.json`, commit `a11884b`. (gstack already installed; gbrain optional/skip.)
 
 ### Open threads / parked
 
